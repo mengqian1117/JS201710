@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var ary=[1,2,3,4];
+//    ary.push(1,2,3);
+//    console.log(ary);
+
+    console.log(ary.slice(-1, -3));
+
+    console.log(eval(ary.join("+")));
+    console.log(ary);
+
+    ary.forEach(function (item,index,input) {
+        //没有返回值
+    });
+    console.log(ary.map(function (item, index, input) {
+
+    }));
+
+    var ary=["1",2,3,4,"5"];
+    console.log(ary.find(function (item, index, input) {
+        return typeof item==="number";
+    }));
+    console.log(ary.findIndex(function (item, index, input) {
+        return typeof item==="number";
+    }));
+
+
+    console.log(ary.filter(function (item, index, input) {
+        return typeof item==="string";
+    }));
+
+//    ary.forEach(function (item,index,input) {
+//        console.log(item);
+//        if(item===3){
+//            return false
+//        }
+//    })
+
+    var a=[12,13,14];
+    console.log(a.concat([1, 2, 3], "哈哈"));
+    console.log(a);
+
+
+    var ary=["哈哈","嘿嘿","呵呵"];
+    for (var index in ary){
+        console.log(index);
+    }
+
+    for(var item of ary){
+        //item:表示当前项
+        console.log(item);
+    }
+
+
+    //string
+    //...扩展运算符
+    var str="1234567";
+    var arr=[...str];
+    console.log(arr);
+</script>

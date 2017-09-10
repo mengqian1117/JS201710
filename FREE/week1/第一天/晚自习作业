@@ -1,0 +1,64 @@
+一.选择题目:
+1.下面语法不正确的是___
+A.var $="$"   B.var _this   C.var hh="呵呵"  D.var 1a="aa"
+
+2.下面正确的写法是_____
+A.<script src="1.js"> var a =1</script>
+B.<script src="1.js" defer></script>
+C.<style src="1.js"></style>
+
+3.选出正确的一项_____
+A.let a;let a=1;   B.let 1;  C.const a  D.let _$="$$";
+
+4.下面的弹窗有输入框的是__
+A.alert(1)    B.confirm(1)   C.prompt(1)  D.console.log(1)
+
+5.能输出"1"的有哪些___(多选)
+A.alert(1)  B.console.log(1.toString)  C.console.log(1..toString)  D.console.log(""+1)   E.console.log(parseInt("1"))
+
+6.字符串中的语法正确的是____(多选)
+A."I'm a teacher"  B.'I'm a teacher' C."I'm"+" a teacher"
+D."I'm \n a teacher"
+
+7.console.log("第一个是:%s;第二个是:%s","apple"),打印的结果是___
+A."第一个是:apple"  B."第一个是:apple;第二个是:%s"
+C."第一个是:%s;第二个是:%s"  D."第一个是:apple;第二个是:apple"
+
+8.下面的结果不是undefined的是____
+A.console.log(alert(1))  B.let a; console.log(a)
+C.console.log(parseInt(undefined))
+D.let obj={};console.log(obj.a)
+
+9.下面能得到true的是__
+A.isNaN(null)  B.isNaN(parseInt(null))  C.Number(null)  D.parseFloat(null)
+
+10.结果不是字符串的是___
+A."1"+11  B.typeOf [1,2]  C.parseInt("1px") D.{a:'a'}.toString
+
+
+二.填空题目:
+1.JS的组成部分:_________,__________,___________,
+
+2.数据类型分为哪两种?分别有哪些_______________________________
+
+3.typeOf typeOf [1,2,3] 结果:______
+
+4."1"+parseInt("1px")结果:_________
+
+5.parseInt("")___  Number("")____  isNaN("")___
+parseInt(null)___  Number(null)____  isNaN(nul)___
+parseInt("1 2 px")___  Number("1 2 px")____  isNaN("1 2 px")___  isNaN(parseInt("1px"+"2px"))____
+
+6.console.log和console.dir的区别:__________________________
+
+7."1px"+isNaN("1px")+parseInt(NaN)的结果:______________
+
+8.var let const 声明变量的方法什么区别?要注意的问题
+
+
+9.如果我想在DOM元素加载之前使用JS操作,怎么办?写你的思路(或代码)即可,想到几种写几种
+
+
+10.自己查一下关键字和保留字都有那些
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #list li{
+            height: 50px;
+            background-color: #8ed5ff;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+
+    var list=document.getElementById("list");
+    var oLis=list.getElementsByTagName("li");
+
+    for (var i=0;i<oLis.length;i++){
+        oLis[i].onclick=(function (index) {
+            return function () {
+                alert(index)
+            }
+        })(i)
+    }
+    //i=0,oLis[0].onclick=给自执行函数传参数 i=0,自执行函数的私有变量index接受 0;index=0;自执行函数返回值 一个地址xxxfff000(这个地址中存着一个函数),这个自执行函数形成的私有作用域不销毁
+
+
+    //i=1,oLis[1].onclick=给自执行函数传参数 i=1,自执行函数的私有变量index接受 1;index=1;自执行函数返回值 一个地址xxxfff111(这个地址中存着一个函数),这个自执行函数形成的私有作用域不销毁
+
+
+    //i=2,oLis[2].onclick=给自执行函数传参数 i=2,自执行函数的私有变量index接受 2;index=2;自执行函数返回值 一个地址xxxfff222(这个地址中存着一个函数),这个自执行函数形成的私有作用域不销毁
+    //i=3,oLis[3].onclick=xxxfff333
+    //i=4,oLis[4].onclick=xxxfff444
+
+
+   // 当你点击的时候  比如你点的索引为2的li
+
+
+
+</script>

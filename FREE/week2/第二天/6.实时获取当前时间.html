@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box {
+            width: 800px;
+            height: 60px;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            margin: 50px auto 10px;
+            border: 1px solid salmon;
+            background: linear-gradient(to left top, red, orange, gold, green, peachpuff, darkgreen, purple,yellowgreen,teal);
+            padding: 7px 10px;
+            color: #fff9f9;
+            text-shadow: 1px 2px 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+
+    var box=document.getElementById("box");
+    var ary = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    var strDate="";
+
+    //获取时间并放到box中
+   function changeDate() {
+       var time=new Date;
+       var y=time.getFullYear();
+       var m=time.getMonth()+1;
+       var w=ary[time.getDay()];
+       var d=time.getDate();
+       var h=time.getHours();
+       var mi=time.getMinutes();
+       var s=time.getSeconds();
+       strDate=y+"年"+m+"月"+d+"日 "+w+" "+h+":"+mi+":"+s;
+       box.innerHTML=strDate;
+   }
+   //为了保证刚打开页面的时候能显示
+   changeDate();
+   //加一个定时器 每隔1000毫秒执行一次函数
+    window.setInterval(changeDate,1000)
+
+
+
+
+</script>

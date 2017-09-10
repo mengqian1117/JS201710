@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //对象:大括号包起来的键值对的组合{键(属性名):值(属性值),键:值}
+    //1.无序的 (注意在浏览器中打印出来有个特点,会将属性名是数字的放在最前面并且按照从小到大的顺序排列)
+    //2.属性名必须是字符串类型的,你写的不是字符串也会默认转为字符串
+    var obj={a:1,2:"嘿嘿",1:"哈哈"};
+    //console.log(obj);
+
+    //可以使用for in循环来遍历对象
+    //先将属性名是数字的按从小到大的顺序遍历出来
+    for(var key in obj){
+        //obj:你想遍历的对象
+        //key(你可以随便写名字):属性名
+        //循环体 有几个键值对就循环几次
+        console.log(typeof key);
+    }
+
+    var obj1={"a":"a"};//这个跟{a:"a"}是一样的
+
+    //获取对象的属性名的属性值
+    var obj2={a:'哈哈',b:"呵呵",c:"嘿嘿",1:"吆西"};
+    //1 对象.属性名 =>获取属性名对应的属性值
+    console.log(obj2.a);
+    console.log(obj2.c);
+    console.log(obj2.d);//没有的话就是undefined
+
+    //2.对象["属性名"]  记住:属性名必须要加引号
+    //注意:属性名是数字情况只能使用[]这种方式获取,还可以省略引号
+    console.log(obj2["a"]);
+    console.log(obj2["1"]);
+    console.log(obj2[1]);
+
+
+    //如果不用var let  const  声明变量,直接写一个变量表示的是  全局的变量,并且相当于给window增加一个属性
+    //例如 a=1;就相当于window.a=1
+
+    //var a="a";
+    //如果中括号里面没有加引号,就代表的是个变量,你就去找这个变量代表的值,如果你找不到这个变量那就报错了"a is not defined",如果这个对象中没有这个变量所代表的属性名就是undefined
+
+    //console.log(obj2[a]);
+    //console.log(obj2["a"]);
+</script>

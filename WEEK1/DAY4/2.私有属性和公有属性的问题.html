@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var a=0;
+    //console.log("a" in window);
+    //属性 in 对象
+    //这个属性在不在这个对象中
+
+    function FF() {
+        this.x="x";
+    }
+    FF.prototype.getX=function () {};
+    Object.prototype.getY=function () {};
+    var f1=new FF;
+    console.log("x" in f1);
+    console.log("getX" in f1);
+    console.log("getY" in f1);
+
+    //in判断属性的时候既包括私有属性也包括公有属性
+    var ary=[1,2,3];
+    console.dir(Array.prototype);
+    //ary.sort();
+    //ary.__proto__==>Array.prototype.sort()
+
+    console.log("sort" in ary);
+    console.log("length" in ary);
+
+    //对象.hasOwnProperty("属性") 判断这个属性是不是自己的私有属性
+
+    //console.log(Object.prototype);
+
+    console.log(f1.hasOwnProperty("x"));
+    console.log(f1.hasOwnProperty("getX"));
+
+    //以后在判断一个属性是私有属性还是公有属性的时候,先用in来判断是不是他的属性,再使用hasOwnProperty来判断私有的剩下就是公有的
+
+</script>

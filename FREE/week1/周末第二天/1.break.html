@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //break 终止循环  后面的代码也不会执行了
+    for(var i=0;i<7;i++){
+        console.log(i);//0 3
+        i+=2; //2 5
+        if(i>4){
+            break;
+        }
+    }
+    console.log(i);//5
+
+
+
+    for(var i=0;i<7;i++){
+        i+=2;//2 5
+        if(i>4){
+            break;
+        }
+        console.log(i);//2
+    }
+    console.log(i);//5
+
+
+    //continue  结束本次循环进入下一次循环
+    for(var i=0;i<10;i++){
+        if(i%2){
+            //奇数
+            continue;
+            //后面的代码不执行,进入下一次循环,执行i++
+        }
+        console.log(i);
+        //i%2?continue:console.log(i);错误的
+        //注意:在三元运算符中不可以出现break和continue
+    }
+
+
+    var str="abcd*sssa*MSAJ*";
+
+    function getIndex() {
+        var str="abcd*sssa*MSAJ*";
+        for (var i=0;i<str.length;i++){
+            if(str[i]==="*"){
+                return i;
+            }
+        }
+    }
+    var index=getIndex();
+    console.log("*的索引为:",index);
+
+    //需求:随便给你的一个字符串str,找出第一次出现的指定字符code
+
+    function getIn(str,code) {
+        //从str中找到指定字符code第一次出现的索引
+        for (var i=0;i<str.length;i++){
+            if(str[i]===code){
+                //这个i找到了,直接返回,return出去
+                return i;
+            }
+        }
+    }
+    console.log(getIn("aaaaaadccc", "d"));
+    console.log(getIn("1324572171837", "5"));
+    console.log(getIn("8888888599999900000", "0"));
+    //我们将实现相同功能的代码写在一个函数中,以后你再想实现这个功能只需要执行这个函数就可以,可以通过传不同的参数得到不同的结果
+</script>

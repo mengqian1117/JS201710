@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function A() {
+        //return true;
+    }
+
+    if (A) {//true
+        console.log("OK");
+    }
+    if (A()) {//undefined-->false
+        console.log("yes");
+    }
+
+
+    var a = 0;
+    if (a++) {//0  a=1
+        a++;
+        console.log(a);
+    } else {
+        console.log(a);//1
+    }
+
+    var a = 0;
+    if (++a == a++) {//1==1  a=2
+        a++;//a=3
+        console.log(a);//3
+    } else {
+        console.log(a);
+    }
+
+    ++a == a++ ? a++ : console.log(a);
+
+    var m="1";
+    switch (m){
+        case 1://m===1
+            console.log(1);
+            break;
+        case "1"://m==="1"
+            console.log("1");
+            break;
+        default:
+            console.log("sorry");
+            break;
+    }
+
+
+
+</script>

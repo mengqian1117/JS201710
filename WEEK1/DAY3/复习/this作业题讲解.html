@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">111111111111</div>
+</body>
+</html>
+<script>
+    //1.
+    if("a" in window){
+        var a="";
+        function getA(a) {
+            //a=""
+            a=a||this.a;
+            console.log(this.a);//""
+        }
+        getA(a);//("")
+    }
+</script>
+<script>
+    var a=2;
+    var obj1={
+        a:1,//obj1.a=1
+        fn1:(function (a) {
+            //私有 形参 a=2
+            this.a=a;//window.a=2
+            a++;//a=3
+            return function () {//obj1.fn1=xxxfff000
+                this.a=a++;//obj1.a=3 a=4;window.a=4
+                console.log(a);//4;5
+            }
+        })(a)//2
+    };
+    obj1.fn1();
+    var fn1=obj1.fn1;//fn1=xxxfff000
+    fn1();
+</script>
+<script>
+    //3.
+    var ary=[1,2,3,4];
+    ary.forEach(function(item,index){
+        //this==window
+        ary[index]=this;
+    });
+    console.log(ary);//[window,window,window,window]
+
+</script>
+<script>
+    //4.
+    var b="b";
+    var obj2={
+        b:"B",
+        getB:function (b) {
+            //this==obj2
+            //私有 b="是"
+            this.b=b+this.b;//obj2.b="是"+"B"
+            return this.b;//obj2.b="是B"
+        }
+    };
+    console.log(obj2.getB("是"));
+</script>
+<script>
+    var aa=20;
+    function bind() {
+        var aa=12;
+        function fn() {
+            console.log(this.aa);
+        }
+        box.onclick=function () {
+            //console.log(this);
+            fn();//fn中的this是window
+        };
+        box.onclick=fn;//fn中的this是box
+    }
+    bind()
+</script>
+<script>
+    //6.
+    var c=3;
+    function getC() {//getC:xxxfff000
+        this.c++;//window.c=3;obj3.c=3;window.c=4
+        return function (c) {
+            c=this.c*2;
+            console.log(c);
+        }
+    }
+    var obj3={
+        c:2,
+        getC:(function () {//obj3.getC=xxxfff000
+            this.c-=1;//window.c=2
+            return this.getC
+        })()
+    };
+    getC();
+    obj3.getC();
+    var f3=obj3.getC;//f3=xxxfff000
+    f3();
+    console.log(window.c);//4
+    console.log(obj3.c);//3
+</script>
+<script>
+    //7.
+    function g1() {
+        this.g="gg"
+    }
+    var obj4={
+        g1:g1,
+        gg:function () {
+            //console.log(this);
+            g1()
+        }
+    };
+    obj4.g1();//obj4.g="gg"
+    obj4.gg();//window.g="gg"
+    console.log(obj4);
+    console.log("g" in window);
+</script>

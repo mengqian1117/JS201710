@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+我们把一些功能封装成一个函数,以后再想实现这个功能只需要去执行这个函数即可
+工厂模式:实现批量生产 ,提供不同的原材料(参数)得到不一样的产品(返回值)
+-->
+<script>
+    function createPerson(name,age,can) {
+        var person={};
+        person.name=name;
+        person.age=age;
+        person.can=function () {
+            console.log("I can do"+can);
+        };
+        return person;
+    }
+
+    var person1=createPerson("谢绍峰", 18, "js");
+    var person2=createPerson("王学超", 28, "CSS");
+    var person3=createPerson("左钊", 38, "HTML");
+
+
+
+
+</script>

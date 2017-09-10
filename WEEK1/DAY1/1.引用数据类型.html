@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //只要是引用数据类型都可以增加自定义属性(注意函数)
+    //元素是对象
+    var ary=[1,2,3];//ary=xxxfff000
+    var ary1=ary;//ary1=xxxfff000
+    ary1[3]=4;
+
+    ary.index="哈哈";
+    ary.name="ary";
+    console.log(ary);
+    function fn() {}
+    fn.zf="珠峰";
+    console.dir(fn);
+
+
+</script>

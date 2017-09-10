@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //isNaN   NUmber   parseInt  parseFloat
+
+    //NaN :不是一个数  not a number ,但是他是number类型的
+    console.log(typeof NaN);
+
+    //isNaN :检测是不是一个数   是一个数:false,不是一个数:true
+    console.log(isNaN(NaN));//true
+    console.log(isNaN(1));//false
+    //isNaN(其他数据类型):使用Number()将其他数据类型转为数字,在进行判断
+
+    //从第一个非空格字符到最后一个非空格字符,中间如果有非数字字符就是NaN,没有就是找出来的变成数字,如果一个非空格字符都没有就是0
+    console.log(Number(""));//0
+    console.log(Number("  "));//0
+    console.log(Number("1"));//1
+    console.log(Number("1px"));//NaN
+    console.log(Number("1 1"));//NaN
+    console.log(Number("   1  "));//1
+    //布尔
+    console.log(Number(true));//1
+    console.log(Number(false));//0
+    // null undefined
+    console.log(Number(null));//0
+    console.log(Number(undefined));//NaN
+
+    //引用数据类型 ->数字
+    //首先是将其toString()转为字符串,再将其转为数字,
+    //特例:时间会将其转为毫秒数
+
+
+
+    //parseInt() 只取整数部分
+    //parseFloat()   保留小数
+    //从第一个非空格字符开始查找,遇到非数字停止查找,将找出的内容变成数字返回,没有找到就是NaN
+    console.log(parseInt(''));//NaN
+    console.log(parseInt('1PX'));//1
+    console.log(parseInt('   PX'));//NaN
+
+    //null  ->NaN
+    console.log(parseInt(null));//NaN
+
+    //时间不会变成毫秒数
+
+</script>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html, body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        #banner {
+            position: relative;
+            width: 800px;
+            height: 300px;
+            margin: 50px auto;
+        }
+
+        .bannerInner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bannerInner img {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bannerInner img.select {
+            display: inline-block;
+        }
+
+        .bannerTip {
+            position: absolute;
+            z-index: 10;
+            bottom: 15px;
+            right: 50px;
+            overflow: hidden;
+        }
+
+        .bannerTip li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: gainsboro;
+            cursor: pointer;
+        }
+
+        .bannerTip li.bg {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<div id="banner">
+    <div class="bannerInner">
+        <img class="select" src="img/0.jpg" alt="">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <ul class="bannerTip">
+        <li class="bg"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    //点击每一个li,让对应的img(索引的对应)图片显示(加上className="select"),给点击的这个li加上className="bg",
+    //其他的img图片 className=""  其他的li className=""
+    var banner=document.getElementById("banner");
+    var imgList=banner.getElementsByTagName("img");
+    var oLis=banner.getElementsByTagName("li");
+
+    for(var i=0;i<oLis.length;i++){
+        oLis[i].index=i;
+        oLis[i].onclick=function () {
+            //1.让所有的li和img都没有class名,
+            for(var j=0;j<oLis.length;j++){
+                oLis[j].className="";
+                imgList[j].className="";
+            }
+            //2.让当前点击的li有class名,让对应的img加上class名
+            //this.index :当前点击的li的索引
+            this.className="bg";
+            //通过索引this.index找到对应的img
+            imgList[this.index].className="select";
+        }
+    }
+
+</script>

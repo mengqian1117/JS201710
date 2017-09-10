@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary1 = [1, 2, 1, 2, 1, 23, 4, 1, 23, 24, 4, 5, 2, 3, 6, 7];
+    //方法一:循环数组ary1,拿到每一项,放到aryNew中,放之前先判断,数组aryNew中没有才往里面放,有的话就不要放了
+    //var aryNew=[1,2,23,4,24,5,3,6,7];
+    function fn1(aryOld) {
+        var aryNew = [];
+        for (var i = 0; i < aryOld.length; i++) {
+            if (!aryNew.includes(aryOld[i])) {
+                //只有aryNew中没有当前这一项的时候才放
+                aryNew.push(aryOld[i])
+            }
+        }
+        return aryNew;//返回值是去重后的新数组
+    }
+
+    console.log(fn1(ary1));
+
+    //简化
+    function fn2(aryOld) {
+        var aryNew = [];
+        aryOld.forEach(function (item) {
+            !aryNew.includes(item) ? aryNew.push(item) : null;
+        });
+        return aryNew;
+    }
+
+    console.log(fn2(ary1));
+
+
+    //第二个方法
+    //循环数组ary1中的每一项,判断这一项的indexOf和lastIndexOf相不相等,不相等说明至少有俩个,那么我删掉前面的,注意i--
+    for (var i = 0; i < ary1.length; i++) {
+        if (ary1.indexOf(ary1[i]) !== ary1.lastIndexOf(ary1[i])) {
+            ary1.splice(i, 1);
+            i--;//防止数组塌陷
+        }
+    }
+    //注意:以后在循环数组的时候,如果你删掉了数组的前面项,一定要i--,防止数组塌陷
+    console.log(ary1);
+
+
+    //[1,2,1,2,1,23,4,1,23,24,4,5,2,3,6,7];
+    //[2,1,2,1,23,4,1,23,24,4,5,2,3,6,7];i=0
+    //[2,1,2,1,23,4,1,23,24,4,5,2,3,6,7];i=1
+
+    //方法三:使用的是filter方法 遍历每一项的时候,看看在这一项之前数组中没有,没有的话返回true留下,有的话返回false不要
+
+    var aryNew = ary1.filter(function (item, index) {
+        //ary1.slice(0, index)当前项之前的内容
+        return !ary1.slice(0, index).includes(item)
+    });
+    console.log(aryNew);
+
+
+
+</script>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+在私有作用域中遇到变量,先看是不是自己的私有变量,不是的话,就往上一级作用域找,还找不到继续往上找,一直找到Window下为止,如果window下没有就会报错,这个查找的过程就是作用域链
+
+上一级作用域:跟在哪里执行没有关系,关键要看这个函数的地址是在哪个作用域下定义的,这个作用域就是他的上一级作用域
+-->
+<script>
+    var a = 10;
+    function f1() {
+        var a = 0;
+        function fn() {
+            a++;
+            console.log(a);
+        }
+        return fn
+    };
+    var f = f1();
+    f();
+</script>
+
+<script>
+    var q=1;
+    function x() {
+        q++;
+        console.log(q);
+    }
+    function qq(q,x) {
+        var q=q++;
+        return x
+    }
+    qq(q,x)()
+</script>

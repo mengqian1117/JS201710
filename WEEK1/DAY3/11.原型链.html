@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+当对象通过对象.属性(对象["属性"])获取属性的值,首先看是不是自己的私有属性,是的话就获取私有的属性,不是的话通过__proto__找到所属类的原型,看看原型上有没有这个公有属性,还是没有在通过原型上的__proto__去找.......一直找到Object的prototype上,还没有就是undefined
+这个查找过程就叫做原型链
+-->
+<script>
+    function FF() {
+        this.x = 1;
+        this.y = 11;
+        this.getX = function () {
+            console.log(this.x);
+        }
+    }
+
+    FF.prototype.x = 100;
+    FF.prototype.getX = function () {
+        console.log(this.x);
+    };
+    FF.prototype.getY = function () {
+        console.log(this.y);
+    };
+    Object.prototype.getA = function () {
+        console.log("aaaa");
+    };
+    var f1 = new FF();
+    var f2 = new FF();
+
+    console.log(f1.getX == f2.getX);//false
+    console.log(f1.getY == f2.getY);//true
+    // f1.__proto__==>FF.prototype.getY
+    // f2.__proto__==>FF.prototype.getY
+    console.log(f1.getA == f2.getA);
+    //f1.__proto__==>FF.prototype.__proto__==>Object.prototype.getA
+    //f2.__proto__==>FF.prototype.__proto__==>Object.prototype.getA
+
+
+    console.log(f1.getX == f1.__proto__.getX); //false
+    //console.log(私有 == FF.prototype.getX);
+
+    f1.getX();//this==f1  f1.x=1
+    f1.__proto__.getX();
+    //this==f1.__proto__==FF.prototype
+    // FF.prototype.x  =100
+    f1.getY();
+    //f1.__proto__==>FF.prototype.getY
+    //this==f1  f1.y =11
+    FF.prototype.getY();
+    //this=FF.prototype.y   undefined
+
+
+    console.log(f1.__proto__.constructor == FF.prototype.constructor);
+    console.log(f1.__proto__.constructor == FF);
+    f1.__proto__.constructor();
+    //FF.prototype.constructor();
+    console.log(FF.prototype);
+    f1.constructor;
+    //f1.__proto__==>FF.prototype.constructor==>FF
+
+    var ary = [1, 2, 3];
+    console.log(ary.constructor.name);//Array
+
+    var obj = {};
+    console.log(obj.constructor.name);
+
+    var n=1;
+    console.log(n.constructor.name);
+
+    var str="11";
+    console.log(str.constructor.name);
+
+    var t=true;
+    console.log(t.constructor.name);
+
+
+    function GG() {
+        console.log("哈哈");
+        console.log(arguments.callee);
+    }
+    GG.prototype.constructor();
+
+
+    console.dir([1]);
+
+</script>

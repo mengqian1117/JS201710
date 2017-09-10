@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //类是函数
+    Function;
+    Object;
+    function fn() {};
+    console.log(fn instanceof Function);
+    console.log(fn.__proto__ == Function.prototype);
+    console.log(Object instanceof Function);
+    console.log(Function instanceof Object);
+
+</script>
+<script>
+    function FF() {
+        this.a=1;
+    }
+    FF.prototype.getA=function () {};
+    var ff=new FF();
+    console.log(Function.prototype.__proto__ == Object.prototype)
+
+    //Object是基类所以说类是Object类的一个实例
+    console.log(Array instanceof Object);
+    console.log(String instanceof Object);
+    console.log(Number instanceof Object);
+    console.log(Boolean instanceof Object);
+    console.log(Function instanceof Object);
+
+    //因为类是函数,所以类也是Function类的实例
+    console.log(Array instanceof Function);
+    console.log(String instanceof Function);
+    console.log(Number instanceof Function);
+    console.log(Boolean instanceof Function);
+    console.log(Object instanceof Function);
+
+
+    console.log(Function instanceof Function);
+    console.log(Object instanceof Object);
+</script>

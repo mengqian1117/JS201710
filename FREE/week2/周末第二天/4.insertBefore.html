@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">
+    <p>P1</p>
+    <p>P2</p>
+    <span>哈哈</span>
+    <span>呵呵</span>
+</div>
+</body>
+</html>
+<script>
+    //父亲元素.insertBefore(元素1,元素2)
+    //将元素1放到元素2的前面
+    var box=document.getElementById("box");
+    var ps=box.getElementsByTagName("p");
+    var ss=box.getElementsByTagName("span");
+
+    //将 呵呵 放到 p2 的前面
+    box.insertBefore(ss[1],ps[0]);
+
+    //写一个方法将一个元素方到另一个元素的后面
+
+    function insertAfter(eleOld,eleNew) {
+        //将一个元素eleNew方到另一个元素eleOld的 弟弟的前面
+        if(eleOld.nextElementSibling){
+            eleOld.parentNode.insertBefore(eleNew,eleOld.nextElementSibling);
+        }else {
+            //没有弟弟说明这个元素是最后一个
+            //就把元素eleNew放到最后面
+            eleOld.parentNode.appendChild(eleNew)
+        }
+    }
+
+</script>

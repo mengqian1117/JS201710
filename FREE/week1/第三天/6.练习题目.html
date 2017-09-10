@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+
+    //1.++
+    var a = 3;
+    console.log((a++) + a + (++a) + a.toString());
+    //console.log(3 + 4 + 5+ "5");
+    //console.log(12+ "5");
+    //console.log( "125");
+
+
+    //2.==
+    console.log([] == 0);
+    //Number([])==0
+    //0==0  true
+    console.log([0] == 0);
+    //Number([0])==0
+    //0==0  true
+    console.log([] == true);
+    //Number([])==Number(true)
+    //0==1  false
+    console.log(![] == false);
+    //false==false  true
+    console.log([] == false);
+    //Number([])==Number(false)
+    //0==0  true
+    console.log(isNaN(null) == null);
+    //false
+
+
+    //===
+    console.log(null == undefined);//true
+    console.log(null === undefined);//false
+    var a=[1,2,3];
+    var b=a;
+    console.log(a === b);//true
+
+    //if
+    if(isNaN(NaN)==""){//true==""  1==0   false
+        console.log("珠峰")
+    }else {
+        console.log("培训")
+    }
+
+
+    //函数function
+    //参数集合是什么?
+    //函数的返回值用什么表示
+    //练习
+    function fn1() {
+        console.log(arguments); //[ 1, [1,2]]
+    }
+    fn1(1,[1,2]);
+
+    function fn2(n,m) {
+        //n="1",m=undefined
+        console.log(n + m);//"1"+undefined -->"1undefined"
+    }
+    fn2("1");
+
+    function fn3() {
+        return "我函数的是返回值";
+    }
+    var res=fn3();
+    console.log(res);
+
+    //像这样的有函数名的函数叫做有名函数,还有一些函数没有名字叫做匿名函数
+</script>

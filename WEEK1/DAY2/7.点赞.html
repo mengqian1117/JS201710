@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box{
+            width: 500px;
+            border: 2px dashed rebeccapurple;
+            text-align: center;
+            font-size: 35px;
+            margin: 100px auto;
+            color: green;
+            box-shadow: 1px 1px 2px gray,2px 2px 2px gray,3px 3px 3px gray;
+        }
+        #box .count{
+            display: block;
+            background-color: deepskyblue;
+            font-size: 40px;
+            width: 200px;
+            border: 1px solid saddlebrown;
+            color: red;
+            margin: 10px auto;
+            border-radius:5px ;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+
+        ul>li{
+            width: 100px;
+            height: 30px;
+            display: inline-block;
+            background-color: #aa24ff;
+            padding: 10px 5px;
+            margin: 15px;
+            font-size: 30px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+            border-radius: 5px;
+            color: white;
+            box-shadow: 1px 1px 2px gray,2px 2px 2px gray,3px 3px 3px gray;
+            filter: blur(3px);
+        }
+
+        ul li:hover{
+            filter: blur(0);
+        }
+
+    </style>
+</head>
+<body>
+
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+</ul>
+<div id="box">
+    我们是最棒的
+    <span class="count">0</span>
+</div>
+</body>
+</html>
+<script>
+    var count=document.getElementsByClassName("count")[0];
+//    var n=0;
+//    count.onclick=function () {
+//        this.innerHTML=++n;
+//    }
+//
+    count.onclick=function () {
+        this.innerHTML++;
+    };
+    //给每一个li绑定点击事件,点击第几个li就给count中的数字加几
+    var oLis = document.getElementsByTagName("li");
+    for (var i = 0;i<oLis.length;i++){
+        oLis[i].onclick =function () {
+            count.innerHTML = Number(this.innerHTML)+Number(count.innerHTML);
+        }
+    }
+</script>

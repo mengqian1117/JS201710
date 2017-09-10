@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html, body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        #banner {
+            position: relative;
+            width: 800px;
+            height: 300px;
+            margin: 50px auto;
+        }
+
+        .bannerInner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bannerInner img {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bannerInner img.select {
+            display: inline-block;
+        }
+
+        .bannerTip {
+            position: absolute;
+            z-index: 10;
+            bottom: 15px;
+            right: 50px;
+            overflow: hidden;
+        }
+
+        .bannerTip li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: gainsboro;
+            cursor: pointer;
+        }
+
+        .bannerTip li.bg {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<div id="banner">
+    <div class="bannerInner">
+        <img class="select" src="img/0.jpg" alt="">
+        <img src="img/1.jpg" alt="">
+        <img src="img/2.jpg" alt="">
+        <img src="img/3.jpg" alt="">
+        <img src="img/4.jpg" alt="">
+    </div>
+    <ul class="bannerTip">
+        <li class="bg"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    var banner=document.getElementById("banner");
+    var imgList=banner.getElementsByTagName("img");
+    var oLis=banner.getElementsByTagName("li");
+    for (var i=0;i<oLis.length;i++){
+        oLis[i].onclick=function () {
+            var img=imgList[index(this)];
+            this.className="bg";
+            img.className="select";
+            for (var j=0;j<siblings(this).length;j++){
+                siblings(this)[j].className='';
+                siblings(img)[j].className='';
+            }
+        }
+    }
+
+
+
+
+</script>
+<script>
+    //获取所有的哥哥
+    function prevAll(ele) {
+        var prevAry=[];
+        var prev=ele.previousElementSibling;
+        while (prev){
+            prevAry.unshift(prev);
+            prev=prev.previousElementSibling;
+        }
+        return prevAry;
+    }
+
+    //获取所有的弟弟
+    function nextAll(ele) {
+        var nextAry=[];
+        var next=ele.nextElementSibling;
+        while (next){
+            nextAry.push(next);
+            next=next.nextElementSibling;
+        }
+        return nextAry;
+    }
+
+    //获取一个元素的索引
+    function index(ele) {
+        //就是哥哥的长度
+        return prevAll(ele).length
+    }
+
+    //获取所有的兄弟(哥哥+弟弟)
+    function siblings(ele) {
+        return prevAll(ele).concat(nextAll(ele))
+    }
+
+</script>

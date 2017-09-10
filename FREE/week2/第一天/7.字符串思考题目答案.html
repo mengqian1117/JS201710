@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //    思考题:
+    var str = "1+2+3+4+5+6";
+    //    将字符串中的"+"全都变成"*"
+    while (str.includes("+")) {
+        str = str.replace("+", "*")
+    }
+    console.log(str);
+
+
+    var str = "12345678";
+    //    得到一个数组[1,2,3,4,5,6,7,8]
+    //    注意:数组中每一项都是数字不是字符串
+    var ary = str.split("");
+    for (var i = 0; i < ary.length; i++) {
+        ary[i] = parseInt(ary[i])
+    }
+    console.log(ary);
+
+    var str = "www.zhufengpeixun.com?a=1&b=2&c=3";
+
+    //    1)将上面字符串得到一个数组[“a=1","b=2","c=3"];
+    var ary=str.split("?")[1].split("&");
+    console.log(ary);
+
+    //    2)将上面字符串得到2个数组[“a","b","c"]和[“1","2","3"];
+    var ary1=[],ary2=[];
+    for (var i=0;i<ary.length;i++){
+        ary1[i]=ary[i].split("=")[0];
+        ary2[i]=ary[i].split("=")[1];
+    }
+    console.log(ary1, ary2);
+
+    //    3)将上面字符串得到一个对象{a:1,b:2,c:3};
+    var obj={};
+    for (var i=0;i<ary.length;i++){
+        obj[ary[i].split("=")[0]]=ary[i].split("=")[1];
+    }
+    console.log(obj);
+    //    4.var str="asdfaaassdddfffssss"
+    //    1)找出出现次数最多的字符并求出他的次数
+    //    2)得出每个字符出现的次数(可以放在一个对象中)
+    //    3)得出去除重复后的字符串
+    var str="asdfaaassdddfffssss";
+    var obj={};
+    for(var i=0;i<str.length;i++){
+        if(obj[str[i]]){
+            obj[str[i]]=++obj[str[i]];
+        }else {
+            obj[str[i]]=1;
+        }
+    }
+    console.log(obj);
+
+
+    var strNew='';
+    for (var key in obj){
+        strNew+=key;
+    }
+    console.log(strNew);
+</script>

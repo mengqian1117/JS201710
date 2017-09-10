@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+堆内存:存储引用数据类型的一个内存
+栈内存:作用域
+
+堆内存:需要手动销毁,否则直到关闭浏览器才会销毁
+例如 obj=null;
+
+栈内存销毁:
+全局的:关闭浏览器才会销毁
+私有的:
+1.销毁的:一个函数没有返回值,或者返回值的内容没有被外界占用
+
+只有返回值是个引用数据类型而且别外界的变量接收 这样才叫被外界占用
+2.不销毁:一个函数的返回值,被外界占用
+例如
+function fn(){
+   var a=1
+   return function (){}
+}
+var  f=fn()
+-->
+<script>
+    var obj={
+        name:"name",
+        age:12
+    };
+    console.log(obj);
+    delete obj.age;
+    console.log(obj);
+</script>
+<script>
+//    function f1() {
+//        var a=1;
+//        console.log(a++);
+//        return {a:"a"}
+//    }
+//    f1();
+//    f1();
+
+
+    function fn1() {
+        //私有变量a
+        var  a=1;
+        a++;   //a=2
+        return function (b) {
+            //b=2; b=2  ;b=2
+            a=a+b;
+            //a=4  a=6  a=8
+            console.log(b + a);
+            //6  8  10
+        }
+    }
+    var f1=fn1();
+    f1(2);
+    f1(2);
+    f1(2);
+
+
+</script>

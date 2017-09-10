@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+实例通过this得到了私有属性还继承了所属类的原型(prototype)上的公有属性
+-->
+<script>
+    function FF() {
+        this.x=1;
+        this.y=10;
+        this.getX=function () {
+            console.log(this.x);
+        };
+        this.getY=function () {
+            console.log(this.y);
+        }
+    }
+    FF.prototype.x=100;
+    FF.prototype.getX=function () {
+        console.log(this.x);
+    };
+    FF.prototype.getF=function () {
+        console.log(this.y);
+    };
+    var f1=new FF;
+    var f2=new FF;
+    console.log(f1.getF==f2.getF);
+    console.log(f1.x);
+
+</script>

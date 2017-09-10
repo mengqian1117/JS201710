@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //eval将字符串变成真实的代码(表达式)
+    var  str="var a=0;a++;";
+    console.log(str.length);
+    console.log(str[2]);//"r"
+
+    //console.log(a);//报错
+
+    eval(str);
+    //var a=0;a++;
+    console.log(a);
+
+
+    console.log(eval("[1,2,3,4,5]"));
+
+
+    function fn() {
+        console.log("哈哈");
+    }
+    eval("fn()");
+
+    //eval("console.log(b)"); //报错了
+
+
+
+</script>

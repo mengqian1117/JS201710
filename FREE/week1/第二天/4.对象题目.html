@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var a = "b";
+    var c = 1;
+    var obj = {1: "11", 2: "22", a: "aa", b: "bb"};
+
+    /*
+    console.log(obj.a);//"aa"
+    console.log(obj.b);//"bb"
+    //console.log(obj.1);//错误的
+    console.log(obj[1]);//"11"
+    console.log(obj["aa"]);//undefined
+    */
+    //升级1
+
+    /*
+    console.log(obj[a]);
+    //a="b"
+    //console.log(obj["b"]);
+    //"bb"
+    console.log(obj["c"]);//undefined
+    console.log(obj[c]);
+    //c=1
+    //obj[1]
+    //"11"
+    console.log(obj[b]);
+    //b=? 没有b这个变量
+    //报错: b is not defined
+    */
+
+
+    //升级2
+    console.log(obj["" + 1]);
+    //console.log(obj['1']);
+    //"11"
+
+    var obj1 = {aa: "哈哈", "bb": "嘿嘿", c3: "呵呵", 1: '11', 0: '00'};
+    var n="a";
+    var m="1";
+    var a="a";
+    var b=1;
+    console.log(obj1["aa"]);
+    console.log(obj1[parseInt([0])]);//"00"
+    console.log(obj1[b - 1]);//"00";
+    console.log(obj1[a+n]);//"哈哈"
+    console.log(obj1["c"+b]);//undefined
+    console.log(obj1["c"+(b+b+1)]);//"呵呵"
+
+
+    for(var key in obj1){
+        //key 是个变量,循环一次给key赋值,赋的值就是当前的属性名
+        //所以获取属性值就只能使用中括号的形式
+        //key =0;    obj1[0]
+        //key =1;    obj1[1]
+        //key ="a";  obj1["a"]
+        //key ="b";  obj1["b"]
+        //key ="c3"  obj1["c3"]
+        console.log("属性名是:%s,属性值是:%s",key,obj1[key]);
+    }
+
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function FF() {
+        //this==当前实例
+        this.name="XX";
+        this.age=12;
+        //不需要return,会默认将this return出来
+    }
+    //var  f=FF();
+    //console.log(f);
+
+    var f1=new FF();
+    var f2=new FF();
+    //当你使用new关键字来创建f的时候 此时的FF就是一个类,f就是这个类的一个实例
+
+
+    //类
+    //new 方式去执行一个函数,这个函数就是一个类
+    //函数执行的时候里面的this就是当前实例 ,通过this.  这样的形式给实例增加私有属性和方法,默认返回this
+    //实例都是对象
+    //如果在类中手动加上return
+    //如果return是基本数据类型,不会对解构造出影响
+    //如果是return的是引用数据类型,就改变返回值
+</script>
+<script>
+    function Fn() {
+        this.getA=function () {
+            console.log("a");
+        }
+    }
+    var fn1=new Fn();
+    var fn2=new Fn();
+    console.log(typeof fn1);
+    console.log(typeof fn2);
+    console.log(fn1.getA == fn2.getA);
+    //
+    function AA() {
+        this.aa="AA";
+        return 1;
+    }
+    var a1=new AA;
+    console.log(a1);
+    function BB() {
+        this.bb="BB";
+        return {age:12}
+    }
+    var b1=new BB;
+    console.log(b1);
+</script>

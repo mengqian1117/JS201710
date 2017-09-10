@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //+ - * /
+    //除了+遇到字符串是拼接字符串
+    //其他都是数学运算  如果不是数字就强制转为数字
+    //任何值跟NaN进行数学运算都是NaN
+    console.log(parseInt("") + isNaN(""));
+   // console.log(NaN + isNaN("")); NaN
+
+    //取余: % "mo"
+
+    console.log(4 % 2);
+
+    //逻辑运算符
+
+    //|| &&
+    // 前|| 后  :前面是true返回前面的值,前面是false返回后面的值
+    //   &&    :前面是false返回前面的值,前面是true返回后面的值
+
+
+    console.log(![] || false);//false
+    console.log(![] && false);//false
+    console.log(Number("") || [0]);//[0]
+    console.log(Number(undefined) || ![]);//false
+</script>

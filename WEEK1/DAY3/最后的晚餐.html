@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function sum() {
+        arguments.__proto__=Array.prototype;
+        console.dir(arguments);
+        return eval(arguments.join("+"))
+    }
+
+    console.log(sum(1, 2, 3, 4, 5, 6));
+</script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //1.=右边不进行预解释
+    //console.log(fn);报错的
+    var f=function fn() {
+        console.log("哈哈");
+    };
+
+    //2.自执行函数不进行预解释
+    //console.log(f1);报错的
+    ;(function f1() {
+        console.log("自行函数");
+    })()
+
+    //3.匿名函数当做参数的时候不进行预解释
+    //sort(function(a,b){return a-b})
+    //forEach(function(item,index){})
+    //map(function(item,index){})
+    //find(function(item,index){})
+    //filter(function(item,index){})
+    //window.setInterval(function () {},1000)
+
+    //4.return后面的代码不执行但是需要预解释 ,return出的代码执行但是不进行预解释
+    function gg() {
+        console.log(f);
+        var a=1;
+        return a+1;
+        a++;
+        console.log(a);
+        function f() {
+            console.log(a);
+        }
+    }
+    gg();
+
+    function ff() {
+        //console.log(F);//F is not defined
+        return function F() {};//不预解释
+    }
+    ff();
+
+    //5.if判断中的预解释,不管条件是否成立都进行预解,但是var跟function都是只声明不定义,当代码执行的时候,条件一旦成立,上来先给函数赋值,然后代码再执行
+    var a="0";
+    console.log(get);
+    console.log(b);
+    if(a){
+        console.log(get);
+        function get() {};
+        var b=1;
+    }
+
+</script>

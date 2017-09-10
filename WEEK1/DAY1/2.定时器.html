@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var timer=null;
+    function fn() {
+        console.log("哈哈");
+    }
+    timer=window.setInterval(fn,1000);
+    //window.setInterval()是个函数
+    //timer 是这个函数返回值
+    //定时器是有返回值的,返回值是:他是第几个定时器
+    console.log(timer);//1
+    timer=window.setInterval(fn,1000);
+    console.log(timer);//2
+
+    //window.clearInterval(第几个定时器)
+    window.clearInterval(1);
+//    window.clearInterval(2);
+</script>

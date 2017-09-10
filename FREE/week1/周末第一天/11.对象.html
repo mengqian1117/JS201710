@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //var obj={属性名:属性值}
+    //有多个键值对的无序组合
+    //1.属性名是字符串类型的
+    //2.属性名不能重复,重名的后面会覆盖掉前面的
+
+    var obj={
+        a:"a",
+        b:"b",
+        a:"A"
+    };
+    //obj.a="A";
+    console.log(obj);
+
+    //3.通过  对象.属性名的方式获取对应的属性值
+    //没有这个这个属性就是undefined
+    console.log(obj.a);
+
+    //4.通过  对象["属性名"]的方式获取对应的属性值
+    //没有这个这个属性就是undefined
+
+    //5.增加/修改属性名和属性值
+    obj.c="C";
+
+    //6.删除:
+    //假删除  将原来属性名的属性值赋值为空 null
+    //仅仅是将属性值赋值为空,但是属性仍然存在
+    obj.a=null;
+
+    //真删除 : 直接将属性名删掉
+    delete obj.a;
+
+    console.log(obj);
+    console.log(obj.a);//undefined
+
+
+    //如果你下面不再使用obj对象,你可以将它清空
+    obj=null;
+
+    //以后在真实项目中,后期不用的对象 记住要手动清空(将其赋值为null)
+</script>

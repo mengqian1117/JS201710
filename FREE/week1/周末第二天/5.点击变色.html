@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 2px dotted red;
+            margin: 50px auto;
+            background-color: bisque;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    //bisque->green->yellow->plum->blue->bisque->...
+
+    var box = document.getElementById("box");
+    box.onclick = change;
+
+
+    function change() {
+        var bg = box.style.backgroundColor;
+        console.log(bg);
+        //第一次点击的时候因为行内没有样式,所以获取出来的是个空字符串,我们在else中处理一下,第一次点击走的是else,让背景颜色变成green
+        if (bg === "bisque") {
+            box.style.backgroundColor = "green";
+        } else if (bg === "green") {
+            box.style.backgroundColor = "yellow";
+        } else if (bg === "yellow") {
+            box.style.backgroundColor = "plum";
+        } else if (bg === "plum") {
+            box.style.backgroundColor = "blue";
+        } else if (bg === "blue") {
+            box.style.backgroundColor = "bisque";
+        } else {
+            box.style.backgroundColor = "green";
+        }
+    }
+
+
+    //自动变色  加一个定时器
+
+    //window.setInterval(函数,时间频率毫秒为单位)
+    //过多长时间执行一次
+    //window.setInterval(fn,500)  每过500毫秒就执行一次这个函数fn
+
+    window.setInterval(change,300)
+</script>

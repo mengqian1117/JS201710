@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    console.log(typeof (!parseInt(null) + !!isNaN(0) + Number([])));
+    //typeof true+false+0;
+    //typeof 1
+    //"number"
+    console.log(typeof !parseInt(null) + !!isNaN(0) + Number([]));
+    //"boolean"+false+0
+    //"booleanfalse0"
+    console.log(!parseFloat("1.5p"+2));//false
+
+    console.log(!!parseFloat(Number(isNaN("1"+"px"))));//true
+    //!!parseFloat(Number(isNaN("1px")))
+    //!!parseFloat(Number(true))
+    //!!parseFloat(1)
+    //!!1
+    //true
+
+    console.log(Boolean(!"parseInt(null)"));
+    //console.log(Boolean(false));
+    //false
+
+    console.log(!!typeof Number(undefined));
+    //console.log(!!typeof NaN);
+    //console.log(!!"number");
+    //true
+    console.log(isNaN(null) + typeof typeof Number([]));;
+   // console.log(false + typeof typeof Number([]));;
+    //console.log(false + "string");;
+    //console.log("falsestring");;
+
+    console.log(!typeof parseFloat("0"));
+    //console.log(!typeof 0);
+    //console.log(!"number");
+    //console.log(false);
+
+    console.log(!!Number(NaN));
+    //console.log(!!NaN);
+    //console.log(false);
+
+    console.log(!Number("1px") + parseInt("px"));
+
+    console.log(!(undefined)+"1px"+!parseInt("0.5"));
+
+    console.log( !!typeof parseInt(null));
+
+    console.log(typeof isNaN(!(Number(parseInt(undefined)))));
+
+    typeof typeof (!! console.log(parseFloat(1+"0.5px")));
+
+    isNaN(Number(!Number(toString(null))));
+
+    console.log(Number([5]) + parseInt(1 + '5px') + !parseFloat("1.5px" + 1) + (typeof typeof(null)));
+    //console.log(5 + 15 + !1.5 + "string");
+    //console.log(20 + false + "string");
+    //console.log(20 + 0 + "string");
+    //console.log(20+ "string");
+    //console.log("20string");
+
+    Boolean(Number("1px"))+"parseInt('1.2px')";
+
+    var demo = 10;
+
+    var demo1 = "10";
+
+    const newdemo = typeof demo + Number(demo1);
+
+    console.log(!parseInt(newdemo));
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    Number();
+
+    //Array(x1,x2.....)返回一个数组[x1,x2.....]
+    //特例:Array(n);参数只有一个的时候代表返回数组的length,每一项是空位
+    console.log(Array(1, 2, 3, 4));//[1,2,3,4]
+    console.log(Array(4));//[4]
+    //什么数组的空位
+    //[,,,,]
+    var ary=Array(3);//[,,,] 数组中是三个空位
+    var ary=[undefined,undefined,undefined];
+    console.log(1 in ary);
+    //索引 in 数组 :判断当前索引的位置有没有值
+    //在ES5中的方法对空位的处理都不一致,大部分方法都是直接跳过空位的
+    //ES6中的方法会将空位处理为undefined
+    var a=[1,,,,1,3,undefined];
+    console.log(a.length);
+    a.forEach(function (item) {
+        console.log(item);
+    });
+    a.find(function (item) {
+        console.log(item);
+    });
+    a.findIndex(function (item) {
+        console.log(item);
+    });
+
+    var ary1=Array(4);
+    //fill 填充数组,一般用来初始化一个数组.或者是清空一个数组
+    console.log(ary1.fill(1));
+    var a=[1,,,,1,3,undefined];
+    console.log(a.fill(null));
+    var a=Array(7).fill(1);
+    console.log(a);
+
+    //Array.of()根Array这个方法一样的,只不过解决了一个参数的问题,一个参数就不在是length
+    console.log(Array.of(4));//[4]
+</script>

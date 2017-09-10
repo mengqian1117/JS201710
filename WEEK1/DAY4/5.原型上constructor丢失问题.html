@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //内置类原型的地址默认你是改不掉的,你重新赋值也不会起作用
+    var ary=[1,3,2];
+//    Array.prototype.sort=function () {
+//        return "逗你玩"
+//    };
+    Array.prototype={};
+    console.log(ary.sort());
+    //自定义类
+    function FF() {
+        this.a=1
+    }
+    var  f1=new FF;
+    console.log(FF.prototype.constructor);
+    console.log(f1.__proto__.constructor);
+    FF.prototype={
+        constructor:FF,
+        get:function () {},
+        getX:function () {},
+        getY:function () {}
+    }
+    console.log(FF.prototype.constructor==FF);
+
+    //prototype只有浏览器默认开辟的堆内存中才会有constructor这个属性,如果你后面修改掉prototype的地址,一定记住手动给他加上constructor:这个类本身
+
+    Array.prototype.pop=function () {
+        var n=this[this.length-1];
+        this.length--;
+        return n;
+    };
+    ary.pop();
+</script>

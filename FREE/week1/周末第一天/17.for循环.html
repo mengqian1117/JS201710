@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    for(条件1;条件2;条件3){
+        代码4;
+
+    }
+    */
+    //1.条件1先执行,只执行一次,一般都是定义一个初始的变量,用来当做一个循环的条件,比如 var i=0;
+    //2.判断条件2是是否成立
+    //3.如果条件2成立执行代码4, 如果条件2不成立停止
+    //4.代码4执行完成后再去执行条件3
+    //以上是第一次循环
+    //从第二次循环开始
+    //条件2==>代码4;==>条件3==>条件2==>代码4;==>条件3......
+
+   //注意一点,条件3的位置可以写在代码4后面,但是前面的分号必须留置
+//    for(var i=0;i<10;i++){
+//        console.log(i);
+//
+//    }
+    for(var i=0;i<5;){
+        console.log(i);//0 1 2 3 4
+        i++;
+    }
+
+    var ary=["a","b",1,2,3];
+    //索引是从0-ary.length-1
+    //ary[i]  0<= i <ary.length
+
+    for (var i=0;i<ary.length;i++){
+        if(typeof ary[i]=="number"){
+            console.log("我是数字:",ary[i]);
+        }
+    }
+
+
+
+
+
+
+</script>

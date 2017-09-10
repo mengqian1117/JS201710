@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary=[1,2,3];
+    console.dir(ary);
+    console.dir(ary.__proto__);
+    console.dir(Array.prototype);
+
+    function sum() {
+        //console.log(eval([...arguments].join("+")));
+        //console.log(arguments.__proto__ == Object.prototype);
+        arguments.__proto__=Array.prototype;
+        console.log(eval(arguments.join("+")));
+    }
+    sum(1,2,3,4);
+
+    //remove
+    //ary.remove()
+    Array.prototype.remove = function () {
+        //this==实例
+        var ary = [];
+        for (var i = 0; i < this.length; i++) {
+            if (!ary.includes(this[i])) {
+                ary.push(this[i])
+            }
+        }
+        return ary
+    };
+        //原型上的方法
+        //实例.方法()
+
+    Array.prototype.remove = function () {
+        //this==实例
+        for(var i=0;i<this.length;i++){
+            if(this.indexOf(this[i])!==this.lastIndexOf(this[i])){
+                this.splice(i,1);
+                i--;
+            }
+        }
+        return this;
+    };
+    Array.prototype.remove=function () {
+        //this==实例
+        var _this=this;
+        return this.filter(function (item,index) {
+            //this==window
+            return !_this.slice(0,index).includes(item)
+        })
+    };
+
+    console.log([1, 1, 1, 1, 1, 2].remove());
+
+
+    var ary=[1,2,3,1,12,2,3];
+    var obj={
+        1:1,
+        2:2,
+        3:3,
+        1:1,
+        12:12,
+        2:2,
+        3:3
+    };
+    console.log(obj);
+    //利用对象的属性名不可以重复来实现数组去重
+    Array.prototype.remove=function () {
+        var obj={},ary=[];
+        this.forEach(function (item) {
+            obj[item]=item;
+        });
+        for (var key in obj){
+            //key 是字符串
+            ary.push(obj[key])
+        }
+        return ary
+    };
+    console.log(ary.remove());
+</script>

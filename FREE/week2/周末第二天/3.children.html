@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">
+    <p>p1</p>
+    <p>p2</p>
+    <span>span1</span>
+    <span>span2</span>
+    <span>span3</span>
+    <input type="text" value="input1">
+    <input type="text" value="input2">
+</div>
+</body>
+</html>
+<script>
+    var box = document.getElementById("box");
+    console.dir(box);
+
+    box.tagName;//大写标签名
+    var kids = box.children;
+    console.log(kids);
+
+    function children(ele) {
+        return [...ele.children];
+    }
+    //获取指定标签名的孩子元素
+    function children(ele, tag) {
+        var kids=ele.children;
+        var kidsAry=[];
+        //从所有的kids中去找,标签名是tag的元素,放到kidsAry
+        for(var i=0;i<kids.length;i++){
+            if(kids[i].tagName==tag.toUpperCase()){
+                kidsAry.push(kids[i])
+            }
+        };
+        //将数组返回出去
+        return kidsAry;
+    }
+
+    console.log(children(box, "p"));
+    console.log(children(box, "span"));
+    console.log(children(box, "input"));
+    console.log(children(box, "div"));
+</script>

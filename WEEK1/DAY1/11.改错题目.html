@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    f=function () {
+        return true;
+    };
+    g=function () {
+        return false;
+    };
+    (function () {
+        //预解释:function g=undefined
+        if(f()&&[]==![]){
+            f=function f() {
+                return false
+            };
+            function g() {
+                return true
+            }
+        }
+    })();
+    alert(f());//"false"
+    alert(g());//"false"
+</script>

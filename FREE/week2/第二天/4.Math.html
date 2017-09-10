@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //Math不是数据类型
+
+    //max最大值
+    console.log(Math.max(1, 2, 3, 12, 34, 45));
+    //min最小值
+    console.log(Math.min(1, 2, 3, 12, 34, 45));
+
+    //Math.sqrt() 算数平方根
+    console.log(Math.sqrt(9));//3
+
+    //Math.floor()向下取整
+    console.log(Math.floor(2.9999));//2
+    //Math.ceil()向上取整
+    console.log(Math.ceil(3.000001));//4
+    ///Math.round()四舍五入
+
+    //Math.abs()绝对值
+    console.log(Math.abs(-1));
+
+    console.dir(Math);
+
+
+    var ary=[1,2,3,12,34,25,6,17];
+    //Math.max( 1,2,3,12,34,25,6,17);
+    //"Math.max( 1,2,3,12,34,25,6,17)"
+    //"Math.max( "+  "1,2,3,12,34,25,6,17"+   ")";
+    "Math.max("+ ary.toString()+")"   ;
+    ary.toString();//"1,2,3,12,34,25,6,17"
+    console.log(eval("Math.max(" + ary.toString() + ")"));
+
+    console.log(eval("Math.max(" + ary + ")"));
+</script>

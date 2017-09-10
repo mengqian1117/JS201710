@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1. 使用var关键字定义变量
+    var a=1;
+    //a :变量
+    //命名规范
+    //1.数字,大小写字母,_ ,$  (数字不能作为开头)
+    //2.严格区分大小写  var a;   var A
+    //3.尽量使用驼峰命名法  studentInfo
+    //4.不能使用关键字和保留字  var var=1 错误的
+    //5.避免使用拼音
+
+
+
+    //注意:使用var a;定义的变量  相当于给window增加一个属性 a
+
+    console.log(a);//1
+    console.log(window.a);//1
+
+    var a=2;
+    var a=3;
+
+
+    //ES6 < == >ECMAScript2015
+    //let  const 来定义变量
+    let b=1;
+    //1.不能重复声明 (变量不能重名)
+    //let b=2; //'b' has already been declared  b已经被声明了
+    //2.let定义的变量不会给window当做属性
+    console.log(window.b);//undefined
+
+    //const :静态变量  对上面的两条要求也要遵循
+    //变量:存储和代表值
+    //静态变量:存储和代表值只能是一个
+    //1.const一旦声明必须赋值
+    let c;//undefined
+    //const d;//Missing initializer in const declaration 在const声明中缺少初始化程序
+    const d=10;
+    //2.一旦赋值就不可以修改
+    //d=12;// Assignment to constant variable. 不可以给常量赋值
+
+    //2=1;// Assignment to constant variable.
+</script>

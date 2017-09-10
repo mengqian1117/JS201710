@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div class="box" style="font-size: 20px"></div>
+</body>
+</html>
+<script>
+
+    //在ES6模板字符串中使用变量的写法  ${变量}
+    var box=document.getElementsByClassName("box")[0];
+    var dataAry=[{goods:"手机",price:1332},{goods:"电脑",price:10999},{goods:"耳机",price:199},{goods:"键盘",price:499}];
+    var strHTML=``;//模板字符串
+    dataAry.forEach(function (item) {
+        strHTML+=`<p>
+              商品名称:${item.goods}
+              商品价格:$${item.price}
+             </p>`;
+    });
+    box.innerHTML=strHTML;
+
+
+
+    var  str=`我是 \`ES6模板字符串`;
+
+
+
+</script>

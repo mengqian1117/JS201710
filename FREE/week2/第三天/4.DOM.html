@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<!--注释-->
+<div class="box">
+    div的内容
+    <p class="p1">我是孩子p1</p>
+    <p class="p1">我是孩子p1</p>
+    <p class="p1">我是孩子p1</p>
+    <p class="p1">我是孩子p1</p>
+
+    <p class="p2">我是孩子p2</p>
+
+    <p class="p3">我是孩子p3</p>
+</div>
+</body>
+</html>
+<script>
+    //节点  只要是在HTML文档中出现的东西都叫做节点,注释,空格,换行,文本,标签(元素)...........
+
+    //我们最常用的就是元素
+
+    var box = document.getElementsByClassName("box")[0];
+    console.dir(box);
+
+    //1.获取子节点
+    console.log(box.childNodes);
+
+    //2.获取元素(标签)子节点 获取的是一组元素集合(类数组)
+    console.log(box.children);
+    console.log(box.children[0]);
+
+
+    //3.获取父亲节点(一个元素节点)
+    var p2 = box.getElementsByClassName("p2")[0];
+    console.log(p2.parentNode);
+
+    //4.获取兄弟节点
+    //previousSibling  获取上一个哥哥节点
+    console.log(p2.previousSibling);
+    //previousElementSibling  获取上一个哥哥元素节点
+    console.log(p2.previousElementSibling);
+
+    //nextSibling  获取下一个弟弟节点
+    console.log(p2.nextSibling);
+
+    //nextElementSibling  获取下一个弟弟元素节点
+    console.log(p2.nextElementSibling);
+
+    //获取一个元素所有的哥哥放到一个数组中
+
+    function prevAll(ele) {
+        //ele 你传进来的元素
+        var ary=[];
+        //获取一下当前元素的哥哥
+        var prev=ele.previousElementSibling;
+        while (prev){//判断哥哥存不存在
+            //存在的话将哥哥放到数组中
+            ary.unshift(prev);
+            //继续去找哥哥的哥哥
+            prev=prev.previousElementSibling;
+            //一直找到哥哥是null的时候while就结束了
+        }
+        return ary;
+    }
+
+    console.log(prevAll(p2));
+
+
+</script>

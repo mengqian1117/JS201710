@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box"> 11111111111111111</div>
+</body>
+</html>
+<script>
+
+    /*这里面也是注释*/
+    /*
+    //ctrl+/:注释
+    alert(12345);
+    alert({a:"a"});//[object Object]
+    //alert:
+    //1.会阻止页面的显示
+    //2.不管你写什么内容都会变成字符串弹出,默认使用toString()这个方法将你写的内容变成字符串
+    //alert没有返回值
+    var a={a:"a"};
+    console.log(a.toString());
+    console.log(alert(1));
+    */
+    //
+    //console.log(confirm(1));
+    //1.会阻止页面的显示
+    //2.不管你写什么内容都会变成字符串弹出,默认使用toString()这个方法将你写的内容变成字符串
+    //3.有返回值 点击确定:true 取消/叉号:false
+
+
+    //. 就是"的"
+    //以后你想知道一个东西里面有什么,就把他详细(dir)打印出来看一下
+    //console.log() 简单输出
+    //console.dir() 详细输出
+
+    var box=document.getElementById("box");
+    console.log(box);
+    console.dir(box);
+    console.table([{a:'a',b:"b"},{a:'a',b:"b"},{a:'a',b:"b"}]);
+
+    console.group("第一组");
+    console.log(1);
+    console.log(1);
+    console.log(1);
+    console.groupEnd();
+    console.log(1);
+    console.log(1);
+    console.log(1);
+
+    //console.log(prompt("请输入你想说的话"));
+    //返回值:点击的是确定:你输入的内容,点击的是取消:null
+
+    var name1="杜毅";
+    var name2="余敏";
+    // "%s"占位符
+    console.log("我是:%s我是:%s","哈哈哈",name2)
+
+</script>

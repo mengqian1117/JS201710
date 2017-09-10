@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+闭包:是一种保护机制,函数执行形参的私有作用域来保护私有变量不受外界的干扰
+私有变量:
+1.在私有作用域下声明的变量
+2.形参
+
+函数执行过程
+1.形参私有作用域
+2.预解释
+3.给形参赋值
+4.代码执行
+-->
+<script>
+    //1.私有作用域可以获取外界变量,但是外界获取不到他的私有变量
+    var a = 1;
+    function fn() {
+        console.log(a);
+        var b=10;
+    }
+    fn();
+    //console.log(b);// b is not defined
+
+    //2.私有作用域下遇到变量先看是不是自己私有的,如果不是再往上找
+    function f1() {
+        console.log(a);
+        var a=0;
+    }
+    f1();
+
+    function f2(a) {
+        console.log(a);//undefined
+    }
+    f2();
+
+    //练习题
+    var f="ff";
+    function ff(f) {
+        var f=1;
+        var ff=2;
+        function ff() {
+            console.log(f);
+        }
+        ff()
+    }
+    ff(f);
+</script>

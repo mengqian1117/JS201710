@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+
+    分为两大类:
+    1.基本数据类型(值类型):number(数字),string(字符串),boolean(布尔true/false),null,undefined,Symbol(暂时先放一下)
+    2.引用数据类型(地址类型):object(对象,数组,正则,时间.....),function
+
+     */
+
+    let num=1;
+    let str="我是字符串";//'是是是'
+    let t=true;
+    let n=null;
+    let un;//只声明未定义就是undefined
+    console.log(un);
+
+
+    //引用数据类型
+    //object(对象,数组,正则,时间)
+    let o={a:"aa"};//对象
+    let ary=[1,2,3,4];//数组
+    let reg=/\d+/;//正则
+    let time=new Date();//时间
+    //函数
+    function dd() {}
+
+    //判断数据类型typeof
+    //注意:
+    // 1.检测null时候,结果是个object
+    // 2.不能详细检测引用数据类型
+    // 3.返回值是个字符串
+    // 一个面试题
+    // var num=1;typeof typeof typeof num;"string"
+    //两个及两个以上的typeof检测出来的都是"string"
+    console.log(1);
+    console.log("1");
+    console.log(typeof num);//"number"
+    console.log(typeof str);//"string"
+    console.log(typeof t);//"boolean"
+    console.log(typeof n);//"object"
+    console.log(typeof un);//"undefined"
+    console.log(typeof o);//"object"
+    console.log(typeof ary);//"object"
+    console.log(typeof reg);//"object"
+    console.log(typeof time);//"object"
+    console.log(typeof dd);//"function"
+</script>

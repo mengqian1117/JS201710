@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    for(var i=0;i<4;i++){
+        (function (n) {
+            //私有变量 形参 n
+            n++;
+            console.log("我是第"+n+"个私有作用域");
+        })(i);//实参i
+    }
+    //等价于下面的写法
+    function getIndex(n) {
+        n++;
+        console.log("我是第"+n+"个私有作用域");
+    };
+    for(var i=0;i<4;i++){
+        getIndex(i);
+    }
+
+
+
+
+
+
+
+    function f2() {
+        //私有预解释:var a2,b2 function g2  g1
+        var a2=1;
+        function g2() {
+            return ++a2;
+        }
+        g1();
+        return g2();//2
+        var b2=10;
+        function g1() {
+            console.log(b2++);
+        }
+    }
+
+    console.log(f2());//2
+
+//    var n=1;
+//    function fn(n) {
+//        //n=1
+//    }
+//    fn(n);//fn(1)
+</script>

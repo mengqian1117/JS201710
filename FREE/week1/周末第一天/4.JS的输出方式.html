@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+H啊哈哈啊哈
+<div id="box"></div>
+</body>
+</html>
+<script>
+    //1.弹出窗口   会阻止页面的加载,影响页面的显示
+    //在真实的项目中一般不会使用自带的弹窗,一般都是自己写一些模态框
+    //console.log(alert(1));//undefined  alert没有返回值
+
+    //console.log(confirm(1));//点的是确定->true  取消/叉号->false
+
+    //console
+    console.log(console);
+    //log:简单输出
+    //dir: 详细输出
+
+    var box=document.getElementById("box");
+    console.log(box);
+    console.dir(box);
+
+    console.table([{a:"1"},{b:"2"}]);
+    console.warn("警告");
+    console.error("错误");
+    console.log(box);
+</script>

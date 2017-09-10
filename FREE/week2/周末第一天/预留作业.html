@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li,p{
+            list-style: none;
+            font-size: 0;
+        }
+        #list{
+            width: 800px;
+            margin: 0px auto;
+            background-color: #ffffe2;
+            border: 2px dashed darkkhaki;
+            padding: 20px 50px;
+        }
+        p{
+            width: 800px;
+            margin: 50px auto 0;
+            padding: 20px 50px;
+            background-color: #fff8ba;
+            border: 2px dashed darkkhaki;
+            border-bottom:none ;
+            cursor: pointer;
+        }
+        #list li{
+            cursor: pointer;
+        }
+        #list li span,p span{
+            display: inline-block;
+            width: 200px;
+            line-height: 40px;
+            font-size: 30px;
+            color: #aa24ff;
+            text-align: center;
+        }
+         p.list-head span{
+            background-color: #5a85bc;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<p class="list-head">
+    <span>姓名</span>
+    <span class="age">年龄</span>
+    <span class="sex">性别</span>
+    <span class="score">分数</span>
+</p>
+<ul id="list">
+
+</ul>
+</body>
+</html>
+<script src="js/data.js"></script>
+<script>
+    var list=document.getElementById("list");
+    var age=document.getElementsByClassName("age")[0];
+    var sex=document.getElementsByClassName("sex")[0];
+    var score=document.getElementsByClassName("score")[0];
+    function getSort(res) {
+        //res表示排序的依据(按照那个属性来排序)
+        dataAry.sort(function (a,b) {
+            //a,b都是对象,根据对象中的属性去排序
+            return a[res]-b[res]
+        });
+        var strHTML=``;
+        dataAry.forEach(function (item) {
+            strHTML+=`<li>
+            <span>${item.name}</span>
+            <span>${item.age}</span>
+            <span>${item.sex}</span>
+            <span>${item.score}</span>
+        </li>`;
+        });
+        list.innerHTML=strHTML;
+    }
+    getSort();
+    
+    age.onclick=function () {
+//        //将数组按照年龄排序
+//        dataAry.sort(function (a,b) {
+//            //a,b都是对象,根据对象中age属性去排序
+//            return a.age-b.age
+//        });
+//        console.log(dataAry);
+        getSort("age");
+    };
+    sex.onclick=function () {
+//        //将数组按照sex排序
+//        dataAry.sort(function (a,b) {
+//            //a,b都是对象,根据对象中age属性去排序
+//            return a.sex-b.sex
+//        });
+//        console.log(dataAry);
+        getSort("sex");
+    };
+
+    score.onclick=function () {
+//        //将数组按照年龄排序
+//        dataAry.sort(function (a,b) {
+//            //a,b都是对象,根据对象中age属性去排序
+//            return a.score-b.score
+//        });
+//        console.log(dataAry);
+        getSort("score");
+    };
+    
+</script>

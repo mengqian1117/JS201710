@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    if(条件1){
+        如果条件1成立(是true的时候),执行这里面的代码,
+        既然要判断条件成立那就是转布尔判断(记住:只有那五种是false其他都是true)
+    }else{
+        否则,(条件不成立的时候执行的代码);
+        这个可以不写
+    }
+    */
+
+    var a='';
+    if(a){//""-->false
+        console.log("哈哈");
+    }else {
+        console.log("嘿嘿")
+    }
+
+    var a=[1,2];
+    //如果你是字符串打印"字符串",如果是数字打印"数字",否则就是"呵呵"
+//    if(条件1){
+//        条件1成立执行的代码
+//    }else if(条件2){
+//        条件2成立执行的代码
+//    }else{
+//        否则
+//    }
+
+    if(typeof a=="string"){
+        console.log("我是字符串");
+    }else if(typeof a=="number"){
+        console.log("我是数字");
+    }else{
+        console.log("呵呵")
+    }
+
+
+    var num=1;
+    if (num++>1){//num++=1,现在num=2
+        num++;
+        console.log(num);
+    }else {
+        console.log(num);
+    }
+</script>

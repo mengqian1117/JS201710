@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<!--<img src="内置属性" alt="">-->
+<div id="box">
+    <p>请看:</p>
+
+</div>
+
+<span class="span1">111111111111111111111</span>
+
+<div id="box1">
+    <div class="div1">div1</div>
+    <p></p>
+    <div class="div2">div2</div>
+</div>
+</body>
+</html>
+<script>
+    //1.动态创建元素(标签)
+    //document.createElement("标签名")
+    var oDiv=document.createElement("div");
+    console.log(oDiv);
+    var oImg=document.createElement("img");
+    oImg.src="1.jpg";
+    console.log(oImg);
+
+    //2.父亲.appendChild(元素)
+    var box=document.getElementById("box");
+    //将上面创建的oImg放到box中的最后面
+    box.appendChild(oImg);
+    box.appendChild(oDiv);
+
+    //获取span1
+    var span1=document.getElementsByClassName("span1")[0];
+    box.appendChild(span1);
+    //将之前在页面上本来就有的元素,通过appendChild放到某个元素中,表示的是移动
+
+    //img特殊的写法
+    var img1=new Image();//构造函数创建方式
+    img1.src="1.jpg";
+    console.log(img1);
+
+
+    //父级元素.insertBefore(元素1,元素2)
+    //将元素1放到元素2的前面
+
+    var box1=document.getElementById("box1");
+    var div1=box1.getElementsByClassName("div1")[0];
+    var div2=box1.getElementsByClassName("div2")[0];
+
+    //将div2 放到div1的前面
+    box1.insertBefore(div2,div1);
+
+    document.body.insertBefore(box1,box);
+
+
+
+
+    //setAttribute/getAttribute/removeAttribute
+    //设置属性/获取属性/删除属性
+
+
+</script>

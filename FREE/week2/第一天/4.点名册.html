@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        ul,li{
+            list-style: none;
+            -webkit-user-select: none;
+            /*禁止用户选中*/
+        }
+        li{
+            display: inline-block;
+            width: 130px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #ffffe2;
+            font-size: 36px;
+            font-weight: bold;
+            color: blue;
+            border: 2px solid darkcyan;
+            margin: 15px;
+            padding: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .select{
+            background-color: darkblue;
+            color: gold;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<ul id="userList">
+
+</ul>
+</body>
+</html>
+<script>
+    var ary = [{name: "王雪超"}, {name: "李唐菲"}, {name: "高雅薇"}, {name: "左钊"}, {name: "金雨生"}, {name: "余敏"}, {name: "李敏"}, {name: "梁泉"}, {name: "郭磊"}, {name: "王敬娜"}, {name: "钟敏燕"}, {name: "李佳宝"}, {name: "彭翀"}, {name: "刘迪"}, {name: "冯鹏飞"}, {name: "杜毅"}, {name: "李美臣"}, {name: "王赛"}, {name: "侯希华"}, {name: "周英浩 "}, {name: "郝新宇"}, {name: "谢绍峰"}, {name: "王启振"}, {name: "张增进"}, {name: "邹林"}, {name: "吴甜甜"}, {name: "徐锐"}, {name: "孙晓丹"}, {name: "张洪鹏"}, {name: "代博"}, {name: "徐万林"}, {name: "刘璇"}, {name: "王龙"}, {name: "郭慧"}, {name: "王天舒"}];
+
+
+    var userList=document.getElementById("userList");
+    var list="";
+    for(var i=0;i<ary.length;i++){
+        list+="<li>"+ary[i].name+"</li>"
+    }
+    userList.innerHTML=list;
+
+
+    //获取所有的li
+    var li=userList.getElementsByTagName("li");
+    //循环所有的li给每一个li绑定点击的事件
+    //在事件中,让被点击的元素(this)加上className="select"
+    for (var i=0;i<li.length;i++){
+        //给每一个li一个默认的状态isClick=false 表示没有选中
+        li[i].isClick=false;
+        li[i].onclick=function () {
+            //只要点击一下,状态就会发生改变,跟原来的状态相反
+            this.isClick=!this.isClick;
+            console.log(this.isClick);
+            if(this.isClick){
+                this.className="select";
+            }else {
+                this.className="";
+            }
+
+        }
+    }
+
+</script>

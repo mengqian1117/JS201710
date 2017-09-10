@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">1111</div>
+</body>
+</html>
+<script>
+    /*
+    //1.
+   function f () {
+       console.log("XXXFFF000",this);
+   }
+  var obj={
+      fn:(function () {
+          return this.f
+      })(),
+      f:function () {
+          console.log("XXXFFF111",this);
+      }
+  };
+  f();
+  obj.f();
+  obj.fn();
+
+
+  //2.
+    var n=10;
+    var obj1={
+        n:1,
+        f:function () {
+            //this==obj1
+            this.n++; //obj1.n++  ==>obj1.n=2
+            n=this.n++;//window.n=obj1.n++
+                       //window.n=2,obj1.n=3
+        }
+    };
+    obj1.f();
+    console.log(n);
+    console.log(obj1.n);
+//    window.setTimeout(obj1.f,1000);
+//    window.setTimeout(function () {
+//        console.log(window.n);
+//    },2000);
+
+    //3.
+    var box=document.getElementById("box");
+    var o={
+        fn:function () {
+            console.log(this);
+        }
+    };
+    box.onclick=(function () {
+        console.log(this);//window
+        return o.fn
+    })();
+    //box.onclick=o.fn;
+
+    //教材题目
+   */
+    var number=2;
+    var obj={
+        number:4,
+        fn1:(function () {
+            this.number*=2;
+            number=number*3;
+            var number=3;
+            return function () {
+                this.number*=2;
+                number*=3;
+                alert(number);
+            }
+        })()
+    };
+    var fn1=obj.fn1;
+    alert(number);
+    fn1();
+    obj.fn1();
+    alert(window.number);
+    alert(obj.number);
+
+
+
+</script>

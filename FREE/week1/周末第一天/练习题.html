@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        .list{
+            color: #dc6aff;
+            font-size: 30px;
+            margin: 15px auto;
+            width: 800px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var ary=[{name:"杨幂",dist:"三生三世十里桃花"},{name:"杨洋",dist:"微微一笑很倾城"},{name:"郑爽",dist:"一起来看流星雨"},{name:"杨紫",dist:"家有儿女"},{name:"赵薇",dist:"还珠格格"}];
+    var box=document.getElementById("box");
+    var strHTML="";
+    for(var i=0;i<ary.length;i++){
+        strHTML+='<p class="list">演员:'+ary[i].name+" 代表作:<<"+ary[i].dist+'>></p>'
+    }
+    box.innerHTML=strHTML;
+</script>

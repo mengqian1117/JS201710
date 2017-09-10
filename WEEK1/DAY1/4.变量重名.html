@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //在与预解释时候遇到已经声明过的变量不需要重新声明,但是需要定义(其实就是函数跟变量重名)
+    var f=0;
+    function f() {
+        console.log("我是函数");
+    }
+    //f();// f is not a function
+
+
+    var  s;
+    function s() {
+        console.log("我是函数s");
+    }
+    s();//输出  "我是函数s"
+</script>
+
+
+<script>
+    console.log(x);
+    console.log(y);
+    console.log(m);
+    console.log(n);//报错了
+    console.log(v);
+    var x=3,y=10;
+    //等价于:
+    //var x=3;
+    //var y=10;
+    var m=n=v=13;
+    //n和v不带var关键字
+
+
+</script>

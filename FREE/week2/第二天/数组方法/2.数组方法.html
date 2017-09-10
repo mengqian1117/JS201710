@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //    var arr = [10, 12, 11, 9, 8, 10, 11];
+    //    var arr2 = arr;
+
+    //    console.log(arr);
+    // 1.增加
+    // push() 向数组末尾添加 原数组发生改变 返回 增加后的数组长度
+    //    var arrLen = arr.push(100, 200);
+    //    console.log(arr); // 增加后的原数组
+    //    console.log(arrLen); // 增加后的长度
+    // unshift() 向数组开头增加 原数组发生改变 返回 增加后的数组长度
+    //    var res = arr.unshift(80, 90);
+    //    console.log(arr);
+    //    console.log(res);
+
+    // 向数组末尾添加
+    //    var ary = [1,2];
+    //    ary.push(100);
+    //    ary.splice(ary.length, 0, 100);
+    //    ary[ary.length] = 200;
+    //    console.log(ary);
+    // 向数组开头添加
+    //    var ary = [1,2];
+    //    ary.unshift(100);
+    //    ary.splice(0,0,100)
+    // 删除数组最后一项
+    var ary = [1, 2, 3, 4, 5];
+    //    ary.pop();
+    //    ary.splice(ary.length-1);
+    //    ary.splice(ary.length-1,1);
+    //    ary.length--;
+    //    ary.length-=1;
+    //    ary.length = 12;
+    //    console.log(ary);
+
+
+    // 2.删除
+    // pop
+    //    var res = arr.pop(); // 删除数组末尾一项 原数组发生改变 返回删除的那一项
+    //    console.log(arr);
+    //    console.log(res);
+
+    // shift
+    //    var res = arr.shift(); // 删除数组开头一项 原数组发生改变 返回删除的那一项
+    //    console.log(arr);
+    //    console.log(res);
+
+    // splice
+    // 一个参数splice(n) 从索引n开始删除到数组末尾 原数组内容发生改变 将删除的内容 作为一个新数组返回 
+    // 如果为0 代表清空所有
+    // 无参数 将原数组返回
+    //     var res = arr.splice();
+    //     console.log(arr); // 删除后的原数组
+    //     console.log(res); // 删除内容组成的新数组
+
+    // splice(n, m) 从索引n开始 删除m个 原数组内容发生改变 删除的内容组成一个新数组
+    //    var res = arr.splice(2, 3);
+    //    console.log(arr); // 原数组
+    //    console.log(res); // 删除后的内容组成的新数组
+
+    // splice(n,m,x) 从索引n开始 删除m个 将删除内容替换为x 原数组发生改变 返回删除后的内容组成的新数组
+    //      var res = arr.splice(1, 2, 100);
+    //      var res = arr.splice(2, 0, 100); // 如果三个参数的时候 第二项为0 可以认为插入到 起始索引的 前面
+    // 增加开头/末尾
+    //    var res = arr.splice(0, 0, 100); // unshift
+    //    var res = arr.splice(arr.length, 0, 200); // push
+
+
+    // 删除开头/末尾
+    //    var res = arr.splice(0, 1); // shift
+    //    var res = arr.splice(arr.length-1, 1); // pop
+    //    var res = arr.splice(arr.length - 1); // pop
+
+
+    // slice 截取
+    // slice(n) 从索引n开始截取到末尾 原数组没有改变 将截取到的内容组成一个新数组返回
+    // slice()/slice(0) 相当于克隆一份 组成一个新数组
+    // slice(n, m) 相当于从索引n开始截取到索引m处 不包含索引为m这一项 原数组没有发生改变 将截取到的内容组成一个新数组返回
+    //    var res = arr.slice(2, 5);
+    //    var res = arr.slice(-2); // slice(arr.length-2) slice(5)
+    //    var res = arr.slice(1, -3); // slice(1, arr.length-3) slice(1, 4)
+    //    console.log(res);
+
+
+    // concat 拼接数组
+    var ary1 = [100, 200];
+    var ary2 = [300, 400];
+    var ary4 = [1000];
+    //   var ary3 = ary1.concat(ary2);
+    //   var ary3 = ary2.concat(ary1,ary4, 'sdfsd', 2000);
+    //   console.log(ary1);
+    //   console.log(ary2);
+    //   console.log(ary3); // [100, 200, 300, 400]拼接后的新数组
+
+    // 克隆几种方式
+    //    var ary3 = ary1.concat(); // 实现克隆 原数组不发生改变
+    //    var ary3 = ary1.slice(0); // 实现克隆 原数组不发生改变
+    //    var ary3 = ary1.splice(0); // 实现克隆 导致原数组被清空 发生改变
+    //    console.log(ary3);
+
+    // 排列和排序
+    // reverse 将数组倒着排列 原数组发生改变
+    //    var arr = [10, 11, 20, 9];
+    //    arr.reverse();
+    //    console.log(arr); //  [9, 20, 11, 10]
+    //    var arr = [2, 19, 26, 7, 3];
+
+    //    arr.sort(); // 默认将数组10以内的数 按照从小到大排序  原数组发生改变
+    //    console.log(arr); // [2, 3, 6, 7, 9]
+
+    // 完全排序
+    //    arr.sort(function (a, b) { // a 当前项 b 当前项后一项
+    //        return a - b; // 从小到大排序
+    //    });
+    //    console.log(arr);
+
+    //    arr.sort(function (a, b) { // 从大到小
+    //        return b - a;
+    //    });
+    //    console.log(arr);
+
+
+    // 将数组转化为字符串 toString() 原数组不变
+    var arr = [11, 20, 100];
+    //      var str = arr.toString();
+    //      console.log(arr);
+    //      console.log(str);
+
+    //      console.log([[[[[[122]]]]]].toString()); // '122'
+
+    // join 按照指定连接符将数组 转换成 字符串
+    //    var str = arr.join("&"); // '11&20&100'
+    //    var str = arr.join(""); // '1120100'
+    //    var str = arr.join(); // '11, 20, 100'
+    //    console.log(str)
+
+    // 数组求和
+    //    var str = arr.join('+');
+    //    console.log(str);
+    //    console.log(eval(str)); // 将字符转化为js表达式
+
+    //    console.log(eval(arr.join('+')));
+
+    //    var say = 'hello nihao';
+    //    console.log(eval('say'));
+
+    // es5 几种不兼容方法
+    // indexOf/lastIndexOf
+    //    var ary = [10, 22, 11, 33, 22, 'node', 22];
+    //    console.log(ary.indexOf(22)); // 从左到右进行查找指定项 将找到这一项的索引位置返回 找不到就返回 -1
+    //    console.log(ary.indexOf(22, 3)); // 根据指定起始位置进行查找
+    //    console.log(ary.lastIndexOf(122)); // 从末尾开始进行 查找指定项 将找到这一项的索引位置返回 找不到就返回 -1
+
+
+    // forEach/map/find
+    //    var ary = [11, 22, 33, 44];
+    // 对数组进行遍历 数组中有多少项就遍历多少次 每次都会调用function 并且每次都会将当前遍历出的这一项 以及索引做为参数 传递到里面
+    //    ary.forEach(function (item, index, arr) { // item遍历出来的当前这一项 index 当前这一项的索引 arr 原数组
+    //        console.log(item, index, arr);
+    ////       return; // 无法终止遍历
+    //    });
+
+    // map 修改 返回一个新数组
+    //    var newArr = ary.map(function (p1, p2, p3) {
+    //        if(p2 === 2) { // 将索引为2的这项乘以2 并返回
+    //            return p1 * 2;
+    //        }
+    //        return p1; // 除了索引为2的这一项照常返回 组成新数组 原数组不变
+    //    });
+    //    console.log(ary);
+    //    console.log(newArr);
+
+    // find 查找数组中某一项
+
+    var ary = [{id: 1}, {id: 2}, {id: 3}];
+    // 查找数组中id为2的这一项
+    //    var num = ary.find(function (item, index) {
+    //        return item.id === 2; // 如果为true 就会将当前这一项直接返回
+    //    });
+    //    console.log(num);
+
+    //    var num = ary.find(function (item, index) {
+    //        return item.id !== 1; // 如果为true 就会将当前这一项直接返回
+    //    });
+    //    console.log(num);
+
+
+</script>
+</body>
+</html>

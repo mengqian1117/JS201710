@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+this是个对象
+</body>
+</html>
+<script>
+    //1.
+    var a=0;//window.a=0
+    function fn1() {
+        var a=10;
+        this.a++;//window.a++  window.a=1
+        console.log(a);//10
+        console.log(this.a);//window.a  1
+        console.log(typeof this);
+    }
+    fn1();
+    console.log(a);//1
+
+
+    //2.
+    function fn2() {
+        //this==window  ;this==obj
+        console.log(this.n)  ;//undefined ;  obj.n=1
+        var n="n";
+        this.n=10;//window.n=10;   obj.n=10
+        console.log(n);//"n"
+    }
+    var obj={
+        fn2:fn2,
+        n:1
+    };
+    fn2();
+    obj.fn2();
+    console.log(obj);
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,button{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+        }
+        #btn{
+            display: block;
+            padding: 5px 10px;
+            font-size: 30px;
+            margin: 0 auto;
+        }
+
+    </style>
+</head>
+<body>
+<button id="btn">天黑了/天亮了</button>
+</body>
+</html>
+<script>
+    /*
+
+    //1.获取元素
+    var btn=document.getElementById("btn");
+    //2.绑定点击事件
+    btn.onclick=function () {
+        //当点击按钮时,让body的背景颜色变成黑色
+        //document.body 表示body元素
+        //document.body.style  表示body的行内样式
+        //document.body.style.backgroundColor 表示body的行内样式中的背景颜色
+        document.body.style.backgroundColor="black";
+        console.log(document.body.style.backgroundColor);
+    }
+    */
+
+    var btn=document.getElementById("btn");
+    btn.onclick=function () {
+        if(document.body.style.backgroundColor=="black"){
+            //条件:如果body的背景颜色是黑色
+            // 就让body的背景颜色变成白色
+            document.body.style.backgroundColor="white";
+        }else {
+            //否则让body的背景颜色变成黑色
+            document.body.style.backgroundColor="black";
+        }
+    }
+
+
+    //思考题:利用自定义属性,将当前天黑还是天亮存起来,通过判断自定义属性的值来进行下一步操作 比如:btn.flag=true:天亮,false:天黑
+
+</script>

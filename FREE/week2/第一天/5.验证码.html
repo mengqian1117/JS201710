@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #code{
+            width: 120px;
+            height: 60px;
+            font-size: 35px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            margin: 50px auto  10px;
+            border: 1px solid salmon;
+            background: linear-gradient(to left top,red,orange,yellow,green,blue,darkgreen,purple);
+            padding: 0 10px;
+            color: #fff;
+        }
+        #change{
+            display: block;
+            width: 100px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+原价:<del>9999$</del>
+<div id="code"></div>
+<span id="change">看不清,换一个</span>
+</body>
+</html>
+<script>
+    var str="abcdefghigklmnopqrstuvwxyz"+"0123456789"+"abcdefghigklmnopqrstuvwxyz".toLocaleUpperCase();
+
+    //获取元素
+    var codeBox=document.getElementById("code");
+    function getCode() {
+        //准备一个空字符串
+        var strCode="";
+        //循环四次,拼接字符串
+        for(var i=0;i<4;i++){
+            //因为通过字符串的索引来获取某个字符,所以说就需要随机获取四个索引,获取0-61的随机数
+            strCode+=str[Math.round(Math.random()*61)];
+        }
+        codeBox.innerHTML=strCode;
+    }
+    //当打开页面的时候就需要让函数执行
+    getCode();
+
+    //当你点击这个盒子的时候也需要执行这个函数
+    //codeBox.onclick=getCode;
+
+    //给change绑定点击事件
+    var change=document.getElementById("change");
+    change.onclick=getCode;
+    console.log(String.prototype);
+
+</script>

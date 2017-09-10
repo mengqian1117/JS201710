@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+
+        .list{
+            color: red;
+            font-size: 30px;
+            display: inline-block;
+            width: 100px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+
+</ul>
+</body>
+</html>
+<script>
+    var ary=["苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子","苹果","香蕉","桃子","李子"];
+
+    //var s='<li>苹果</li><li>香蕉</li><li>桃子</li><li>李子</li>';
+    //var s='<li>'+ary[0]+'</li><li>'+ary[1]+'</li><li>'+ary[2]+'</li><li>'+ary[3]+'</li>';
+
+    //'<li>'+ary[0]+'</li>';
+
+    var list=document.getElementById("list");
+
+
+    var s='';//准备一个空字符串,承接拼接好的字符串
+    //s='<li>'+ary[0]+'</li>'+'<li>'+ary[1]+'</li>'+'<li>'+ary[2]+'</li>'+'<li>'+ary[3]+'</li>';
+
+    for(var i=0;i<ary.length;i++){
+        s+='<li class="list">'+ary[i]+'</li>';
+    }
+
+
+    list.innerHTML=s;
+</script>

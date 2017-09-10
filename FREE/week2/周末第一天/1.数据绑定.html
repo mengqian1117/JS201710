@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html, body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        #banner {
+            position: relative;
+            width: 800px;
+            height: 300px;
+            margin: 50px auto;
+        }
+
+        .bannerInner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bannerInner img {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bannerInner img.select {
+            display: inline-block;
+        }
+
+        .bannerTip {
+            position: absolute;
+            z-index: 10;
+            bottom: 15px;
+            right: 50px;
+            overflow: hidden;
+        }
+
+        .bannerTip li {
+            float: left;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 15px;
+            background-color: gainsboro;
+            cursor: pointer;
+        }
+
+        .bannerTip li.bg {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<div id="banner">
+    <div class="bannerInner">
+        <!--这里放图片-->
+    </div>
+    <ul class="bannerTip">
+        <!--放的是焦点li-->
+    </ul>
+</div>
+
+</body>
+</html>
+<script>
+    var banner=document.getElementById("banner");
+    var bannerInner=banner.getElementsByClassName("bannerInner")[0];
+    var bannerTip=banner.getElementsByClassName("bannerTip")[0];
+
+    var dateAry = [{img: "img/0.jpg"}, {img: "img/1.jpg"}, {img: "img/2.jpg"}, {img: "img/3.jpg"}, {img: "img/4.jpg"}];
+
+    var str1='',str2='';
+    dateAry.forEach(function (item,index) {
+        if(index===0){
+            str1+='<img class="select" src="'+item["img"]+'" alt="">';
+            str2+="<li class='bg'></li>"
+        }else {
+            str1+='<img  src="'+item["img"]+'" alt="">';
+            str2+="<li ></li>";
+        }
+    });
+
+    bannerInner.innerHTML=str1;
+    bannerTip.innerHTML=str2;
+
+
+
+</script>

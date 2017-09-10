@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        h1{
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+        }
+        input{
+            display: block;
+            width: 120px;
+            height: 40px;
+            font-size: 30px;
+            margin: 15px;
+            float: left;
+        }
+        .con{
+            width: 1250px;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="con">
+    <h1>座位表</h1>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+
+</div>
+</body>
+</html>
+<script>
+    var btn=document.getElementsByTagName("button")[0];
+    var oInput=document.getElementsByTagName("input");
+    var ary=[];
+    btn.onclick=function () {
+        for (var i=0;i<oInput.length;i++){
+            ary.push(oInput[i].value)
+        }
+        console.log(ary);
+        bindHtml(ary);
+    };
+
+    function bindHtml(ary) {
+        for (var i=0;i<ary.length;i++){
+            oInput[i].value=ary[i]
+        }
+    }
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+
+<!--不管是私有作用域还是全局作用域,如果遇到给一个未声明的变量(从来没见过,这变量第一次出现)赋值,就相当于给全局window增加一个属性 -->
+</body>
+</html>
+<script>
+    //1.
+    //全:a,fn1
+    var a=10;
+    function fn1() {
+        //私有:a
+        console.log(fn1);//fn1这个函数本身
+        var a;
+        a++;//undefined++  NaN
+        console.log(a);//NaN
+    }
+    fn1();
+    console.log(a);//10
+
+
+    //2.
+    //全局:f  fn2
+    var f="1";
+    function fn2(f) {
+        //私有变量:f
+        //第一步给形参f赋值  f="1"
+        f++;//2
+        console.log(f);
+    }
+    fn2(f);//fn2("1")
+    console.log(f);//全局的 f ="1"
+
+    //3.
+    //全局: a A
+    function A() {
+        //私有:a
+        var a=1;
+        b=2;//全局的变量 Window.b=2
+        return a+b
+    }
+    A();
+    var a=A();//a=3
+    console.log(a + window.b);//3+2=5
+
+    //4,一个函数执行多次,形成的每一个私有作用域之间没有任何关系
+    function B() {
+        var b=1;
+        b++;
+        console.log(b);
+    }
+    B();//2
+    B();//2
+    B();//2
+</script>

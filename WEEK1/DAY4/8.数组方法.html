@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var ary=[1];
+    //1.pop()
+    Array.prototype.pop=function () {
+        var num=this[this.length-1];
+        this.length--;
+        return num;
+    };
+
+    //2.push()
+    Array.prototype.push=function () {
+        for(var i=0;i<arguments.length;i++){
+            this[this.length]=arguments[i]
+        }
+        return this.length;
+    };
+    console.log(ary.push(1, 2, 23, 2));
+    console.log(ary);
+
+    //3.shift()
+    Array.prototype.shift=function () {
+        var num=this[0];
+        for(var i=1;i<this.length;i++){
+            this[i-1]=this[i];
+        }
+        this.length--;
+        return num ;
+    };
+    var a=[1, 2, 3, 4, 5, 6];
+    console.log(a.shift());
+    console.log(a);
+
+    //4.unshift()
+    Array.prototype.unshift=function () {
+        var str="",ary=null;
+        for (var i=0;i<arguments.length;i++){
+            str+=arguments[i]+",";
+        }
+        ary=eval("[" + str + this + "]");
+        for (var j=0;j<ary.length;j++){
+            this[j]=ary[j]
+        }
+        return ary.length
+    };
+    console.log(a.unshift(10, 90));
+    console.log(a);
+    Array.prototype.unshift=function () {
+        var ary=[];
+        for (var i=0;i<arguments.length;i++){
+            ary[i]=arguments[i]
+        }
+        for (var j=0;j<this.length;j++){
+            ary[ary.length+j]=this[j]
+        }
+        for(var k=0;k<ary.length;k++){
+            this[k]=ary[k]
+        }
+
+        return ary.length;
+    };
+    Array.prototype.concat=function () {
+        var str=(this+'');//"1,2,3"
+        for (var i=0;i<arguments.length;i++){
+            str+=(","+arguments[i]);
+        }
+        return eval("[" + str + "]");
+
+    };
+    console.log([1, 2, 3].concat([10, 10], 1, 0));
+
+    Array.prototype.join=function (str) {
+        var s='';
+        for (var i=0;i<this.length-1;i++){
+            s+=this[i]+str;
+        }
+        s+=this[this.length-1];
+        return s;
+    };
+    //[1,2].join("+")==>"1+2"
+    console.log([1, 2,3,4,5].join("+"));
+</script>

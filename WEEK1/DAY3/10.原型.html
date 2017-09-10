@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+任何一个函数都天生自带一个属性prototype(原型),这个属性是个对象,浏览器会默认给他开辟一个堆内存,这个堆内存中也有个天生自带的属性叫constructor,这个constructor就是当前类本身
+这个属性prototype中存着公有的属性/方法
+
+任意一个对象(实例,prototype,,,)都会天生自带一个属性叫__proto__,这个属性指向所属类的原型(prototype)
+-->
+<script>
+
+  function FF() {
+      this.x=1;
+  }
+  FF.prototype.getX=function () {};
+  var f1=new FF;
+  var f2=new FF;
+  console.log(f1.__proto__ == FF.prototype);
+  console.log(FF.prototype.__proto__==Object.prototype);
+  console.log(FF.prototype.constructor==FF);
+  console.log(Object.prototype.__proto__);
+  console.log(f1.getX==f2.getX);
+
+
+</script>
+<script>
+
+    var obj={};
+    //console.log(obj instanceof Object);
+
+    //
+</script>

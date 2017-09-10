@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box{
+            width: 130px;
+            color: #fff9f9;
+            font-size: 40px;
+            padding: 8px 0;
+            margin: 50px auto;
+            background: linear-gradient(to left top ,red,darkblue,darkcyan,yellow,saddlebrown,purple);
+            text-align: center;
+            font-weight: bold;
+            opacity: .8;
+            border-radius:5px;
+            cursor: pointer;
+            -webkit-user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">eb22</div>
+</body>
+</html>
+<script>
+    //考试可以顶2分
+    //点击box的时候获取
+    //从这62个字符中随机获取4个字符当做验证码
+    var str="abcdefghigklmnopqrstuvwxyz"+"0123456789"+"abcdefghigklmnopqrstuvwxyz".toLocaleUpperCase();
+    var box=document.getElementById("box");
+
+    box.onclick=function () {
+        var strCode="";
+        for(var i=0;i<4;i++){
+            strCode+=str[Math.round(Math.random()*61)];
+        };
+        this.innerHTML=strCode;
+    };
+    //获取四位不同的验证码  while循环
+
+    box.onclick=function () {
+        var strCode="";
+        while (strCode.length<4){
+            var code=str[Math.round(Math.random()*61)];
+            var n=true;
+            for(var i=0;i<strCode.length;i++){
+                if(strCode[i]==code){
+                    n=false;
+                    break
+                }
+            }
+            if(n){
+                strCode+=code;
+            }
+        }
+        this.innerHTML=strCode;
+    }
+
+</script>

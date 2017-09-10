@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--lang="en":是否翻译此网页-->
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+
+    </style>
+    <!--<link rel="stylesheet" href="">-->
+
+        <!--HTML页面从上到下依次渲染,遇到style,link标签就会去请求或者加载样式,但是不会阻碍页面的继续加载(异步),当页面HTML表签加载完成的时候对应的样式会渲染到页面上,注意: 写在HTML标签上的style样式会阻碍HTML标签的加载-->
+    <script src="1.js" defer>
+        //外链式
+        //defer:告诉浏览器,先不要加载这个script,等页面加载完成后再去加载这个JS文件
+        //只有在外链式中defer才会起作用
+        //在外链式的script标签中,不能再写其他的JS代码
+    </script>
+
+
+    <!--但是script标签是直接加载的,会阻塞页面上HTML标签的加载-->
+</head>
+<body>
+网页组成部分:
+HTML
+CSS
+JS:获取DOM元素,操作DOM元素
+1.页面的动态效果
+2.交互
+3.动态数据绑定
+
+<div id="box" style=""></div>
+<!--<script>-->
+    <!--var box=document.getElementById("box");-->
+    <!--console.log(box);-->
+<!--</script>-->
+<div class="box"></div>
+</body>
+</html>
+<script>
+//    为了保证JS能获取出DOM元素,我们一般将JS文件写在最后面
+</script>

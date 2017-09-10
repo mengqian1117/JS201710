@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">点呀</div>
+</body>
+</html>
+<!--
+this:表示执行主体
+小明去孟记粥铺吃饭
+box.onclick=function(){this}
+-->
+<script>
+    //在全局作用域下直接打印this就是window
+    //self == window  self就是Window
+    console.log(this);
+    console.log(this==window);
+    console.log(self == window);
+    var a=0;
+    console.log(this.a);
+
+    //在私有作用域下this表示什么
+
+    //1.函数执行的时候看前面有没有点,有点的话点前面是谁this就是谁,没有点this就是window
+    function fn1() {
+        console.log(this);
+    }
+    fn1();
+
+    var obj={
+        fn1:function () {
+            console.log(this);
+        }
+    };
+    obj.fn1();
+
+    //2.给元素绑定事件,给谁绑的this就是谁
+    var box=document.getElementById("box");
+    box.onclick=function () {
+        console.log(this);
+    }
+
+    //3.自执行函数中的this永远都是window
+    ;(function () {
+        console.log(this);
+    })();
+
+    //4.当函数作为参数的时候,this也是window
+    var ary=[1,2,3];
+    ary.sort(function (a,b) {
+        console.log(this);
+        return a-b;
+    })
+
+
+    var  obj1={
+        get:function (fn) {
+            console.log(this);//obj1
+            fn();
+        }
+    };
+
+    obj1.get(function () {
+        console.log(this);//window
+    });
+
+    //window.setInterval(obj1.get,1000)
+</script>

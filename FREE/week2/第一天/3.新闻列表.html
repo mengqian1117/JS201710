@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        ul, li {
+            list-style: none;
+        }
+
+        #news {
+            width: 800px;
+            padding: 20px 80px;
+            background-color: #fff4f5;
+            border: 1px dotted darkgoldenrod;
+        }
+
+        #news li {
+            padding-left: 20px;
+            font-size: 26px;
+            line-height: 60px;
+            text-align: left;
+            color: #33328b;
+            cursor: pointer;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        #news img {
+            width: 60px;
+            height: 60px;
+            vertical-align: middle;
+            float: right;
+            margin: 10px 0;
+        }
+
+        .list0 {
+            background-color: yellowgreen;
+        }
+
+        .list1 {
+            background-color: gold;
+        }
+
+        li:hover {
+            background-color: #fff9f9;
+            color: #ff3a63 !important;
+        }
+    </style>
+</head>
+<body>
+<ul id="news">
+</ul>
+</body>
+</html>
+<script>
+    var dataAry = ["河北塞罕坝林场,军舰撤侨,金砖五国,砥砺奋进", "国防部揭秘：印军越界后，中国军队做了这些事", "钟丽缇与张伦硕晒照秀恩爱 网友却脑补出这画面", "心疼！Baby拍戏抱肚缩成一团 难忍疼痛紧急就医", "张翰毕业十周年与中戏师生聚会 戴眼镜学术气息十足", "乐基儿再婚 发表爱的宣言：满分老公 永远快乐", "网络暴力到底有多可怕？黄灿灿分手闺蜜被骂流产"];
+
+    //循环数据拼接字符串
+    //1.准备一个空字符串
+    var strHTML = "";
+    //2.循环数组dataAry,拼接li
+    for (var i = 0; i < dataAry.length; i++) {
+        strHTML += "<li>" + dataAry[i] + "</li><img src='del.jpg' alt=''>";
+    }
+    //放到页面上
+    //获取ul
+    var news = document.getElementById("news");
+    news.innerHTML = strHTML;
+
+
+    //2.隔行变色
+
+    //获取所有的li
+    var list = news.getElementsByTagName("li");
+    for(var i=0;i<list.length;i++){
+        list[i].className="list"+i%2;
+    }
+
+    //给图片绑定点击事件,让对应的li和当前img消失
+    //获取所有img
+    var imgList = news.getElementsByTagName("img");
+    //循环imgList给每一个img绑定点击事件
+
+    for (var i = 0; i < imgList.length; i++) {
+        imgList[i].a = i;
+        imgList[i].onclick = function () {
+            //this :你点击的img
+            //当前你点击的这个img消失
+            this.style.display = "none";
+            //根据索引找到对应的li让他消失
+            //this.a 当前你点击的img的索引
+            list[this.a].style.display = "none";
+        }
+    }
+</script>

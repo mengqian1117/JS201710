@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //基本数据类型是操作值得,引用数据类型是操作地址的
+    var a=1;
+    var b=a;//b=1
+    b=2;
+    console.log(a);
+
+    var objOld={a:"aa"};
+    var objNew=objOld;
+    console.log(objNew);
+    objNew.a="AA";
+    console.log(objOld);
+
+
+    var obj1={name:"郭磊",age:18};
+    var obj2=obj1;
+    obj2.age=80;
+    console.log(obj1.age);
+
+
+    //对象.属性=值,如果之前有就是修改,没有就是增加
+    //对象["属性名"]=值,同上
+    obj1.gF="妹子";
+    console.log(obj2.gF);
+    obj2={name:"左钊",age:22,gF:'花花'};
+
+
+    var arr=[1,2,3,4];
+    var arr1=arr;
+    arr1[4]=5;
+    arr1[2]="哈哈";
+    console.log(arr);//[1,2,"哈哈",4,5]
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+在块级作用域下函数名和变量名不可以重复声明,如果重名就会报错:XX 已经被声明过了   'aa' has already been declared
+ 用{}包起来的就是块级作用域
+ -->
+<script>
+    {
+        console.log("自执行函数");
+    }
+    
+    {
+        var a=1;
+        //function a() {}
+    }
+    console.log(a);
+
+
+    //if(){}
+    //for(){}
+    //while(){}
+    //记住:这俩的{}是块级作用域
+    if(1){
+        var b=1;
+        //function b() {}
+    }
+    console.log(b);
+    
+    for(var i=0;i<2;i++){
+        var f=0;
+        //function f() {}
+    }
+
+
+    {
+        var s=0;
+    }
+    {
+        console.log(s);
+    }
+</script>

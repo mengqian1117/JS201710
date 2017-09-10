@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        ul, li {
+            list-style: none;
+        }
+
+        ul {
+            height: 500px;
+        }
+
+        .lis {
+            width: 300px;
+            font-size: 30px;
+            padding: 15px 0;
+            margin: 15px auto;
+            color: gold;
+        }
+
+        .bg0 {
+            background-color: #dc6aff;
+        }
+
+        .bg1 {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<button id="btn1">点击加上文字</button>
+<button id="btn2">点击加上样式</button>
+<button id="btn3">点击隔行变色</button>
+</body>
+</html>
+<script>
+
+    // Cannot read property '某某' of null
+    // 就去找某某点前面的东西错了是个null
+    //获取想要操作的元素
+    var list = document.getElementById("list");
+    var lis = list.getElementsByTagName("li");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+
+    btn1.onclick = function () {
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].innerHTML = "我是第" + (i + 1) + "个li";
+        }
+    };
+    btn2.onclick = function () {
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].className = "lis"
+        }
+    };
+    btn3.onclick = function () {
+        for (var i = 0; i < lis.length; i++) {
+//            if (i % 2) {
+//                //之前有个class名了,所以你要+=在原来的基础上拼接一个class名 注意使用空格隔开
+//                lis[i].className += " bg1";
+//            } else {
+//                lis[i].className += " bg0";
+//            }
+
+            //因为i%2的值正好是bg后面的值,所以可以简写为:
+            lis[i].className+=" bg"+(i%2);
+        }
+    }
+
+
+</script>

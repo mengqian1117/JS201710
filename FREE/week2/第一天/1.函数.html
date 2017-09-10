@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div class="box">1111</div>
+</body>
+</html>
+<script>
+    //1.函数的定义+函数执行
+    //2.有名字的函数
+    function fn() {
+        console.log("函数执行");
+    }
+    //fn:代表这个函数
+    //fn=xxxfff000
+
+    var fn=function () {
+        console.log("函数执行");
+    };
+
+    console.log(fn);
+
+    //函数执行  函数名()这样写才是函数执行
+    fn();
+
+    var f=fn;//将fn的地址值赋给f,他俩公用一个地址
+    console.log(f);
+    console.log(f == fn);//true
+
+    //getElementsByClassName获取出来的是一组元素
+    var box=document.getElementsByClassName("box")[0];
+    box.onclick=function () {
+        alert(1)
+    };
+
+    box.onclick=fn();
+
+    var ff=fn();//undefined
+    console.log(ff);
+    //ff();//undefined()  报错:ff is not a function
+
+
+    //如果给一个变量赋值,赋的值为一个函数执行(函数名())的话,就是将这个函数执行的结果(看函数的return,没有return结果就是undefined,有return的话return什么结果就是什么)赋值给这个变量,
+
+    //return
+    //1.return后面的代码就不会执行了,所以return一般写在最后面
+    function gg() {
+        console.log("我是return前面的代码");
+        return 1;
+        console.log("我是return后面的代码");
+    }
+    gg();
+
+
+    //我们现在就学了2中类数组:参数集合arguments,元素集合
+
+    //arguments
+    function XX() {
+        console.log(arguments);
+    }
+    XX(1,2,3,4);
+
+    //自执行函数
+    //为了防止有些人写代码不规范(每一条语句后面一定要加分号),在自执行函数的前面加一个分号
+
+    ;(function () {
+        console.log("我是自执行函数");
+    })();
+
+    //还有一些用来牛X的写法
+    ;!function () {
+        console.log("我是自执行函数");
+    }();
+    ;+function () {
+        console.log("我是自执行函数");
+    }();
+    ;~function () {
+        console.log("我是自执行函数");
+    }();
+    ;-function () {
+        console.log("我是自执行函数");
+    }();
+
+
+    var a,b,c;
+//    var a;
+//    var b;
+//    var c;
+
+</script>

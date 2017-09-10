@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function fn(n,m,x) {
+        console.log(n);//"衣服"
+        console.log(m);//"洗衣液"
+        console.log(x);//undefined
+    }
+    fn("衣服","洗衣液");
+
+
+
+    function sum(n1,n2,n3,n4,n5,n6,n7,n8,n9) {
+        console.log(n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9);
+    }
+    //sum(1,2,3,4,5,6,7,8,9);
+    //参数集合 arguments  长得跟数组很像有索引,有length,称他为类数组(类似数组的对象)
+
+    //第一个作业 求arguments的和
+    function sum() {
+        console.log("参数集合:",arguments);
+        console.log(arguments[1]);
+        console.log(arguments.length);//9
+    }
+    sum(1,2,3,4,5,6,7,8,9);
+
+
+    //函数的返回值: return 一个函数执行完返回到外面的一个结果
+    //一个函数执行没有return出任何东西就是undefined,有的话return出什么结果就是什么
+    function fn1() {
+        return [1,2,3];
+    };
+    var res=fn();//给变量res赋了一个值,这个值就是函数的结果(函数的返回值);
+
+    function xx(m) {
+        //m="脏衣服"
+        var mm=m+"洗好了";//mm="脏衣服洗好了"
+        return mm;//"脏衣服洗好了"
+    }
+    var x=xx("脏衣服");//给x赋值=函数xx()的结果"脏衣服洗好了"
+    console.log(x);
+
+
+    //例子:
+
+
+
+    function fun(n) {
+        //n="哈哈"
+        return n;
+    }
+    var n=fun("哈哈");//n="哈哈"
+    console.log(n);
+</script>

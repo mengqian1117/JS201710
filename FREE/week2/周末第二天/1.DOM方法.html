@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div class="div1">1</div>
+<div class="div2">2</div>
+<div class="div3">3</div>
+<div class="div4">4</div>
+<div class="div5">5</div>
+</body>
+</html>
+<script>
+    var div1=document.getElementsByClassName("div1")[0];
+    var div1=document.getElementsByTagName("div")[0];
+
+    console.log(div1.className);//"div1"
+    div1.className+=" box1 d1";
+
+
+    //div1.classList:获取类名的集合
+    var div1Class=div1.classList;
+
+    //add  增加类名
+    div1Class.add("dd");
+    console.log(div1Class);
+
+    //remove 删除类名
+    div1Class.remove("d1");
+
+
+
+    var div3=document.getElementsByClassName("div3")[0];
+    console.log(div3.previousElementSibling);
+
+    //获取所有的哥哥
+    function prevAll(ele) {
+        var prevAry=[];
+        var prev=ele.previousElementSibling;
+        while (prev){
+            prevAry.unshift(prev);
+            prev=prev.previousElementSibling;
+        }
+        return prevAry;
+    }
+
+    //获取所有的弟弟
+    function nextAll(ele) {
+        var nextAry=[];
+        var next=ele.nextElementSibling;
+        while (next){
+            nextAry.push(next);
+            next=next.nextElementSibling;
+        }
+        return nextAry;
+    }
+
+    //获取一个元素的索引
+    function index(ele) {
+        //就是哥哥的长度
+        return prevAll(ele).length
+    }
+
+    //获取所有的兄弟(哥哥+弟弟)
+    function siblings(ele) {
+        return prevAll(ele).concat(nextAll(ele))
+    }
+
+    console.log(siblings(div3));
+</script>

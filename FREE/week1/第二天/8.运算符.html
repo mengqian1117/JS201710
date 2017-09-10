@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //+ - * /
+    //+ 除了特殊的字符串拼接以外其他都是数学运算,将其他数据类型转为数字  使用的Number来转数字的
+    //有人会说强制转换:Number(),非强制转化就是:parseInt()/parseFloat()
+    Number(null);
+    parseInt(null);
+    console.log(1 + null);
+
+    console.log(1 + parseInt("1px") + undefined);
+    //console.log(1 + 1 + NaN);
+    //NaN
+
+    //当遇到引用数据类型的时候,调用toString方法转为字符串
+    console.log(0 + false + [] + isNaN(null));
+    //console.log(0 + [] + isNaN(null));
+    //console.log(0 + "" + isNaN(null));
+    //console.log(0 + "" + isNaN(null));
+    //console.log("0" + isNaN(null));
+    //console.log("0" + false);
+    //console.log("0false");
+
+
+    //除了+以外的运算符都是数学运算
+    console.log(0 - [10]);
+    console.log(11*null);//0
+    console.log(11/null);//Infinity无限值
+
+
+    console.log(10 + 2 * null);
+
+    //|| 和 &&
+
+    //前面||后面:前面如果是true返回前面的值,如果前面是false返回后面的值
+    console.log(1 || 0);//1
+    console.log(null || 0);//0
+    console.log([] || 0);//[]
+
+    //前面&&后面:前面如果是true返回后面的值,如果前面是false返回前面的值
+    console.log(1 && 0);//0
+    console.log(null && 0);//null
+    console.log([] && 0);//0
+
+//    var  a=11;
+//    console.log(a+1);
+
+
+    var n="0";
+    console.log(parseInt(n) || isNaN(n));
+    //console.log(0 || false);
+    //console.log(false);
+    console.log(10 + n || n);
+    //console.log("100"|| n);
+    //console.log("100");
+
+    console.log(![] || []);//[]
+    console.log(![] && []);//![]->false
+    console.log([0] || []);//[0]
+    console.log([] && [0]);//[0]
+
+
+
+</script>

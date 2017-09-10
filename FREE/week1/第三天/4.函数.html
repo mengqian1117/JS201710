@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function fn() {
+        //函数的定义
+        console.log("定义");
+    }
+    //console.log(fn.name);
+    //fn :函数名  使用fn带表这个函数
+    //函数分为函数定义和函数执行
+    //函数执行:函数名()
+    fn();
+
+
+    //参数:
+    function ff(n) {
+        //n(形参):是用来承接实参
+        //n=1;n的值就是函数执行的时候小括号中写的值
+        //如果执行的时候没有传值,n是undefined
+        console.log(n);
+    }
+    ff(1);
+    //例题:
+    function gg(m) {
+        //m=10;
+        console.log(m++);//10
+        console.log(m);//11
+    }
+    gg(10);
+    //案例:
+    function dd(f) {
+        //f=undefined -->NaN
+        console.log(f++);//NaN
+    }
+    dd();
+</script>

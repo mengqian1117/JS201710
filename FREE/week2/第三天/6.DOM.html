@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</div>
+</body>
+</html>
+<script>
+
+    //setAttribute/getAttribute/removeAttribute
+    //设置属性/获取属性/删除属性
+    //可以操作内置属性,也可以操作自定义属性
+    //setAttribute("属性名",属性值) 设置的属性,都会在HTML标签上显示
+    //使用setAttribute 设置的属性,必须要用getAttribute("属性名")获取出来
+    //使用removeAttribute("属性名")移除
+    var box=document.getElementById("box");
+    console.dir(box);
+    box.className="box1";
+    //一般内置属性都是通过 元素.属性 或者 元素["属性"] 来设置属性值
+
+    box.setAttribute("class","box2");
+    box.setAttribute("title","哈哈");
+
+    //自定义属性也可也通过 元素.属性 或者 元素["属性"] 来设置属性值
+
+    box.index="index";
+    console.dir(box);
+
+    box.setAttribute("a","aaaaa");
+    console.log(box.a);
+    console.log(box.getAttribute("a"));
+
+</script>

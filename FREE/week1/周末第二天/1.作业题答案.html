@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function sum(a,b,c,d,e,f) {
+        var t=a+b+c+d+e+f;
+        return t;
+    }
+    var s=sum(1,2,3,4,5,6);
+    console.log(s);//21
+
+
+    function sum() {
+        var t=0;
+        //因为arguments有索引,有length ,可以通过循环arguments来实现参数的和
+        for (var i=0;i<arguments.length;i++){
+            t+=arguments[i];
+        }
+        return t;
+    }
+    var s=sum(1,2,3,4,5,6);
+
+
+    var ary=["1","2","3","4","5"];
+    for(var i=0;i<ary.length;i++){
+        ary[i]=Number(ary[i]);
+    }
+    console.log(ary);
+
+
+    var ary=["1","2","3","4","5"];
+    for(var i=0;i<ary.length;i++){
+        ary[i]=ary[i]+0;
+    }
+    console.log(ary);
+
+    var ary=["1","2","3","4","5"];
+    for (var i in ary){
+        //index 索引
+        ary[i]=ary[i]+i;
+    }
+    console.log(ary);
+</script>

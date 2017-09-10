@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    var str="abcdefghigklmnopqrstuvwxyz"+"0123456789"+"abcdefghigklmnopqrstuvwxyz".toLocaleUpperCase();
+    function getCode() {
+        var strCode="";
+        while (strCode.length<4){
+            var code=str[Math.round(Math.random()*61)];
+            if(!strCode.includes(code)){
+                //只有strCode中没有这个code字符时
+                strCode+=code;
+            }
+        }
+        box.innerHTML=strCode;
+    }
+
+    getCode();
+    box.onclick=getCode;
+</script>

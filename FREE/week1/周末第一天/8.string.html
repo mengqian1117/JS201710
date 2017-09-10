@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var str="I'm a person";
+    var str1='I\'m a person';
+    //1.字符串有length属性 字符串的长度
+    //2.字符串有索引 索引从0开始
+    console.dir(str);
+    var str=new String("I'm a person");
+    console.dir(str);
+    console.log(str[1]);//"'"
+    console.log(str[12]);//undefined
+
+    var s1='        ';//8个空格
+    console.log(s1.length);
+
+    // + 字符串的拼接
+    //只要是+遇到字符串都表示拼接
+    //其他数据类型遇到字符串拼接,就通过toString()将其转为字符串,再拼接,但是null和undefined没有这个方法,直接拼接上就好了
+    console.log("1" + [] + [0] + null);
+    //console.log("1" + "" + [0] + null);
+    //console.log("1" + [0] + null);
+    //console.log("1" + "0" + null);
+    //console.log("10" + null);
+    //console.log("10null");
+
+    var ss="SS";
+    var ss1="ss";
+    var ss2=ss+ss1;
+    //var ss2="SS"+"ss";
+    //"SSss"
+
+    console.log(ss + "哈哈");//"SS哈哈"
+
+    //"大家好,我是:'hello'"
+    var  h="hello";
+    //  "大家好,我是:'"  + "hello"  +   "'"
+    //  "大家好,我是:'"  + h  +   "'"
+    console.log("大家好,我是:'" + h + "'");
+
+    //"{a:'你好',b:'hi'}"
+    var a='你好';
+    var b='hi';
+    console.log("{a:'" + a + "',b:'" + b + "'}");
+
+    console.log("我是:%s,我是:%s","QQ","WX")
+</script>

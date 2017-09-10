@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box {
+            width: 800px;
+            height: 60px;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 60px;
+            margin: 50px auto 10px;
+            border: 1px solid salmon;
+            background: linear-gradient(to left top, red, orange, gold, green, peachpuff, darkgreen, purple,yellowgreen,teal);
+            padding: 7px 10px;
+            color: #fff9f9;
+            text-shadow: 1px 2px 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+
+    var box = document.getElementById("box");
+    //Date()可以不加
+    //new 构造函数方式创建
+
+    //获取当前时间,你电脑上的时间
+    //这个时间不可以作为重要事件的时间,比如秒杀,(以后在真实项目中获取服务器时间,请求头时间)
+    //var time = new Date();
+    var time = new Date;
+
+    console.log(time);
+    //Wed Aug 30 2017 11:40:24 GMT+0800 (中国标准时间)
+
+    //获取四位的年
+    var year = time.getFullYear();
+    console.log(year);//2017
+
+    //获取月份 0-11
+    var month = time.getMonth() + 1;
+    console.log(month);
+
+    //获取星期  0-6 星期日-星期六
+    var ary = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    var week = ary[time.getDay()];
+    console.log(week);//"星期三"
+
+    //获取日
+    var day = time.getDate();
+    console.log(day);
+
+    //获取小时
+    var hours = time.getHours();
+    console.log(hours);
+
+    //获取分钟
+    var minute = time.getMinutes();
+    console.log(minute);
+
+    //获取秒
+    var second = time.getSeconds();
+    console.log(second);
+
+    //获取毫秒
+    var millisecond = time.getMilliseconds();
+    console.log(millisecond);
+
+    var strDate =  year + "年" + month + "月" + day + "日 " + week + " " + hours + ":" + minute + ":" + second ;
+
+    box.innerHTML = strDate;
+
+
+
+</script>

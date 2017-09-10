@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">
+    <p>我是P1</p>
+    <p>我是P2</p>
+</div>
+<div id="box1"></div>
+</body>
+</html>
+<script>
+var box=document.getElementById("box");
+var box1=document.getElementById("box1");
+//获取:innerHTML:包括标签
+//innerText:只包含文本
+console.log("我是innerHTML:",box.innerHTML);
+console.log("我是innerText:",box.innerText);
+
+//修改 通过innerHTML和innerText给元素增加内容的时候,innerHTML可以识别标签,innerText只能处理为文本
+//box1.innerHTML="<p>哈哈哈</p>";
+
+//注意:innerHTML/innerText 赋值的时候都是字符串
+box1.innerText="<p>哈哈哈</p>";
+
+//以后在不管给元素加标签也好只加文本也好,直接用innerHTML就可以了,不会出现问题,放心用
+
+
+    //问题:innerHTML和innerText的区别?
+    //回答:innerHTML可以识别标签,innerText不可以识别标签
+</script>

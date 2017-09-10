@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var a=1;
+    function getA() {
+        console.log(this.a);//1
+    }
+    var public=(function () {
+        var a=10;
+        function getA() {
+            console.log(a);//10
+            this.a=a;
+        }
+        return {
+            getA:getA
+        }
+    })();
+    getA();
+    public.getA();
+    console.log(public);
+</script>
+
+<script>
+    var y=0;
+    function FF1(x) {
+        //x=undefined ;x=10 ;x=10
+       this.x=1;//w.x=1 ; f2.x=1 ; w.x=1
+       this.y=2;//w.y=2 ; f2.y=2 ; w.y=2
+       return x+y//NaN  ; {x:1,y:2}; 10+2
+    }
+    var f1=FF1();//NaN
+    var f2=new FF1(10);//{x:1,y:2}
+    var f3=FF1(10);//12
+    console.log(f1, f2, f3);
+</script>
+<script>
+
+    function FF1() {
+        this.x=1;
+        this.getX=function () {
+            this.x++;
+        }
+    }
+    var f1=new FF1();//{x:1,getX:function(){this.x++;}}
+    var f2=new FF1();//{x:1,getX:function(){this.x++;}}
+    f1.getX();//{x:2,getX:function(){this.x++;}}
+    f1.getX();//{x:3,getX:function(){this.x++;}}
+    f2.getX();//{x:2,getX:function(){this.x++;}}
+
+    console.log(f1.x + f2.x);//5
+
+
+    console.log(f1 instanceof FF1);
+</script>

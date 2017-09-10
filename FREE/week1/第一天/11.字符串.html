@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //字符串是用单引号或者是双引号包起来的一串字符
+    let str="I am a student";
+    //length:属性 字符串的长度  字符串的length属性是只读的(不可以修改)
+    console.log(str.length);
+
+    //字符串中如果出现了单引号外面的就用双引号
+    let str1="I'm a student";
+    //使用\转义一下
+    let str2='I\'m a student';
+    console.log(str1);
+
+    //\n 表示换行
+    let str3="你好!\n我是孟倩";
+    console.log(str3);
+
+    //字符串 + :表示字符串的拼接
+    let s1="哈哈";
+    console.log(str1 +s1);
+
+
+    //如果不是字符串,会默认将其使用toString方法转为字符串
+    let num={a:"a"};//'[object Object]'
+    console.log(str1 + num);
+
+    console.log("1" + 12);//"112"
+    console.log(parseInt(1 + "1px"));
+    //parseInt("11px")->11
+
+    console.log("10" + Number([]));//"100"
+    console.log(parseInt("") + "1" + Number(undefined));
+    //'NaN1NaN'
+</script>

@@ -1,0 +1,75 @@
+1.单例模式写法
+var a="珠峰培训"
+var public=(function(a){
+     a+="好"
+     //写你想写的任何东西
+     return{
+        公有的方法
+     }
+})(a);
+
+2.构造函数(自定义类)
+function FF(){
+   this.a=1;
+}
+var f=new FF();
+1).new方式执行的时候才是类
+2).this指的是当前实例
+3).默认返回this,手动返回值基本数据类型不会影响,引用数据类型会影响
+4).通过this给实例增加的是私有属性
+
+
+每一种数据类型都有自己对应的类,例如 数字 -->Number
+3.对象 instanceof 类
+判断这个对象是不是这个类的一个实例
+1).对于基本数据类型字面量创建方式和构造函数创建方式不同,只有构造函数创建方式得到的才是当前所属数据类型这个类的一个实例
+ var n=1;
+ n instanceof Number  -->false
+ var num=new Number(1);
+ num instanceof Number  -->true
+2).对于引用数据类型,两种创建方式都是当前所属数据类型这个类的一个实例
+ var ary=[1,2,3];
+ ary instanceof Array -->true
+
+
+4.原型 prototype
+1).只有函数才会有原型
+2).prototype是个对象
+3).浏览器给prototype默认开辟的堆内存中才会有个天生自带的属性constructor,这个constructor指向当前类本身
+4).prototype,存储了一些公有的属性和方法(例如:数组中的方法是写在原型上的)
+5).Object原型上没有__proto__
+
+
+5.原型链 __proto__
+1).所有的对象都有 __proto__ 指向所属类的原型
+2).获取一个对象的属性的时候,先看是不是自己私有的属性,不是就往上找...
+
+
+思考.
+arguments.sort()
+ary.sort();
+ary.__proto__====>Array.prototype
+我们强制改变arguments.__proto__的指向
+arguments.__proto__====>Array.prototype
+arguments.sort()
+
+
+6.记住原型图
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

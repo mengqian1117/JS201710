@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+预解释:是一个过程,在作用域形参之后,代码执行之前,先把带var和function关键字的变量提前的声明或者定义
+var只会提前声明  (只声明未定义就是undefined)
+function声明+定义
+
+作用域:
+全局作用域:只要打开浏览器就形成全局的作用域
+私有作用域:一个函数执行就形成一个私有作用域
+-->
+<script>
+
+
+    console.log(a);//undefined
+    var a=1;
+    console.log(fn);
+    function fn() {
+        var a=1;
+    }
+    fn()
+
+</script>
+<script>
+    console.log(b);//undefined
+    console.log(f);//function f () {}
+    console.log(c);
+
+    var b=10;
+    function f () {}
+    c=12;
+
+    console.log(b);
+    console.log(f);
+    console.log(c);
+</script>

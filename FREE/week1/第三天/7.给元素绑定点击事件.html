@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #btn1{
+            display: block;
+            width: 100px;
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            margin: 100px auto;
+            background-color: coral;
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+<button class="bb" id="btn1">点我呀</button>
+<button class="bb" id="btn2">点我呀</button>
+</body>
+</html>
+<script>
+    //DOM元素-->HTML标签的意思
+
+
+    //1.获取元素
+    //通过ID名将元素获取出来(都是个对象)
+    var btn=document.getElementById("btn1");
+    var btn2=document.getElementById("btn2");
+    console.dir(btn);
+    console.log(btn.id);
+    console.log(btn.className);
+    //内置属性:一个元素天生自带的属性 比如 className
+
+    btn.className="BB";
+
+    //自定义属性:给一个元素加一个之前没有的属性
+    //什么时候用:一般都是想要给这个元素存储一些信息,不受其他元素的影响
+    btn.zf="zf";
+    btn2.zf="zf";
+
+
+    function fn() {
+        alert("你好")
+    }
+    //fn()
+
+    //2.给元素绑定点击事件
+    //当你触发事件的时候,会主动的执行绑定的函数
+    //btn.onclick=fn;
+    btn.onclick=function () {
+        //这里可以写一个匿名函数,
+        alert("你好");
+    }
+
+</script>

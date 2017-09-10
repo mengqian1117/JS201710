@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    //数组  [第一项,第二项....]
+    //数组是有序排列
+    var ary=[1,2,3,4];
+    //属性length:表示数组的长度
+    console.log(ary.length);
+    //可以通过索引获取对应的项,索引从0开始
+    //数组[索引]
+    console.dir(ary);
+
+    console.log(ary[1]);//2
+    console.log(ary["1"]);//2
+
+    //for in循环可以来遍历数组
+    for(var i in ary){
+        //i 表示的是索引
+        console.log("我是索引:",i);
+        console.log("索引的类型是:",typeof i);
+    }
+
+    //数组的索引是字符串类型的
+    console.log(ary[4]);//undefined
+</script>

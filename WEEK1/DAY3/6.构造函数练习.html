@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //字面量创建方式
+    var n=1;
+    console.log(typeof n);//"number"
+
+    //构造函数创建方式
+    var num=new Number(1);
+    console.log(typeof num);//"object"
+
+    var m=Number(1);
+    console.log(typeof m);//"number"
+
+    var a=0;
+    function FF() {
+        this.a=1;
+        a++;
+        return a;
+    }
+    var f1=FF();
+    console.log(f1,a);
+    var f2=new FF();
+    console.log(f2);//{a:1}
+    console.log(a);
+
+
+</script>

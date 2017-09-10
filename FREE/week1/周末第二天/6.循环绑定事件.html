@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+        #list li{
+            height: 30px;
+            width: 300px;
+            margin: 15px auto;
+            border: 1px solid blue;
+            cursor: pointer;
+            color: #ff3a63;
+            font-size: 20px;
+        }
+        .click{
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    
+    var list=document.getElementById("list");
+    var lis=list.getElementsByTagName("li");
+
+    //Cannot read property 'style' of undefined
+//    for(var i=0;i<lis.length;i++){
+//        //使用自定义属性将其索引存起来
+//        lis[i].QQ=i;
+//        lis[i].onclick=function () {
+//            //this :表示你点击的元素,给谁绑定的事件this就是谁
+//            console.dir(this);
+//            this.style.backgroundColor="yellow";
+//            //console.log(this.QQ);
+//            this.innerHTML=this.QQ;
+//        }
+//    }
+//    console.log("循环完后:",i);
+
+    //当用户去点击的时候循环已经结束了,此时的i是6
+
+
+
+
+    for(let i=0;i<lis.length;i++ ){
+        lis[i].isClick=false;
+        lis[i].onclick=function () {
+            this.isClick=!this.isClick;
+            if(this.isClick){
+                this.className="click";
+                this.innerHTML=i;
+            }else {
+                this.className="";
+                this.innerHTML="哈哈";
+            }
+        }
+    }
+
+</script>

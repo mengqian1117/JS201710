@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fn() {
+        console.log(1);
+    }
+    var timer=null;
+
+//    timer=window.setInterval(fn,1000);
+//    timer=window.setInterval(fn,1000);
+//    window.clearInterval(timer);
+//    window.clearInterval(1);
+
+
+    //window.setTimeout(fn,1000)
+
+
+    function ff() {
+        //每一次执行都是清除上一个定时器
+        //清除定时器实际原理是阻止定时器中的函数执行
+        window.clearTimeout(timer);//1  2 3
+        console.log(2);
+        timer=window.setTimeout(ff,1000);//2 3  4
+    }
+    //timer=window.setTimeout(ff,1000);//1
+</script>
+<script>
+    var a=10;
+    function f1() {//xxxfff000
+        console.log(a);
+    }
+    function f2(f1) {
+        var a=1;
+        f1();
+    }
+    f2(f1);
+
+</script>

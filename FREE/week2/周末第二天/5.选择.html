@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        .list{
+            width: 200px;
+            height: 300px;
+            margin: 20px 30px;
+            float: left;
+            border: 1px solid skyblue;
+        }
+        .clear{
+            clear: both;
+        }
+        .select{
+            width: 200px;
+            height: 300px;
+            margin: 10px auto;
+            border: 2px solid fuchsia;
+        }
+        #prev{
+            position: relative;
+            left: 300px;
+            top: -200px;
+        }
+        #next{
+            position: relative;
+            left: 920px;
+            top: -200px;
+        }
+        .list img,.select img{
+            width: 100%;
+            height: 100%;
+        }
+
+        .sel{
+            /*放大*/
+            transform:scale(1.2) ;
+            /*盒子阴影*/
+            box-shadow: 2px 2px 5px yellow;
+        }
+
+    </style>
+</head>
+<body>
+<!--<div class="list">-->
+    <!--<img src="img/person1.jpg" alt="">-->
+<!--</div>-->
+<!--<div class="list"></div>-->
+<!--<div class="list"></div>-->
+<!--<div class="list"></div>-->
+<!--<div class="list"></div>-->
+<!--<div class="list"></div>-->
+<div class="clear"></div>
+<div class="select"><img src="img/person1.jpg" alt=""></div>
+<button id="prev">上一个</button>
+<button id="next">下一个</button>
+</body>
+</html>
+<script>
+
+    var clear=document.getElementsByClassName("clear")[0];
+    var select=document.getElementsByClassName("select")[0];
+    var ary=[{img:"person1.jpg"},{img:"person2.jpg"},{img:"person3.jpg"},{img:"person4.jpg"},{img:"person5.jpg"}];
+    //循环绑定数据
+    for(var i=0;i<ary.length;i++){
+        //1.动态创建一个div
+        var oDiv=document.createElement("div");
+        //2.给这个div加一个class名
+        oDiv.className="list";
+        //3.给这个div加一个img标签(通过innerHTML)
+        oDiv.innerHTML=`<img src="img/${ary[i].img}"/>`;
+        //4.将这个div元素放到clear前面
+        document.body.insertBefore(oDiv,clear)
+    }
+
+    var list=document.getElementsByClassName("list");
+
+    //在默认的情况下第一个被选中
+    list[0].className+=" sel";
+    //类似选项卡,循环list绑定点击事件,被点击的list加上sel的类名,其他的只有一个类名list
+    for (var i=0;i<list.length;i++){
+        list[i].onclick=function () {
+            for(var j=0;j<list.length;j++){
+                list[j].className="list";
+            }
+            this.className+=" sel";
+            //将select中的内容变成点击的那个元素的内容即可
+            select.innerHTML=this.innerHTML;
+        }
+    }
+</script>

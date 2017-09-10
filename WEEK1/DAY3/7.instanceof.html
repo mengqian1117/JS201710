@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //对象 instanceof 类
+    //判断一个对象是不是这个类的一个实例
+
+    //对于基本数据类型 只有通过构造函数创建方式创建出来的才是当前数据类型这个类的实例
+    var n=1;
+    console.log(typeof n);
+    console.log(n instanceof Number);
+    var n=new Number();
+    console.log(n instanceof Number);
+    //对于引用数据类型什么创建方式都可以
+    var ary=[1,2,3];
+    console.log(ary instanceof Array);
+    var ary=new Array(1,2,3);
+    console.log(ary instanceof Array);
+
+    function FF() {
+        this.f=10;
+        return 10
+    }
+    var ff=new FF;
+    console.log(ff instanceof FF);
+
+    var f=FF();
+    console.log(f instanceof FF);
+
+</script>

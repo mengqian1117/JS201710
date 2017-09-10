@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    console.log(String.prototype);
+    //1.获取字符
+    var  str="abcd";
+    console.log(str[0]);
+    console.log(str.charAt(2));
+
+    //2.split(指定字符) 按照指定字符拆分为数组
+    //返回值是个数组
+    //原字符串不变
+
+    console.log(str.split("b"));
+    //"" 将字符串拆分为数组,字符串的每一项就是数组的每一项
+    console.log(str.split(""));
+
+    console.log("1+2+3+4+5".split("+"));
+
+    //3.replace(字符1,字符2)  将字符1替换成字符2
+    //返回值:替换后的新的字符串
+    //原来字符串不变
+    //一次只能替换一个
+    console.log(str.replace("a", "A"));
+    console.log(str);
+
+    //例子
+    var str1="aaa****bbb";
+    console.log(str1.replace("*", "@"));
+
+    //4.indexOf  lastIndexOf
+    //判断某个字符在不在这个字符串中
+    //indexOf(指定字符):  指定字符在在字符串中第一次出现的索引,如果字符串中没有这个字符返回值是-1
+    //lastIndexOf(指定字符):指定字符在在字符串中最后一次出现的索引,如果字符串中没有这个字符返回值是-1
+
+    var s1='ssddffjjss';
+    console.log(s1.indexOf("s"));//0
+    console.log(s1.lastIndexOf("s"));//9
+    console.log(s1.lastIndexOf("a"));//-1
+
+    //ES6中的方法:includes()
+    //5.includes() 判断某个字符在不在这个字符串中
+    //返回值:true/false, 有就是true,没有就是false
+    console.log(s1.includes("s"));//true
+    console.log(s1.includes("g"));//false
+
+
+    //6.slice(n,m)  从索引n到索引m(包括n,不包括m)
+    //返回值:查找出的新的字符串,原来字符串不变
+    var s="asdfgh";
+    console.log(s.slice(2,4));//"df"
+
+    //slice()  不传参数表示全部查找,换句话说就是将原来的字符串克隆了一份一模一样的
+    console.log(s.slice());
+    //slice(n) 只传一个参数的时候:从索引n一直查找到最后
+    console.log(s.slice(0));
+
+    //如果第二个参数>字符串的length的话也是查找到最后即可
+    console.log(s.slice(3, 10));//"fgh"
+
+    //7.subStr  subString
+    //subString(n,m)从索引n到索引m(包括n,不包括m)
+    var  s="1234567";
+    console.log(s.substring(2, 5));//"345"
+
+    //subStr(n,m) 从索引n开始查找m个字符
+    console.log(s.substr(2, 5));//'34567'
+    //如果不够,也是找到最后
+    console.log(s.substr(2, 20));//"34567"
+
+
+    //8.concat 字符串的拼接
+    console.log("哈哈哈".concat("嘿嘿嘿"));
+
+    //9.repeat(n) ES6中的方法 将字符串重复n次,
+    // 返回值:重复后的新字符串,原字符串不变
+
+    console.log("abc".repeat(2));
+    console.log("abc".repeat(0));//""
+    //小数:只取整数部分
+    console.log("abc".repeat(2.6));
+
+    //负数报错
+    //console.log("abc".repeat(-3));
+
+    //特殊:负零点几的时候就是取0  -0.3  ==>0
+    console.log("abc".repeat(-0.9));//""
+
+    //10.转大小写
+    //转大写
+    console.log("abc".toLocaleUpperCase());
+    console.log("abc".toUpperCase());
+    //转小写
+    console.log("ABC".toLocaleLowerCase());
+    console.log("ABC".toLowerCase());
+
+
+</script>

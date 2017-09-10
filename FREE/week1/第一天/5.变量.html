@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var a;
+    //window.a=1; 在全局作用域下var 一个a,就相当于给window增加一个属性a,可以写成window.a
+    var a=2;
+    //var 声明变量的关键字
+    //a :变量 是用来存储和代表值得
+    console.log(a);
+    console.log(window.a);
+
+
+    //file->settings->languages->javascript->ECMAScript6
+    //在ES6中 有2个新的声明变量的关键字 let const
+    let b;//声明
+    b=10;//定义:赋值
+    //let b=2;//'b' has already been declared
+    //注意:
+    // 1.let声明变量的时候是不可以重复声明的
+    // 2.let定义的变量不会给window增加属性
+    console.log(window.b);
+
+
+
+    //定义静态变量 const
+    //1.一旦声明了必须要赋值
+    //2.只能赋值一个,以后不可以修改值
+    const c=10;
+    //c=20;
+
+
+    //定义了一个函数叫做sum
+    function sum() {
+
+    }
+
+
+    //最后注意:变量是松散的 可以存储任意数据类型的值
+</script>

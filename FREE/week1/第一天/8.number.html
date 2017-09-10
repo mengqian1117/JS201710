@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //数字:整数,小数,0.. NaN
+    // NaN:not a number ,但是是数字number类型的
+    console.log(typeof NaN);//"number"
+
+    //isNaN(n)  不是一个数字:true  是一个数字:false
+    console.log(isNaN(1));//false
+    console.log(isNaN([1,2,3]));//true
+
+    console.log(isNaN("1"));
+    //使用isNaN来判断是不是一个数字的时候,会将传进来的内容调用Number()方法转为数字,转完之后再去判断
+    //Number()返回值是数字,NaN
+    console.log(Number(1));//1
+    console.log(Number(.1));//0.1  控制台会默认加上有效数字0,或者是去除无效数字0
+    console.log(Number(1.0));//1
+
+    //string->number
+    //"" "  "-->0
+    //从第一个非空格字符到最后一个非空格字符,如果之间有非数字那么就是NaN,否则就是直接去掉引号当做数字
+    console.log(Number("1"));//1
+    console.log(Number(".1"));//0.1
+    console.log(Number("  "));//0
+    console.log(Number("1px"));//NaN
+    console.log(Number("1 2"));//NaN
+    console.log(Number(" 0px "));//NaN
+    console.log(Number("  1 "));//1
+    console.log(Number(" 2 a"));
+    console.log(Number(" 20 0 "));
+    console.log(Number(" 2    "));
+    //boolean-->number
+    console.log(Number(true));//1
+    console.log(Number(false));//0
+
+    //null
+    //undefined
+    console.log(Number(null));//0
+    console.log(Number(undefined));//NaN
+
+
+    console.log(isNaN(""));//false
+    console.log(isNaN("10"));//false
+    console.log(isNaN("null"));//true
+    console.log(isNaN(" 0 px"));//true
+    console.log(isNaN(" 1  "));//false
+    console.log(isNaN("1Px"));//true
+    console.log(isNaN(".1"));//false
+    console.log(isNaN("1.0"));//false
+    console.log(isNaN(null));//false
+    console.log(isNaN(undefined));//true
+    console.log(isNaN(true));//false
+    //对于引用数据类型,先将数据使用toString()变成字符串再转数字
+
+    //数组
+    console.log(Number([1]));//"1"->1
+    console.log(Number([1,2]));//"1,2"->NaN
+
+    //对象
+    console.log(Number({a: "a"}));//NaN
+
+    //正则
+    console.log(Number(/\d+/));//NaN
+    //*特殊:时间 默认将时间转为毫秒数
+    console.log(Number(new Date()));//1503389518732
+    console.log((new Date()).getTime());//1503389518732
+    console.log(Number([]));//""-->0
+</script>

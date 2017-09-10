@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+
+    //保留整数部分
+    console.log(parseInt(1.99999999));
+    console.log(parseInt(1.05));
+
+    //从第一个数字开始查找,发现非数字停止查找,找出的部分转为数字,一个都没有找到那就是NaN
+    console.log(parseInt(" "));//NaN
+    console.log(parseInt("1"));//1
+    console.log(parseInt("1.6"));//1
+    console.log(parseInt("  1"));//1
+    console.log(parseInt("1px"));//1
+    console.log(parseInt("1 px"));//1
+    console.log(parseInt("px"));//NaN
+    console.log(parseInt("1 2"));//1
+    console.log(parseInt(true));//NaN
+    console.log(parseInt(null));//NaN
+    console.log(parseInt(undefined));//NaN
+
+    //可以保留小数
+    console.log(parseFloat("1.20"));//1.2
+
+    //时间就是直接用toString方式来转字符串
+    console.log(parseInt(new Date()));
+</script>

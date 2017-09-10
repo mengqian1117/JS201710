@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1.
+    //全局:a,b  A
+    var a = 3;
+    function A(a, b) {
+        //预解释:  a
+        //给形参赋值 a=3  b=3
+        b++;//b=4
+        console.log(a);//3
+        var a;
+        return b + a;  //4+3
+    }
+    var b = A(a, a++);//A(3,3) a=4  b=7
+    console.log(a, b);//a=4  b=7
+</script>
+<script>
+    //2.
+    //全:code  n   fn1
+    var code = null;
+    function fn1(n) {
+        //n=undefined  ;  n=2
+        n = n || code++;
+        //n=code++=0,code=1 ;  n=2
+        return ++code  //code=2 ;  code=3
+    }
+    var n = fn1();
+    console.log(n);//2
+    n = fn1(n);
+    console.log(n);//3
+</script>
+<script>
+    //3.
+    //全局:m f2
+    n=f2(m);
+    //window.n=f2(undefined)=true
+    var m = 0;
+    function f2(n) {
+        //n=undefined
+        n = isNaN(n);//n=true
+        return n
+    }
+    console.log(window.n);
+</script>
+<script>
+    //4.引用数据类型在存储的时候,存在一个内存地址中,当遇到变量时不用管,他写成原来什么样就存成什么样但是如果是表达式,就需要运算出来比如下面的name:name(变量) age:f3(),你必须将f3执行将结果赋值给age
+    var obj={
+        name:name,
+        age:f3()
+    };
+    var name="QQ";
+    var age=18;
+    function f3() {
+        return ++age
+    }
+    console.log(obj);
+</script>
+<script>
+    //5.
+    function X() {
+        console.log("XX");
+        return X;//返回值是他自己
+    }
+    var X=X();
+    X();
+</script>
+<script>
+    var ary=[1,2,3];//ary=xxxfff000  ->[1,2,3]
+    function FF(ary) {
+        //形参:ary=xxxfff000 私有变量
+        ary.push(100);//xxxfff000->[1,2,3,100]
+        ary.shift();//xxxfff000->[1,2,3,100]->[2,3,100]
+        ary=ary[ary.length-1];
+        //ary=3
+        return ary
+    }
+    console.log(FF(ary));//FF(xxxfff000) 3
+    console.log(ary); //[2,3,100]
+</script>

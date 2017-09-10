@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //数组, 有序的  有length 有索引
+    var  ary=[1,2,3,4,5];
+    console.log(ary.length);
+    console.log(ary[1]);
+    console.log(ary["1"]);
+    //数组的索引是字符串数据类型的
+
+
+    var obj={a:"a",1:2};
+    // 当属性名是数字的时候,可以省略引号
+    console.log(obj[1]);//2
+
+    var obj1={name:{a:"a"}};
+    console.log(obj1.name);//
+
+    //for in 可以遍历对象和数组
+//    for(var key in obj){
+//        //key :属性名
+//        //obj:你想要遍历的对象
+//    }
+
+
+    var obj={a:"a",b:[1,2],1:1,2:2};
+    for(var key in obj){
+        //有几个键值对就循环几次
+        //先将属性名是数字的按照从小到大的顺序遍历,剩下的按照你书写的顺序
+        console.log("属性名为:",key,typeof key);
+    }
+
+    var  ary=[1,2,3,4];
+    for(var index in ary){
+        //index:索引
+        console.log("索引:",index, typeof index);
+    }
+
+    //in  :判断一个属性在不在一个对象中(判断一个对象中有没有这个属性)
+    // 返回值 :true/false
+    //用法: 属性 in 对象
+
+    console.log("a" in obj);
+    console.log("c" in obj);
+    console.log(1 in obj);
+
+
+    var n=10;
+    console.log(window.n);
+    console.log("n" in window);//true
+
+//    window.onload=function () {
+//
+//    }
+
+    console.log("onload" in window);
+    console.log(window);
+    console.log("alert" in window);
+    window.alert(1);
+
+
+</script>

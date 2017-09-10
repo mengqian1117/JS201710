@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #div1{
+            font-size: 20px;
+            background-color: #dc6aff;
+        }
+    </style>
+</head>
+<body>
+<div id="box">box1</div>
+<div id="box">box2</div>
+
+<div id="div1" style="width: 799.9px">
+    <p class="p1">p</p>
+    <p class="p1">pp</p>
+    <p class="p2">ppp</p>
+
+    <input type="text" name="in1">
+    <input type="text" name="in2">
+</div>
+
+
+</body>
+</html>
+<script>
+   ///1.获取元素
+
+   //上下文.方法
+   //1.通过ID获取一个元素  上下文只能是document
+   //如果发现ID重名了,永远是第一个
+    var box=document.getElementById("box");
+    console.log(box);
+
+   //2.通过class名获取一组元素,是元素集合(有索引,有length,也是类似数组的对象,类数组)
+    //上下文你可以自己定义 ,一般都写父级元素或者是祖父元素
+    var div1=document.getElementById("div1");
+    var p=div1.getElementsByClassName("p1");
+    p[0];
+    p[1];
+   console.log(p);
+   //就算这个class名只有一个元素,也需要通过索引[0]将其拿出来
+   var pp=div1.getElementsByClassName("p2")[0];
+   console.log(pp);
+
+   //3.通过标签名获取一组元素:是元素集合(有索引,有length,也是类似数组的对象,类数组)
+   //上下文你可以自己定义 ,一般都写父级元素或者是祖父元素
+
+    var pList=div1.getElementsByTagName("p");
+   console.log(pList);
+
+   //4.通过Name获取元素  只有在表单元素中name才有效,上下文也只能是document  获取一组元素
+    var in1=document.getElementsByName("in1");
+   console.log(in1);
+
+   //innerHTML   innerText
+    //innerHTML可以识别标签  innerText 只能识别文本
+    //div1.innerHTML  获取
+    //div1.innerHTML="什么什么"  修改
+    //div1.innerHTML+="....."   增加
+
+    //div1.innerHTML="哈哈,都没有了";
+    div1.innerHTML+="新加的";
+
+    //获取元素的样式
+    //1.元素.style.样式    只能获取行内样式
+    //元素.style.样式 =值  增加样式,加在行内
+   console.log(div1.style.width);
+   div1.style.color="red";
+
+   //2.getComputedStyle(元素).样式属性
+   // 获取经过计算后的样式  所有的样式都可以获取出来
+   //只能获取不能修改
+   console.log(getComputedStyle(div1).width);
+   console.log(getComputedStyle(div1).fontSize);
+   console.log(getComputedStyle(div1).backgroundColor);//'经过浏览器计算的,rgb()颜色格式的'
+
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+for in遍历对象的特点
+1.既可以遍历私有属性也可以遍历公有属性,内置的公有属性遍历不到
+2.先遍历属性名是数字的,按照从小到大的顺序遍历
+-->
+<script>
+    function FF() {
+        this.a=1;
+        this.b=2;
+    }
+    FF.prototype.getA=function () {};
+    FF.prototype.getB=function () {};
+    Object.prototype.get=function () {};
+    var f1=new FF;
+    var key;
+    for (key in f1){
+        console.log(key);
+    }
+
+    var ary=[1,2,3];
+    for(key in ary){
+        console.log(key);
+    }
+
+    //ary.__proto__=>Array.prototype.__proto__==>Object.prototype
+
+    //写一个函数,将传进来的对象克隆一份一样的,只但是拿到这个参数的的私有属性
+
+    function cloneObject(obj) {
+        var objNew={};
+        for (var key in obj){
+            if(obj.hasOwnProperty(key)){
+                objNew[key]=obj[key]
+            }
+        }
+        return objNew
+    }
+
+    console.log(cloneObject(f1));
+
+    //既得到私有的也拿到公有的
+    function cloneObject(obj) {
+        var objNew={};
+        for (var key in obj){
+            if(obj.hasOwnProperty(key)){
+                objNew[key]=obj[key]
+            }else {
+                //公有属性
+                objNew.__proto__[key]=obj[key];
+            }
+        }
+        return objNew
+    }
+
+    //合并对象,给你2个对象obj1,obj2,将obj2中的私有属性添加到obj1中,如果是公有属性就加在obj1的所属类的原型上,返回obj1,
+    function assign(obj1,obj2) {
+        for (var key in obj2 ){
+            if(obj2.hasOwnProperty(key)){
+                obj1[key]=obj2[key];
+            }else {
+                obj1.__proto__[key]=obj2[key]
+            }
+        }
+        return obj1
+    }
+
+
+</script>
