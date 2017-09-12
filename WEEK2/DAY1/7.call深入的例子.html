@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var a=0;
+    var obj={
+        a:1,
+        f1:f1,
+        f2:f2
+    };
+    function f1(a) {
+        console.log(this.a,a);
+    }
+    function f2(a) {
+        console.log(this.a,a);
+    }
+    f1.call();
+    //->0,undefined
+    f1.call(1,2);
+    //Number 2  ->undefined, 2
+    obj.f1.call(null,10);
+    //->0,10
+    obj.f2.call.call(f2,null,10);
+    //f2.call(null,10)-> 0,10
+    f1.call.call(obj.f2);
+    //obj.f2.call()  -> 0,undefined
+    f1.call.call(obj.f2,obj,10);
+    //obj.f2.call(obj,10) -> 1 ,10
+    f1.call.call.call.call(obj.f2,1);
+    //obj.f2.call(1)  Number  --->undefined ,undefined
+</script>
+<script>
+    function FF(y) {
+        this.x=y+10;
+        console.log(y);
+        return y
+    };
+    FF.prototype= {
+        constructor: FF,
+        getX: getX
+    };
+    function getX(x) {
+        console.log(this);
+        console.log(x);
+    };
+    var f1=FF(3);
+    var f2=new FF(2);
+    console.log(f1, f2);
+    f2.__proto__.getX(10);
+    f2.__proto__.getX.call(10);
+    FF.prototype.getX.call(f1,10);
+    FF.prototype.getX.call(f2,10);
+    FF.prototype.getX.call.call(f1,10);
+    FF.prototype.getX.call.call(f2,10);
+    f2.getX.call.call(FF.prototype.getX,null,10);
+    f2.getX.call.call(f2.getX,f1,10);
+    f2.getX.call.call(getX,f2,10);
+    f2.__proto__.getX.call.call(getX,f2.__proto__,10);
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //Function.prototype.call
+   // call.call()
+    Function.prototype.call=function () {
+        var ary=[...arguments];
+        if(ary[0]==undefined){
+            ary.shift();
+            eval("this("+ary+")");
+        }else {
+            var obj=Object(ary[0]);
+            ary.shift();
+            obj.__proto__.fn=this;
+            eval("obj.fn("+ary+")");
+            delete  obj.__proto__.fn
+        }
+    };
+
+    function f1(m) {
+        console.log(this);
+        console.log(m);
+    }
+    function f2(n) {
+        console.log("我是f2",this);
+        console.log(n);
+    }
+    //f1.call.call()
+    //后面的call作用:1.f1.call()2.改变f1.call中的this
+    //将this变成window,而this()-->window()  报错了了,this is not a function
+    //所以说两个call时候,最后的call的第一个参数必须是个函数
+    f1.call.call(f2,2,3);
+    //call(2)
+    //this(3)-->f2(3)
+    //f2.call(2,3)
+
+    //两个以及两个以上的call执行
+    //f1.call.call.call.......(函数f,obj,m,n.....)
+    //函数f.call(obj,m,n.....)
+</script>
