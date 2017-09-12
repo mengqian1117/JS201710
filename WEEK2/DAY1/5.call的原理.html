@@ -17,14 +17,33 @@
             //删除数组ary的第一项
             ary.shift();
             //将剩下的给this当做参数传进去,使用字符串拼接的形式
-            eval("this("+ary+")")
+            eval("this("+ary+")");
+        }else {
+            //将传进来的第一个参数变成一个对象
+            var obj=Object(arguments[0]);
+            //给obj所属类的原型上增加一个属性,属性值是this
+            obj.__proto__.fn=this;
+            ary.shift();
+            eval("obj.fn("+ary+")");
+            //将增加的这个属性删除就可以了
+            delete obj.__proto__.fn;
         }
 
 
     };
+    var obj={a:1};
     function f1(m) {
         console.log(this);
         console.log(m);
     }
-    f1.call(null,1)
+    f1.call(obj,1);
+
+
+//console.dir(new Number(2));
+//console.log(Object(2));
+//console.log(Array(2,2));
+//console.log(Number("1"));
+////Object()将传进来的内容变成一个对象返回
+//console.log(Object({}));
+//console.log(Object([1,2]));
 </script>
