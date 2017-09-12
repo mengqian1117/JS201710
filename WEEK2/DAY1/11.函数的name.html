@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function f1() {}
+
+    console.log(f1.name);
+    console.log(f1.bind(1).name);//bound f1
+    var f2=f1.bind(1);
+    console.log(f2.name);//bound f1
+    //1.函数f.bind 函数的函数名是:  bound 函数f
+
+    //2.通过构造函数创建方式创建的函数,name :anonymous
+    var ff=new Function();
+    console.log(ff.name);
+
+    console.log((function () {}).name);
+</script>

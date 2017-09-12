@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script>
+    function toArray(likeArray) {
+        var ary=[];
+        for (var i=0;i<likeArray.length;i++){
+            ary.push(likeArray[i])
+        }
+        return ary;
+    }
+//    toArray();
+
+    //将数组复制一份一样的
+    var ary=[1,2,3,4,5];
+//    ary.splice(0);
+//    ary.slice();
+//    ary.slice(0);
+//    ary.concat();
+
+//    Array.prototype.slice=function (n,m) {
+//        var ary=[];
+//        for(var i=n;i<m;i++){
+//            ary.push(this[i])
+//        }
+//        return ary;
+//    };
+    var a=[3,2,4,5,6];
+    ary.slice.call(a);
+    //将啊克隆了一份一样的
+    //利用数组原型上的slice方法,通过call将里面的this变成类数组,从而将类数组变成数组
+    function toArray(likeArray) {
+        return [].slice.call(likeArray);
+        //return [].slice.call(likeArray,0);
+        //return Array.prototype.slice.call(likeArray)
+    }
+
+    function fn() {
+        console.log(toArray(arguments));
+    }
+    fn(1,2,3,4,5,6);
+
+    var lis=document.getElementsByTagName("li");
+    console.log(toArray(lis));
+    //console.log(lis);
+</script>

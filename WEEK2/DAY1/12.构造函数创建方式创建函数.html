@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function f1(m, n) {
+        return ++m;
+    }
+
+    var f2 = new Function("m,n", "return ++m;");
+    //1.参数是字符串
+    //2.第一个参数:形参
+    //3.第二个参数:函数体;
+    //4.当只传一个参数就是函数体
+    console.log(f2(1, 2, 3));
+
+    var f3 = new Function("console.log(1)");
+    f3();
+
+    var ary = [1, 2, 3, 4];
+    var f4 = new Function("return '" + ary + "'");
+    //"return '1,2,3,4'";
+    //    function f4() {
+    //        return '1,2,3,4'
+    //    }
+    console.log(f4());
+</script>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //apply 跟call的作用一模一样,唯一的区别传参数的方式不一样
+    //apply(第一个参数,第二个参数)
+    //第一个参数:改变前面函数this的
+    //第二个参数:是个数组,是将数组中的每一项分别传给前面的函数当做参数
+
+    //f1.call(obj,1,2,3,4)-->f1(1,2,3,4)
+    //f1.apply(obj,[1,2,3,4])-->f1(1,2,3,4)
+    var ary=[1,2,12,13,1,4,16,7,9];
+    //Math.max(1,2,12,13,1,4,16,7,9);
+    eval("Math.max("+ary+")");
+    //eval("Math.max("+"1,2,12,13,1,4,16,7,9"+")");
+
+    //以后如果是想改变this的话,使用call即可,如果是想利用参数是数组的形式可以使用apply
+    console.log(Math.max.apply(null, ary));
+</script>
