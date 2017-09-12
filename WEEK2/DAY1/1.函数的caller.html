@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    console.dir(Function.prototype);
+    //apply bind call caller
+
+    //caller  这个函数在哪个函数中调用了,caller就代表这个函数
+    //arguments.callee:代表当前函数本身
+    //例如 :
+    function f1() {
+        console.log(f1.caller);
+        console.log(arguments.callee);
+    }
+    function f2() {
+        f1();
+    }
+    function f3() {
+        f1();
+    }
+    f2();
+    f3();
+
+
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //call是个函数,他的作用
+    //1.让前面的函数执行
+    //2.修改前面函数中的this
+
+    //call(第一个参数obj,第二参数....)
+    //第一个参数:给其前面函数修改this的,变成obj
+    //第二参数....:给前面函数传参数用的
+    var obj={a:1};
+    function f1(m) {
+        console.log(this);
+        console.log(m);
+    }
+    //f1();
+    //f1.call(obj,10)
+    f1.call(null,10);
+    f1.call(undefined,10);
+
+    //非严格模式下,call()不传参数,null,undefined,都表示window
+    //严格模式下,null-->this=null, 不传和undefined -->this=undefined
+</script>

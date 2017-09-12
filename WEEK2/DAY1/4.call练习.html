@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function FF() {
+        this.x=1;
+        this.y=2;
+    }
+    FF.prototype.getX=function () {
+        console.log(this.x);
+        console.log(this);
+    };
+    FF();//window.x=1,window.y=2
+    var f=new FF;//{x:1,y:2}
+    FF.prototype.getX.call();
+    f.getX();
+    f.getX.call();
+    FF.prototype.getX.call(1);
+
+</script>

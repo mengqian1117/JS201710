@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    "use strict";//严格模式
+    function f1() {
+        console.log(this);
+    }
+    f1.call(null);//this  ->null
+    f1.call();//this  -->undefined
+    f1.call(undefined);//this  -->undefined
+
+    //在严格模式下函数执行前面没有点this就是undefined
+    f1();
+    window.f1();
+</script>
