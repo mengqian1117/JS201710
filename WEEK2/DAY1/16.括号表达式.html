@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //括号作用
+    //1.保证语法
+    ({a:1});
+    //2.运算优先级
+    (1+2)*2;
+    //3.括号表达式  值是括号中最后一项的值
+    var a=(1,2,3);
+    //a=3;
+    console.log(a);
+    (function () {
+        console.log("我是1");
+    },function () {
+        console.log("我是2");
+    })()
+</script>

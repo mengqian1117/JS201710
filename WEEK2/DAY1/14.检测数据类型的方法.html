@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<!--
+1.typeOf 检测的内容 :可以详细检测基本数据类型(null->Object),对于引用数据类型只有Object和function 2个结果
+
+2.对象 instanceof 类 :检测对象是不是类的一个实例,因为每一种数据类型都有自己所属的类,所以可以使用这个方法来检测数据类型,但是对于基本数据类型只有通过构造函数创建方式可以检测出来,对于引用数据类型什么方式都可以
+
+3.检测内容.constructor.name :利用的是类原型上的constructor属性指向类本身的原理,检测内容通过__proto__找到所属类的原型prototype上,原型prototype上有constructor正好指向类本身.类是个函数,我们可以通过函数名拿到
+
+4.Object.prototype.toString.call(检测的内容):利用Object原型上的toString方法比较特殊,通过改变this来实现数据类型的检测
+
+
+-->
+<script>
+
+    function getType(o) {
+        var type=typeof o;
+        if(type=="object"){
+            //type=o.constructor.name;
+            type=Object.prototype.toString.call(o);
+            type=type.slice(8,type.length-1);
+        };
+        return type;
+    }
+
+    console.log(getType({}));
+    console.log(getType(1));
+    console.log(getType("11"));
+    console.log(getType([1,2]));
+    console.log(getType(false));
+    console.log(getType(null));
+    console.log(getType(undefined));
+</script>

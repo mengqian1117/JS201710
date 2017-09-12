@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    console.dir(Number.prototype);
+    console.dir(Boolean.prototype);
+    console.dir(String.prototype);
+    console.dir(Array.prototype);
+    console.dir(Object.prototype);
+    console.dir(Function.prototype);
+    console.dir(Date.prototype);
+
+    var obj={};
+    console.log(obj.toString());
+    //"[object Object]"
+
+
+    console.log(Object.prototype.toString.call(1));
+    console.log(Object.prototype.toString.call('1'));
+    console.log(Object.prototype.toString.call(true));
+    console.log(Object.prototype.toString.call([1,2]));
+    console.log(Object.prototype.toString.call(/\d+/));
+    var str=Object.prototype.toString.call(/\d+/);
+    console.log(str.slice(8, str.length - 1));
+
+
+    function getType(o) {
+        var s=Object.prototype.toString.call(o);
+        return s.slice(8,s.length-1)
+    }
+
+    console.log(getType([1, 2]));
+    console.log(getType(1));
+    console.log(getType({}));
+</script>

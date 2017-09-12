@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //JSON是一种的数据格式
+    //JSON对象:属性名必须使用双引号包起来
+    var obj={"name":"a","age":12};
+    //常用的JSON对象
+    var dataObj=[{"name":"a","age":2},{"name":"b","age":12},{"name":"c","age":22},{"name":"d","age":32}];
+    //JSON字符串 :把JSON对象使用单引号包起来
+    var dataStr='[{"name":"a","age":2},{"name":"b","age":12},{"name":"c","age":22},{"name":"d","age":32}]';
+
+    //将JSON字符串变成JSON对象
+    //JSON.parse(JSON字符串)
+
+    console.log(JSON.parse(dataStr));
+    //将JSON对象串变成JSON字符
+    //JSON.stringify(JSON对象)
+    console.log(JSON.stringify(dataObj));
+
+    //在低版本IE下没有JSON
+    function toObj(str) {
+        if("JSON" in window){
+            return JSON.parse(str)
+        }else {
+            return eval(str);
+        }
+    }
+
+    //{}表示对象千万不要放在行首,可以使用一个()包起来保证语法正确
+    ({a:1,b:2});
+    var s='{"name":"a","age":12}';
+    //记住:以后eval字符串中遇到转为对象的大括号时候,一定要使用小括号()包起来
+    eval("("+s+")");
+    //({"name":"a","age":12})
+
+    //也可以使用这个
+    var f=new Function("return "+s);
+    console.log(f());
+
+</script>
