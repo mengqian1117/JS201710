@@ -16,6 +16,7 @@ xhr.send(null);
 
 //使用ES6模板字符串绑定数据
 function bindHTML(data) {
+    //每一次执行这个方法先将strHTML置为空``
     strHTML=``;
     data.forEach(function (item,index) {
         strHTML+=`<li>
@@ -47,6 +48,7 @@ for(var i=0;i<linkList.length;i++){
             data.sort(function (a,b) {
                 var prev=a["time"];//"2017-03-15"
                 var next=b["time"];//"2015-12-15"
+                //获取出来的是时间字符串,需要将-去掉,但是replace一次只能替换一个,我们这里采用的是正则,可以实现一次全都替换掉
                 prev=prev.replace(/-/g,"");
                 next=next.replace(/-/g,"");
                 return prev - next;
@@ -55,9 +57,23 @@ for(var i=0;i<linkList.length;i++){
             bindHTML(data);
 
         }else if(index==="1"){
-
+            //按照价格将data重新排序
+            data.sort(function (a,b) {
+                var prev=a["price"];
+                var next=b["price"];
+                return prev-next;
+            });
+            //将拍好顺序的数组data传给bindHTML方法重新渲染页面
+            bindHTML(data);
         }else {
-
+            //按照热度将data重新排序
+            data.sort(function (a,b) {
+                var prev=a["hot"];
+                var next=b["hot"];
+                return prev-next;
+            });
+            //将拍好顺序的数组data传给bindHTML方法重新渲染页面
+            bindHTML(data);
         }
     }
 }
