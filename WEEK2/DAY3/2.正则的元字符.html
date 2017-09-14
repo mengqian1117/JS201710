@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //正则: /元字符/修饰符
+
+    //元字符:写在/ /里面的都叫做元字符
+    //注意:一个元字符只能匹配一个字符
+    var reg=/\d/;
+    //有特殊意义的元字符n
+    //1.\转义
+    // 注意 \本身是转义的意思,如果只想让他变成\的意思,也需要转义
+    console.log(/\d/.test("1"));
+    console.log(/\\d/.test("\\d"));
+    console.log("\\\\d");//"\\d"
+
+
+    //遇到元字符先看是不是特殊的元字符,不是的话就代表本身的意思 比如/&/就匹配一个"&"
+    //2.^ 以什么什么开头
+    //只要是字符串中有1
+    //匹配的过程,去查找字符串,从第一项开始依次向后查找,一旦发现有匹配的内容,就停止查找返回true
+    console.log(/1/.test("哈哈1111哈哈哈111"));
+
+    ///^1/:必须是以1开头
+    console.log(/^1/.test("哈哈1"));//false
+    console.log(/^\d/.test("1哈哈"));//true
+
+    //3.$:以什么什么作为结尾
+    console.log(/2$/.test("哈2哈"));//false
+
+    //如果你规定了开头和结尾,中间没有量词元字符,那这个字符串的个数就限定了
+    console.log(/^e123f$/.test("e123f"));
+    console.log(/^s\d\ds$/.test("s21s"));
+
+    //4.\d:匹配一个数字字符
+    ///\d\d\d/:只要有连续出现3个数字
+    console.log(/\d\d\d/.test("12的22222hah2"));
+
+    //5.\D:匹配一个非数字字符
+    console.log(/\d\D/.test("111d11"));
+
+    //6.\w:数字,大小写字母,_ 一共63个
+    console.log(/\w/.test("1"));
+    console.log(/\w/.test("_"));
+
+    //7.\W:除了数字,大小写字母,_ 其他的任意一个字符
+    console.log(/\W/.test("1"));
+    console.log(/\W/.test("_"));
+
+    //8.\b:匹配一个边界   \b不可以写在两个元字符之间
+    console.log(/\b\d\b/.test("ha 1"));
+    console.log(/1 1/.test("1 1"));
+    console.log(/    /.test("1    1"));
+
+    //9.\B:匹配一个非边界字符
+    console.log(/\B1/.test("ha 1"));//false
+
+    //10.\s:匹配一个空白符
+    console.log(/\s\d/.test("1 11"));
+
+    //11.\S:匹配一个非空白符
+
+    //12.\n :匹配一个换行符
+    console.log('1\n1');
+    console.log('1\v1');
+    console.log(`1
+        2`);
+
+    //13.  .除了\n之外的任意一个字符
+</script>

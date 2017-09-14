@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1.正则是用来处理字符串的,看字符串符不符合这个这个正则定义的规则
+    var reg=/\d+/g;
+    console.log(RegExp.prototype);
+    //正则的方法:test 和  exec
+    //test 匹配 :true/false
+    var reg=/\d/;
+    console.log(reg.test("12613"));//true
+    console.log(reg.test("abcd"));//false
+    //exec 捕获:先判断是否匹配,匹配的话将匹配的内容捕获出来,不匹配返回null
+    console.log(reg.exec("6a"));
+    console.log(reg.exec("a"));
+</script>
