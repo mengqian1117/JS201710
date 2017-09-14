@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var str="zf123px345";
+    var reg=/(\w{2})(\d+)/g;
+
+    var s=str.replace(reg,function () {
+        //默认传的参数
+        //第一个参数arguments[0]:大正则捕获的内容
+        //第二个参数arguments[1]:第1个小分组捕获的内容
+        //第三个参数arguments[2]:第2个小分组捕获的内容
+        //......
+        //倒数第二个参数:大正则捕获的内容首字符的索引
+        //最后一个参数:原字符串
+        console.log(arguments);
+        //你return什么就替换成什么
+        return arguments[1]+"好";
+    });
+    console.log(s);
+
+    //1.把str变成大写的
+    var str="0123456789";//"0[零]1[壹]2[贰]3456789"
+    var ary=["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
+    var s1=str.replace(/\d/g,function () {
+        //"0"->"0[零]"
+        return arguments[0]+" ['"+ary[arguments[1]]+"'] ";
+    });
+    console.log(s1);
+
+    //2。2017年9月14日
+    var str="2017-09-14";
+    var ary=["年","月","日"];
+
+    var s='';
+    var a=str.split("-");
+    a.forEach(function (item,index) {
+        s+=Number(item)+ary[index]
+    });
+    console.log(s);
+
+    var s=str.replace(/(\d+)-(\d+)-(\d+)/,function () {
+        return arguments[1]+ary[0]+Number(arguments[2])+ary[1]+Number(arguments[3])+ary[2]
+    });
+    console.log(s);
+    var s=str.replace(/(\d+)-(\d+)-(\d+)/,"$1年$2月$3日");
+    //$1:第一个分组
+    //$2:第二个分组....
+    console.log(s);
+
+</script>

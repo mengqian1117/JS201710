@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //split(正则),按照正则匹配的内容将字符串拆分为数组
+    var str="z1f2p3x";
+    console.log(str.split(/\d/));
+    var str="2017-9-14 16:38";
+    console.log(str.split(/[ :-]/));
+
+    //search(正则) :正则匹配的内容在字符串中的索引
+    var str="zf123";
+    console.log(str.search(/\d/));
+
+    //replace(正则)
+    //replace一次只能替换一个,如果想全部替换就使用正则而且正则需要加上全局修饰符g
+    var str="1,2,3,4,5,6";
+    console.log(str.replace(/,/g, "+"));
+
+</script>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body></body>
+</html>
+<script>
+    //贪婪性:虽然只捕获一次,但是捕获的内容是匹配最多的
+    var reg=/\d+/g;
+    var str="zf2017px0914";
+    console.log(reg.exec(str));
+
+    //解决贪婪性:在量词元字符后面加上?
+    var reg=/\d+?/g;
+    var str="zf2017px0914";
+    console.log(reg.exec(str));
+
+    var reg=/\d{2,4}?/g;
+    var str="zf2017px0914";
+    console.log(reg.exec(str));
+
+    //分组只匹配不捕获 给分组小括号里面加上?:
+    var reg=/\w{2}(\d{4})/g;
+    var str="zf2017px0914";
+    console.log(reg.exec(str));
+    //["zf2017","2017"]
+    var reg=/\w{2}(?:\d{4})/g;
+    var str="zf2017px0914";
+    console.log(reg.exec(str));
+    //["zf2017"]
+
+</script>
