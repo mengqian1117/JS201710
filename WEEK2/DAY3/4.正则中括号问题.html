@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //x|y :匹配x或y中的一个 最后运算这个|
+    console.log(/10|20/.test("10"));
+    console.log(/10|20/.test("20"));
+
+    ///^10|20$/要么以10作为开头要么以20作为结尾
+    console.log(/^10|20$/.test("2000"));//false
+    console.log(/^10|20$/.test("1000"));//true
+
+    console.log(/^(10|20)$/.test("1000"));
+    console.log(/^(10|20)$/.test("10"));
+    console.log(/^(10|20)$/.test("20"));
+    //相当于下面两种情况
+    //   /^10$/ 或者 /^20$/
+
+    //[xyz]:匹配xyz中任意一个
+    /^[10]$/.test("0");
+    //[^xyz]:匹配不是xyz中任意一个  ^在[]中表示非的意思
+    /^[^10]$/.test("0");
+    /^[^10]$/.test("8");
+    //[a-z]英文字母a-z中的任意一个
+    console.log(/[0-3]/.test("2"));
+    // /[0-9a-zA-Z]/:从数字0-9,英文字母a-zhe大写的A-Z中任意一个
+    /[d-g]/;
+    //在[]中所有的字符都代表本身的意思(除了^和-,\)
+    console.log(/[a+]/.test("+"));
+    //[]中-想表示本身-的意思,就放在最后面
+    console.log(/[b-]/.test("-"));
+    /[0-36-9]/;
+    console.log(/[10|23]/.test("|"));
+
+    console.log(/^23|4/.test("24"));//true
+    console.log(/^23|4/.test("4"));//true
+    console.log(/^23|4/.test("34"));//true
+    console.log(/^23|4/.test("23"));//true
+    console.log(/^23|4/.test("2224"));//true
+    console.log(/^23|4/.test("4"));//true
+
+    //匹配20-29
+   // /[20-29]/  ->  2或者 0-2 或者9
+    ///[14-29]/:语法就是错误的 在中括号中n-m n<m
+
+    /^2\d$/;
+    /^2[0-9]$/;
+
+    //15-29
+    //15-19  20-29
+    /^(1[5-9]|2\d)$/;
+
+
+</script>

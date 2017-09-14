@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //exec:返回值是个数组
+    //第一项:捕获的内容
+    //index:捕获的内容首字符的索引
+    //input:原字符串
+    console.log(/\d/.exec("12345"));
+    //1.懒惰性,只会将第一次匹配的内容捕获出来后面的也会捕获了
+    //2.解决懒惰性:加上修饰符g->全局捕获
+    var reg=/\d/g;
+    var str="mengqian1234";
+//    console.log(reg.exec(str));
+//    console.log(reg.exec(str));
+//    console.log(reg.exec(str));
+//    console.log(reg.exec(str));
+//    console.log(reg.exec(str));
+
+    function getExec(str) {
+        var ary=[];
+        var a=reg.exec(str);
+        while (a){
+            ary.push(a[0]);
+            a=reg.exec(str);
+        }
+        return ary
+    }
+    console.log(getExec(str));
+    //match:字符串中的方法
+    //正则不加修饰符g结果跟exec一样的
+    //加上修饰符g,一次全都捕获出来,返回值也是一个数组,数组中没有index,和input这俩属性
+
+    var reg=/\d/g;
+    var str="zf20170914哈哈";
+    console.log(str.match(reg));
+
+</script>

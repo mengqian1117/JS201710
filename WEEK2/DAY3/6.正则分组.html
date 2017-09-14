@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //在正则中一个小括号代表一个小分组
+    //\1:代表第一个小分组匹配的内容
+    console.log(/(\w)ff\1/.test("2ff2"));
+    //good wood moon week cool feel deep book food foot feet..
+    console.log(/^[a-zA-Z]([a-zA-Z])\1[a-zA-Z]$/.test("good"));
+
+    //分组捕获,一旦加上小括号表示分组,分组的内容也会被捕获出来
+    //exec返回值数组:
+    //第一项[0]:大正则捕获的内容
+    //第二项[1]:第一个分组捕获的内容
+    //第三项[2]:第二个分组捕获的内容
+    //.......
+    //index:大正则捕获的内容首字符的索引
+    //input:原字符串
+
+    //注意=>嵌套括号时候:从外到里捕获
+    var reg=/\w(\d)\w(\d)/;
+    var str="z9f8";
+    console.log(reg.exec(str));
+</script>
