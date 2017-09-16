@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<form action="" autocomplete="on" id="form1">
+    <label for="user">用户</label>
+    <input type="text" name="user" id="user" autofocus required>
+    <br>
+    <label for="pw">密码</label>
+    <input type="text" id="pw" name="pw">
+    <br>
+    <input type="image" src="1.jpg" width="50" height="50" name="img">
+    选择地址:
+    <input type="url" list="url_list">
+    <datalist id="url_list">
+        <option label="百度" value="https://www.baidu.com/"></option>
+        <option label="好123" value="https://www.hao123.com/"></option>
+    </datalist>
+    <input type="file" multiple>
+    <input type="submit">
+</form>
+<input type="text" name="age" form="form1">
+</body>
+</html>
+<!--
+1.autocomplete: 自动完成填充,会记录之前输入的内容,给你自动提示
+2.autofocus 打开页面自动获取鼠标的焦点
+
+3.form:一个form之外的表单元素也让其属于这个form
+
+4.width height :只存在域input 的type是image的表单元素
+
+5.datalist
+
+6.multiple:可以选择多个文件
+
+7.required:必填的
+-->
+<script></script>

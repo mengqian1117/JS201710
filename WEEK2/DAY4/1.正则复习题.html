@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //10捕获出 str 中的“js+css+HTML5”
+    var str="zhufeng2017peixun:js+css+HTML5";
+    str.split(":")[1];
+    var reg=/:([0-9a-zA-Z+]+)/;
+    console.log(reg.exec(str)[1]);
+
+
+    //11
+    var str="zhufeng2016zhufeng:js+css+HTML5";
+    var reg=/\w+(\d+)/g;
+    var r=reg.exec(str);
+    var a=[];
+    while(r){
+        a.push(r[1]);
+        r=reg.exec(str);
+    }
+    console.log(a);
+    //a 为多少？
+
+
+    //11 找出
+    var url = "www.mq1117.cn ?course1=js&course2=css&course3=jQ";
+   // 变成Object {course1: "js", course2: "css", course3: "jQ"}  用正则
+
+    //第一种方法
+    function fn1(url) {
+        var ary=url.split("?")[1].split("&");
+        //['course1=js','course2=css','course3=jQ']
+        var obj={};
+        ary.forEach(function (item) {
+            var a=item.split("=");
+            obj[a[0]]=a[1];
+        });
+        return obj
+    }
+    console.log(fn1(url));
+
+    //方法二
+    function fn2(url) {
+        var ary=url.split(/[?&=]/g);
+        ary.shift();
+        var obj={};
+        for(var i=0;i<ary.length;i+=2){
+            obj[ary[i]]=ary[i+1];
+        }
+        return obj
+    }
+    console.log(fn2(url));
+
+    //方法三
+    function fn3(url) {
+        //"{course1:'js',course2:'css',course3:'jQ'}"
+        //" course1= js &course2=css  &course3=jQ   "
+        //=  ->  :'
+        //&  ->  ',
+        url=url.split("?")[1];
+        var str=url.replace(/=/g,":'").replace(/&/g,"',");
+        str="({"+str+"'})";
+        return eval(str);
+    }
+    function fn3(url) {
+        //可以将上面的fn3简写成下面的
+        return eval("({"+ url.split("?")[1].replace(/=/g,":'").replace(/&/g,"',")+"'})");
+    }
+    console.log(fn3(url));
+
+    //方法四
+    function fn4(url) {
+        var reg=/[?&](\w+)=(\w+)/g;
+        var obj={};
+        url.replace(reg,function () {
+            obj[arguments[1]]=arguments[2]
+        });
+
+        return obj
+    }
+    console.log(fn4(url));
+
+    //方法5
+    function fn5(url) {
+        return eval("({"+url.split("?")[1].replace(/&?(\w+)=(\w+)/g, "$1:'$2',")+"})");
+    }
+    console.log(fn5(url));
+
+</script>
