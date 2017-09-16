@@ -90,9 +90,10 @@
 <body>
 <!--
 pattern="":正则进行校验
+novalidate:不做校验
 -->
 <div id="form_content">
-    <form action="5.获取提交数据.html">
+    <form action="5.获取提交数据.html" novalidate>
         <div class="dc">
             <h3>用户注册页面</h3>
         </div>
@@ -137,6 +138,7 @@ pattern="":正则进行校验
     </form>
 </div>
 <script>
+    /*
     var user = document.getElementById("user");
     //获取焦点 onfocus
     user.onfocus=function () {
@@ -157,6 +159,27 @@ pattern="":正则进行校验
         }else {
             this.nextElementSibling.className="pc show_warn";
             this.nextElementSibling.innerHTML="×";
+        }
+    };
+
+    //自己定义错误信息的提示
+    //user.setCustomValidity("傻呀");
+
+    */
+
+    var inputList=document.getElementsByTagName("input");
+    for (var i=0;i<inputList.length-1;i++){
+        inputList[i].onfocus=function () {
+            this.nextElementSibling.style.display="block";
+        };
+        inputList[i].onblur=function () {
+            if(this.validity.valid){
+                this.nextElementSibling.className="pc show_pass";
+                this.nextElementSibling.innerHTML="√";
+            }else {
+                this.nextElementSibling.className="pc show_warn";
+                this.nextElementSibling.innerHTML="×";
+            }
         }
     }
 </script>

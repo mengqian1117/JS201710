@@ -8,4 +8,16 @@
 
 </body>
 </html>
-<script></script>
+<script>
+    console.log(window.location.href);
+    //1.window.location.href:拿到当前页面的url地址
+    //2.window.decodeURIComponent:解析一下url地址
+    var url=window.decodeURIComponent(window.location.href);
+
+    function format(url) {
+        return eval("({"+ url.split("?")[1].replace(/=/g,":'").replace(/&/g,"',")+"'})");
+    }
+    var obj=format(url);
+    console.log(obj);
+
+</script>
