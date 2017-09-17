@@ -1,0 +1,141 @@
+html,body,div,img{
+    margin: 0;
+    padding: 0;
+}
+img{
+    border: none;
+}
+.stage{
+    width: 200px;
+    height: 200px;
+    margin: 200px auto;
+    position: relative;
+    /* perspective:视距*/
+    perspective: 1200px;
+}
+#cube1{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    /* transform-style: preserve-3d告诉浏览器显现的3d效果*/
+    transform-style: preserve-3d ;
+    transform:   rotateX(-25deg)  rotateY(-20deg);
+    /*animation:自定义动画的名字(必填) 一轮动画运动的时间(单位秒s 必填) 延迟时间(s,选填) 执行的次数(默认1次,infinite:无数次) 运动曲线(默认:ease减速,linear匀速直线,ease-in由慢变快,ease-out:由快变慢,ease-in-out由慢变快再变慢 ) both:停在最后一帧;*/
+    animation: rotateCube 5s infinite linear;
+}
+#cube1 div{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    opacity: .5;
+}
+#cube1 div img{
+    width: 100%;
+    height: 100%;
+}
+#cube2{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    margin-top: -50px;
+    margin-left:-50px ;
+    transform-style: preserve-3d ;
+    transform:   rotateX(-25deg)  rotateY(-20deg);
+    animation: rotateCube 3s infinite linear;
+}
+#cube2 div{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+#cube2 div img{
+    width: 100%;
+    height: 100%;
+}
+
+/*前*/
+/*#cube1 下面的第一个div*/
+#cube1 div:nth-child(1){
+    /*translateZ:沿着Z轴方向平移,正值:往前平移,负值:往后平移*/
+    -wekit-transform: translateZ(100px);
+    -moz-transform: translateZ(100px);
+    -ms-transform: translateZ(100px);
+    -o-transform: translateZ(100px);
+    transform: translateZ(100px);
+}
+#cube2 div:nth-child(1){
+    /*translateZ:沿着Z轴方向平移,正值:往前平移,负值:往后平移*/
+    -wekit-transform: translateZ(50px);
+    -moz-transform: translateZ(50px);
+    -ms-transform: translateZ(50px);
+    -o-transform: translateZ(50px);
+    transform: translateZ(50px);
+}
+/*后*/
+#cube1 div:nth-child(2){
+    /*rotateY():绕着Y轴旋转,正值:顺时针,负值:逆时针*/
+    /*从轴的正方向去看顺时针还是逆时针*/
+    transform: rotateY(180deg) translateZ(100px);
+}
+#cube2 div:nth-child(2){
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+/*上*/
+#cube1 div:nth-child(3){
+    transform: rotateX(90deg) translateZ(100px);
+}
+#cube2 div:nth-child(3){
+    transform: rotateX(90deg) translateZ(50px);
+}
+/*下*/
+#cube1 div:nth-child(4){
+    transform: rotateX(-90deg) translateZ(100px);
+}
+#cube2 div:nth-child(4){
+    transform: rotateX(-90deg) translateZ(50px);
+}
+/*左*/
+#cube1 div:nth-child(5){
+    transform: rotateY(-90deg) translateZ(100px);
+}
+#cube2 div:nth-child(5){
+    transform: rotateY(-90deg) translateZ(50px);
+}
+/*右*/
+#cube1 div:nth-child(6){
+    transform: rotateY(90deg) translateZ(100px);
+}
+#cube2 div:nth-child(6){
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+@keyframes rotateCube {
+    0%{
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    100%{
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+.stage:hover #cube1 div:nth-child(1){
+    transform: translateZ(200px);
+}
+.stage:hover #cube1 div:nth-child(2){
+    transform: rotateY(180deg) translateZ(200px);
+}
+.stage:hover #cube1 div:nth-child(3){
+    transform: rotateX(90deg) translateZ(200px);
+}
+.stage:hover #cube1 div:nth-child(4){
+    transform: rotateX(-90deg) translateZ(200px);
+}
+.stage:hover #cube1 div:nth-child(5){
+    transform: rotateY(-90deg) translateZ(200px);
+}
+.stage:hover #cube1 div:nth-child(6){
+    transform: rotateY(90deg) translateZ(200px);
+}
+
