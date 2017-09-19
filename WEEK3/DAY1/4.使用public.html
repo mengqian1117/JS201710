@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 200%;
+            background-color: #aa24ff;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/public.js"></script>
+<script>
+    //获取整个网页的高
+    console.log(public.win("scrollHeight"));
+    //获取一屏幕的高
+    console.log(public.win("clientHeight"));
+
+    public.win("clientHeight",1000);
+
+    //修改scrollTop成600
+    public.win("scrollTop",2000)
+</script>

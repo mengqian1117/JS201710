@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box1 {
+            padding: 20px 0;
+            width: 100px;
+            height: 100.08888px;
+            border: 10px solid red;
+            border-left-width:30px ;
+            border-top-width:3.33333px ;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    珠峰珠峰培训培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训
+</div>
+</body>
+</html>
+<script>
+    var box1 = document.getElementById("box1");
+    console.log(box1.clientHeight);//140
+    //height+上下padding
+    //不可以修改
+    box1.clientHeight=200;
+
+    console.log(box1.clientLeft);
+    console.log(box1.clientTop);
+
+    //一屏的高/宽
+    document.documentElement.clientHeight||document.body.clientHeight;
+    document.documentElement.clientWidth||document.body.clientWidth
+</script>

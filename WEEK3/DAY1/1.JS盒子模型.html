@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        .box{
+            width: 200px;
+            /*height: 200px;*/
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+</div>
+</body>
+</html>
+<script>
+var box=document.getElementsByClassName("box")[0];
+console.log(window.getComputedStyle(box).height);
+</script>
+<!--
+height:如果给元素设置了高height,不管内容多少是否有溢出获取出的height都是你设置的高度,如果没有设置height获取出的就是真实内容的高度
+-->
+
+JS盒子模型:是JS提供了一系列的属性和方法,来获取CSS盒子模型的
+1.client系列
+clientHeight:内容的height+上下padding
+clientWidth: 内容的width+左右padding
+clientLeft:左边框的width
+clientTop: 上边框的width
+
+2.offset系列
+offsetHeight:clientHeight+上下border
+offsetWidth: clientWidth +左右border
+offsetParent:父级参照物
+offsetLeft:左偏移量(左边距离父级参照物的距离)
+offsetTop: 上偏移量(上边距离父级参照物的距离)
+
+3.scroll系列
+scrollHeight:内容有溢出的时候内容的height+上padding(内容没有溢出跟clientHeight一样的)
+scrollWidth:内容有溢出的时候内容的width+左padding(内容没有溢出跟clientWidth一样的)
+scrollLeft:内容区域滚出去的宽度
+scrollTop:内容区域滚出去的高度
+
+1.这十三个盒子模型属性只有scrollLeft和scrollTop是既可以获取又可以修改,其他的都是只读的,只能获取不能修改
+2.这十三个盒子模型属性获取的值都是整数,没有单位,一般浏览器会自动帮你四舍五入了

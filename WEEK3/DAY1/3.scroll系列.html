@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box1 {
+            padding: 20px ;
+            width: 100px;
+            height: 100px;
+            border: 10px solid red;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    珠峰珠峰培训培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰珠峰培训培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰珠峰培训培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰珠峰培训培训珠峰培训珠峰培训珠峰培训珠峰培训珠峰培训
+</div>
+</body>
+</html>
+<script>
+    var box1 = document.getElementById("box1");
+    console.log(box1.clientHeight);
+    console.log(box1.scrollHeight);
+    //没有溢出一样的
+    //有溢出:scrollHeight:真实内容的高度+上padding
+    //特殊:加上overflow:真实内容的高度+上下padding
+
+
+
+    //onscroll:只要滚动条发生改变就会触发这个事件
+    box1.onscroll=function () {
+        console.log(this.scrollTop);
+    };
+
+    //scrollTop和scrollLeft有最大值最小值
+    //最小值:0
+    //最大值:scrollHeight-clientHeight
+    //可以修改的,设置的值>最大值,就变为最大值;设置值<最小值,就变为最小值
+    box1.scrollTop=-400;
+
+    //整个网页高/宽
+    document.documentElement.scrollHeight||document.body.scrollHeight;
+    document.documentElement.scrollWidth||document.body.scrollWidth;
+</script>

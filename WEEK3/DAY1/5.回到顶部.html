@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,a{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 500%;
+            /*linear-gradient:线性渐变*/
+            background:linear-gradient(red,orange,yellow,green,blue,darkblue,purple,white,deepskyblue,green,yellow,orange,red) ;
+        }
+        a{
+            display:none ;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 20px;
+            line-height: 50px;
+            text-decoration: none;
+            text-align: center;
+            position: fixed;
+            left: 1200px;
+            top: 550px;
+            /*radial-gradient:径向渐变*/
+            background: radial-gradient(white,red,orange,yellow,green,purple,blue);
+        }
+        a.go{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<a href="javascript:;"></a>
+</body>
+</html>
+<!--
+1.当滚上去的距离>=一屏的高此时,让a标签显示
+2.给go绑定点击事件:让scrollTop一直减小,减小到0
+3.设置定时器来实现每隔一段时间让scrollTop减一个值,减小到0,清除定时器
+-->
+<script src="js/public.js"></script>
+<script>
+    var go=document.getElementsByTagName("a")[0];
+    var timer=null;
+    //先获取一屏的高
+    var wH=public.win("clientHeight");
+
+    window.onscroll=fn;
+    function fn() {
+        //当滚动条发生改变的时候就去判断,滚上去的距离跟一屏的高比较,一旦滚上去的距离>=一屏的高此时,让a标签显示
+        //获取scrollTop值
+        var wST=public.win("scrollTop");
+        //判断
+        if(wST>=wH){
+            go.className="go";
+        }
+
+    }
+
+    //给go绑定点击事件
+    go.onclick=function () {
+        //将上一次点击的时候开启的定期器清除掉
+        window.clearInterval(timer);
+        //设置定时器让scrollTop值减小
+        var sT=0;
+        timer=window.setInterval(function () {
+            //获取每一次的scrollTop
+            sT=public.win("scrollTop");
+            if(sT<=0){
+                //已经回到顶部了,就把定时器清除掉
+                window.clearInterval(timer);
+                //再把go隐藏掉
+                go.className="";
+                //后面不需要在减一次赋值了,直接return就可以了
+                //到头了,再把window.onscroll的方法fn还给人家,要不下一次滚动的时候没法用了
+                window.onscroll=fn;
+                return;
+            }
+            //减去50之后再赋值给"scrollTop"
+            public.win("scrollTop",sT-=50)
+        },10);
+        //当你点击的时候因为scrollTop会不断的减小,此时也会触发window.onscroll,让fn执行,但是没有必要这样做,所以此时我们先把window.onscroll=null,这样就不会执行fn这个函数了
+        window.onscroll=null;
+    }
+</script>
