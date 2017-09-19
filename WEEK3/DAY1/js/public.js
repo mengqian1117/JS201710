@@ -8,8 +8,24 @@ var public=(function () {
             document.documentElement[attr]=val;
             document.body[attr]=val;
         }
-    }
+    };
+    function offset(curEle) {
+        var p=curEle.offsetParent;
+        var l=curEle.offsetLeft;
+        var t=curEle.offsetTop;
+        while (p){
+            if(!window.navigator.userAgent.includes("MSIE 8.0")){
+                l+=p.clientLeft;
+                t+=p.clientTop;
+            }
+            l+=p.offsetLeft;
+            t+=p.offsetTop;
+            p=p.offsetParent;
+        }
+        return {left:l, top:t}
+    };
     return {
-        win:win
+        win:win,
+        offset:offset
     }
 })();

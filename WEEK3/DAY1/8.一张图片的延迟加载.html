@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html, body, div, img {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 200%;
+            background-color: #ffffe2;
+        }
+        #box{
+            width: 300px;
+            height: 250px;
+            border: 5px dashed orange;
+            margin: 1000px auto;
+            background: url("img/load.jpg") no-repeat center;
+            background-size:100% 100% ;
+        }
+        #box img{
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="" photo="img/0.jpg" alt="">
+</div>
+</body>
+</html>
+<!--
+为了保证打开页面时候的加载速度,一般不是第一屏的图片会让他在完全露出来之后再加载
+1.img图片的src属性,只要写上地址,一打开页面就会自动加载,所以延迟加载的时候我们先不给src属性加上地址,而是把真实图片的地址存储在当前这个img的自定义属性上,
+2.当滚动到一定位置,让图片漏出来之后,再把存储在自定义属性上的真实地址赋值给src,让其加载
+3.一般会给这个图片一个占位的背景图(一般不会超过5KB);
+
+-->
+<script src="js/public.js"></script>
+<script>
+
+var box=document.getElementById("box");
+var oImg=box.getElementsByTagName("img")[0];
+//获取盒子box的高度
+var boxH=box.offsetHeight;
+//获取盒子距离body的上偏移量
+var boxT=public.offset(box).top;
+//获取一屏的高
+var winH=public.win("clientHeight");
+window.onscroll=function () {
+    //当box完全露出来之后
+    //boxH+boxT==winH+public.win("scrollTop");
+    //public.win("scrollTop")>=boxH+boxT-winH;
+    if(public.win("scrollTop")>=boxH+boxT-winH){
+        //给img的src赋值
+        //获取出存储在img自定义属性photo中的真实地址值
+        var photo=oImg.getAttribute("photo");
+        //注意:给图片oImg的src赋值之前先检验一下地址是否正确
+        //创建替身:动态创建一个img标签,将这个地址赋值给这个替身的src,让他加载,如果加载成功说明这个地址是正确的
+        var scapegoat=new Image;
+        scapegoat.src=photo;
+        scapegoat.onload=function () {
+            //只要是这个图片加载成功就会执行这个函数,说明这个地址是正确的,也就是这时候,将这个正确的地址还给页面上的图片oImg
+            oImg.src=this.src;
+            fadeIn(oImg);
+            //一旦完成延迟加载之后,window.onscroll没有用了
+            window.onscroll=null;
+        }
+    }
+};
+
+//实现渐变的一个函数
+function fadeIn(ele) {
+    //设置一个定时器,让opacity从0加到1
+    ele.timer=window.setInterval(function () {
+        var opacity=Number(window.getComputedStyle(ele).opacity);
+        if(opacity>=1){
+            //透明度大于1了就清掉定时器
+            window.clearInterval(ele.timer);
+            return;
+        }
+        opacity+=0.01;
+        ele.style.opacity=opacity;
+
+    },30)
+}
+</script>
