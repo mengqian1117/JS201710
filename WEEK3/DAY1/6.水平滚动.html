@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div,img{
+            margin: 0;
+            padding:0;
+        }
+        .container{
+            width: 1200px;
+            height:200px ;
+            margin: 50px auto;
+            border: 1px solid saddlebrown;
+            box-shadow: 1px -1px 1px #554e21,2px -2px 2px #999,3px -3px 3px #999,4px -4px 4px #666,5px -5px 5px #666,6px -6px 6px #333,7px -7px 7px #333;
+            overflow-x: hidden;
+            font-size: 0;
+        }
+        .box{
+            width: 4000px;
+            height: 200px;
+        }
+        .box-begin,.box-end{
+            display: inline-block;
+        }
+        .box img{
+            border: none;
+            width: 200px;
+            height: 200px;
+            filter: blur(3px);
+        }
+        .box img:hover{
+            position: relative;
+            box-shadow: 1px 1px 1px #554e21;
+            top:-2px;
+            filter: blur(0);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+        <div class="box-begin">
+            <img src="img/0.jpg" alt="">
+            <img src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            <img src="img/5.jpg" alt="">
+            <img src="img/6.jpg" alt="">
+            <img src="img/7.jpg" alt="">
+            <img src="img/8.jpg" alt="">
+            <img src="img/9.jpg" alt="">
+        </div>
+        <div class="box-end">
+            <img src="img/0.jpg" alt="">
+            <img src="img/1.jpg" alt="">
+            <img src="img/2.jpg" alt="">
+            <img src="img/3.jpg" alt="">
+            <img src="img/4.jpg" alt="">
+            <img src="img/5.jpg" alt="">
+            <img src="img/6.jpg" alt="">
+            <img src="img/7.jpg" alt="">
+            <img src="img/8.jpg" alt="">
+            <img src="img/9.jpg" alt="">
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="js/public.js"></script>
+<script>
+    var box_begin=document.getElementsByClassName("box-begin")[0];
+    var con=document.getElementsByClassName("container")[0];
+    //第一个盒子的宽
+    var bbw=box_begin.clientWidth;
+    //设置一个定时器,实现con的scrollLeft不断的增加
+    var timer=null;
+    timer=window.setInterval(fn,1);
+    function fn() {
+        //如果到达最大值就从头0开始没有到最大值就继续++
+        con.scrollLeft>bbw?con.scrollLeft=0:con.scrollLeft++;
+    }
+    //鼠标放到con上让定时器停止
+    con.onmouseover=function () {
+        window.clearInterval(timer)
+    };
+    //鼠标移开加上定时间器
+    con.onmouseout=function () {
+        timer=window.setInterval(fn,1);
+    }
+
+</script>

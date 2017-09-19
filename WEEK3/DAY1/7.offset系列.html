@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            padding: 20px;
+            border: 10px solid red;
+        }
+
+        #outer {
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            border: 30px solid red;
+            padding: 20px;
+        }
+
+        #center {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border: 20px solid blue;
+            padding: 30px;
+        }
+
+        #inter {
+            width: 50px;
+            height: 50px;
+            border: 40px solid green;
+        }
+    </style>
+</head>
+<body>
+<!--<div id="box"></div>-->
+<div id="outer">
+    <div id="center">
+        <div id="inter"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    //    var box=document.getElementById("box");
+    //    console.log(box.clientWidth);//140
+    //    console.log(box.offsetWidth);//160
+
+    //offsetParent:父级参照物
+    //一个元素的父级参照物:一级一级往上找,找到一个定位元素(position)作为父级参照物,一直找到body还没有找到那么父级参照物就是body
+    //在IE8浏览器中,偏移量包括父级参照物的边框
+
+    var outer = document.getElementById("outer");
+    var center = document.getElementById("center");
+    var inter = document.getElementById("inter");
+    console.log(outer.offsetParent);
+    console.log(center.offsetParent);
+    console.log(inter.offsetParent);
+
+    //偏移量:当前元素的外边框距离父级参照物的内边框的距离
+    //offsetLeft:左偏移量
+    //offsetTop:上偏移量
+
+    console.log(document.body.offsetParent);
+    //获取一个元素距离body的偏移量
+    //先获取当前元素的offsetParent,然后求当前元素的偏移量再+父级参照物的边框,然后再去获取,父级参照物的父级参照物,如果不是null说明还没有找到body,那就继续加上偏移量和父级参照物的边框,......
+
+    //批量返回值,一般都是返回一个对象
+    //{left:左偏移量,top:上偏移量}
+
+    function offset(curEle) {
+        //获取当前元素的父级参照物
+        var p=curEle.offsetParent;
+        //获取当前元素的左偏移量
+        var l=curEle.offsetLeft;
+        //获取当前元素的上偏移量
+        var t=curEle.offsetTop;
+        //循环判断只要p不是null,就继续往上找
+        while (p){
+            //window.navigator.userAgent:获取浏览器版本的字符串
+            //"MSIE 8.0" 只要是字符串中含有这几个字符说明是IE8浏览器
+           if(!window.navigator.userAgent.includes("MSIE 8.0")){
+               //不是IE8浏览器的时候,加上父级参照物的边框
+               l+=p.clientLeft;
+               t+=p.clientTop;
+           }
+            //加上父级参照物的偏移量
+            l+=p.offsetLeft;
+            t+=p.offsetTop;
+            //再获取父级参照物的父级参照物
+            p=p.offsetParent;
+        }
+        return{
+            left:l,
+            top:t,
+        }
+    }
+
+    console.log(offset(center).left);
+    console.log(offset(center).top);
+
+
+
+
+
+    function offset(curEle) {
+        var p=curEle.offsetParent;
+        var l=curEle.offsetLeft;
+        var t=curEle.offsetTop;
+        while (p){
+            if(!window.navigator.userAgent.includes("MSIE 8.0")){
+                l+=p.clientLeft;
+                t+=p.clientTop;
+            }
+            l+=p.offsetLeft;
+            t+=p.offsetTop;
+            p=p.offsetParent;
+        }
+        return {left:l, top:t}
+    }
+
+</script>
