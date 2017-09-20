@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<!--
+1.opacity兼容问题
+curEle.style.opacity=val
+curEle.style.filter="alpha(opacity="+val*100+")"
+
+2.float兼容问题 俩个都加上不会出问题
+curEle.style.styleFloat=val;
+curEle.style.cssFloat=val;
+
+3.width/height/top/left/right/bottom/(margin/padding)(Top/Right/Bottom/Left)
+!isNaN(val)  ->val+"px"
+-->
+<script>
+
+    function setCss(curEle,attr,val) {
+        if(attr=="opacity"){
+            curEle.style.opacity=val;
+            curEle.style.filter="alpha(opacity="+val*100+")";
+            return;
+        }
+        if(attr=="float"){
+            curEle.style.cssFloat=val;
+            curEle.style.styleFloat=val;
+            return;
+        }
+        var reg=/^(width|height|top|left|right|bottom|(margin|padding)(Top|Left|Right|Bottom))$/g;
+        if(reg.test(attr)&&!isNaN(val)){
+            val+="px";
+        }
+        curEle.style[attr]=val;
+    }
+
+    var box=document.getElementById("box");
+//    setCss(box,"width",100);
+//    setCss(box,"height",200);
+//    setCss(box,"border","1px solid red");
+//    setCss(box,"backgroundColor","yellow");
+//    setCss(box,"opacity",0.1);
+//    setCss(box,"float","right");
+
+    setGroupCss(box,{width:500,height:200,opacity:1,border:"1px solid red",backgroundColor:"green",float:"left"});
+
+    function setGroupCss(curEle,cssObj) {
+        //cssObj没传undefined,undefined没有toSting这个方法, cssObj.toString()就会报错,所以当这时候需要给cssObj附一个值,这个值必须要有toString方法而且不能是对象
+        cssObj=cssObj||[];
+        if(cssObj.toString()=="[object Object]"){
+            for (var key in cssObj){
+                //key:样式属性
+                //cssObj[key]:样式属性值
+                setCss(curEle,key,cssObj[key])
+            }
+        }
+    }
+
+
+    //Object.prototype.toString.call([])
+
+</script>
