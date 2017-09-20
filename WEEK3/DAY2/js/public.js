@@ -75,11 +75,91 @@ var $=(function () {
             n=n-m;
         }
         return Math.round(Math.random()*(m-n)+n);
+    };
+
+    //6.getCss:获取样式属性值
+    //参数(curEle,attr):curEle当前元素,attr样式属性
+    //返回值:样式属性值
+    function getCss(curEle,attr) {
+        var val=null;
+        if("getComputedStyle" in window){
+            val=window.getComputedStyle(curEle)[attr];
+        }else {
+            if(attr=="opacity"){
+                val=curEle.currentStyle["filter"];
+                var reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/g;
+                val=reg.test(val)?RegExp.$1/100:1;
+            }else {
+                val=curEle.currentStyle[attr];
+            }
+        }
+        var reg=/^-?\d+(?:\.\d+)?(?:px|pt|pp|rem|em|deg)?$/;
+        val=reg.test(val)?parseFloat(val):val;
+        return val;
+    }
+
+    //7.setCss:设置样式属性值
+    //参数(curEle,attr,val):curEle当前元素,attr样式属性,val属性值
+    //返回值:无
+    function setCss(curEle,attr,val) {
+        if(attr==="opacity"){
+            curEle.style.opacity=val;
+            curEle.style.filter="alpha(opacity="+val*100+")";
+            return;
+        }
+        if(attr==="float"){
+            curEle.style.cssFloat=val;
+            curEle.style.styleFloat=val;
+            return;
+        }
+        var reg=/^(width|height|top|left|right|bottom|(margin|padding)(Right|Left|Top|Bootom))$/g;
+        if(reg.test(attr)&&!isNaN(val)){
+            val+="px";
+        }
+        curEle.style[attr]=val;
+    }
+
+    //8.setGroupCss:批量设置CSS样式
+    //参数(curEle,cssObj)
+    //返回值:无
+    function setGroupCss(curEle,cssObj) {
+        cssObj=cssObj||[];
+        if(cssObj.toString()==="[object Object]"){
+            for(var key in cssObj){
+                this.setCss(curEle,key,cssObj[key]);
+            }
+        }
+    }
+
+    //9.css:获取/设置css属性
+    //三个参数:设置
+    //俩个参数: 第二个参数是个对象   --> 批量设置
+    //         第二个参数不是个对象 --> 获取 有返回值
+
+    function css() {
+        if(arguments.length===3){
+            //apply不仅可以传数组还可以传类数组,比如:arguments
+            this.setCss.apply(this,arguments);
+            return;
+        }
+        if(arguments.length==2){
+            if(arguments[1].toString()=="[object Object]"){
+                this.setGroupCss.apply(this,arguments);
+                return;
+            }else {
+                return this.getCss.apply(this,arguments);
+            }
+        }
     }
     return{
         toArray:toArray,
         toJSONObj:toJSONObj,
         win:win,
         offset:offset,
+        getRandom:getRandom,
+        getCss:getCss,
+        setCss:setCss,
+        setGroupCss:setGroupCss,
+        css:css
     }
 })();

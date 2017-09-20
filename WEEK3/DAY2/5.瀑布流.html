@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,ul,li,img,p{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        img{
+            border: none;
+        }
+        body{
+            padding: 10px;
+            background-color: rgba(221,221,221,0.3);
+        }
+        ul{
+            float: left;
+            margin: 0 0.8%;
+            width: 18.4%;
+        }
+        ul li{
+            background-color: #fff;
+            margin: 10px 0;
+            box-shadow: 0px 1px 3px gray;
+            padding-bottom:10px ;
+        }
+        ul li img{
+            width: 100%;
+            opacity: 0;
+            height: 80%;
+        }
+        ul li p{
+            color: #ff4cd4;
+            font-size: 18px;
+            padding: 5px;
+            height: 18%;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <!--<li>-->
+        <!--<img src="" alt="">-->
+        <!--<p></p>-->
+    <!--</li>-->
+</ul>
+<ul></ul>
+<ul></ul>
+<ul></ul>
+<ul></ul>
+</body>
+</html>
+<!--
+页面上固定5个ul.每个ul的高度不设置让li撑开
+比如先创建30个li,循环添加到ul中,每次循环都给当前Height最小的ul加一个li
+创建li的时候让其高度是随机从180-300获取的,创建完这个li再给他增加一个img,img的src属性"img/XX.jpg",xx是从0-30之间随机获取的整数
+
+-->
+<script src="js/public.js"></script>
+<script>
+var oUl=document.getElementsByTagName("ul");
+//将oUl类数组变成数组
+oUl=$.toArray(oUl);
+function createLiToUl(num) {
+    //循环创建30个
+    for (var i=0;i<num;i++){
+        //让oUl按照高度Height排序
+        oUl.sort(function (a,b) {
+            return $.css(a,"height")-$.css(b,"height");
+        });
+        //创建li,img,p
+        var li=document.createElement("li");
+        var img=document.createElement("img");
+        var p=document.createElement("p");
+        //给p增加文字内容
+        p.innerHTML="喜欢这张图片就收藏吧~";
+        //给img的src设置图片地址,图片是随机获取的
+        img.src="img/"+$.getRandom(0,30)+".jpg";
+        //将img和p放到li中
+        li.appendChild(img);
+        li.appendChild(p);
+        //给li随机设置一个高度
+        $.css(li,"height",$.getRandom(220,350));
+        //将li放到oUl[0]
+        oUl[0].appendChild(li);
+        fadeIn(img);
+    }
+}
+createLiToUl(30);
+
+function fadeIn(ele) {
+    //设置一个定时器让透明度不断增加
+    ele.timer=window.setInterval(function () {
+        //获取透明度
+        var opacity=$.css(ele,"opacity");
+        //增加一个值
+        opacity+=0.01;
+        //将这个值给元素的透明度设置上
+        $.css(ele,"opacity",opacity);
+        //到大opacity的最大值1的时候清除定时器
+        if(opacity>=1){
+            window.clearInterval(ele.timer)
+        }
+    },30)
+};
+
+
+//当页面滚动到最底部的时候就开始加载新的图片,换句话说就是去执行createLiToUl()这个方法即可;
+//获取一屏的高度
+var wH=$.win("clientHeight");
+window.onscroll=function () {
+    //获取整个网页的高度
+    var sH=$.win("scrollHeight");
+    //获取滚上去的距离
+    var sT=$.win("scrollTop");
+    //当sT>=sH-wH-200
+    if(sT>=sH-wH){
+        createLiToUl(30);
+    }
+}
+</script>
