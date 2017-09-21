@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box" class="box1 box2 box3 box4"></div>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+
+    function hasClass(curEle,classStr) {
+        return new RegExp ("(^| +)"+classStr+"( +|$)") .test(curEle.className);
+    };
+    function removeClass(curEle,classStr) {
+        classStr=classStr.replace(/^ +| +$/g);
+        var ary=classStr.split(/ +/g);
+        ary.forEach(function (item) {
+            if(hasClass(curEle,item)){
+                curEle.className=curEle.className.replace(item,"")
+            }
+        })
+    }
+    removeClass(box,"box1 box2 box5");
+</script>

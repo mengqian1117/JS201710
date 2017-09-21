@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box" class="box11 box12 box3"></div>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    console.log(box.className);
+    box.className+=" box4";
+    //1.hasClass()判断元素中有没有某个类名
+    //参数(curEle,classStr)
+    //返回值:true/false
+    //"box1  box1 box2 box3"
+    //一个类名在这字符串中的位置,左边要么是空格要么作为开头,右边要么是空格要么作为结尾
+    // /(^| +)classStr( +|$)/
+    //new RegExp("(^| +)"+变量+"( +|$)");
+    function hasClass(curEle,classStr) {
+        var reg=new RegExp("(^| +)"+classStr+"( +|$)");
+        return reg.test(curEle.className);
+    }
+
+    console.log(hasClass(box, "box1"));
+    console.log(hasClass(box, "box2"));
+    console.log(hasClass(box, "box3"));
+    console.log(hasClass(box, "box4"));
+    console.log(hasClass(box, "box5"));
+</script>

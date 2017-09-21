@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box" class="box1"></div>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    function hasClass(curEle,classStr) {
+        return new RegExp("(^| +)"+classStr+"( +|$)").test(curEle.className);
+    };
+
+    //addClass:给一个元素增加一个或者多个class名
+    function addClass(curEle,classStr) {
+        //将classStr的首尾空格去掉,换句话说就是将它替换成空字符串''
+        classStr=classStr.replace(/^ +| +$/g,'');
+        //按照一到多个空格将classStr拆分为数组,数组中每一项都是一个class名
+        var ary=classStr.split(/ +/g);
+        //循环数组,将数组中的每一项给当前元素加上class名
+        ary.forEach(function (item) {
+            //添加class名之前先做判断,之前没有才增加
+            if(!hasClass(curEle,item)){
+                curEle.className+=(" "+item);
+            }
+        })
+    }
+    addClass(box,"  box1  box2     box3  ");
+    addClass(box,"box4")
+</script>

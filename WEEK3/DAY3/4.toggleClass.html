@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //toggleClass:之前有是删除,没有是增加
+
+    function toggleClass(curEle,classStr) {
+        var ary=classStr.replace(/^ +| +$/g).split(/ +/g);
+        ary.forEach(function (item) {
+            hasClass(curEle,item)?removeClass(curEle,item):addClass(curEle,item);
+        })
+    }
+</script>
