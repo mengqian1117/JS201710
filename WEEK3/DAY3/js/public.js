@@ -1,4 +1,7 @@
 var $=(function () {
+    var flag="getComputedStyle" in window;
+    //true:标准浏览器
+    //false:低版本浏览器
     //1.toArray:将类数组转数组
     //参数likeArray:类数组
     //返回值return:数组
@@ -13,7 +16,6 @@ var $=(function () {
             return ary;
         }
     };
-
     //2.toJSONObj:将JSON字符串变成JSON对象
     //参数JSONStr:JSON字符串
     //返回值return:JSON对象
@@ -24,7 +26,6 @@ var $=(function () {
             return eval("("+JSONStr+")");
         }
     };
-
     //3.win:求浏览器的盒子模型
     //参数(attr):获取      有返回值
     //参数(attr,val):设置   没有返回值
@@ -36,7 +37,6 @@ var $=(function () {
             document.body[attr]=val;
         }
     };
-
     //4.offset:获取元素距离body的偏移量
     //参数curEle:当前元素
     //返回值return:{left:值,top:值,}
@@ -55,7 +55,6 @@ var $=(function () {
         }
         return{left:l,top:t};
     };
-
     //5.getRandom:获取随机数
     //参数(n,m)
     //      n>m:获取m到n的随机数
@@ -76,7 +75,6 @@ var $=(function () {
         }
         return Math.round(Math.random()*(m-n)+n);
     };
-
     //6.getCss:获取样式属性值
     //参数(curEle,attr):curEle当前元素,attr样式属性
     //返回值:样式属性值
@@ -97,7 +95,6 @@ var $=(function () {
         val=reg.test(val)?parseFloat(val):val;
         return val;
     };
-
     //7.setCss:设置样式属性值
     //参数(curEle,attr,val):curEle当前元素,attr样式属性,val属性值
     //返回值:无
@@ -118,7 +115,6 @@ var $=(function () {
         }
         curEle.style[attr]=val;
     };
-
     //8.setGroupCss:批量设置CSS样式
     //参数(curEle,cssObj)
     //返回值:无
@@ -130,7 +126,6 @@ var $=(function () {
             }
         }
     };
-
     //9.css:获取/设置css属性
     //三个参数:设置
     //俩个参数: 第二个参数是个对象   --> 批量设置
@@ -163,7 +158,7 @@ var $=(function () {
             if(!this.hasClass(curEle,item)){
                 curEle.className+=(" "+item);
             }
-        })
+        },this)
     }
     //12:removeClass:删除Class名
     function removeClass(curEle,classStr) {
@@ -172,15 +167,75 @@ var $=(function () {
             if(this.hasClass(curEle,item)){
                 curEle.className=curEle.className.replace(item,"")
             }
-        })
+        },this)
     }
     //13.toggleClass:之前有是删除,没有是增加
-
     function toggleClass(curEle,classStr) {
         var ary=classStr.replace(/^ +| +$/g).split(/ +/g);
         ary.forEach(function (item) {
             this.hasClass(curEle,item)?this.removeClass(curEle,item):this.addClass(curEle,item);
-        })
+        },this)
+    }
+    //14.prev:获取哥哥元素节点
+    function prev(curEle) {
+        if(flag){
+            return curEle.previousElementSibling;
+        }
+        var pre=curEle.previousSibling;
+        //只有元素节点的nodeType是1
+        while (pre&&pre.nodeType!==1){
+            pre=pre.previousSibling;
+        }
+        return pre;
+    }
+    //15.获取弟弟元素节点
+    function next(curEle) {
+        if(flag){
+            return curEle.nextElementSibling;
+        }else {
+            var nex=curEle.nextSibling;
+            while (nex&&nex.nodeType!==1){
+                nex=nex.nextSibling;
+            }
+            return nex;
+        }
+    }
+    //16.获取所有的哥哥
+    function prevAll(curEle) {
+        var ary=[];
+        var pre=this.prev(curEle);
+        while (pre){
+            ary.unshift(pre);
+            pre=this.prev(pre);
+        }
+        return ary;
+    }
+    //17.获取所有的弟弟
+    function nextAll(curEle) {
+        var ary=[];
+        var nex=this.next(curEle);
+        while (nex){
+            ary.push(nex);
+            nex=this.next(nex);
+        }
+        return ary;
+    }
+    //18.获取相邻的兄弟 上一个哥哥+下一个弟弟
+    function sibling(curEle) {
+        var ary=[];
+        var pre=this.prev(curEle);
+        var nex=this.next(curEle);
+        pre?ary.push(pre):null;
+        nex?ary.push(nex):null;
+        return ary;
+    }
+    //19.获取所有的兄弟  所有的哥哥+所有的弟弟
+    function siblings(curEle) {
+        return this.prevAll(curEle).concat(this.nextAll(curEle));
+    }
+    //20.获取当前元素的索引,哥哥的个数
+    function index(curEle) {
+        return this.prevAll(curEle).length;
     }
     return{
         toArray:toArray,
@@ -196,5 +251,12 @@ var $=(function () {
         addClass:addClass,
         removeClass:removeClass,
         toggleClass:toggleClass,
+        prev:prev,
+        next:next,
+        prevAll:prevAll,
+        nextAll:nextAll,
+        sibling:sibling,
+        siblings:siblings,
+        index:index,
     }
 })();
