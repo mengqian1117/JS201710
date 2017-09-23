@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<ul id="list"></ul>
+</body>
+</html>
+<script>
+  var list=document.getElementById("list");
+  var lis=list.getElementsByTagName("li");
+  //通过DOM中的方法获取的元素跟页面上存在一一对应的关系,如果后期增加,修改或者移动,
+  //以后在做项目中,在JS文件中把获取元素放在最上面,这样可以统一管理
+  list.innerHTML="<li>1</li><li>2</li><li>3</li><li>4</li>";
+  var li=document.createElement("li");
+  list.appendChild(li);
+
+  console.log(lis);
+
+
+</script>

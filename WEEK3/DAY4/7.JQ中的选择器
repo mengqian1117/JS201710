@@ -1,0 +1,60 @@
+用来获取元素的方法
+1.基本选择器
+2.层次选择器
+3.基本过滤选择器
+4.内容过滤选择器
+5.可见性过滤选择器
+6.属性过滤选择器
+7.子元素过滤选择器
+
+<!--基本选择器-->
+1.ID选择器  一个元素
+2.类选择器  JQ元素集合
+3.标签选择器 JQ元素集合
+4.通配符选择器 JQ元素集合
+5.集合选择器  JQ元素集合
+<!-- 层级选择器-->
+1.后代选择器  JQ元素集合
+2.子代选择器 JQ元素集合
+3.下一个弟弟选择器 ()
+4.所有的弟弟选择器 JQ元素集合
+基本过滤选择器
+1.  :first 只能选择一个
+2.  :last 只能选择一个
+3.  :not  一组JQ集合
+4.  :odd  奇数  一组JQ集合
+5.  :even  偶数  一组JQ集合
+6.  :eq(索引)
+7.  :gt(索引)
+8.  :lt(索引)
+9.  :header  所有的h(h1-h6)标签
+10. :animated 选取所有进行动画的标签(JS动画,CSS动画不行)
+//内容过滤选择器
+1.  :contains("内容")
+2.  :has()
+3.  :empty  空元素
+4.  :parent   非空元素
+//可见性过滤选择器
+1.  :hidden 隐藏元素
+2.  :visible 可见元素
+//属性过滤选择器
+    $("div[id]");//所有 有ID名的div
+    $("div[class=box]");//所有class=box的div
+    $("div[class!=box]");//所有class!=box的div
+    $("div[class^=box]");//所有class以box开头的div
+    $("div[class$=box]");//所有class以box结尾的div
+    $("div[class*=box]");//所有class含有box的div
+    $("div[class|=box]");//所有class=box或者是以"box-"作为前缀的div
+    $("div[class~=box]");//所有class以空格分开后的class名中含有box的div
+ //子元素过滤选择器
+1.  :nth-child(1)  第一个孩子
+    $("div p:nth-child(1)");
+2.  :nth-child(odd) 是第奇数个孩子
+    $("div span:nth-child(odd)");
+3.  :nth-child(even) 是第偶数个孩子
+    $("div span:nth-child(even)");
+4.  :nth-child(3n)  n从1开始 是第3的倍数个孩子
+    $("div span:nth-child(3n)");
+5.  :first-child
+6.  :last-child
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div p="pp" id="box" class="box box1">
+    <p></p>
+    <span></span>
+</div>
+<div id="box1" class="box1 box2"></div>
+<ul id="list">
+    <li><a href="">1</a></li>
+    <li><a href="">2</a></li>
+    <li><a href="">3</a></li>
+</ul>
+<p style="visibility: hidden">哈哈</p>
+</body>
+</html>
+<script>
+    //使用JQ选择器选择出来的是个JQ对象,只能使用JQ中的方法,不可以使用原生的方法
+    //将JQ对象变成原生对象,在后面加一个[0]
+    // var box=document.getElementById("box");
+    // console.dir(box);
+    // box.onclick=function(){}
+    // $("#box")[0].onclick=function(){}
+
+    //把一个原生的对象变成一个JQ对象
+    //$(原生对象)
+</script>
+<script>
+    //基本选择器
+    //    1.ID选择器  一个元素
+    console.log($("#box"));
+    //    2.类选择器  JQ元素集合
+    console.log($(".box"));
+    //    3.标签选择器 JQ元素集合
+    $("div");
+    //    4.通配符选择器 JQ元素集合
+    $("*");
+    //    5.集合选择器  JQ元素集合
+    console.log($("p,div"));
+
+</script>
+<script>
+    //
+    <!-- 层级选择器-->
+    //    1.后代选择器  JQ元素集合
+    $("div p");
+    //    2.子代选择器 JQ元素集合
+    $("div>p");
+    //    3.下一个弟弟选择器 ()
+    console.log($("#box+"));
+    //    4.所有的弟弟选择器 JQ元素集合
+    console.log($("#box~"));//获取所有的弟弟(包括Script标签的)
+    console.log($("#box~div"));//获取所有的叫div的弟弟
+
+</script>
+<script>
+    //    基本过滤选择器
+    //    1.  :first 只能选择一个
+    console.log($("#list :first"));//获取#list的后代中是老大的
+    console.log($("div:first"));//获取第一个div
+    //    2.  :last 只能选择一个
+    $("#list :last");
+    //    3.  :not()  一组JQ集合
+    console.log($("#box :not(p)"));//#box后代中不是p的元素
+    //    4.  :odd  索引是奇数  一组JQ集合
+    console.log($("#list li:odd"));
+    //    5.  :even  索引是偶数  一组JQ集合
+    console.log($("#list li:even"));
+    //    6.  :eq(索引)
+    console.log($("#list li:eq(2)"));
+    //    7.  :gt(索引)
+    console.log($("#list li:gt(1)"));//索引大于1的元素
+    //    8.  :lt(索引)
+    console.log($("#list li:lt(1)"));//索引小于1的元素
+    //    9.  :header  所有的h(h1-h6)标签
+    //    10. :animated 选取所有进行动画的标签(JS动画,CSS动画不行)
+</script>
+<script>
+    //内容过滤选择器
+    //    1.  :contains("内容")
+    console.log($("p:contains('哈哈')"));
+    //    2.  :has(通常填一个标签)
+    console.log($("div:has(p)"));//包含p标签的div
+    //    3.  :empty  空元素
+    $("div:empty");//标签中没有任何东西的div
+    //    4.  :parent   非空元素
+
+    //可见性过滤选择器
+    //    1.  :hidden 隐藏元素  只针对display:none这种隐藏方式
+    console.log($("p:hidden"));
+    //    2.  :visible 可见元素
+</script>
+<script>
+
+    //属性过滤选择器
+    console.log($("div[p]"));//[内置属性和自定义属性都可以]所有 有class名的div
+    console.log($("div[class=box]"));//只能是class="box",只有一个
+    $("div[class!=box]");//所有class!=box的div
+    console.log($("div[class^=box]"));//所有class以box开头的div,例如box1也是可以的
+    $("div[class$=box]");//所有class以box结尾的div 比如b-box
+    $("div[class*=box]");//所有class含有box的div 比如curbox1
+    $("div[class|=box]");//所有class=box或者是以"box-"作为前缀的div,例如 box 或者box-p
+    console.log($("div[class~=box]"));//所有class以空格分开后的class名中含有box的div
+</script>
+<script>
+    //子元素过滤选择器
+    //    1.  :nth-child(1)  第一个孩子
+    //    $("div p:nth-child(1)");
+    //    2.  :nth-child(odd) 是第奇数个孩子
+    //    $("div span:nth-child(odd)");
+    //    3.  :nth-child(even) 是第偶数个孩子
+    //    $("div span:nth-child(even)");
+    //    4.  :nth-child(3n)  n从1开始 是第3的倍数个孩子
+    //    $("div span:nth-child(3n)");
+    //    5.  :first-child
+    //    6.  :last-child
+</script>

@@ -14,14 +14,21 @@
 
     var ary=[1,2,3,4,5,6];
 
+    //第一个参数fn是个函数
+    //第二个参数obj是改变第一个参数函数fn的this的
     Array.prototype.forEach=function (fn,obj) {
         //this:数组实例
+        //循环数组让函数fn 依次执行,执行的时候通过call来改变fn的this,给fn传三个参数(当前项this[i],索引i,原数组this)
+        //forEach不需要要返回值
         for(var i=0;i<this.length;i++){
-            fn.call(obj,this[i],i,this)
+            fn.call(obj,this[i],i,this);
         }
     };
 
     Array.prototype.map=function (fn,obj) {
+        //this:数组实例
+        //循环数组让函数fn 依次执行,执行的时候通过call来改变fn的this,给fn传三个参数(当前项this[i],索引i,原数组this),将返回值值push到数组ary中
+        //返回值:fn每次执行的结果组成的新的数组ary
         var ary=[];
         for(var i=0;i<this.length;i++){
             ary.push(fn.call(obj,this[i],i,this))
@@ -30,6 +37,8 @@
     };
 
     Array.prototype.find=function (fn,obj) {
+        //this:数组实例
+        //循环数组让函数fn 依次执行,执行的时候通过call来改变fn的this,给fn传三个参数(当前项this[i],索引i,原数组this),一直到fn的返回值为true的时候停止循环,返回当前项this[i]
         for(var i=0;i<this.length;i++){
             if(fn.call(obj,this[i],i,this)){
                 return this[i]
@@ -37,6 +46,8 @@
         }
     };
     Array.prototype.findIndex=function (fn,obj) {
+        //this:数组实例
+        //循环数组让函数fn 依次执行,执行的时候通过call来改变fn的this,给fn传三个参数(当前项this[i],索引i,原数组this),一直到fn的返回值为true的时候停止循环,返回当前项的索引 i
         for(var i=0;i<this.length;i++){
             if(fn.call(obj,this[i],i,this)){
                 return i
@@ -45,6 +56,9 @@
     };
 
     Array.prototype.filter=function (fn,obj) {
+        //this:数组实例
+        //循环数组让函数fn 依次执行,执行的时候通过call来改变fn的this,给fn传三个参数(当前项this[i],索引i,原数组this),将fn的返回值是true的对应的原数组this的那一项this[i],push到数组ary中
+        //返回值:新的数组ary
         var ary=[];
         for(var i=0;i<this.length;i++){
             if(fn.call(obj,this[i],i,this)){
