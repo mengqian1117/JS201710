@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function sum() {
+        arguments.__proto__=Array.prototype;
+        return eval(arguments.join("+"));
+    }
+
+    console.log(sum(1, 2, 3, 4, 5));
+    var ary = [1, 2, 3];
+    ary.join("+");
+    //ary.__proto__==>Array.prototype.join
+    //arguments.join
+    //arguments.__proto__==>Object.prototype
+    //arguments.__proto__==>Array.prototype
+    //Object.prototype.toString();
+
+    console.log(ary.toString());//"1,2,3"
+    ary.__proto__=Object.prototype;
+    console.log(ary.toString());
+    var time=new Date();
+    time.__proto__=Object.prototype;
+    console.log(time.toString());
+</script>

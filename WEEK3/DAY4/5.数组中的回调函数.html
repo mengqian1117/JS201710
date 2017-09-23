@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //函数当做参数,叫做回调函数
+    //比如:数组中有很多方法是是传进去一个函数去执行的
+
+    var ary=[1,2,3,4,5,6];
+
+    Array.prototype.forEach=function (fn,obj) {
+        //this:数组实例
+        for(var i=0;i<this.length;i++){
+            fn.call(obj,this[i],i,this)
+        }
+    };
+
+    Array.prototype.map=function (fn,obj) {
+        var ary=[];
+        for(var i=0;i<this.length;i++){
+            ary.push(fn.call(obj,this[i],i,this))
+        }
+        return ary;
+    };
+
+    Array.prototype.find=function (fn,obj) {
+        for(var i=0;i<this.length;i++){
+            if(fn.call(obj,this[i],i,this)){
+                return this[i]
+            }
+        }
+    };
+    Array.prototype.findIndex=function (fn,obj) {
+        for(var i=0;i<this.length;i++){
+            if(fn.call(obj,this[i],i,this)){
+                return i
+            }
+        }
+    };
+
+    Array.prototype.filter=function (fn,obj) {
+        var ary=[];
+        for(var i=0;i<this.length;i++){
+            if(fn.call(obj,this[i],i,this)){
+                ary.push(this[i])
+            }
+        }
+        return ary;
+    };
+
+
+    var a=ary.find(function (item,index,input) {
+        console.log(item);
+        return item>3
+    });
+    console.log(a);
+
+
+</script>

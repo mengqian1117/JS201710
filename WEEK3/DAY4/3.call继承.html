@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function A() {
+        //this->实例
+        //this==实例a
+        this.a=1;
+        //将B类中的this变成A类的实例,那么B类的实例上的是有事属性就变成了A类实例的私有属性
+        B.call(this);//核心
+    }
+    function B() {
+        this.b=2
+    }
+    A.prototype.getA=function () {};
+    B.prototype.getB=function () {};
+    Object.assign(A.prototype,B.prototype);
+    var a=new A();//{a:1,b:2}
+    console.log(a);
+
+    //寄生组合继承
+    //call继承+Object.assign(A.prototype,B.prototype);
+
+</script>
