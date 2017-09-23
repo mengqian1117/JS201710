@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //函数的三种身份
+    //1.普通函数  fn()-->this==window
+    //2.类  new fn()-->this==当前实例  prototype
+    //3.是Function类的一个实例   __proto__
+
+    function fn() {
+        console.log(this);
+    }
+    new fn()
+</script>

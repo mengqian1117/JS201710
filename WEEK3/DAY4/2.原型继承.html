@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    function A() {
+        this.a="a";
+    };
+    A.prototype.getA=function () {
+        console.log(this.a);
+    };
+    function B() {
+        this.b="b"
+    };
+    B.prototype.getB=function () {
+        console.log(this.b);
+    };
+
+    // A.prototype=new B():这个可以获取B的实例的私有属性b,也可以通过__proto__得到B的原型上的公有方法getB
+    //弊端:A.prototype原来的属性和方法就没了
+    //A.prototype=new B();
+
+    //Object.assign(A.prototype,new B):既保留了A.prototype原来的方法和属性还可以拿到B的实例的私有属性
+    //弊端:获取不到B的原型上的公有的属性和方法
+    //Object.assign(A.prototype,new B);
+
+    //综上所述,结合自己写的一个方法assign,即实现了合并对象也实现了获取原型上的公有方法
+    assign(A.prototype,new B);
+    var a=new A;
+    console.log(a);
+
+    //a.__proto__==>A.prototype
+    //A.prototype.__proto__==>B.prototype
+    //合并对象:Object.assign(obj1,obj2)
+    //将obj2合并到obj1上
+
+
+
+    function assign(obj1,obj2) {
+        //将obj2的私有属性给obj1当做私有属性
+        //将obj2的公有属性给obj1当做公有属性
+        for(var key in obj2){
+            if(obj2.hasOwnProperty(key)){
+                obj1[key]=obj2[key]
+            }else {
+                obj1.__proto__[key]=obj2[key];
+            }
+        }
+    }
+</script>
