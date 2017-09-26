@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 100px;
+            top: 20px;
+            opacity:0.1;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="js/public.js"></script>
+<script>
+    function linear(begin,target,duration,time) {
+        return begin+(target-begin)/duration*time;
+    }
+    var box=document.getElementById("box");
+    var begin={
+        left:$.css(box,"left"),
+        top:$.css(box,"top"),
+        opacity:$.css(box,"opacity"),
+        width:$.css(box,"width"),
+        height:$.css(box,"height")
+    };
+    var target={
+        left:$.win("clientWidth")-200,
+        top:$.win("clientHeight")-200,
+        opacity:1,
+        width:200,
+        height:200
+    };
+    var duration=2000;
+    var time=0;
+    var timer=null;
+    var interval=17;
+    timer=window.setInterval(function () {
+        time+=interval;
+        if(time>=duration){
+           window.clearInterval(timer);
+           //循环目标值Target,将每一项的目标值赋值给box的对应css样式属性key
+           for (var key in target){
+               $.css(box,key,target[key])
+           }
+           return;
+        }
+        //循环对象target按照属性名设置每一个css样式属性值
+        //注意给linear传参数的时候是将begin和Target的每一个属性key的属性值传进去
+        for(var key in target){
+            $.css(box,key,linear(begin[key],target[key],duration,time));
+        }
+    },interval)
+</script>

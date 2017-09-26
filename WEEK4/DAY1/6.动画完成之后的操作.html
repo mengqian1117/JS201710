@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 100px;
+            top: 20px;
+            opacity:0.1;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="js/public.js"></script>
+<script>
+    var box=document.getElementById("box");
+    var begin={
+        left:$.css(box,"left"),
+        top:$.css(box,"top"),
+        width:$.css(box,"width"),
+        height:$.css(box,"height"),
+        opacity:$.css(box,"opacity"),
+    };
+    var target={
+        left:$.win("clientWidth")-200,
+        top:$.win("clientHeight")-200,
+        opacity:1,
+        width:200,
+        height:200
+    };
+    var duration=2000;
+    var interval=17;
+    var timer=null;
+    var time=0;
+    timer=window.setInterval(function () {
+        time+=interval;
+        if(time>=duration){
+           window.clearInterval(timer);
+           for (var key in target){
+               $.css(box,key,target[key])
+           }
+           //这里是动画完成的时候
+            $.css(box,{borderRadius:"50%",backgroundColor:"red"});
+           return;
+        }
+        for (var key in target){
+            $.css(box,key,linear(begin[key],target[key],duration,time));
+        }
+    },interval);
+
+    function linear(b,t,d,time) {
+        return b+(t-b)/d*time;
+    }
+</script>
