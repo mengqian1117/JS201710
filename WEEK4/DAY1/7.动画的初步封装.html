@@ -48,6 +48,7 @@
             return b+(t-b)/d*time;
         }
         var effectAry=[linear];
+
         //3.根据参数目标值target求元素的起始位置begin
         //判断只有target是个对象的时候才循环
         var begin={};
@@ -76,9 +77,17 @@
 
     var box=document.getElementById("box");
     var btn=document.getElementById("btn");
+    btn.isClick=true;
     btn.onclick=function () {
-        animation(box,{left:1000,opacity:1},3000,17,0,function () {
-            this.innerHTML="到头了";
-        })
+        if(this.isClick){
+            animation(box,{left:$.win("clientWidth")-box.offsetWidth,opacity:1},3000,17,0,function () {
+                $.css(this,"backgroundColor","red");
+                animation(this,{left:100,opacity:0.1},2000,15,0,function () {
+                    $.css(this,"backgroundColor","green");
+                    btn.isClick=true;
+                });
+            })
+        }
+        this.isClick=false;
     }
 </script>

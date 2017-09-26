@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 100px;
+            top: 20px;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<p id="p1"></p>
+</body>
+</html>
+<script src="js/public.js"></script>
+<script src="js/animation.js"></script>
+<script>
+    var  box=document.getElementById("box");
+    var  p1=document.getElementById("p1");
+
+    box.animation({left:1200,opacity:1}).onclick=function () {
+        alert(1)
+    };
+
+</script>

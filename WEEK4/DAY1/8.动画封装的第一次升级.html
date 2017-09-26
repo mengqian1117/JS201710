@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 100px;
+            top: 20px;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script src="js/public.js"></script>
+<!--
+参数
+ele:必填 当前执行动画的元素
+target:必填的  目标值,是个对象
+参数是函数的就当做回调函数,也有可能传多个函数,那么就把所有的函数放在一个数组中,依次执行即可
+
+参数是数字的时候
+数字>100==>总时间duration
+剩下的第一个是频率interval,第二个是运动曲线
+-->
+<script>
+    function animation(ele, target) {
+        //1.准备变量存储一些值
+        var duration, interval, effect, begin = {}, timer = null, time = 0;
+        var cbAry = [], numAry = [];
+        //2.对剩下的参数分类存放,从arguments[2]开始循环参数,如果是函数就放到存放函数的数组cbAry中,如果是数字就放到存放数字的数组numAry中
+        for (var i = 2; i < arguments.length; i++) {
+            if (typeof arguments[i] == "function") {
+                cbAry.push(arguments[i])
+            } else if (typeof arguments[i] == "number") {
+                numAry.push(arguments[i])
+            }
+        }
+        //3.对存放数字的数组中的值做处理
+        for (var i = 0; i < numAry.length; i++) {
+            if (numAry[i] > 100) {
+                //当做总时间
+                duration = numAry[i];
+                //从数组中删除这一项
+                numAry.splice(i, 1);
+                //防止数组的塌陷
+                i--;
+            }
+        }
+        //没传给他一个默认值
+        duration = duration || 2000;
+        //数组numAry剩下的就分给 interval,effect
+        interval = numAry[0] || 17;
+        effect = (isNaN(numAry[1]) || numAry[1] > 24) ? 0 : numAry[1];
+        //4.根据target给begin赋值
+        if (target && target.toString() == "[object Object]") {
+            for (var key in target) {
+                begin[key] = $.css(ele, key);
+            }
+        }
+        //5.将所有的运动曲线放到一个数组中
+        var Effect = {
+            //匀速
+            Linear: function (t, b, c, d) {
+                return c * t / d + b;
+            },
+            //指数衰减的反弹缓动
+            BounceEaseIn: function (t, b, c, d) {
+                return c - Effect.BounceEaseOut(d - t, 0, c, d) + b;
+            },
+            BounceEaseOut: function (t, b, c, d) {
+                if ((t /= d) < (1 / 2.75)) {
+                    return c * (7.5625 * t * t) + b;
+                } else if (t < (2 / 2.75)) {
+                    return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+                } else if (t < (2.5 / 2.75)) {
+                    return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+                } else {
+                    return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+                }
+            },
+            BounceEaseInOut: function (t, b, c, d) {
+                if (t < d / 2) {
+                    return Effect.BounceEaseIn(t * 2, 0, c, d) * .5 + b;
+                }
+                return Effect.BounceEaseOut(t * 2 - d, 0, c, d) * .5 + c * .5 + b;
+            },
+
+            //二次方的缓动
+            QuadEaseIn: function (t, b, c, d) {
+                return c * (t /= d) * t + b;
+            },
+            QuadEaseOut: function (t, b, c, d) {
+                return -c * (t /= d) * (t - 2) + b;
+            },
+            QuadEaseInOut: function (t, b, c, d) {
+                if ((t /= d / 2) < 1) {
+                    return c / 2 * t * t + b;
+                }
+                return -c / 2 * ((--t) * (t - 2) - 1) + b;
+            },
+
+            //三次方的缓动
+            CubicEaseIn: function (t, b, c, d) {
+                return c * (t /= d) * t * t + b;
+            },
+            CubicEaseOut: function (t, b, c, d) {
+                return c * ((t = t / d - 1) * t * t + 1) + b;
+            },
+            CubicEaseInOut: function (t, b, c, d) {
+                if ((t /= d / 2) < 1) {
+                    return c / 2 * t * t * t + b;
+                }
+                return c / 2 * ((t -= 2) * t * t + 2) + b;
+            },
+
+            //四次方的缓动
+            QuartEaseIn: function (t, b, c, d) {
+                return c * (t /= d) * t * t * t + b;
+            },
+            QuartEaseOut: function (t, b, c, d) {
+                return -c * ((t = t / d - 1) * t * t * t - 1) + b;
+            },
+            QuartEaseInOut: function (t, b, c, d) {
+                if ((t /= d / 2) < 1) {
+                    return c / 2 * t * t * t * t + b;
+                }
+                return -c / 2 * ((t -= 2) * t * t * t - 2) + b;
+            },
+
+            //五次方的缓动
+            QuintEaseIn: function (t, b, c, d) {
+                return c * (t /= d) * t * t * t * t + b;
+            },
+            QuintEaseOut: function (t, b, c, d) {
+                return c * ((t = t / d - 1) * t * t * t * t + 1) + b;
+            },
+            QuintEaseInOut: function (t, b, c, d) {
+                if ((t /= d / 2) < 1) {
+                    return c / 2 * t * t * t * t * t + b;
+                }
+                return c / 2 * ((t -= 2) * t * t * t * t + 2) + b;
+            },
+
+            //正弦曲线的缓动
+            SineEaseIn: function (t, b, c, d) {
+                return -c * Math.cos(t / d * (Math.PI / 2)) + c + b;
+            },
+            SineEaseOut: function (t, b, c, d) {
+                return c * Math.sin(t / d * (Math.PI / 2)) + b;
+            },
+            SineEaseInOut: function (t, b, c, d) {
+                return -c / 2 * (Math.cos(Math.PI * t / d) - 1) + b;
+            },
+
+            //指数曲线的缓动
+            ExpoEaseIn: function (t, b, c, d) {
+                return (t == 0) ? b : c * Math.pow(2, 10 * (t / d - 1)) + b;
+            },
+            ExpoEaseOut: function (t, b, c, d) {
+                return (t == d) ? b + c : c * (-Math.pow(2, -10 * t / d) + 1) + b;
+            },
+            ExpoEaseInOut: function (t, b, c, d) {
+                if (t == 0) return b;
+                if (t == d) return b + c;
+                if ((t /= d / 2) < 1) return c / 2 * Math.pow(2, 10 * (t - 1)) + b;
+                return c / 2 * (-Math.pow(2, -10 * --t) + 2) + b;
+            },
+
+            //圆形曲线的缓动
+            CircEaseIn: function (t, b, c, d) {
+                return -c * (Math.sqrt(1 - (t /= d) * t) - 1) + b;
+            },
+            CircEaseOut: function (t, b, c, d) {
+                return c * Math.sqrt(1 - (t = t / d - 1) * t) + b;
+            },
+            CircEaseInOut: function (t, b, c, d) {
+                if ((t /= d / 2) < 1) {
+                    return -c / 2 * (Math.sqrt(1 - t * t) - 1) + b;
+                }
+                return c / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1) + b;
+            },
+
+        };
+        var effectAry = [];
+        for (var key in Effect) {
+            effectAry.push(Effect[key]);
+        }
+        //6.开启定时器,执行动画
+        timer = window.setInterval(function () {
+            time += interval;
+            if (time >= duration) {
+                window.clearInterval(timer);
+                for (var key in target) {
+                    $.css(ele, key, target[key]);
+                }
+                cbAry.forEach(function (item) {
+                    item.call(ele)
+                });
+                return;
+            }
+            for (var key in target) {
+                $.css(ele, key, effectAry[effect](time, begin[key], target[key] - begin[key], duration))
+            }
+        }, interval)
+    }
+</script>
+<script>
+    //    animation(document.getElementById("box"),{
+    //        left:1000,opacity:1,top:500
+    //    },3000,15,2,function () {
+    //        $.css(this,"backgroundColor","red")
+    //    },function () {
+    //        $.css(this,"borderRadius","50%")
+    //    })
+
+    var box = document.getElementById("box");
+    function go() {
+        animation(box,{left:1000,opacity:1},function () {
+            $.css(this,{backgroundColor:"red",borderRadius:"50%"});
+            back()
+        })
+    }
+    function back() {
+        animation(box,{left:100,opacity:0.1},function () {
+            $.css(this,{backgroundColor:"green",borderRadius:"0"});
+            go()
+        })
+    }
+    go();
+</script>
