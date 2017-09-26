@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 100px;
+            top: 20px;
+            opacity:0.1;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<button id="btn">走着</button>
+</body>
+</html>
+<script src="js/public.js"></script>
+<script>
+    function animation(ele,target,duration,interval,effect,callback) {
+        //ele:执行动画的元素    必填
+        //target:目标值        必填
+        //duration:运动总时间  选填(默认值2000)
+        //interval:频率       选填(默认值13)
+        //effect:运动曲线      选填(匀速直线运动)
+        //callback:回调函数,动画换完成之后的操作  选填
+
+        //1.处理参数默认值情况
+        duration=duration||2000;
+        interval=interval||13;
+        effect=effect||0;
+        ele.timer=null;
+        ele.time=0;
+
+        //注意回调函数问题,传进来的必须是个函数,只要不是函数,就默认给他赋值为空函数,为了防止不是函数执行会报错
+        callback=typeof callback=="function"?callback:function () {};
+        //2.将所的运动曲线放到一个数组中,通过索引获取对应的运动曲线,例如effectAry[0]:linear匀速直线运动
+        function linear(b,t,d,time) {
+            return b+(t-b)/d*time;
+        }
+        var effectAry=[linear];
+        //3.根据参数目标值target求元素的起始位置begin
+        //判断只有target是个对象的时候才循环
+        var begin={};
+        if(target&&target.toString()=="[object Object]"){
+            for (var key in target){
+                begin[key]=$.css(ele,key);
+            }
+        }
+        //4.开启定时器
+        ele.timer=window.setInterval(function () {
+            ele.time+=interval;
+            if(ele.time>=duration){
+                window.clearInterval(ele.timer);
+                for(var key in target){
+                    $.css(ele,key,target[key])
+                }
+                //执行回调函数callback,将回调函数中的this变成执行动画的元素
+                callback.call(ele);
+                return;
+            }
+            for (var key in target){
+                $.css(ele,key,effectAry[effect](begin[key],target[key],duration,ele.time));
+            }
+        },interval);
+    }
+
+    var box=document.getElementById("box");
+    var btn=document.getElementById("btn");
+    btn.onclick=function () {
+        animation(box,{left:1000,opacity:1},3000,17,0,function () {
+            this.innerHTML="到头了";
+        })
+    }
+</script>
