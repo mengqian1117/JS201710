@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 0;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<!--
+1.固定步长的动画
+step:5px
+2.频率,多长时间走一步,定时器的第二个参数
+interval:20ms
+3.总路程(left的最大值)
+target:一屏的宽-box.offsetWidth
+-->
+<script src="js/public.js"></script>
+<script>
+    var box=document.getElementById("box");
+    var timer=null;
+    var step=5;//步长
+    var interval=20;//频率
+    var target=$.win("clientWidth")-box.offsetWidth;//总距离
+    timer=window.setInterval(function () {
+        //获取元素的left值l
+        var l=$.css(box,"left");
+        //让l加上步长step;
+        l+=step;
+        if(l>=target){
+            window.clearInterval(timer);
+            //假如最后还剩3px,而步长step是5,再走一步就超过最大值,那么最后一步就不能走一个步长step了
+            //最后一步我们帮他走了,直接将target最大值赋值给left即可
+            $.css(box,"left",target);
+            return;//*保证最后一步不会走了
+        }
+        //将l的值在赋值给box
+        $.css(box,"left",l);
+    },interval)
+</script>

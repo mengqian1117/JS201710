@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 0;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<!--
+不仅仅是left变化还想让height,opacity,top....一起达到终点
+此时步长就不确定了,但是他们的总时间可以规定成一样的
+duration:总时间 2000ms
+target:
+   leftTarget:$.win("clientWidth")-box.offsetWidth
+   topTarget:$.win("clientHeight")-box.offsetHeight
+   opacityTarget:1
+   heightTarget:200
+step:步长需要计算
+step=target/duration * interval
+interval:频率 多长时间走一步,定时器的第二个参数
+
+-->
+<script src="js/public.js"></script>
+<script>
+    var box=document.getElementById("box");
+    var duration=3000;
+    var interval=15;
+    var target=$.win("clientWidth")-box.offsetWidth;
+    var step=target/duration *interval;
+    var timer=window.setInterval(function () {
+        var l=$.css(box,"left");
+        l+=step;
+        if(l>=target){
+            window.clearInterval(timer);
+            $.css(box,"left",target);
+            return;
+        }
+        $.css(box,"left",l);
+    },interval)
+
+</script>

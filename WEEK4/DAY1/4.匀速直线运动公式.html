@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 100px;
+            top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<!--
+起始位置:begin
+目标位置:target
+总时间:duration
+
+就拿left来看,不断改变left的值
+时时刻刻的left=box的起始位置+box走过的距离
+box走过的距离=速度*时间
+速度=总距离/总时间
+总距离=目标位置-起始位置
+
+时时刻刻的left=begin+(目标位置-起始位置)/总时间*时间
+
+-->
+<script src="js/public.js"></script>
+<script>
+
+    function linear(begin,target,duration,time) {
+        // begin:起始位置
+        // target:目标位置
+        // duration:总时间
+        // time:时间
+        return begin+(target-begin)/duration*time;
+    }
+
+    var box=document.getElementById("box");
+    var begin=$.css(box,"left");
+    var target=$.win("clientWidth")-box.offsetWidth;
+    var duration=2000;
+    var time=0;
+    var timer=null;
+    var interval=17;
+    timer=window.setInterval(function () {
+        time+=interval;
+        if(time>=duration){
+            //当时间time大于等于总时间duration了,停止定时器
+            window.clearInterval(timer);
+            //将目标值Target直接赋值给box的left即可
+            $.css(box,"left",target);
+            return;
+        }
+        //通过linear这个方法计算此时的left的值
+        var l=linear(begin,target,duration,time);
+        //将l值赋值给box的left
+        $.css(box,"left",l);
+    },interval)
+</script>

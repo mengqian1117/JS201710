@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body style="font-size: 30px;color: green">
+
+</body>
+</html>
+<!--
+今天迟到的罚钱交给班长,,彭翀4块李唐菲,王雪超5,王天舒
+-->
+<script>
+    var str='今天迟到的罚钱交给班长,彭翀4块,李唐菲10块,王雪超5快,王天舒';
+    var timer=null;
+    var i=0;
+    timer=window.setInterval(function () {
+        document.body.innerHTML+=str[i++];
+        if (i===str.length){
+            window.clearInterval(timer);
+        }
+    },500)
+</script>
