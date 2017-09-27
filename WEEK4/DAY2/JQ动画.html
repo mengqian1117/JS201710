@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #btn{
+            width: 150px;
+            height: 60px;
+            font-size: 30px;
+            line-height: 60px;
+            text-align: center;
+            font-weight: bold;
+            color: blue;
+            display: block;
+            margin: 10px auto;
+        }
+        #box{
+            /*display: none;*/
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 650px;
+            top:100px;
+
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<input type="button" id="btn" value="操作">
+</body>
+</html>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    //以后在执行JQ的之前先stop()
+    $("#btn").on("click",function () {
+        /*
+        //1.隐藏
+        $("#box").stop().hide();
+        $("#box").stop().hide("fast");
+        $("#box").stop().hide("slow");
+        $("#box").stop().hide(2000);
+        //单位是毫秒
+        */
+        //2.显示 show()
+        /*
+        $("#box").stop().show();
+        $("#box").stop().show("fast");
+        $("#box").stop().show("slow");
+        $("#box").stop().show(3000);
+        */
+        //3.slideUp():收起来
+        /*
+        $("#box").stop().slideUp();
+        $("#box").stop().slideUp("fast");
+        $("#box").stop().slideUp("slow");
+        $("#box").stop().slideUp(3000);
+        */
+        //4.slideDown():展开
+        /*
+        $("#box").stop().slideDown();
+        $("#box").stop().slideDown("fast");
+        $("#box").stop().slideDown("slow");
+        $("#box").stop().slideDown(3000);
+        */
+        //5.slideToggle()自动收放
+        /*
+        $("#box").stop().slideToggle();
+        $("#box").stop().slideToggle("fast");
+        $("#box").stop().slideToggle("slow");
+        $("#box").stop().slideToggle(3000);
+        */
+        //6.淡入淡出 fadeIn()/fadeOut()
+        /*
+        $("#box").stop().fadeIn();
+        $("#box").stop().fadeIn("fast");
+        $("#box").stop().fadeIn("slow");
+        $("#box").stop().fadeIn(3000);
+        */
+        //7.自动淡入淡出,fadeToggle()
+        //$("#box").stop().fadeToggle(3000);
+
+        //8.动画延迟,在动画前面加一个delay(时间ms),因为hide()和show().不穿参数的时候没有动画效果,所以delay对他俩没有效果
+
+        //$("#box").stop().delay(2000).fadeIn();
+
+        //9.animate({目标值},duration,回调函数)
+//        $("#box").stop().animate({top:600,height:100},2000,function () {
+//            //this:当前执行动画的元素,这里的this是原生对象
+//            //this.style.backgroundColor="red";
+//            //$(this):JQ对象
+//            $(this).css("backgroundColor","red");
+//        })
+        function down() {
+            $("#box").stop().animate({top:600,height:100},2000,function () {
+                $(this).css("backgroundColor","red");
+                up()
+            })
+        };
+        function up() {
+            $("#box").stop().animate({top:100,height:60},1000,function () {
+                $(this).css("backgroundColor","yellowgreen");
+                down();
+            })
+        };
+        down();
+    })
+</script>
