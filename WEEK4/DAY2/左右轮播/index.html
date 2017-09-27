@@ -6,7 +6,51 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div id="banner" class="banner">
+<div id="banner1" class="banner">
+    <div class="bannerInner">
+        <!--图片的区域-->
+        <!--<div><img src="" alt=""></div>-->
+    </div>
+    <ul class="focusList">
+        <!--焦点区域-->
+    </ul>
+    <a class="left" href="javascript:void 0"></a>
+    <a class="right" href="javascript:void 0"></a>
+</div>
+<div id="banner2" class="banner">
+    <div class="bannerInner">
+        <!--图片的区域-->
+        <!--<div><img src="" alt=""></div>-->
+    </div>
+    <ul class="focusList">
+        <!--焦点区域-->
+    </ul>
+    <a class="left" href="javascript:void 0"></a>
+    <a class="right" href="javascript:void 0"></a>
+</div>
+<div id="banner3" class="banner">
+    <div class="bannerInner">
+        <!--图片的区域-->
+        <!--<div><img src="" alt=""></div>-->
+    </div>
+    <ul class="focusList">
+        <!--焦点区域-->
+    </ul>
+    <a class="left" href="javascript:void 0"></a>
+    <a class="right" href="javascript:void 0"></a>
+</div>
+<div id="banner4" class="banner">
+    <div class="bannerInner">
+        <!--图片的区域-->
+        <!--<div><img src="" alt=""></div>-->
+    </div>
+    <ul class="focusList">
+        <!--焦点区域-->
+    </ul>
+    <a class="left" href="javascript:void 0"></a>
+    <a class="right" href="javascript:void 0"></a>
+</div>
+<div id="banner5" class="banner">
     <div class="bannerInner">
         <!--图片的区域-->
         <!--<div><img src="" alt=""></div>-->
@@ -21,4 +65,18 @@
 </html>
 <script src="js/public.js"></script>
 <script src="js/animation.js"></script>
-<script src="js/index.js"></script>
+<!--<script src="js/index.js"></script>-->
+<script src="js/Banner.js"></script>
+<script>
+  //(id,url,duration,interval)
+  //全都执行
+  Banner("banner1","json/data.json",1000,2000).init();
+  //只会自动轮播
+  Banner("banner2","json/data.json",500,1000).autoMove();
+  //只会焦点点击轮播
+  Banner("banner3","json/data.json",1000,2000).focusClick();
+  //只会左右按钮点击轮播
+  Banner("banner4","json/data.json",1000,3000).arrowClick();
+  //自动轮播+焦点点击轮播
+  Banner("banner5","json/data.json",1000,2000).autoMove().focusClick()
+</script>
