@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 300%;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<ul id="list">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    //1.属性 attr() 获取/设置元素的属性,一般都是自定义属性,而且这个属性会显示在HTML标签上
+    //一个参数:获取
+    //俩参数:设置
+    //批量设置:参数是个对象
+    var box=document.getElementById("box");
+    //box.attr()
+    //$(box)=>将原生对象box变成一个JQ对象
+    $(box).attr("photo","photo");
+    console.log($(box).attr("photo"));
+    //$("#box"):通过JQ选择器选择出来的就是一个JQ对象
+    $("#box").attr("t","title");
+    $("#box").attr({a:"a",b:"b"});
+
+    //2.removeAttr(),删除属性
+    $("#box").removeAttr("t");
+    //删除多个属性
+    $("#box").removeAttr("a b");
+
+    //3.prop(),设置/获取属性,一般都是内置属性(天生自带的属性,例如:class,id)
+    //区别:如果设置的是内置属性会显示在HTML标签上,如果设置是自定义属性不会显示在HTML标签上
+    $("#box").prop("class","box1");
+    $("#box").prop("p","pp");
+    console.log($("#box").prop("p"));
+
+    //4.each 遍历JQ集合的
+    //参数是个函数,这个函数执行的时候默认给他传2个参数,第一个参数是索引,第二个是当前元素,这个元素是原生对象,而且this==item当前元素
+    $("#list>li").each(function (index,item) {
+        console.log(index);
+        console.log(item);
+        console.log(this);
+    });
+
+    //5.map
+    var m=$("#list>li").map(function (index,item) {});
+    console.log(m);
+
+    //6.css()获取/设置样式,批量设置
+    //设置值的时候可以带单位(写成字符串的形式),可以不写单位(数字的形式)
+    //获取的值带着单位
+    //不需要返回值的默认返回的都是this,可以实现链式写法
+    $("#box").css("width","100px").css({height:100,background:"red"});
+    console.log($("#box").css("width"));
+
+    //7.offset():获取当前元素距离body的偏移量
+    //左偏移量
+    $("#box").offset().left;
+    //上偏移量
+    $("#box").offset().top;
+
+    //8.scrollTop()/scrollLeft()
+    //传参数:设置
+    //不传参数:获取
+    //没有单位
+    window.onscroll=function () {
+        console.log($(document.documentElement).scrollTop());
+    };
+    $(document.documentElement).scrollTop(1000);
+
+    //9.width()/height()
+
+    //10.innerWidth()/innerHeight():对应原生的clientWidth和clientHeight
+    //传参数:设置
+    //不传参数:获取
+    //padding不变修改的是宽高
+
+    //11.outerWidth()/outerHeight():对应原生的offsetWidth和offsetHeight
+    //传参数:设置
+    //不传参数:获取
+    //padding和border不变修改的是宽高
+    //注意:如果outerWidth(true)/outerHeight(true),是获取并且会把margin加上
+
+
+</script>
