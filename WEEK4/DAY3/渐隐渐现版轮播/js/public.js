@@ -114,6 +114,7 @@ var $=(function () {
             val+="px";
         }
         curEle.style[attr]=val;
+        return curEle;
     };
     //8.setGroupCss:批量设置CSS样式
     //参数(curEle,cssObj)
@@ -125,6 +126,7 @@ var $=(function () {
                 this.setCss(curEle,key,cssObj[key]);
             }
         }
+        return curEle;
     };
     //9.css:获取/设置css属性
     //三个参数:设置
@@ -133,13 +135,11 @@ var $=(function () {
     function css() {
         if(arguments.length===3){
             //apply不仅可以传数组还可以传类数组,比如:arguments
-            this.setCss.apply(this,arguments);
-            return;
+           return this.setCss.apply(this,arguments);
         }
         if(arguments.length==2){
             if(arguments[1].toString()=="[object Object]"){
-                this.setGroupCss.apply(this,arguments);
-                return;
+                return this.setGroupCss.apply(this,arguments);
             }else {
                 return this.getCss.apply(this,arguments);
             }
