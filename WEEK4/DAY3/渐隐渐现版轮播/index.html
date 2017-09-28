@@ -22,5 +22,11 @@
 </html>
 <script src="js/public.js"></script>
 <script src="js/animation.js"></script>
-<script src="js/index.js"></script>
-<script></script>
+<!--<script src="js/index.js"></script>-->
+<script src="js/Banner.js"></script>
+<script>
+    var b1=new Banner("banner","json/data.json",1000,2000);
+    console.log(b1);
+    b1.init().autoMove().mouseEvent().focusClick().arrowClick();
+    console.log(b1.data);
+</script>

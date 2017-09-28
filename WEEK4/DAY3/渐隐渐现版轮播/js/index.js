@@ -114,7 +114,7 @@ function arrowClick() {
                 step=data.length;
             }
             step--;
-            setImg()
+            setImg();
         }
     }
 }
