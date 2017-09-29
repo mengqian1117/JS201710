@@ -1,81 +1,94 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>手风琴菜单</title>
-		<style type="text/css">
-			html,body,ul,li,h2{
-				margin: 0;
-				padding: 0;
-				-webkit-user-select: none;
-				font-family: "微软雅黑";
-				font-size: 14px;
-			}
-			ul,li{
-				list-style: none;
-			}
-			#menu{
-				margin: 50px auto;
-				width: 150px;
-				border: 2px dashed #ddba7e;
-				border-bottom:none ;
-			}
-			#menu h2{
-				padding: 0 10px;
-				height: 30px;
-				line-height: 30px;
-				background-color: antiquewhite;
-				cursor: pointer;
-				color: #ff9959;
-			}
-			#menu>li{
-				border-bottom: 1px solid #ff835c;
-			}
-			.menuList{
-				display: none;
-				padding:5px 0px 5px 20px ;
-			}
-			.menuList li{
-				height: 25px;
-				line-height: 25px;
-				color: burlywood;
-			}
-		</style>
-	</head>
-	<body>
-		<ul id="menu">
-			<li>
-				<h2>女装</h2>
-				<ul class="menuList" style="display: block;">
-					<li>上衣</li>
-					<li>裤子</li>
-					<li>裙子</li>
-					<li>内衣</li>
-				</ul>
-			</li>
-			<li>
-				<h2>男装</h2>
-				<ul class="menuList">
-					<li>上衣</li>
-					<li>裤子</li>
-					<li>衬衣</li>
-					<li>内衣</li>
-				</ul>
-			</li>
-			<li>
-				<h2>童装</h2>
-				<ul class="menuList">
-					<li>上衣</li>
-					<li>裤子</li>
-					<li>裙子</li>
-					<li>内衣</li>
-				</ul>
-			</li>
-		</ul>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴菜单</title>
+    <style type="text/css">
+        html, body, ul, li, h2 {
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+            font-family: "微软雅黑";
+            font-size: 14px;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        #menu {
+            margin: 50px auto;
+            width: 150px;
+            border: 2px dashed #ddba7e;
+            border-bottom: none;
+        }
+
+        #menu h2 {
+            padding: 0 10px;
+            height: 30px;
+            line-height: 30px;
+            background-color: antiquewhite;
+            cursor: pointer;
+            color: #ff9959;
+        }
+
+        #menu > li {
+            border-bottom: 1px solid #ff835c;
+        }
+
+        .menuList {
+            display: none;
+            padding: 5px 0px 5px 20px;
+        }
+
+        .menuList li {
+            height: 25px;
+            line-height: 25px;
+            color: burlywood;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li>
+        <h2>女装</h2>
+        <ul class="menuList" style="display: block;">
+            <li>上衣</li>
+            <li>裤子</li>
+            <li>裙子</li>
+            <li>内衣</li>
+        </ul>
+    </li>
+    <li>
+        <h2>男装</h2>
+        <ul class="menuList">
+            <li>上衣</li>
+            <li>裤子</li>
+            <li>衬衣</li>
+            <li>内衣</li>
+        </ul>
+    </li>
+    <li>
+        <h2>童装</h2>
+        <ul class="menuList">
+            <li>上衣</li>
+            <li>裤子</li>
+            <li>裙子</li>
+            <li>内衣</li>
+        </ul>
+    </li>
+</ul>
+</body>
 </html>
 <script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-
-
+    //给所有的h标签绑定点击事件,让点击的那个h2下面的ul显示,其他的隐藏
+    //使用JQ选择器选择出的JQ对象,如果是JQ集合,给里面的每一个元素绑定事件的时候,直接给这个JQ集合绑定即可,他会默认自动一个一个的绑上事件,不需要你操心
+    //JQ对象.事件(function(){});事件前面没有on,例如:"onclick"==>"click"
+	$("#menu :header").click(function () {
+        //this 你点击的那个h2标签,原生的对象
+        //$(this):原生对象-->JQ对象,这个时候就可以使用JQ中的方法了
+        $(this).next().stop().slideToggle().parent().siblings().children("ul").stop().slideUp();
+        //当前点击的h2的父亲li的其他兄弟下的叫ul的孩子,收起来
+    })
 </script>

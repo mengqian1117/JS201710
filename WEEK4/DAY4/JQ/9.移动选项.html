@@ -35,7 +35,7 @@
 	</head>
 	<body>
 		<div class="centent">
-			<select name="" id="select1">
+			<select name="" id="select1" multiple>
 				<option value="1">选项一</option>
 				<option value="2">选项二</option>
 				<option value="3">选项三</option>
@@ -49,7 +49,7 @@
 			</div>
 		</div>
 		<div class="centent">
-			<select name="" id="select2">
+			<select name="" id="select2" multiple>
 				<option value="7">选项七</option>
 			</select>
 			<div>
@@ -61,6 +61,29 @@
 	</body>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+		$("#addR").click(function () {
+		    if($("#select1 option:selected").length<1){
+		        //如果一个都没选,给个提醒
+		        $(this).css({backgroundColor:"red"});
+		        $(this).html("请选择~");
+			}else {
+                $("#select1 option:selected").appendTo($("#select2")).prop("selected",false);
+			}
+        });
 
+		$("#select1 option").click(function () {
+			$("#addR").css({backgroundColor:"skyblue"});
+			$("#addR").html("选中添加到右边");
+        });
+
+		$("#addR_all").click(function () {
+			$("#select1 option").appendTo($("#select2")).prop("selected",false);
+            $(this).css({backgroundColor:"gray"});
+        });
+
+		//双击
+		$("#select1").dblclick(function () {
+			$("#select1 option:selected").appendTo($("#select2")).prop("selected",false);
+        })
 	</script>
 </html>

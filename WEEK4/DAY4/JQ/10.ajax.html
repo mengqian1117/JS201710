@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    $.ajax({
+        type:"GET",//请求方式
+        url:"js/data.json",//请求数据的路径
+        dataType:"json",//返回值的根式,json:返回值处理成一个json对象
+        async:false,//是否异步
+        data:null,//向后台发送数据
+        success:function (data) {
+            //请求成功执行的函数,默认将请求回来的数据放在参数上返回来
+            //data就是后台返回给你的数据
+            console.log(data);
+            bindData(data);
+        },
+        error:function (e) {
+            //请求失败执行的函数
+        }
+    });
+    function bindData(data) {
+        var str=``;
+        data.forEach(function (item,index) {
+            str+=`<p>姓名:${item.name}</p>`
+        });
+        document.body.innerHTML+=str;
+    }
+
+</script>

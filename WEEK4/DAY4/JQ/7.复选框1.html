@@ -25,8 +25,29 @@
 	</body>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+		//全选
+		$("#all").click(function () {
+			$("[name=items]").prop("checked",true)
+        });
+		//全不选
+		$("#no").click(function () {
+			$("[name=items]").prop("checked",false);
+        });
+		//反选
+		$("#rev").click(function () {
+			$("[name=items]").each(function () {
+				$(this).prop("checked",!$(this).prop("checked"))
+            })
+        });
 
-
-
+		//提交
+		//"你喜欢的女明星是:孙俪,赵丽颖";
+		$("#send").click(function () {
+			var str="你喜欢的女明星是: ";
+			$("[name=items]:checked").each(function () {
+				str+=$(this).val()+",";
+            });
+			alert(str.replace(/,$/,""));
+        })
 	</script>
 </html>

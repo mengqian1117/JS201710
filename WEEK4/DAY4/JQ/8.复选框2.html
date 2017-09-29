@@ -26,7 +26,26 @@
 	</body>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
+		$("[name=items]").click(function () {
+//			if($("[name=items]:checked").length===$("[name=items]").length){
+//			    $("#all").prop("checked",true);
+//			}else {
+//                $("#all").prop("checked",false);
+//			}
+			//简写:
+            $("#all").prop("checked",$("[name=items]:checked").length===$("[name=items]").length)
+        });
 
+		$("#all").click(function () {
+//			if($("[name=items]:checked").length===$("[name=items]").length){
+//			    $("[name=items]").prop("checked",false)
+//			}else {
+//                $("[name=items]").prop("checked",true)
+//			};
+			//简写
+//            $("[name=items]").prop("checked",$("[name=items]:checked").length!=$("[name=items]").length);
+            $("[name=items]").prop("checked",this.checked);
+        })
 	</script>
 
 </html>

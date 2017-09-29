@@ -70,7 +70,13 @@
 		</table>
 		<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-
+			//keyup:键盘按键抬起
+			//keydown:键盘按键按下
+			$("#search").keyup(function () {
+			    //$(this).val():输入框输入的内容
+				//先让所有的tr隐藏,然后根据你输入的内容从所有的tr中过滤出包含你输入内容的tr显示出来
+				$("table tbody tr").stop().hide().filter(":contains("+$(this).val()+")").stop().show();
+            })
 		</script>
 	</body>
 </html>
