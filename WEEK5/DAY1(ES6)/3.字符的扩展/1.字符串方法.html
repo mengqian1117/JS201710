@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    console.log(String.prototype);
+    //includes
+    //startsWidth():是否以指定字符作为开头
+    // endsWidth():是否以指定字符作为结尾
+    //第二个参数表示开始查找的索引
+    let str = "abcd1234";
+    console.log(str.startsWith("a"));
+    console.log(str.startsWith("c", 2));
+    console.log(str.endsWith("4"));
+
+    let str1 = "aaaabbbbaaacccacacac";
+    let code = 0;
+    for (var i = 0; i < str1.length; i++) {
+//        if(str1.startsWith("a",i)){
+//            code++;
+//        }
+        if (str1[i] === "a") {
+            code++;
+        }
+    }
+    console.log(code);
+    //repeat
+    //repeat(n),将字符串重复n次返回,原字符串不变
+    console.log(str.repeat(2), str);
+    //小数 向下取整
+    console.log(str.repeat(2.6));
+
+    //负数/Infinity 报错的
+    //console.log(str.repeat(-2));
+    //console.log(str.repeat(Infinity));
+    //0->-1 :先进行向下取整运算结果为0
+    console.log(str.repeat(-0.3));//''
+    //NaN => 0
+    console.log(str.repeat(NaN));//''
+    //字符串 将字符串变为数字
+    console.log(str.repeat("2"));
+    //ES7
+    //padStart(length,str),padEnd(length,str);
+    //length:新字符串的长度
+    //str:用来补位的字符串
+    console.log("x".padStart(5, "ab"));//"ababx"
+    console.log("x".padStart(4, "ab"));//"abax"
+    console.log("x".padEnd(6, "ab"));//"xababa"
+</script>

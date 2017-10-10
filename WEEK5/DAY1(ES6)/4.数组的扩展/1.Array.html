@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1.Array(n)=>有n个空位的数组
+    //只传一个值,表示的是length,
+    console.log(Array(5));//[empty × 5]
+    //为了解决这个问题,出现了of
+    //2.Array.of(n)==>[n]
+
+    //3.Array.from(数组/类数组)
+    //数组:克隆一个数组
+    //类数组:将类数组变成数组
+
+    function fn() {
+        console.log(Array.from(arguments));
+    }
+    fn(1,2,3,4);
+    //扩展运算符...
+    //既可以将非数组变成数组,还可以将数组变成非数组
+    let ary=[1,2,3];
+    console.log([ary,ary]);//[[1,2,3],[1,2,3]]
+    console.log([...ary,...ary]);
+    //[1,2,3,1,2,3]
+</script>
