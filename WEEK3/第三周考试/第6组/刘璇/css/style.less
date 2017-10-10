@@ -1,0 +1,61 @@
+@charset "UTF-8";
+html, body, div, h1, h2, h3, h4, p, img, ul, ol, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #d0d5d8;
+    font: 14px/1.5 Arial;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+img {
+    border: 0;
+    max-width: 100%;
+}
+
+.newBox {
+    width: 100%;
+    overflow: hidden;
+    li {
+        padding: 10px;
+        overflow: hidden;
+        background: #fff;
+        border-bottom: 1px dashed #c0c0c0;
+        .photo {
+            width: 75px;
+            float: left;
+            height: 60px;
+            margin-right: 10px;
+            background: url("../img/load.jpg") center no-repeat;
+            img {
+                height: 100%;
+                width: 100%;
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+        }
+        .text {
+            overflow: hidden;
+            h2 {
+                font-size: 16px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: #333;
+                margin-bottom: 5px;
+            }
+            p {
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                color: #999;
+            }
+        }
+    }
+}

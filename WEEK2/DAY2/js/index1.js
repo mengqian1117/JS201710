@@ -6,7 +6,7 @@ var data = null;
 
 //1.通过AJAX获取数据
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "Data/product.json", false);
+xhr.open("GET", "json/productList.json", false);
 xhr.onreadystatechange = function () {
     if (xhr.status === 200 && xhr.readyState === 4) {
         data = JSON.parse(xhr.responseText);

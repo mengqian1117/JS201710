@@ -96,7 +96,7 @@ var $=(function () {
         var reg=/^-?\d+(?:\.\d+)?(?:px|pt|pp|rem|em|deg)?$/;
         val=reg.test(val)?parseFloat(val):val;
         return val;
-    }
+    };
 
     //7.setCss:设置样式属性值
     //参数(curEle,attr,val):curEle当前元素,attr样式属性,val属性值
@@ -117,7 +117,7 @@ var $=(function () {
             val+="px";
         }
         curEle.style[attr]=val;
-    }
+    };
 
     //8.setGroupCss:批量设置CSS样式
     //参数(curEle,cssObj)
@@ -129,13 +129,12 @@ var $=(function () {
                 this.setCss(curEle,key,cssObj[key]);
             }
         }
-    }
+    };
 
     //9.css:获取/设置css属性
     //三个参数:设置
     //俩个参数: 第二个参数是个对象   --> 批量设置
     //         第二个参数不是个对象 --> 获取 有返回值
-
     function css() {
         if(arguments.length===3){
             //apply不仅可以传数组还可以传类数组,比如:arguments
@@ -150,7 +149,7 @@ var $=(function () {
                 return this.getCss.apply(this,arguments);
             }
         }
-    }
+    };
     return{
         toArray:toArray,
         toJSONObj:toJSONObj,

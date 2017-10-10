@@ -1,0 +1,54 @@
+html,body,p,h2,img,div,ul,li {
+    margin: 0;
+    padding: 0;
+}
+
+ul,li{
+    list-style: none;
+}
+
+#news{
+    padding: 15px;
+
+}
+
+#news li {
+    position: relative;
+    height: 60px;
+    border-bottom: 1px dashed #ccc;
+    padding: 10px 0;
+}
+
+#news  div:nth-child(1) {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    background: url("../img/load.jpg") no-repeat center;
+    top:10px;
+    left: 0;
+}
+
+#news  div:nth-child(1) img {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#news  div:nth-child(2){
+    margin-left:75px ;
+    height: 60px;
+}
+
+#news div:nth-child(2) h2 {
+    /*height: 16px;*/
+    padding: 2px;
+    font-size: 14px;
+}
+
+#nws  div:nth-child(2) p {
+    line-height: 16px;
+    font-size: 12px;
+    height: 32px;
+
+}

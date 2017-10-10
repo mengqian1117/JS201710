@@ -1,0 +1,37 @@
+html,body,ul,li,div,h2,p,img{
+    padding:0;
+    margin:0;
+}
+#news{
+    padding: 15px;
+}
+#news li{
+    list-style:none;
+    position: relative;
+    height: 60px;
+    border-bottom:1px dashed #ccc;
+    padding: 15px 0;
+}
+#news li div:nth-child(1){
+    position: absolute;
+    left: 0;
+    top:10px;
+    width: 60px;
+    height: 60px;
+    background:url("../img/load.jpg") no-repeat center;
+}
+#news li img{
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+#news li div:nth-child(2){
+    margin-left: 75px;
+}
+#news li div:nth-child(2) h2{
+    font-size: 14px;
+}
+#news li div:nth-child(2) p{
+    font-size: 12px;
+}

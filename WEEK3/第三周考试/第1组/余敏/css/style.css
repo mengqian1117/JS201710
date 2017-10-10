@@ -1,0 +1,51 @@
+html, body, div, ul, li, h2, p, img {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+#box li {
+    border-bottom: 1px dashed #ccc;
+    padding: 10px 20px;
+    position: relative;
+}
+
+#box li div:nth-child(1) {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    left: 20px;
+    top: 30px;
+    background:url("../img/load.jpg") no-repeat center;
+}
+
+#box li div:nth-child(1) img{
+    width:100%;
+    height:100%;
+    opacity:0;
+    filter:alpha(opacity=0);
+}
+
+#box li div:nth-child(2){
+    margin-left:110px;
+    height:90px;
+}
+
+#box li div:nth-child(2) h2{
+    margin-top:10px;
+    line-height:40px;
+    font-size:16px;
+}
+
+#box li div:nth-child(2) p{
+    line-height:30px;
+    font-size:14px;
+    color:#999;
+}

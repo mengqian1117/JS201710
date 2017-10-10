@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box"></div>
+<P></P>
+<span class="s1">1</span>
+<span class="s2">2</span>
+
+<div class="box2">大家好我是box2</div>
+<ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li class="li1">3</li>
+    <li>4</li>
+    <li>
+        <ul>
+            <li></li>
+            <li class="li1"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    //1.JQ强大的好处:链式写法,return this
+    $("#box").css({width: 100, height: 100, background: "red"}).addClass("box1").next().css({
+        width: 200,
+        height: 50,
+        background: "green"
+    });
+
+    //2.文档处理的方法
+    //原生: 父亲(原生对象).appendChild(元素)
+    //JQ:  父级(JQ对象).append(元素,可以是个原生对象也可以是个JQ对象)
+    var img = new Image();
+    $("#box").append(img);
+    $("#box").append($("p"));
+
+    //元素.appendTo(父级);
+    //加在父级元素的前面  prepend/prependTo;
+
+    //原生:  父级.insertBefore(元素1,元素2),将元素1加在元素2的前面
+    //JQ:after/before 加在当前元素的后面/前面
+    $(".s1").after($(".s2"));//在s1的后面加s2
+    $(".s1").before($(".s2"));//在s1的前面加s2
+
+    //jQ对象.insertBefore(指定元素)
+    //将JQ对象添加到指定元素的前面
+
+    //JQ对象.insertAfter(指定元素)
+    //将JQ对象添加到指定元素的后面
+
+    //replaceAll(选择器)
+    //$("#box").replaceAll(".box2");
+    //将.box2替换成#box
+    var curImg = new Image;
+    curImg.src = "default.gif";
+    $(curImg).replaceAll(".box2");
+
+    //remove();删除
+    $("div").remove(".box");//把所的div中类名是box的删掉
+    $("span").remove(".s2");
+
+    //next():下一个弟弟
+    //prev():上一个哥哥
+    //nextAll():所有的弟弟
+    //prevAll():所有的哥哥
+    //siblings():所有的兄弟
+</script>
+<script>
+    //筛选
+    //eq(索引),first(),last()
+    var $li = $(".list>li");//$li是个JQ对象
+    console.log($li[0]);//原生的对象,第一个li元素
+
+    $li.first();//第一个li,而且是个JQ对象
+    $li.last();//最后一个li,而且是个JQ对象
+    $li.eq(0);//获取指定索引的JQ对象
+
+    //filter:同级过滤
+    $(".list>li").filter(".li1");
+    //在list下面所有的li中找出类名是li1 的li
+
+    //children:子级过滤
+    $(".list").children(".li1");
+    //在list的孩子中去找类名是li1的孩子
+
+    //find:后代过滤,子子孙孙
+    $(".list").find(".li1");
+    //在list的后代中找类名是li1的
+
+    //parent()一个父亲/parents()
+    console.log($("#box").parents());
+    //box的父亲,父亲的父亲.......html
+</script>

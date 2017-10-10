@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html>
+<head><title>一.定义变量 let和const</title>
+    <meta charset='utf-8'>
+    <link href='https://dn-maxiang.qbox.me/res-min/themes/marxico.css' rel='stylesheet'>
+    <style>
+        .note-content {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+<div id='preview-contents' class='note-content'>
+    <h2 id="一定义变量-let和const">一.定义变量 let和const</h2>
+    <h3 id="let命令">let命令</h3>
+    <h4 id="基本语法">基本语法</h4>
+    <pre class="prettyprint with-line-number hljs-light">
+        <code class="hljs javascript">
+            <span
+            class="hljs-comment line-number">1.</span>
+            <span class="hljs-keyword">let</span> a=[];
+            <br>
+            <span
+            class="hljs-comment line-number">2.</span>
+            <span class="hljs-keyword">for</span>(
+            <span class="hljs-keyword">let</span>
+            i=
+            <span class="hljs-number">0</span>
+            ;i&lt;
+            <span class="hljs-number">10</span>
+            ;i++){<br><span
+            class="hljs-comment line-number">3.</span>   a[i]=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span
+            class="hljs-params"></span>)</span>{<br><span class="hljs-comment line-number">4.</span>      <span
+            class="hljs-keyword">return</span> i<br><span class="hljs-comment line-number">5.</span>   }<br><span
+            class="hljs-comment line-number">6.</span>}<br><span class="hljs-comment line-number">7.</span>a[<span
+            class="hljs-number">2</span>]();<br></code></pre>
+    <h4 id="不存在变量提升">不存在变量提升</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs gauss"><span
+            class="hljs-comment line-number">1.</span>console.<span class="hljs-built_in">log</span>(a);<span
+            class="hljs-comment">//报错</span><br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-keyword">let</span> a=<span class="hljs-number">0</span>;<br></code></pre>
+    <h4 id="暂时性死区">暂时性死区</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">if</span>(<span class="hljs-literal">true</span>){<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-built_in">console</span>.log(a);  <span
+            class="hljs-comment">//报错</span><br><span class="hljs-comment line-number">3.</span>   <span
+            class="hljs-keyword">let</span> a=<span class="hljs-string">"AA"</span>;<br><span
+            class="hljs-comment line-number">4.</span>   <span class="hljs-built_in">console</span>.log(a);<br><span
+            class="hljs-comment line-number">5.</span>}<br></code></pre>
+    <h4 id="不允许重复声明">不允许重复声明</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-function"><span
+            class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-keyword">var</span> a=<span
+            class="hljs-number">1</span>;<br><span class="hljs-comment line-number">3.</span>   <span
+            class="hljs-keyword">let</span> a=<span class="hljs-number">2</span>;<span
+            class="hljs-comment">//报错</span><br><span class="hljs-comment line-number">4.</span>}<br></code></pre>
+    <h3 id="块级作用域">块级作用域</h3>
+    <h4 id="之前的不合理为什么需要块级作用域">之前的不合理(为什么需要块级作用域)</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">var</span> t=<span class="hljs-string">'tt'</span>;<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">if</span>(<span class="hljs-literal">false</span>){<br><span
+            class="hljs-comment line-number">3.</span>   <span class="hljs-keyword">var</span> t=<span
+            class="hljs-string">"TT"</span>;<br><span class="hljs-comment line-number">4.</span>}<br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span
+            class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){<br><span
+            class="hljs-comment line-number">6.</span>   <span class="hljs-built_in">console</span>.log(i);<br><span
+            class="hljs-comment line-number">7.</span>}<br><span class="hljs-comment line-number">8.</span><span
+            class="hljs-built_in">console</span>.log(i);<span
+            class="hljs-comment">//循环完成i没有消失,泄露成全局的变量</span><br></code></pre>
+    <h4 id="es6的块级作用域">ES6的块级作用域</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs nix"><span class="hljs-comment line-number">1.</span>{<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-keyword">let</span> <span class="hljs-attr">a=0;</span><br><span
+            class="hljs-comment line-number">3.</span>   {<br><span
+            class="hljs-comment line-number">4.</span>      <span class="hljs-keyword">let</span> <span
+            class="hljs-attr">b=2;</span><br><span class="hljs-comment line-number">5.</span>   }<br><span
+            class="hljs-comment line-number">6.</span>}<br></code></pre>
+    <h3 id="const命令">const命令</h3>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs livescript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-regexp">//const 定义的是静态变量,不能修改值,必须要赋值<br><span
+            class="hljs-comment line-number">2.</span>//</span>不赋值就会报错:Missing initializer <span
+            class="hljs-keyword">in</span> <span class="hljs-keyword">const</span> declaration<br><span
+            class="hljs-comment line-number">3.</span>    <span class="hljs-keyword">const</span> g=<span
+            class="hljs-number">10</span>;<br><span class="hljs-comment line-number">4.</span><span class="hljs-regexp">//g=20;//</span> 不可以修改Assignment <span
+            class="hljs-keyword">to</span> constant variable<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-regexp">//不可以重复声明的(不管是动态变量还是静态变量都不可以重复定义)<br><span class="hljs-comment line-number">6.</span>//</span><span
+            class="hljs-keyword">const</span> g=<span class="hljs-number">20</span>;<span class="hljs-regexp">//Identifier 'g' has already been declared<br><span
+            class="hljs-comment line-number">7.</span>    let a=1;<br><span class="hljs-comment line-number">8.</span>    //</span><span
+            class="hljs-keyword">const</span> a=<span class="hljs-number">2</span>;<br><span
+            class="hljs-comment line-number">9.</span>    {<br><span class="hljs-comment line-number">10.</span>        <span
+            class="hljs-keyword">const</span> a=<span class="hljs-number">0</span>;<br><span
+            class="hljs-comment line-number">11.</span>    }<br></code></pre>
+    <h3 id="跨模块常量">跨模块常量</h3>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//moudel1.js模块</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">export</span> <span
+            class="hljs-keyword">const</span> A=<span class="hljs-number">1</span>;<br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-keyword">export</span> <span
+            class="hljs-keyword">const</span> B=<span class="hljs-number">2</span>;<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-comment">//test1.js模块</span><br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-keyword">import</span> * <span
+            class="hljs-keyword">as</span> obj <span class="hljs-keyword">from</span> <span class="hljs-string">'./constants'</span>;<br><span
+            class="hljs-comment line-number">6.</span><span class="hljs-built_in">console</span>.log(obj.A)<br><span
+            class="hljs-comment line-number">7.</span><span class="hljs-built_in">console</span>.log(obj.B)<br><span
+            class="hljs-comment line-number">8.</span><span class="hljs-comment">//test2.js模块</span><br><span
+            class="hljs-comment line-number">9.</span><span class="hljs-keyword">import</span> {A,B} <span
+            class="hljs-keyword">from</span> <span class="hljs-string">'./constants'</span>;<br><span
+            class="hljs-comment line-number">10.</span><span class="hljs-built_in">console</span>.log(A)<br><span
+            class="hljs-comment line-number">11.</span><span
+            class="hljs-built_in">console</span>.log(B)<br></code></pre>
+    <h3 id="全局对象的属性">全局对象的属性</h3>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-meta">'use strict'</span>;<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">let</span> b=<span class="hljs-number">0</span>;<br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-built_in">console</span>.log(<span
+            class="hljs-keyword">this</span>.b);<span class="hljs-comment">//undefined</span><br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-built_in">console</span>.log(<span
+            class="hljs-built_in">window</span>.b);<span class="hljs-comment">//undefined</span><br></code></pre>
+    <h2 id="二变量的解构赋值">二.变量的解构赋值</h2>
+    <h3 id="数组的解构赋值">数组的解构赋值</h3>
+    <h4 id="基本用法">基本用法</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs lsl"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-comment">//解构赋值</span><br><span class="hljs-comment line-number">2.</span>let arr=[<span
+            class="hljs-string">"aa"</span>,<span class="hljs-string">"bb"</span>,<span class="hljs-string">"cc"</span>,<span
+            class="hljs-string">"dd"</span>];<br><span
+            class="hljs-comment line-number">3.</span>let [a,b,c]=arr;<br><span
+            class="hljs-comment line-number">4.</span>console.log(a, b, c);<br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-comment">//嵌套赋值</span><br><span
+            class="hljs-comment line-number">6.</span>let [x,y,[s],[[f]]]=[<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>,[<span class="hljs-number">3</span>],[[<span
+            class="hljs-number">4</span>]]];<br><span class="hljs-comment line-number">7.</span>console.log(x, y, s, f);<br><span
+            class="hljs-comment line-number">8.</span><span class="hljs-comment">//省略赋值</span><br><span
+            class="hljs-comment line-number">9.</span>let ary=[<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span
+            class="hljs-number">5</span>,<span class="hljs-number">6</span>];<br><span class="hljs-comment line-number">10.</span>let [x,,,,y]=ary;<br><span
+            class="hljs-comment line-number">11.</span>console.log(x, y);<br><span
+            class="hljs-comment line-number">12.</span><span class="hljs-comment">//不定参数</span><br><span
+            class="hljs-comment line-number">13.</span>let [,,x,,...y]=[<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span
+            class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span
+            class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span
+            class="hljs-number">0</span>];<br><span
+            class="hljs-comment line-number">14.</span>console.log(x, y);<br></code></pre>
+    <h4 id="默认值">默认值</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs armasm"><span
+            class="hljs-comment line-number">1.</span> let [<span class="hljs-built_in">f2</span>,<span
+            class="hljs-built_in">f3</span><span class="hljs-number">=2</span>]=[<span
+            class="hljs-number">1</span>]<span class="hljs-comment">;</span><br><span class="hljs-comment line-number">2.</span> console.log(<span
+            class="hljs-built_in">f2</span>, <span class="hljs-built_in">f3</span>)<span
+            class="hljs-comment">;</span><br></code></pre>
+    <h3 id="对象的解构赋值">对象的解构赋值</h3>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//解构赋值</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">let</span> {n,<span
+            class="hljs-attr">m</span>:m1}={<span class="hljs-attr">n</span>:<span class="hljs-string">"nn"</span>,<span
+            class="hljs-attr">m</span>:<span class="hljs-string">'mm'</span>};<br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-built_in">console</span>.log(n, m1);<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-comment">//嵌套</span><br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-keyword">let</span> obj={<span
+            class="hljs-attr">s</span>:{<span class="hljs-attr">n</span>:<span class="hljs-string">'1'</span>},<span
+            class="hljs-attr">n</span>:[<span class="hljs-number">1</span>,<span class="hljs-string">"2"</span>,<span
+            class="hljs-number">3</span>,<span class="hljs-string">"4"</span>],<span class="hljs-attr">m</span>:[[<span
+            class="hljs-number">1</span>]]};<br><span class="hljs-comment line-number">6.</span><span
+            class="hljs-keyword">let</span> {<span class="hljs-attr">m</span>:[x1],<span class="hljs-attr">s</span>:{n},<span
+            class="hljs-attr">n</span>:[,...m2]}=obj;<br><span class="hljs-comment line-number">7.</span><span
+            class="hljs-built_in">console</span>.log(x1, n, m2);<br><span
+            class="hljs-comment line-number">8.</span><span class="hljs-comment">//[1],"1",["2",3,"4"]</span><br><span
+            class="hljs-comment line-number">9.</span><span class="hljs-comment">//默认值</span><br><span
+            class="hljs-comment line-number">10.</span><span class="hljs-keyword">let</span> {<span
+            class="hljs-attr">m</span>:n=<span class="hljs-number">4</span>}={};<br><span
+            class="hljs-comment line-number">11.</span><span class="hljs-built_in">console</span>.log(n);<span
+            class="hljs-comment">//4</span><br><span class="hljs-comment line-number">12.</span><span
+            class="hljs-keyword">let</span> {<span class="hljs-attr">a</span>:cc=<span
+            class="hljs-number">22</span>}={<span class="hljs-attr">a</span>:<span
+            class="hljs-number">12</span>};<br><span class="hljs-comment line-number">13.</span><span
+            class="hljs-built_in">console</span>.log(cc);<span class="hljs-comment">//12</span><br><span
+            class="hljs-comment line-number">14.</span><span class="hljs-comment">//其他问题</span><br><span
+            class="hljs-comment line-number">15.</span><span class="hljs-meta">'use strict'</span>;<br><span
+            class="hljs-comment line-number">16.</span><span
+            class="hljs-comment">//赋的值不是一个对象是个其他数据类型的值,会默认将其他数据类型转为对象</span><br><span class="hljs-comment line-number">17.</span><span
+            class="hljs-keyword">let</span> {x,y,__proto__}=<span class="hljs-number">1</span>;<span
+            class="hljs-comment">//{__proto__:Number}</span><br><span class="hljs-comment line-number">18.</span><span
+            class="hljs-built_in">console</span>.log(x, y,__proto__);<br><span
+            class="hljs-comment line-number">19.</span><span class="hljs-built_in">console</span>.log(<span
+            class="hljs-built_in">Object</span>(<span class="hljs-number">1</span>));<br><span
+            class="hljs-comment line-number">20.</span><span class="hljs-built_in">console</span>.log(<span
+            class="hljs-built_in">Object</span>([<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span
+            class="hljs-number">3</span>]));<br><span class="hljs-comment line-number">21.</span><span
+            class="hljs-keyword">let</span> {length}=[<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>,<span class="hljs-number">3</span>];<br><span class="hljs-comment line-number">22.</span><span
+            class="hljs-built_in">console</span>.log(length);<br><span
+            class="hljs-comment line-number">23.</span><br><span class="hljs-comment line-number">24.</span><span
+            class="hljs-keyword">let</span> a;<br><span class="hljs-comment line-number">25.</span><span
+            class="hljs-comment">//{a}={a:"a"};</span><br><span class="hljs-comment line-number">26.</span><span
+            class="hljs-comment">//JavaScrip引擎会将{a}理解成一个代码块</span><br><span
+            class="hljs-comment line-number">27.</span><span class="hljs-comment">//为了避免错误,不要将{}写在行首</span><br><span
+            class="hljs-comment line-number">28.</span><span class="hljs-built_in">eval</span>(<span
+            class="hljs-string">"({s:'ss',d:'d'})"</span>);<br><span
+            class="hljs-comment line-number">29.</span>({a}={<span class="hljs-attr">a</span>:<span class="hljs-string">"a"</span>});<br><span
+            class="hljs-comment line-number">30.</span><span class="hljs-built_in">console</span>.log(a);<br><span
+            class="hljs-comment line-number">31.</span><br><span class="hljs-comment line-number">32.</span>({}=[]);<br><span
+            class="hljs-comment line-number">33.</span><span class="hljs-comment">//null 和 undefined无法转为对象,所以对象结果赋值为一个null和undefined会报错</span><br><span
+            class="hljs-comment line-number">34.</span><span class="hljs-comment">//let {p:yy}=null;</span><br><span
+            class="hljs-comment line-number">35.</span><span
+            class="hljs-comment">//let {p:xx}=undefined;</span><br></code></pre>
+    <h3 id="字符串的解构赋值">字符串的解构赋值</h3>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//此时是将字符串转为类似数组的一个对象</span><br><span
+            class="hljs-comment line-number">2.</span>    <span class="hljs-keyword">let</span> [x,y,z]=<span
+            class="hljs-string">'123'</span>;<br><span class="hljs-comment line-number">3.</span>    <span
+            class="hljs-built_in">console</span>.log(x, y, z);<br><span
+            class="hljs-comment line-number">4.</span><br><span class="hljs-comment line-number">5.</span>    <span
+            class="hljs-keyword">let</span> {length}=<span class="hljs-string">'12345'</span>;<br><span
+            class="hljs-comment line-number">6.</span>    <span
+            class="hljs-built_in">console</span>.log(length);<br><span
+            class="hljs-comment line-number">7.</span>    <span
+            class="hljs-comment">//console.log(Array("12345"));</span><br></code></pre>
+    <h3 id="数值和布尔的结构赋值">数值和布尔的结构赋值</h3>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs swift"><span
+            class="hljs-comment line-number">1.</span><span
+            class="hljs-comment">//解构赋值时,如果等号右边是数值或者布尔值,则会先转为对象</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">let</span> {<span
+            class="hljs-built_in">toString</span>:s}=<span class="hljs-number">123</span>;<br><span
+            class="hljs-comment line-number">3.</span>s===<span class="hljs-type">Number</span>.prototype.<span
+            class="hljs-built_in">toString</span> ;<span class="hljs-comment">//true</span><br><span
+            class="hljs-comment line-number">4.</span><br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-keyword">let</span> {<span class="hljs-built_in">toString</span>:t}=<span class="hljs-literal">true</span>;<br><span
+            class="hljs-comment line-number">6.</span>t===<span class="hljs-type">Boolean</span>.prototype.<span
+            class="hljs-built_in">toString</span> ;<span class="hljs-comment">//true</span><br></code></pre>
+    <h3 id="函数参数的解构赋值">函数参数的解构赋值</h3>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs scilab"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-function"><span
+            class="hljs-keyword">function</span> <span class="hljs-title">move</span><span class="hljs-params">([x=10,y])</span>{</span><br><span
+            class="hljs-comment line-number">2.</span>    console.<span class="hljs-built_in">log</span>(x,y)<br><span
+            class="hljs-comment line-number">3.</span>}<br><span class="hljs-comment line-number">4.</span>move([,<span
+            class="hljs-number">3</span>]);<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-comment">//注意:</span><br><span class="hljs-comment line-number">6.</span><span
+            class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span><span
+            class="hljs-params">({x=0,y=0}={})</span></span><br><span class="hljs-comment line-number">7.</span><span
+            class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span><span
+            class="hljs-params">({x,y}={x:0,y:0})</span></span><br></code></pre>
+    <h3 id="圆括号的问题">圆括号的问题</h3>
+    <h4 id="不能使用括号的情况">不能使用括号的情况</h4>
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs groovy"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//1.变量声明语句中,模式不能带有括号</span><br><span
+            class="hljs-comment line-number">2.</span>    let [(a)]=[<span class="hljs-number">1</span>];<br><span
+            class="hljs-comment line-number">3.</span>    let {<span class="hljs-string">x:</span>(c)}={};<br><span
+            class="hljs-comment line-number">4.</span>    let {<span class="hljs-string">o:</span>({<span
+            class="hljs-string">p:</span>p})}={<span class="hljs-string">o:</span>{<span
+            class="hljs-string">p:</span><span class="hljs-number">1</span>}}<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-comment">//这三个都会报错</span><br><span class="hljs-comment line-number">6.</span><span
+            class="hljs-comment">//2.函数参数也属于变量声明,所以也不需要加括号</span><br><span class="hljs-comment line-number">7.</span>function f([(z)]){<span
+            class="hljs-keyword">return</span> z;}<span class="hljs-comment">//报错</span><br><span
+            class="hljs-comment line-number">8.</span><span
+            class="hljs-comment">//3.不可以将整个模式或者嵌套模式中的一层放在括号中</span><br><span
+            class="hljs-comment line-number">9.</span><span class="hljs-comment">//全部报错</span><br><span
+            class="hljs-comment line-number">10.</span>({<span class="hljs-string">p:</span>a})={<span
+            class="hljs-string">p:</span><span class="hljs-number">2</span>};<br><span class="hljs-comment line-number">11.</span>([a])=[<span
+            class="hljs-number">5</span>];<br></code></pre>
+
+
+    <h4 id="可以使用括号的情况">可以使用括号的情况</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs prolog"><span
+            class="hljs-comment line-number">1.</span>可以使用的只有只一种情况:赋值语句的非模式部分可以使用括号.<br><span
+            class="hljs-comment line-number">2.</span>[(b)]=[<span class="hljs-number">3</span>];<br><span
+            class="hljs-comment line-number">3.</span>({p:(d)}={});<br><span class="hljs-comment line-number">4.</span>[(p.p)]=[<span
+            class="hljs-number">3</span>]<br></code></pre>
+
+
+    <h3 id="用途">用途</h3>
+
+
+    <h4 id="交换变量的值">交换变量的值</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs accesslog"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-string">[x,y]</span>=<span class="hljs-string">[y,x]</span><br></code></pre>
+
+
+    <h4 id="从函数返回多个值">从函数返回多个值</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//返回一个数组</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-function"><span
+            class="hljs-keyword">function</span> <span class="hljs-title">example</span>(<span
+            class="hljs-params"></span>)</span>{<br><span class="hljs-comment line-number">3.</span>   <span
+            class="hljs-keyword">return</span> [<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span class="hljs-comment line-number">4.</span>}<br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-keyword">let</span> [a,b,c]=example();<br><span
+            class="hljs-comment line-number">6.</span><span class="hljs-comment">//返回一个对象</span><br><span
+            class="hljs-comment line-number">7.</span><span class="hljs-function"><span
+            class="hljs-keyword">function</span> <span class="hljs-title">example</span>(<span
+            class="hljs-params"></span>)</span>{<br><span class="hljs-comment line-number">8.</span>   <span
+            class="hljs-keyword">return</span> {<span class="hljs-attr">x</span>:<span
+            class="hljs-string">"X"</span>,<span class="hljs-attr">y</span>:<span
+            class="hljs-string">"Y"</span>}<br><span class="hljs-comment line-number">9.</span>}<br><span
+            class="hljs-comment line-number">10.</span><span class="hljs-keyword">let</span> [x,y]=example();<br></code></pre>
+
+
+    <h4 id="函数参数的定义">函数参数的定义</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs actionscript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-function"><span
+            class="hljs-keyword">function</span> <span class="hljs-title">g</span><span
+            class="hljs-params">([x,y,z])</span></span>{}<br><span class="hljs-comment line-number">2.</span>g([<span
+            class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span
+            class="hljs-number">3</span>])<br></code></pre>
+
+
+    <h4 id="提取json数据">提取JSON数据</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs maxima"><span
+            class="hljs-comment line-number">1.</span>//解构赋值对提取JSON对象中的数据尤其有用<br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-built_in">let</span> jsonData={<br><span class="hljs-comment line-number">3.</span>   id: <span
+            class="hljs-number">4</span>,<br><span class="hljs-comment line-number">4.</span>   <span
+            class="hljs-built_in">status</span>: <span class="hljs-string">"ok"</span>,<br><span
+            class="hljs-comment line-number">5.</span>   data:[{<span class="hljs-string">"a"</span>:<span
+            class="hljs-string">"AA"</span>},{<span class="hljs-string">"b"</span>:<span class="hljs-string">"BB"</span>}]<br><span
+            class="hljs-comment line-number">6.</span>}<br><span class="hljs-comment line-number">7.</span><span
+            class="hljs-built_in">let</span> {id,<span
+            class="hljs-built_in">status</span>,data:result}=jsonData;<br><span
+            class="hljs-comment line-number">8.</span>console.<span class="hljs-built_in">log</span>(id,<span
+            class="hljs-built_in">status</span>,result)<br></code></pre>
+
+
+    <h4 id="函数参数的默认值">函数参数的默认值</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs fsharp"><span
+            class="hljs-comment line-number">1.</span>$.ajax=<span class="hljs-keyword">function</span>({<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-class"><span class="hljs-keyword">type</span></span>=<span
+            class="hljs-string">"get"</span>,<br><span class="hljs-comment line-number">3.</span>   async=<span
+            class="hljs-keyword">true</span>,<br><span class="hljs-comment line-number">4.</span>   cache=<span
+            class="hljs-keyword">true</span>,<br><span class="hljs-comment line-number">5.</span>   <span
+            class="hljs-keyword">global</span>=<span class="hljs-keyword">true</span><br><span
+            class="hljs-comment line-number">6.</span>}){<br><span class="hljs-comment line-number">7.</span>   <span
+            class="hljs-comment">//函数体</span><br><span class="hljs-comment line-number">8.</span>}<br></code></pre>
+
+
+    <h4 id="遍历map结构">遍历Map结构</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs processing"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//后面单独拿出来将</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-comment">//任何部署了Iterator接口的对象,都可以使用for....of循环遍历.Map结构原生支持Iterator接口,配合变量的解构赋值,获取键名和键值非常方便</span><br><span
+            class="hljs-comment line-number">3.</span>let <span class="hljs-built_in">map</span> = <span
+            class="hljs-keyword">new</span> Map();<br><span class="hljs-comment line-number">4.</span><span
+            class="hljs-built_in">map</span>.<span class="hljs-built_in">set</span>(<span class="hljs-string">"a"</span>,<span
+            class="hljs-string">"A"</span>);<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-built_in">map</span>.<span class="hljs-built_in">set</span>(<span class="hljs-string">"b"</span>,<span
+            class="hljs-string">"B"</span>);<br><span class="hljs-comment line-number">6.</span><span
+            class="hljs-keyword">for</span>(let [<span class="hljs-built_in">key</span>,value] of <span
+            class="hljs-built_in">map</span>){<br><span class="hljs-comment line-number">7.</span>   console.<span
+            class="hljs-built_in">log</span>(<span class="hljs-built_in">key</span>+<span class="hljs-string">":"</span>+value)<br><span
+            class="hljs-comment line-number">8.</span>}<br></code></pre>
+
+
+    <h4 id="输入模块的指定方法">输入模块的指定方法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//加载模块时</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">const</span> {component}=<span
+            class="hljs-built_in">require</span>(<span class="hljs-string">'vue-router'</span>)<br></code></pre>
+
+
+    <h2 id="三字符串的扩展">三.字符串的扩展</h2>
+
+
+    <h3 id="includesstartswidthendswidth">includes(),startsWidth(),endsWidth()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs processing"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//includes() 判断字符串中有没有指定字符,有的话返回true,没有返回false</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-comment">//第二个参数:开始查找的索引 默认是0</span><br><span
+            class="hljs-comment line-number">3.</span>let <span class="hljs-built_in">str</span>=<span
+            class="hljs-string">'asdfghjkl'</span>;<br><span class="hljs-comment line-number">4.</span>console.<span
+            class="hljs-built_in">log</span>(<span class="hljs-built_in">str</span>.includes(<span class="hljs-string">'a'</span>,<span
+            class="hljs-number">2</span>));<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-comment">//startsWith()是不是以某个字符作为开头</span><br><span
+            class="hljs-comment line-number">6.</span><span
+            class="hljs-comment">//endsWith()是不是以某个字符作为结尾</span><br><span
+            class="hljs-comment line-number">7.</span><span class="hljs-comment">//第二个参数:开始查找的索引 默认是0</span><br><span
+            class="hljs-comment line-number">8.</span>console.<span class="hljs-built_in">log</span>(<span
+            class="hljs-built_in">str</span>.startsWith(<span class="hljs-string">"d"</span>,<span
+            class="hljs-number">2</span>));<br><span class="hljs-comment line-number">9.</span>console.<span
+            class="hljs-built_in">log</span>(<span class="hljs-built_in">str</span>.endsWith(<span class="hljs-string">"l"</span>));<br></code></pre>
+
+
+    <h3 id="repeat">repeat()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs openscad"><span
+            class="hljs-comment line-number">1.</span><span
+            class="hljs-comment">//repeat(n),将字符串重复n次返回,原字符串不变</span><br><span
+            class="hljs-comment line-number">2.</span>   console.<span class="hljs-built_in">log</span>(<span
+            class="hljs-built_in">str</span>.repeat(<span class="hljs-number">2</span>),<span
+            class="hljs-built_in">str</span>);<br><span class="hljs-comment line-number">3.</span><span
+            class="hljs-comment">//小数 向下取整</span><br><span class="hljs-comment line-number">4.</span>   console.<span
+            class="hljs-built_in">log</span>(<span class="hljs-built_in">str</span>.repeat(<span
+            class="hljs-number">2.6</span>));<br><span class="hljs-comment line-number">5.</span><br><span
+            class="hljs-comment line-number">6.</span><span class="hljs-comment">//负数/Infinity 报错的</span><br><span
+            class="hljs-comment line-number">7.</span>   console.<span class="hljs-built_in">log</span>(<span
+            class="hljs-built_in">str</span>.repeat(-<span class="hljs-number">2</span>));<br><span
+            class="hljs-comment line-number">8.</span>   console.<span class="hljs-built_in">log</span>(<span
+            class="hljs-built_in">str</span>.repeat(Infinity));<br><span class="hljs-comment line-number">9.</span><span
+            class="hljs-comment">//0-&gt;-1 :先进行向下取整运算结果为0</span><br><span class="hljs-comment line-number">10.</span>   console.<span
+            class="hljs-built_in">log</span>(<span class="hljs-built_in">str</span>.repeat(-<span class="hljs-number">0.3</span>));<span
+            class="hljs-comment">//''</span><br><span class="hljs-comment line-number">11.</span><span
+            class="hljs-comment">//NaN =&gt; 0</span><br><span
+            class="hljs-comment line-number">12.</span>   console.<span class="hljs-built_in">log</span>(<span
+            class="hljs-built_in">str</span>.repeat(NaN));<span class="hljs-comment">//''</span><br><span
+            class="hljs-comment line-number">13.</span><span class="hljs-comment">//字符串 将字符串变为数字</span><br><span
+            class="hljs-comment line-number">14.</span>    console.<span class="hljs-built_in">log</span>(<span
+            class="hljs-built_in">str</span>.repeat(<span class="hljs-string">"2"</span>));<br></code></pre>
+
+
+    <h3 id="padstartpadend">padStart(),padEnd()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs awk"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-regexp">//</span>ES7<br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-string">"x"</span>.padStart(<span class="hljs-number">5</span>,<span
+            class="hljs-string">"ab"</span>);<span class="hljs-regexp">//</span><span class="hljs-string">"ababx"</span><br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-string">"x"</span>.padStart(<span
+            class="hljs-number">4</span>,<span class="hljs-string">"ab"</span>);<span class="hljs-regexp">//</span><span
+            class="hljs-string">"abax"</span><br><span class="hljs-comment line-number">4.</span><span
+            class="hljs-string">"x"</span>.padEnd(<span class="hljs-number">5</span>,<span
+            class="hljs-string">"ab"</span>);<span class="hljs-regexp">//</span><span class="hljs-string">"xabab"</span><br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-string">"x"</span>.padEnd(<span
+            class="hljs-number">4</span>,<span class="hljs-string">"ab"</span>);<span class="hljs-regexp">//</span><span
+            class="hljs-string">"xaba"</span><br><span class="hljs-comment line-number">6.</span><span
+            class="hljs-string">"x"</span>.padStart(<span class="hljs-number">4</span>);<span
+            class="hljs-regexp">//</span><span class="hljs-string">"   x"</span><br></code></pre>
+
+
+    <h3 id="模板字符串">模板字符串</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-meta">'use strict'</span>;<br><span
+            class="hljs-comment line-number">2.</span> <span class="hljs-keyword">let</span> str=<span
+            class="hljs-string">'I LOVE YOU'</span>;<br><span class="hljs-comment line-number">3.</span> <span
+            class="hljs-built_in">document</span>.body.innerHTML=<span class="hljs-string">'&lt;h1&gt;'</span>+str+<span
+            class="hljs-string">'&lt;h1&gt;'</span>;<br><span class="hljs-comment line-number">4.</span> <span
+            class="hljs-keyword">let</span> str1=<span class="hljs-string">`&lt;h1&gt;<span
+            class="hljs-subst">${str}</span>&lt;/h1&gt;`</span>;<br><span
+            class="hljs-comment line-number">5.</span> <span class="hljs-built_in">document</span>.body.innerHTML+=str1;<br><span
+            class="hljs-comment line-number">6.</span><br><span class="hljs-comment line-number">7.</span> <span
+            class="hljs-comment">//保留换行和空格</span><br><span class="hljs-comment line-number">8.</span> <span
+            class="hljs-built_in">console</span>.log(<span class="hljs-string">"hahahhah\nhhahah"</span>);<br><span
+            class="hljs-comment line-number">9.</span> <span class="hljs-keyword">let</span> s1=<span
+            class="hljs-string">`hahah<br><span class="hljs-comment line-number">10.</span>    ggagga<br><span
+            class="hljs-comment line-number">11.</span>    hhhh<br><span class="hljs-comment line-number">12.</span>    `</span>;<br><span
+            class="hljs-comment line-number">13.</span> <span class="hljs-built_in">console</span>.log(s1);<br><span
+            class="hljs-comment line-number">14.</span><br><span class="hljs-comment line-number">15.</span> <span
+            class="hljs-comment">//\`</span><br><span class="hljs-comment line-number">16.</span>    <span
+            class="hljs-built_in">console</span>.log(<span class="hljs-string">`sss\`1234`</span>);<br><span
+            class="hljs-comment line-number">17.</span><br><span class="hljs-comment line-number">18.</span> <span
+            class="hljs-comment">//{可以实现运算}</span><br><span class="hljs-comment line-number">19.</span> <span
+            class="hljs-keyword">let</span> x=<span class="hljs-number">1</span>;<br><span
+            class="hljs-comment line-number">20.</span> <span class="hljs-keyword">let</span> y=<span
+            class="hljs-number">2</span>;<br><span class="hljs-comment line-number">21.</span> <span
+            class="hljs-built_in">console</span>.log(<span class="hljs-string">`<span
+            class="hljs-subst">${x}</span>+<span class="hljs-subst">${y}</span>=<span class="hljs-subst">${x + y}</span>`</span>);<br><span
+            class="hljs-comment line-number">22.</span><br><span class="hljs-comment line-number">23.</span> <span
+            class="hljs-comment">//调用函数</span><br><span class="hljs-comment line-number">24.</span>    <span
+            class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn</span>(<span
+            class="hljs-params">x</span>) </span>{<br><span class="hljs-comment line-number">25.</span>        <span
+            class="hljs-keyword">return</span> x<br><span class="hljs-comment line-number">26.</span>    }<br><span
+            class="hljs-comment line-number">27.</span>    <span class="hljs-keyword">let</span> s2=<span
+            class="hljs-string">"XXX"</span>;<br><span class="hljs-comment line-number">28.</span>    <span
+            class="hljs-built_in">console</span>.log(<span class="hljs-string">`函数fn输出的结果是<span class="hljs-subst">${fn(s2)}</span>`</span>);<br><span
+            class="hljs-comment line-number">29.</span><br><span class="hljs-comment line-number">30.</span>    <span
+            class="hljs-keyword">let</span>  s3=<span class="hljs-string">'return'</span>+<span class="hljs-string">'`Hello ${wd}`'</span>;<br><span
+            class="hljs-comment line-number">31.</span>    <span class="hljs-keyword">let</span> fun=<span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Function</span>(<span
+            class="hljs-string">'wd'</span>,s3);<br><span class="hljs-comment line-number">32.</span>    <span
+            class="hljs-built_in">console</span>.log(fun(<span class="hljs-string">"ZFPX"</span>));<br><span
+            class="hljs-comment line-number">33.</span><span class="hljs-comment">//Hello ZFPX</span><br></code></pre>
+
+
+    <h2 id="六数组的扩展">六.数组的扩展</h2>
+
+
+    <h3 id="arrayfrom">Array.from()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs haxe"><span class="hljs-comment line-number">1.</span>    <span
+            class="hljs-comment">//Array.from()</span><br><span class="hljs-comment line-number">2.</span>    <span
+            class="hljs-comment">// 将一个数组和类数组转化为数组</span><br><span class="hljs-comment line-number">3.</span>    <span
+            class="hljs-comment">// 返回值是一个新数组</span><br><span class="hljs-comment line-number">4.</span>    <span
+            class="hljs-comment">// 原来数组不变</span><br><span
+            class="hljs-comment line-number">5.</span>    let oldArr=[<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-string">"a"</span>,<span
+            class="hljs-string">"b"</span>];<br><span class="hljs-comment line-number">6.</span>    let <span
+            class="hljs-keyword">new</span><span class="hljs-type">Arr</span>=<span class="hljs-keyword">Array</span>.from(oldArr);<br><span
+            class="hljs-comment line-number">7.</span>    console.log(<span class="hljs-keyword">new</span><span
+            class="hljs-type">Arr</span>);<br></code></pre>
+
+
+    <h3 id="arrayof">Array.of()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs ada"><span class="hljs-comment line-number">1.</span>//<span
+            class="hljs-keyword">of</span> 将一组数值转化为数组,类似<span class="hljs-keyword">Array</span>方法<br><span
+            class="hljs-comment line-number">2.</span>console.log(<span class="hljs-keyword">Array</span>.<span
+            class="hljs-keyword">of</span>(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span
+            class="hljs-number">3</span>))<br></code></pre>
+
+
+    <h3 id="数组实例的copywithin">数组实例的copyWithin()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs lsl"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-comment">//Array.prototype.copyWithin(target,start,end)</span><br><span
+            class="hljs-comment line-number">2.</span><span
+            class="hljs-comment">//target(必需)：从该位置开始替换数据。</span><br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-comment">//start(可选)：从该位置开始读取数据，默认为 0 。如果为负值，表示倒数。</span><br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-comment">//end(可选)：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。</span><br><span
+            class="hljs-comment line-number">5.</span><span
+            class="hljs-comment">//这三个参数都应该是数值，如果不是，会自动转为数值。</span><br><span class="hljs-comment line-number">6.</span>    let arr = [<span
+            class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span
+            class="hljs-number">4</span>, <span class="hljs-number">5</span>];<br><span
+            class="hljs-comment line-number">7.</span>    arr.copyWithin(<span class="hljs-number">0</span>, <span
+            class="hljs-number">1</span>, <span class="hljs-number">5</span>);<br><span
+            class="hljs-comment line-number">8.</span>    console.log(arr);<br></code></pre>
+
+
+    <h3 id="数组实例的find和findindex">数组实例的find()和findIndex()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">let</span> arr=[<span
+            class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span
+            class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span
+            class="hljs-number">5</span>];<br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-comment">//返回值是找到的那一项,没有就是undefined</span><br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-keyword">let</span> find=arr.find(<span
+            class="hljs-function">(<span class="hljs-params">item,index,arr</span>)=&gt;</span>{<br><span
+            class="hljs-comment line-number">4.</span>    <span
+            class="hljs-comment">//item当前项,index:索引,arr:元素组</span><br><span class="hljs-comment line-number">5.</span>    <span
+            class="hljs-keyword">return</span> item==<span class="hljs-number">0</span>;<br><span
+            class="hljs-comment line-number">6.</span>});<br><span class="hljs-comment line-number">7.</span><span
+            class="hljs-comment">//返回值是找到的那一项的索引,没有就是-1</span><br><span class="hljs-comment line-number">8.</span><span
+            class="hljs-keyword">let</span> findIndex=arr.findIndex(<span class="hljs-function">(<span
+            class="hljs-params">item,index,arr</span>)=&gt;</span>{<br><span class="hljs-comment line-number">9.</span>    <span
+            class="hljs-keyword">return</span> item==<span class="hljs-number">0</span>;<br><span
+            class="hljs-comment line-number">10.</span>});<br><span class="hljs-comment line-number">11.</span><span
+            class="hljs-built_in">console</span>.log(find, findIndex);<br></code></pre>
+
+
+    <h3 id="数组实例的fill">数组实例的fill()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs lsl"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-comment">//fill 联想canvas的fill方法填充的意思, 这里是填充数组,明显肯定会改变原数组</span><br><span
+            class="hljs-comment line-number">2.</span><span
+            class="hljs-comment">//Array.prototype.fill(value,start,end)</span><br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-comment">//value 必需。填充的值。</span><br><span
+            class="hljs-comment line-number">4.</span><span
+            class="hljs-comment">//start 可选。开始填充位置(默认值为0)</span><br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-comment">//end   可选。停止填充位置 (不包括该值,默认为 array.length)</span><br><span
+            class="hljs-comment line-number">6.</span>    let arr=[<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span
+            class="hljs-number">5</span>];<br><span class="hljs-comment line-number">7.</span>    arr.fill(<span
+            class="hljs-string">"a"</span>,<span class="hljs-number">0</span>,<span
+            class="hljs-number">1</span>);<br><span class="hljs-comment line-number">8.</span>    console.log(arr);<br></code></pre>
+
+
+    <h3 id="数组实例的entrieskeys和values">数组实例的entries(),keys()和values()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs xquery"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">let</span> arr=[<span
+            class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span
+            class="hljs-number">4</span>,<span class="hljs-number">5</span>]<br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> index <span
+            class="hljs-keyword">of</span> arr.keys()){<br><span class="hljs-comment line-number">3.</span>        console.log(item);<br><span
+            class="hljs-comment line-number">4.</span>    }<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> <span class="hljs-literal">item</span> <span
+            class="hljs-keyword">of</span> arr.values()){<br><span class="hljs-comment line-number">6.</span>        console.log(item);<br><span
+            class="hljs-comment line-number">7.</span>    }<br><span class="hljs-comment line-number">8.</span><span
+            class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> [index,<span
+            class="hljs-literal">item</span>] <span class="hljs-keyword">of</span> arr.entries()){<br><span
+            class="hljs-comment line-number">9.</span>        console.log(index,item);<br><span
+            class="hljs-comment line-number">10.</span>    }<br><span class="hljs-comment line-number">11.</span><span
+            class="hljs-keyword">let</span> ary2=arr.entries();<br><span class="hljs-comment line-number">12.</span>console.log(ary2.<span
+            class="hljs-keyword">next</span>().<span class="hljs-keyword">value</span>);<br><span
+            class="hljs-comment line-number">13.</span>console.log(ary2.<span class="hljs-keyword">next</span>().<span
+            class="hljs-keyword">value</span>);<br><span
+            class="hljs-comment line-number">14.</span>console.log(ary2.<span class="hljs-keyword">next</span>().<span
+            class="hljs-keyword">value</span>);<br></code></pre>
+
+
+    <h3 id="数组实例的includes">数组实例的includes()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span
+            class="hljs-comment">//includes 代替indexOf,返回值是true和false</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">let</span> arr=[<span
+            class="hljs-literal">NaN</span>,<span class="hljs-string">'a'</span>,<span
+            class="hljs-number">0</span>];<br><span class="hljs-comment line-number">3.</span><span
+            class="hljs-built_in">console</span>.log(arr.indexOf(<span class="hljs-literal">NaN</span>));<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-built_in">console</span>.log(arr.includes(<span
+            class="hljs-literal">NaN</span>));<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-comment">//跟indexOf一样第二个参数可选</span><br></code></pre>
+
+
+    <h3 id="数组的空位">数组的空位</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs awk"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-regexp">//</span>空位不是undefined,可以使用<span class="hljs-keyword">in</span>方法来检测一下<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-regexp">//</span>ES5 对空位的处理很不一致<br><span
+            class="hljs-comment line-number">3.</span><br></code></pre>
+
+
+    <h2 id="七函数的扩展">七.函数的扩展</h2>
+
+
+    <h4 id="基本用法-1">基本用法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-function"><span
+            class="hljs-keyword">function</span> <span class="hljs-title">FF</span>(<span class="hljs-params">x=<span
+            class="hljs-number">0</span>,y=<span class="hljs-number">0</span></span>)</span>{<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-keyword">this</span>.x=x;<br><span
+            class="hljs-comment line-number">3.</span>   <span class="hljs-keyword">this</span>.y=y;<br><span
+            class="hljs-comment line-number">4.</span>}<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-keyword">let</span> b=<span class="hljs-keyword">new</span> FF()<br></code></pre>
+
+
+    <h4 id="与解构赋值默认值结合起来使用">与解构赋值默认值结合起来使用</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs ada"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-keyword">function</span> <span class="hljs-title">fn1</span>({x=0,y=0}={}){<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-keyword">return</span> <span
+            class="hljs-type">[x,y]</span><br><span class="hljs-comment line-number">3.</span>}<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-keyword">function</span> <span
+            class="hljs-title">fn2</span>({x,y}={x:0,y:0}){<br><span class="hljs-comment line-number">5.</span>   <span
+            class="hljs-keyword">return</span> <span class="hljs-type">[x,y]</span><br><span
+            class="hljs-comment line-number">6.</span>}<br><span
+            class="hljs-comment line-number">7.</span>fn1();<br><span
+            class="hljs-comment line-number">8.</span>fn2();<br></code></pre>
+
+
+    <h4 id="参数默认值得位置">参数默认值得位置</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs rust"><span class="hljs-comment line-number">1.</span>function <span
+            class="hljs-function"><span class="hljs-keyword">fn</span></span>(x,y=<span class="hljs-number">8</span>,z){<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-keyword">return</span> [x,y,z]<br><span
+            class="hljs-comment line-number">3.</span>}<br><span class="hljs-comment line-number">4.</span><span
+            class="hljs-function"><span class="hljs-keyword">fn</span></span>(<span class="hljs-number">1</span>,,<span
+            class="hljs-number">3</span>)<span class="hljs-comment">//报错</span><br></code></pre>
+
+
+    <h4 id="函数的length属性">函数的length属性</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs applescript"><span
+            class="hljs-comment line-number">1.</span>指定了参数默认值后,<span class="hljs-built_in">length</span>属性返回的是没有默认值的参数长度<br></code></pre>
+
+
+    <h4 id="作用域">作用域</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//参数的作用域是当前函数</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">let</span> x=<span class="hljs-number">0</span>;<br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-function"><span
+            class="hljs-keyword">function</span> <span class="hljs-title">fn</span> (<span
+            class="hljs-params">y=x,x</span>)</span>{<span class="hljs-comment">//报错</span><br><span
+            class="hljs-comment line-number">4.</span>   <span class="hljs-keyword">return</span> [x,y]<br><span
+            class="hljs-comment line-number">5.</span>}<br></code></pre>
+
+
+    <h3 id="rest参数">rest参数</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs 1c"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//...参数名</span><br></code></pre>
+
+
+    <h3 id="扩展运算符">扩展运算符</h3>
+
+
+    <h4 id="含义">含义</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs fortran"><span
+            class="hljs-comment line-number">1.</span>let <span class="hljs-built_in">print</span> = <span
+            class="hljs-function"><span class="hljs-keyword">function</span><span
+            class="hljs-params">(a,b,c)</span></span>{<br><span
+            class="hljs-comment line-number">2.</span>    console.<span
+            class="hljs-built_in">log</span>(a,b,c);<br><span class="hljs-comment line-number">3.</span>}<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-built_in">print</span>([<span
+            class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span
+            class="hljs-number">3</span>]);<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-built_in">print</span>(...[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span
+            class="hljs-number">3</span>]);<br></code></pre>
+
+
+    <h4 id="替代数组的apply方法">替代数组的apply方法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">let</span> ary=[<span
+            class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>]<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-built_in">Math</span>.apply(<span
+            class="hljs-literal">null</span>,ary);<br><span class="hljs-comment line-number">3.</span><span
+            class="hljs-built_in">Math</span>(...ary);<br></code></pre>
+
+
+    <h4 id="扩展运算符的应用">扩展运算符的应用</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs ada"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-keyword">function</span> <span class="hljs-title">fn</span> (){<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-keyword">return</span> <span
+            class="hljs-type">[...arguments]</span><br><span class="hljs-comment line-number">3.</span>}<br><span
+            class="hljs-comment line-number">4.</span>[<span class="hljs-number">1</span>,<span
+            class="hljs-number">2</span>].concat(<span class="hljs-number">1</span>,...ary);<br></code></pre>
+
+
+    <h3 id="name属性">name属性</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs gauss"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">let</span> <span class="hljs-function"><span
+            class="hljs-keyword">fn</span>=function <span class="hljs-params">()</span>{}</span>;<br><span
+            class="hljs-comment line-number">2.</span>console.<span class="hljs-built_in">log</span>(<span
+            class="hljs-function"><span class="hljs-keyword">fn</span>.name)</span>;<br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-keyword">let</span> obj={};<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-keyword">let</span> ff=<span
+            class="hljs-function"><span class="hljs-keyword">fn</span>.bind<span class="hljs-params">(obj)</span></span>;<br><span
+            class="hljs-comment line-number">5.</span>ff.name<br></code></pre>
+
+
+    <h3 id="箭头函数">箭头函数</h3>
+
+
+    <h4 id="基本用法-2">基本用法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs coffeescript"><span
+            class="hljs-comment line-number">1.</span>let a=<span class="hljs-function"><span
+            class="hljs-params">(x)</span>=&gt;</span>x*x;<br><span class="hljs-comment line-number">2.</span>ary.forEach(<span
+            class="hljs-function"><span class="hljs-params">(item,index)</span>=&gt;</span>{<br><span
+            class="hljs-comment line-number">3.</span>   ary[index]=item*<span class="hljs-number">10</span>;<br><span
+            class="hljs-comment line-number">4.</span>})<br></code></pre>
+
+
+    <h4 id="使用注意点">使用注意点</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs gauss"><span
+            class="hljs-comment line-number">1.</span>function <span class="hljs-function"><span
+            class="hljs-keyword">fn</span><span class="hljs-params">()</span>{<br><span
+            class="hljs-comment line-number">2.</span>   this</span>;<br><span
+            class="hljs-comment line-number">3.</span>   <span class="hljs-keyword">let</span> x=()=&gt;{<br><span
+            class="hljs-comment line-number">4.</span>      console.<span
+            class="hljs-built_in">log</span>(this)<br><span class="hljs-comment line-number">5.</span>   }<br><span
+            class="hljs-comment line-number">6.</span>   x();<br><span
+            class="hljs-comment line-number">7.</span>   <span class="hljs-keyword">return</span> x;<br><span
+            class="hljs-comment line-number">8.</span>}<br><span class="hljs-comment line-number">9.</span><span
+            class="hljs-function"><span class="hljs-keyword">fn</span><span
+            class="hljs-params">()</span></span>;<br><span class="hljs-comment line-number">10.</span><span
+            class="hljs-keyword">let</span> x=<span class="hljs-function"><span class="hljs-keyword">fn</span><span
+            class="hljs-params">()</span></span>;<br><span class="hljs-comment line-number">11.</span>x();<br><span
+            class="hljs-comment line-number">12.</span><span class="hljs-function"><span class="hljs-keyword">fn</span>.<span
+            class="hljs-keyword">call</span><span class="hljs-params">(<span class="hljs-built_in">window</span>)</span></span><br></code></pre>
+
+
+    <h4 id="嵌套的箭头函数">嵌套的箭头函数</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span> <span class="hljs-keyword">let</span> fun=<span
+            class="hljs-function">(<span class="hljs-params">a</span>)=&gt;</span>{<br><span
+            class="hljs-comment line-number">2.</span>        <span class="hljs-keyword">return</span><span
+            class="hljs-function">(<span class="hljs-params">b</span>)=&gt;</span>{<br><span
+            class="hljs-comment line-number">3.</span>            <span class="hljs-keyword">return</span><span
+            class="hljs-function">(<span class="hljs-params">c</span>)=&gt;</span>{<br><span
+            class="hljs-comment line-number">4.</span>                <span class="hljs-keyword">return</span> a+b+c<br><span
+            class="hljs-comment line-number">5.</span>            }<br><span class="hljs-comment line-number">6.</span>        }<br><span
+            class="hljs-comment line-number">7.</span>  };<br><span class="hljs-comment line-number">8.</span>  <span
+            class="hljs-built_in">console</span>.log(fun(<span class="hljs-number">10</span>)(<span class="hljs-number">20</span>)(<span
+            class="hljs-number">30</span>));<br><span class="hljs-comment line-number">9.</span>  <span
+            class="hljs-keyword">let</span> fn=<span class="hljs-function"><span
+            class="hljs-params">a</span>=&gt;</span><span class="hljs-function"><span class="hljs-params">b</span>=&gt;</span><span
+            class="hljs-function"><span class="hljs-params">c</span>=&gt;</span>a+b+c;<br><span
+            class="hljs-comment line-number">10.</span>  <span class="hljs-built_in">console</span>.log(fn(<span
+            class="hljs-string">"1"</span>)(<span class="hljs-string">"2"</span>)(<span class="hljs-string">"3"</span>));<br></code></pre>
+
+
+    <h2 id="八对象的扩展">八.对象的扩展</h2>
+
+
+    <h3 id="属性的简洁表示法">属性的简洁表示法</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">let</span> a=<span class="hljs-string">"A"</span>;<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">let</span> b=<span class="hljs-string">"B"</span>;<br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-keyword">let</span> obj3={a,b};<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-comment">//函数</span><br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-keyword">let</span> objFn={<br><span
+            class="hljs-comment line-number">6.</span>     <span class="hljs-attr">fn1</span>:<span
+            class="hljs-function">(<span class="hljs-params">a,b</span>)=&gt;</span>{<br><span
+            class="hljs-comment line-number">7.</span>         <span
+            class="hljs-built_in">console</span>.log(a + b);<br><span class="hljs-comment line-number">8.</span>         <span
+            class="hljs-keyword">return</span> a+b;<br><span class="hljs-comment line-number">9.</span>     },<br><span
+            class="hljs-comment line-number">10.</span>     fn2(a,b){<br><span
+            class="hljs-comment line-number">11.</span>         <span
+            class="hljs-built_in">console</span>.log(a + b);<br><span class="hljs-comment line-number">12.</span>         <span
+            class="hljs-keyword">return</span> a+b;<br><span class="hljs-comment line-number">13.</span>     }<br><span
+            class="hljs-comment line-number">14.</span>    };<br></code></pre>
+
+
+    <h3 id="属性名的表达方式">属性名的表达方式</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs gauss"><span
+            class="hljs-comment line-number">1.</span>    <span class="hljs-keyword">let</span> a=<span
+            class="hljs-string">"AAA"</span>;<br><span class="hljs-comment line-number">2.</span>    <span
+            class="hljs-keyword">let</span> obj1={<br><span
+            class="hljs-comment line-number">3.</span>        [a]:'a',<br><span
+            class="hljs-comment line-number">4.</span>        [a+'<span class="hljs-function"><span
+            class="hljs-keyword">fn</span>']<span class="hljs-params">()</span>{<br><span
+            class="hljs-comment line-number">5.</span>            console.<span class="hljs-built_in">log</span><span
+            class="hljs-params">(a + '<span class="hljs-keyword">fn</span>')</span></span>;<br><span
+            class="hljs-comment line-number">6.</span>        },<br><span class="hljs-comment line-number">7.</span>        a<br><span
+            class="hljs-comment line-number">8.</span>    };<br><span class="hljs-comment line-number">9.</span>    console.<span
+            class="hljs-built_in">log</span>(obj1);<br><span class="hljs-comment line-number">10.</span>    <span
+            class="hljs-comment">//{AAA:"a",AAAfn:ƒ (),a:"AAA"}</span><br></code></pre>
+
+
+    <h3 id="方法的name属性">方法的name属性</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs maxima"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-built_in">let</span> obj={<br><span
+            class="hljs-comment line-number">2.</span>   <span class="hljs-built_in">sum</span>(){<br><span
+            class="hljs-comment line-number">3.</span>      <span class="hljs-built_in">return</span> <span
+            class="hljs-built_in">eval</span>([...argument].<span class="hljs-built_in">join</span>(<span
+            class="hljs-string">"+"</span>));<br><span class="hljs-comment line-number">4.</span>   },<br><span
+            class="hljs-comment line-number">5.</span>   add:(...all)=&gt;{<br><span
+            class="hljs-comment line-number">6.</span>      <span class="hljs-built_in">return</span> <span
+            class="hljs-built_in">eval</span>(all.<span class="hljs-built_in">join</span>(<span
+            class="hljs-string">"+"</span>));<br><span class="hljs-comment line-number">7.</span>   }<br><span
+            class="hljs-comment line-number">8.</span>}<br><span
+            class="hljs-comment line-number">9.</span>obj.add.name<br><span class="hljs-comment line-number">10.</span>obj.<span
+            class="hljs-built_in">sum</span>.name<br></code></pre>
+
+
+    <h3 id="objectis">Object.is()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span> <span class="hljs-built_in">console</span>.log(+<span
+            class="hljs-number">0</span> === <span class="hljs-number">-0</span>);<span
+            class="hljs-comment">//true</span><br><span class="hljs-comment line-number">2.</span> <span
+            class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>.is(+<span
+            class="hljs-number">0</span>,<span class="hljs-number">-0</span>));<span class="hljs-comment">//false</span><br><span
+            class="hljs-comment line-number">3.</span> <span class="hljs-built_in">console</span>.log(<span
+            class="hljs-literal">NaN</span> === <span class="hljs-literal">NaN</span>);<span class="hljs-comment">//false</span><br><span
+            class="hljs-comment line-number">4.</span> <span class="hljs-built_in">console</span>.log(<span
+            class="hljs-built_in">Object</span>.is(<span class="hljs-literal">NaN</span>,<span
+            class="hljs-literal">NaN</span>));<span class="hljs-comment">//true</span><br></code></pre>
+
+
+    <h3 id="objectassign">Object.assign()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs autoit"><span
+            class="hljs-comment line-number">1.</span>//合并对象:Object.<span class="hljs-built_in">assign</span>(obj1,obj2.....)<br><span
+            class="hljs-comment line-number">2.</span>//将obj2...合并到obj1上,将obj1返回<br><span
+            class="hljs-comment line-number">3.</span>//注意obj2...可以不是一个对象,属性名依次为<span
+            class="hljs-string">"0"</span>,<span class="hljs-string">"1"</span>....<br><span
+            class="hljs-comment line-number">4.</span>Object.<span
+            class="hljs-built_in">assign</span>({},obj1)===obj1<span class="hljs-comment">;</span><br><span
+            class="hljs-comment line-number">5.</span>Object.<span class="hljs-built_in">assign</span>(obj1)===obj1<span
+            class="hljs-comment">;</span><br></code></pre>
+
+
+    <h3 id="属性的可枚举性">属性的可枚举性</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">let</span> obj = { <span
+            class="hljs-attr">foo</span>: <span class="hljs-number">123</span> };<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-built_in">Object</span>.getOwnPropertyDescriptor(obj, <span
+            class="hljs-string">'foo'</span>)<br></code></pre>
+
+
+    <h3 id="属性的遍历">属性的遍历</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs dart"><span class="hljs-comment line-number">1.</span>（<span
+            class="hljs-number">1</span>）<span class="hljs-keyword">for</span>...<span
+            class="hljs-keyword">in</span><br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-keyword">for</span>...<span class="hljs-keyword">in</span>循环遍历对象自身的和继承的可枚举属性（不含 <span
+            class="hljs-built_in">Symbol</span> 属性）。<br><span class="hljs-comment line-number">3.</span>（<span
+            class="hljs-number">2</span>）<span class="hljs-built_in">Object</span>.keys(obj)<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-built_in">Object</span>.keys返回一个数组，包括对象自身的（不含继承的）所有可枚举属性（不含 <span
+            class="hljs-built_in">Symbol</span> 属性）。<br><span class="hljs-comment line-number">5.</span>（<span
+            class="hljs-number">3</span>）<span class="hljs-built_in">Object</span>.getOwnPropertyNames(obj)<br><span
+            class="hljs-comment line-number">6.</span><span class="hljs-built_in">Object</span>.getOwnPropertyNames返回一个数组，包含对象自身的所有属性（不含 <span
+            class="hljs-built_in">Symbol</span> 属性，但是包括不可枚举属性）。<br><span
+            class="hljs-comment line-number">7.</span>（<span class="hljs-number">4</span>）<span class="hljs-built_in">Object</span>.getOwnPropertySymbols(obj)<br><span
+            class="hljs-comment line-number">8.</span><span class="hljs-built_in">Object</span>.getOwnPropertySymbols返回一个数组，包含对象自身的所有 <span
+            class="hljs-built_in">Symbol</span> 属性。<br><span class="hljs-comment line-number">9.</span>（<span
+            class="hljs-number">5</span>）Reflect.ownKeys(obj)<br><span class="hljs-comment line-number">10.</span>Reflect.ownKeys返回一个数组，包含对象自身的所有属性，不管属性名是 <span
+            class="hljs-built_in">Symbol</span> 或字符串，也不管是否可枚举。<br></code></pre>
+
+
+    <h3 id="proto属性objectsetprototypeofobjectgetprototypeof"><strong>proto</strong>属性,Object.setPrototypeOf(),Object.getPrototypeOf()
+    </h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs elm"><span class="hljs-comment line-number">1.</span>//如果一个对象本身部署了__proto__属性，则该属性的值就是对象的原型。<br><span
+            class="hljs-comment line-number">2.</span>//<span class="hljs-type">Object</span>.setPrototypeOf(object, prototype)<br><span
+            class="hljs-comment line-number">3.</span>//<span
+            class="hljs-type">Object</span>.getPrototypeOf(obj)<br><span class="hljs-comment line-number">4.</span>//该方法与<span
+            class="hljs-type">Object</span>.setPrototypeOf方法配套，用于读取一个对象的原型对象。<br><span class="hljs-comment line-number">5.</span><br></code></pre>
+
+
+    <h2 id="十proxy和reflect">十.Proxy和Reflect</h2>
+
+
+    <h3 id="proxy概述">Proxy概述</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs groovy"><span
+            class="hljs-comment line-number">1.</span>let proxy=<span class="hljs-keyword">new</span> Proxy({<span
+            class="hljs-string">a:</span><span class="hljs-string">"a"</span>,<span class="hljs-string">b:</span><span
+            class="hljs-string">"b"</span>},{});<br><span class="hljs-comment line-number">2.</span>proxy.a;<br><span
+            class="hljs-comment line-number">3.</span>proxy.b=<span class="hljs-string">"bb"</span>;<br></code></pre>
+
+
+    <h3 id="proxy实例的方法">Proxy实例的方法</h3>
+
+
+    <h4 id="get">get()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs actionscript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">get</span>方法用于拦截某个属性的读取操作。上文已经有一个例子，下面是另一个拦截读取操作的例子。<br></code></pre>
+
+
+    <h4 id="set">set()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs actionscript"><span
+            class="hljs-comment line-number">1.</span><span
+            class="hljs-keyword">set</span>方法用来拦截某个属性的赋值操作。<br></code></pre>
+
+
+    <h4 id="apply">apply()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs sqf"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-built_in">apply</span>方法拦截函数的调用、<span class="hljs-built_in">call</span>和<span
+            class="hljs-built_in">apply</span>操作。<br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-built_in">apply</span>方法可以接受三个参数，分别是目标对象、目标对象的上下文对象（this）和目标对象的参数数组。<br></code></pre>
+
+
+    <h4 id="has">has()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs oxygene"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-keyword">has</span>方法用来拦截HasProperty操作，即判断对象是否具有某个属性时，这个方法会生效。典型的操作就是<span
+            class="hljs-keyword">in</span>运算符。<br></code></pre>
+
+
+    <h4 id="construct">construct()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs vim"><span class="hljs-comment line-number">1.</span>construct方法用于拦截<span
+            class="hljs-keyword">new</span>命令，下面是拦截对象的写法<br><span class="hljs-comment line-number">2.</span>参数:<br><span
+            class="hljs-comment line-number">3.</span>targe<span class="hljs-variable">t:</span> 目标对象<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-keyword">args</span>：构建函数的参数对象<br></code></pre>
+
+
+    <h4 id="deleteproperty">deleteProperty()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs actionscript"><span
+            class="hljs-comment line-number">1.</span>deleteProperty方法用于拦截<span class="hljs-keyword">delete</span>操作，如果这个方法抛出错误或者返回<span
+            class="hljs-literal">false</span>，当前属性就无法被<span class="hljs-keyword">delete</span>命令删除。<br></code></pre>
+
+
+    <h4 id="defineproperty">defineProperty()</h4>
+
+
+    <h4 id="enunerate">enunerate()</h4>
+
+
+    <h4 id="getownpropertydsecriptor">getOwnPropertyDsecriptor()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span>getOwnPropertyDescriptor方法拦截<span
+            class="hljs-built_in">Object</span>.getOwnPropertyDescriptor()，返回一个属性描述对象或者<span class="hljs-literal">undefined</span>。<br></code></pre>
+
+
+    <h4 id="getprototypeof">getPrototypeOf()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs elm"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-title">getPrototypeOf</span>方法主要用来拦截获取对象原型。具体来说，拦截下面这些操作。<br><span
+            class="hljs-comment line-number">2.</span><br><span class="hljs-comment line-number">3.</span><span
+            class="hljs-type">Object</span>.proto<span class="hljs-keyword">type</span>.__proto__<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-type">Object</span>.proto<span
+            class="hljs-keyword">type</span>.isPrototypeOf()<br><span class="hljs-comment line-number">5.</span><span
+            class="hljs-type">Object</span>.getPrototypeOf()<br><span class="hljs-comment line-number">6.</span><span
+            class="hljs-type">Reflect</span>.getPrototypeOf()<br><span class="hljs-comment line-number">7.</span><span
+            class="hljs-title">instanceof</span><br></code></pre>
+
+
+    <h4 id="isextensible">isExtensible()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs css"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-selector-tag">isExtensible</span>方法拦截<span class="hljs-selector-tag">Object</span><span
+            class="hljs-selector-class">.isExtensible</span>操作。<br><span class="hljs-comment line-number">2.</span>上面代码设置了<span
+            class="hljs-selector-tag">isExtensible</span>方法，在调用<span class="hljs-selector-tag">Object</span><span
+            class="hljs-selector-class">.isExtensible</span>时会输出<span class="hljs-selector-tag">called</span>。<br><span
+            class="hljs-comment line-number">3.</span>注意，该方法只能返回布尔值，否则返回值会被自动转为布尔值。<br></code></pre>
+
+
+    <h4 id="ownkeys">ownKeys()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs css"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-selector-tag">ownKeys</span>方法用来拦截对象自身属性的读取操作。具体来说，拦截以下操作。<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-selector-tag">Object</span><span
+            class="hljs-selector-class">.getOwnPropertyNames</span>()<br><span
+            class="hljs-comment line-number">3.</span><span class="hljs-selector-tag">Object</span><span
+            class="hljs-selector-class">.getOwnPropertySymbols</span>()<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-selector-tag">Object</span><span
+            class="hljs-selector-class">.keys</span>()<br></code></pre>
+
+
+    <h4 id="preventextensions">preventExtensions()</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs dart"><span class="hljs-comment line-number">1.</span>preventExtensions方法拦截<span
+            class="hljs-built_in">Object</span>.preventExtensions()。该方法必须返回一个布尔值，否则会被自动转为布尔值。<br><span
+            class="hljs-comment line-number">2.</span><br><span class="hljs-comment line-number">3.</span>这个方法有一个限制，只有目标对象不可扩展时（即<span
+            class="hljs-built_in">Object</span>.isExtensible(proxy)为<span class="hljs-keyword">false</span>），proxy.preventExtensions才能返回<span
+            class="hljs-keyword">true</span>，否则会报错。<br></code></pre>
+
+
+    <h4 id="setprototypeof">setPrototypeOf</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs pf"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-built_in">set</span>PrototypeOf() <br><span
+            class="hljs-comment line-number">2.</span><span
+            class="hljs-built_in">set</span>PrototypeOf方法主要用来拦截Object.<span class="hljs-built_in">set</span>PrototypeOf方法。<br></code></pre>
+
+
+    <h3 id="proxyrevocable">Proxy.revocable()</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-built_in">Proxy</span>.revocable()<br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-built_in">Proxy</span>.revocable方法返回一个可取消的 <span
+            class="hljs-built_in">Proxy</span> 实例。<br><span class="hljs-comment line-number">3.</span><span
+            class="hljs-keyword">let</span> target = {};<br><span class="hljs-comment line-number">4.</span><span
+            class="hljs-keyword">let</span> handler = {};<br><span class="hljs-comment line-number">5.</span><br><span
+            class="hljs-comment line-number">6.</span><span class="hljs-keyword">let</span> {proxy, revoke} = <span
+            class="hljs-built_in">Proxy</span>.revocable(target, handler);<br><span
+            class="hljs-comment line-number">7.</span><br><span
+            class="hljs-comment line-number">8.</span>proxy.foo = <span class="hljs-number">123</span>;<br><span
+            class="hljs-comment line-number">9.</span>proxy.foo <span class="hljs-comment">// 123</span><br><span
+            class="hljs-comment line-number">10.</span><br><span
+            class="hljs-comment line-number">11.</span>revoke();<br><span class="hljs-comment line-number">12.</span>proxy.foo <span
+            class="hljs-comment">// TypeError: Revoked</span><br><span class="hljs-comment line-number">13.</span><span
+            class="hljs-built_in">Proxy</span>.revocable方法返回一个对象，该对象的proxy属性是<span class="hljs-built_in">Proxy</span>实例，revoke属性是一个函数，可以取消<span
+            class="hljs-built_in">Proxy</span>实例。上面代码中，当执行revoke函数之后，再访问<span class="hljs-built_in">Proxy</span>实例，就会抛出一个错误。<br></code></pre>
+
+
+    <h3 id="reflect概述">Reflect概述</h3>
+
+
+    <h3 id="reflect对象的方法">Reflect对象的方法</h3>
+
+
+    <h2 id="十一set和map数据结构">十一.Set和Map数据结构</h2>
+
+
+    <h3 id="set-1">Set</h3>
+
+
+    <h4 id="基本用法-3">基本用法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//new Set(数组),会去除重复项,得到是个类数组</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-keyword">let</span> set1=<span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Set</span>([{},{},<span
+            class="hljs-string">'a'</span>,<span class="hljs-string">"a"</span>,<span
+            class="hljs-literal">NaN</span>,<span class="hljs-literal">NaN</span>,<span class="hljs-literal">null</span>,<span
+            class="hljs-literal">null</span>,<span class="hljs-literal">undefined</span>,<span class="hljs-literal">undefined</span>,<span
+            class="hljs-number">0</span>,<span class="hljs-number">-0</span>,+<span class="hljs-number">0</span>,]);<br></code></pre>
+
+
+    <h4 id="set实例的属性和方法">Set实例的属性和方法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs awk"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-regexp">//</span>基本操作,Set原型上的共有方法<br><span class="hljs-comment line-number">2.</span><span
+            class="hljs-regexp">//</span>add 添加  返回值:增加后的set<br><span class="hljs-comment line-number">3.</span><span
+            class="hljs-regexp">//</span><span class="hljs-keyword">delete</span> 删除  返回值:是否删除成功<br><span
+            class="hljs-comment line-number">4.</span><span class="hljs-regexp">//</span>has 查找 返回值:是否存在当前项<br><span
+            class="hljs-comment line-number">5.</span><span class="hljs-regexp">//</span>clear 清空 无返回值<br></code></pre>
+
+
+    <h4 id="遍历操作">遍历操作</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs 1c"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//遍历操作</span><br><span
+            class="hljs-comment line-number">2.</span>    <span class="hljs-comment">//keys</span><br><span
+            class="hljs-comment line-number">3.</span>    <span class="hljs-comment">//values</span><br><span
+            class="hljs-comment line-number">4.</span>    <span class="hljs-comment">//entries</span><br><span
+            class="hljs-comment line-number">5.</span>    <span class="hljs-comment">//forEach</span><br></code></pre>
+
+
+    <h3 id="weakset">WeakSet</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span> <span class="hljs-comment">//只有一下三种方法</span><br><span
+            class="hljs-comment line-number">2.</span>    <span class="hljs-comment">//add</span><br><span
+            class="hljs-comment line-number">3.</span>    <span class="hljs-comment">//delete</span><br><span
+            class="hljs-comment line-number">4.</span>    <span class="hljs-comment">//has</span><br><span
+            class="hljs-comment line-number">5.</span>    <span class="hljs-keyword">let</span> obj1={<span
+            class="hljs-attr">a</span>:<span class="hljs-string">"a"</span>};<br><span class="hljs-comment line-number">6.</span>    <span
+            class="hljs-keyword">let</span> obj2={<span class="hljs-attr">b</span>:<span class="hljs-string">"b"</span>};<br><span
+            class="hljs-comment line-number">7.</span>    <span class="hljs-keyword">let</span> weak=<span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">WeakSet</span>([obj1,obj2]);<br><span
+            class="hljs-comment line-number">8.</span>    <span
+            class="hljs-built_in">console</span>.log(weak);   <br></code></pre>
+
+
+    <h3 id="map">Map</h3>
+
+
+    <h4 id="map结构的目的和基本用法">Map结构的目的和基本用法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span
+            class="hljs-comment">//我们说了对象的属性名必须是字符串,所以会默认讲其转为字符串,当做键值</span><br><span class="hljs-comment line-number">2.</span>    <span
+            class="hljs-comment">//为了解决这个问题，ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。</span><br><span
+            class="hljs-comment line-number">3.</span>    <span class="hljs-comment">//Map属于类数组</span><br><span
+            class="hljs-comment line-number">4.</span><br><span class="hljs-comment line-number">5.</span>    <span
+            class="hljs-comment">//1.第一种方式</span><br><span class="hljs-comment line-number">6.</span>    <span
+            class="hljs-keyword">let</span> map = <span class="hljs-keyword">new</span> <span
+            class="hljs-built_in">Map</span>();<br><span
+            class="hljs-comment line-number">7.</span>    map.set(ary, <span class="hljs-string">"哈哈"</span>);<br><span
+            class="hljs-comment line-number">8.</span>    map.set(o, <span class="hljs-string">"嘿嘿"</span>);<br><span
+            class="hljs-comment line-number">9.</span>    <span class="hljs-built_in">console</span>.log(map);<br><span
+            class="hljs-comment line-number">10.</span><br><span class="hljs-comment line-number">11.</span><br><span
+            class="hljs-comment line-number">12.</span>    <span class="hljs-comment">//2.第二种方式</span><br><span
+            class="hljs-comment line-number">13.</span>    <span class="hljs-keyword">let</span> map1 = <span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([[ary, <span
+            class="hljs-string">"哈哈"</span>], [o, <span class="hljs-string">"嘿嘿"</span>]]);<br><span
+            class="hljs-comment line-number">14.</span>    <span
+            class="hljs-built_in">console</span>.log(map1);<br><span
+            class="hljs-comment line-number">15.</span><br><span class="hljs-comment line-number">16.</span>    <span
+            class="hljs-comment">//3.get方式获取</span><br><span class="hljs-comment line-number">17.</span>    <span
+            class="hljs-built_in">console</span>.log(map.get(o));<br><span class="hljs-comment line-number">18.</span>    <span
+            class="hljs-built_in">console</span>.log(map1.get(ary));<br><span
+            class="hljs-comment line-number">19.</span><br><span class="hljs-comment line-number">20.</span>    <span
+            class="hljs-comment">//4.Map 转数组</span><br><span class="hljs-comment line-number">21.</span>    <span
+            class="hljs-keyword">let</span> arr=[...map];<br><span class="hljs-comment line-number">22.</span>    <span
+            class="hljs-keyword">let</span> arr1=[...map1];<br><span
+            class="hljs-comment line-number">23.</span>    <span
+            class="hljs-built_in">console</span>.log(arr, arr1);<br><span
+            class="hljs-comment line-number">24.</span><br><span class="hljs-comment line-number">25.</span>    <span
+            class="hljs-comment">//5. 数组转为Map</span><br><span class="hljs-comment line-number">26.</span>    <span
+            class="hljs-keyword">let</span> ary1=[<span class="hljs-string">"a"</span>,<span
+            class="hljs-string">"b"</span>,<span class="hljs-string">"c"</span>];<br><span
+            class="hljs-comment line-number">27.</span>    <span class="hljs-keyword">let</span> mapVal=ary1.map(<span
+            class="hljs-function">(<span class="hljs-params">item,index,arr</span>)=&gt;</span>[index,item]);<br><span
+            class="hljs-comment line-number">28.</span>    <span class="hljs-keyword">let</span> arrToMap=<span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(mapVal);<br><span
+            class="hljs-comment line-number">29.</span>    <span class="hljs-built_in">console</span>.log(arrToMap)<br></code></pre>
+
+
+    <h4 id="实例的属性和操作方法">实例的属性和操作方法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs sql"><span class="hljs-comment line-number">1.</span>//属性和方法<br><span
+            class="hljs-comment line-number">2.</span>    // size:返回 Map 结构的成员总数<br><span
+            class="hljs-comment line-number">3.</span>    // <span class="hljs-keyword">set</span>(<span
+            class="hljs-keyword">key</span>, <span class="hljs-keyword">value</span>):设置键名<span
+            class="hljs-keyword">key</span>对应的键值为<span class="hljs-keyword">value</span>，然后返回整个 <span
+            class="hljs-keyword">Map</span> 结构(因此可以采用链式写法)。如果<span class="hljs-keyword">key</span>已经有值，则键值会被更新，否则就新生成该键。<br><span
+            class="hljs-comment line-number">4.</span>    // <span class="hljs-keyword">get</span>(<span
+            class="hljs-keyword">key</span>):读取<span class="hljs-keyword">key</span>对应的键值，如果找不到<span
+            class="hljs-keyword">key</span>，返回undefined<br><span class="hljs-comment line-number">5.</span>    // has:返回一个布尔值，表示某个键是否在当前 <span
+            class="hljs-keyword">Map</span> 对象之中。<br><span class="hljs-comment line-number">6.</span>    // <span
+            class="hljs-keyword">delete</span>:删除某个键，返回<span class="hljs-literal">true</span>。如果删除失败，返回<span
+            class="hljs-literal">false</span>。<br><span class="hljs-comment line-number">7.</span>    // <span
+            class="hljs-keyword">clear</span>:清除所有成员，没有返回值。<br></code></pre>
+
+
+    <h4 id="遍历方法">遍历方法</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs 1c"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">// keys()：返回键名的遍历器。</span><br><span
+            class="hljs-comment line-number">2.</span><span class="hljs-comment">// values()：返回键值的遍历器。 </span><br><span
+            class="hljs-comment line-number">3.</span><span
+            class="hljs-comment">// entries()：返回所有成员的遍历器。</span><br><span
+            class="hljs-comment line-number">4.</span><span
+            class="hljs-comment">// forEach()：遍历 Map 的所有成员</span><br></code></pre>
+
+
+    <h4 id="以其他数据结构的相互转换">以其他数据结构的相互转换</h4>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs javascript"><span
+            class="hljs-comment line-number">1.</span><span class="hljs-comment">//（1）Map 转为数组</span><br><span
+            class="hljs-comment line-number">2.</span>    <span class="hljs-comment">//前面已经提过，Map 转为数组最方便的方法，就是使用扩展运算符（...）。</span><br><span
+            class="hljs-comment line-number">3.</span>    <span class="hljs-keyword">const</span> myMap = <span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()<br><span
+            class="hljs-comment line-number">4.</span>        .set(<span class="hljs-literal">true</span>, <span
+            class="hljs-number">7</span>)<br><span class="hljs-comment line-number">5.</span>        .set({<span
+            class="hljs-attr">foo</span>: <span class="hljs-number">3</span>}, [<span class="hljs-string">'abc'</span>]);<br><span
+            class="hljs-comment line-number">6.</span>    <span
+            class="hljs-built_in">console</span>.log([...myMap]);<br><span
+            class="hljs-comment line-number">7.</span><br><span class="hljs-comment line-number">8.</span>    <span
+            class="hljs-comment">//（2）数组 转为 Map</span><br><span class="hljs-comment line-number">9.</span>    <span
+            class="hljs-comment">//将数组传入 Map 构造函数，就可以转为 Map。</span><br><span class="hljs-comment line-number">10.</span>    <span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>([<br><span
+            class="hljs-comment line-number">11.</span>        [<span class="hljs-literal">true</span>, <span
+            class="hljs-number">7</span>],<br><span class="hljs-comment line-number">12.</span>        [{<span
+            class="hljs-attr">foo</span>: <span class="hljs-number">3</span>}, [<span class="hljs-string">'abc'</span>]]<br><span
+            class="hljs-comment line-number">13.</span>    ]);<br><span
+            class="hljs-comment line-number">14.</span><br><span class="hljs-comment line-number">15.</span>    <span
+            class="hljs-comment">//（3）Map 转为对象</span><br><span class="hljs-comment line-number">16.</span>    <span
+            class="hljs-comment">//如果所有 Map 的键都是字符串，它可以转为对象。</span><br><span class="hljs-comment line-number">17.</span>    <span
+            class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">strMapToObj</span>(<span
+            class="hljs-params">strMap</span>) </span>{<br><span
+            class="hljs-comment line-number">18.</span>        <span class="hljs-keyword">let</span> obj = <span
+            class="hljs-built_in">Object</span>.create(<span class="hljs-literal">null</span>);<br><span
+            class="hljs-comment line-number">19.</span>        <span class="hljs-keyword">for</span> (<span
+            class="hljs-keyword">let</span> [k,v] <span class="hljs-keyword">of</span> strMap) {<br><span
+            class="hljs-comment line-number">20.</span>            obj[k] = v;<br><span
+            class="hljs-comment line-number">21.</span>        }<br><span class="hljs-comment line-number">22.</span>        <span
+            class="hljs-keyword">return</span> obj;<br><span class="hljs-comment line-number">23.</span>    }<br><span
+            class="hljs-comment line-number">24.</span>    <span class="hljs-keyword">const</span> myMap = <span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>()<br><span
+            class="hljs-comment line-number">25.</span>        .set(<span class="hljs-string">'yes'</span>, <span
+            class="hljs-literal">true</span>)<br><span class="hljs-comment line-number">26.</span>        .set(<span
+            class="hljs-string">'no'</span>, <span class="hljs-literal">false</span>);<br><span
+            class="hljs-comment line-number">27.</span>    strMapToObj(myMap);<br><span
+            class="hljs-comment line-number">28.</span><br><span class="hljs-comment line-number">29.</span>    <span
+            class="hljs-comment">//（4）对象转为 Map</span><br><span class="hljs-comment line-number">30.</span>    <span
+            class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">objToStrMap</span>(<span
+            class="hljs-params">obj</span>) </span>{<br><span class="hljs-comment line-number">31.</span>        <span
+            class="hljs-keyword">let</span> strMap = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>();<br><span
+            class="hljs-comment line-number">32.</span>        <span class="hljs-keyword">for</span> (<span
+            class="hljs-keyword">let</span> k <span class="hljs-keyword">of</span> <span
+            class="hljs-built_in">Object</span>.keys(obj)) {<br><span class="hljs-comment line-number">33.</span>            strMap.set(k, obj[k]);<br><span
+            class="hljs-comment line-number">34.</span>        }<br><span class="hljs-comment line-number">35.</span>        <span
+            class="hljs-keyword">return</span> strMap;<br><span
+            class="hljs-comment line-number">36.</span>    }<br><span class="hljs-comment line-number">37.</span>    objToStrMap({<span
+            class="hljs-attr">yes</span>: <span class="hljs-literal">true</span>, <span
+            class="hljs-attr">no</span>: <span class="hljs-literal">false</span>});<br><span
+            class="hljs-comment line-number">38.</span><br><span class="hljs-comment line-number">39.</span>    <span
+            class="hljs-comment">//（5）Map 转为 JSON</span><br><span class="hljs-comment line-number">40.</span>    <span
+            class="hljs-comment">//Map 转为 JSON 要区分两种情况。一种情况是，Map 的键名都是字符串，这时可以选择转为对象 JSON。</span><br><span
+            class="hljs-comment line-number">41.</span>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+            class="hljs-title">strMapToJson</span>(<span class="hljs-params">strMap</span>) </span>{<br><span
+            class="hljs-comment line-number">42.</span>        <span class="hljs-keyword">return</span> <span
+            class="hljs-built_in">JSON</span>.stringify(strMapToObj(strMap));<br><span class="hljs-comment line-number">43.</span>    }<br><span
+            class="hljs-comment line-number">44.</span><br><span class="hljs-comment line-number">45.</span>    <span
+            class="hljs-keyword">let</span> myMap = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>().set(<span
+            class="hljs-string">'yes'</span>, <span class="hljs-literal">true</span>).set(<span
+            class="hljs-string">'no'</span>, <span class="hljs-literal">false</span>);<br><span
+            class="hljs-comment line-number">46.</span>    strMapToJson(myMap);<br><span
+            class="hljs-comment line-number">47.</span><br><span class="hljs-comment line-number">48.</span>    <span
+            class="hljs-comment">//另一种情况是，Map 的键名有非字符串，这时可以选择转为数组 JSON。</span><br><span
+            class="hljs-comment line-number">49.</span>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+            class="hljs-title">mapToArrayJson</span>(<span class="hljs-params">map</span>) </span>{<br><span
+            class="hljs-comment line-number">50.</span>        <span class="hljs-keyword">return</span> <span
+            class="hljs-built_in">JSON</span>.stringify([...map]);<br><span class="hljs-comment line-number">51.</span>    }<br><span
+            class="hljs-comment line-number">52.</span>    <span class="hljs-keyword">let</span> myMap = <span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>().set(<span
+            class="hljs-literal">true</span>, <span class="hljs-number">7</span>).set({<span
+            class="hljs-attr">foo</span>: <span class="hljs-number">3</span>}, [<span class="hljs-string">'abc'</span>]);<br><span
+            class="hljs-comment line-number">53.</span>    mapToArrayJson(myMap);<br><span
+            class="hljs-comment line-number">54.</span><br><span class="hljs-comment line-number">55.</span>    <span
+            class="hljs-comment">//（6）JSON 转为 Map</span><br><span class="hljs-comment line-number">56.</span>    <span
+            class="hljs-comment">//JSON 转为 Map，正常情况下，所有键名都是字符串。</span><br><span
+            class="hljs-comment line-number">57.</span>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+            class="hljs-title">jsonToStrMap</span>(<span class="hljs-params">jsonStr</span>) </span>{<br><span
+            class="hljs-comment line-number">58.</span>        <span
+            class="hljs-keyword">return</span> objToStrMap(<span
+            class="hljs-built_in">JSON</span>.parse(jsonStr));<br><span class="hljs-comment line-number">59.</span>    }<br><span
+            class="hljs-comment line-number">60.</span>    jsonToStrMap(<span class="hljs-string">'{"yes": true, "no": false}'</span>);<br><span
+            class="hljs-comment line-number">61.</span><br><span class="hljs-comment line-number">62.</span>    <span
+            class="hljs-comment">//但是，有一种特殊情况，整个 JSON 就是一个数组，且每个数组成员本身，又是一个有两个成员的数组。这时，它可以一一对应地转为Map。这往往是数组转为 JSON 的逆操作。</span><br><span
+            class="hljs-comment line-number">63.</span>    <span class="hljs-function"><span class="hljs-keyword">function</span> <span
+            class="hljs-title">jsonToMap</span>(<span class="hljs-params">jsonStr</span>) </span>{<br><span
+            class="hljs-comment line-number">64.</span>        <span class="hljs-keyword">return</span> <span
+            class="hljs-keyword">new</span> <span class="hljs-built_in">Map</span>(<span
+            class="hljs-built_in">JSON</span>.parse(jsonStr));<br><span class="hljs-comment line-number">65.</span>    }<br><span
+            class="hljs-comment line-number">66.</span><br><span class="hljs-comment line-number">67.</span>    jsonToMap(<span
+            class="hljs-string">'[[true,7],[{"foo":3},["abc"]]]'</span>);<br></code></pre>
+
+
+    <h3 id="weakmap">WeakMap</h3>
+
+
+    <pre class="prettyprint with-line-number hljs-light"><code class="hljs awk"><span class="hljs-comment line-number">1.</span><span
+            class="hljs-regexp">//</span>WeakMap结构与Map结构类似，也是用于生成键值对的集合。<br><span
+            class="hljs-comment line-number">2.</span>    <span class="hljs-regexp">//</span>WeakMap与Map的区别有两点。<br><span
+            class="hljs-comment line-number">3.</span>    <span class="hljs-regexp">//</span><span
+            class="hljs-number">1</span>)WeakMap只接受对象作为键名（null除外），不接受其他类型的值作为键名。<br><span
+            class="hljs-comment line-number">4.</span>    <span class="hljs-regexp">//</span><span
+            class="hljs-number">2</span>)WeakMap的键名所指向的对象，不计入垃圾回收机制。<br><span class="hljs-comment line-number">5.</span>    <span
+            class="hljs-regexp">//</span>WeakMap 就是为了解决这个内存泄漏而诞生的，它的键名所引用的对象都是弱引用，即垃圾回收机制不将该引用考虑在内。因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用。<br><span
+            class="hljs-comment line-number">6.</span><br><span class="hljs-comment line-number">7.</span>   <span
+            class="hljs-regexp">//</span> 基本上，如果你要往对象上添加数据，又不想干扰垃圾回收机制，就可以使用 WeakMap。一个典型应用场景是，在网页的 DOM 元素上添加数据，就可以使用WeakMap结构。当该 DOM 元素被清除，其所对应的WeakMap记录就会自动被移除。<br><span
+            class="hljs-comment line-number">8.</span><br><span class="hljs-comment line-number">9.</span>    <span
+            class="hljs-regexp">//</span>只有四个方法可用：get()、set()、has()、<span
+            class="hljs-keyword">delete</span>()。<br></code></pre>
+
+
+    <h2 id="十二iterator和forof循环">十二.Iterator和for…of循环</h2>
+
+
+    <h3 id="iterator的概念">Iterator的概念</h3>
+
+
+    <h3 id="数据结构的默认iterator接口">数据结构的默认Iterator接口</h3>
+
+
+    <h3 id="调用iterator接口场合">调用iterator接口场合</h3>
+
+
+    <h3 id="字符串的iterator接口">字符串的iterator接口</h3>
+
+
+    <h3 id="iterator接口和generator函数">Iterator接口和Generator函数</h3>
+
+
+    <h3 id="遍历器对象的returnthrow函数">遍历器对象的return(),throw函数</h3>
+
+
+    <h3 id="for-of循环">for …. of循环</h3>
+
+
+    <h4 id="数组">数组</h4>
+
+
+    <h4 id="set和map结构">Set和Map结构</h4>
+
+
+    <h4 id="计算生成的数据结构">计算生成的数据结构</h4>
+
+
+    <h4 id="类似数组的对象">类似数组的对象</h4>
+
+
+    <h4 id="对象">对象</h4>
+
+
+    <h4 id="与其他遍历语法的比较">与其他遍历语法的比较</h4>
+
+
+    <h2 id="十三generactor函数">十三.Generactor函数</h2>
+
+
+    <h3 id="简介">简介</h3>
+
+
+    <h4 id="基本概念">基本概念</h4>
+
+
+    <h4 id="yield语句">yield语句</h4>
+
+
+    <h4 id="与iterator接口的关系">与Iterator接口的关系</h4>
+
+
+    <h3 id="next-方法的参数">next 方法的参数</h3>
+
+
+    <h3 id="forof-循环">for…of 循环</h3>
+
+
+    <h3 id="generatorprototypethrow">Generator.prototype.throw()</h3>
+
+
+    <h3 id="generatorprototypereturn">Generator.prototype.return()</h3>
+
+
+    <h3 id="yield-表达式">yield* 表达式</h3>
+
+
+    <h3 id="作为对象属性的generator函数">作为对象属性的Generator函数</h3>
+
+
+    <h3 id="generator-函数的this">Generator 函数的this</h3>
+
+
+    <h3 id="含义-1">含义</h3>
+
+
+    <h4 id="generator与状态机">Generator与状态机</h4>
+
+
+    <h4 id="generator与协程">Generator与协程</h4>
+
+
+    <h3 id="应用">应用</h3>
+
+
+    <h2 id="十四promise对象">十四.Promise对象</h2>
+
+
+    <h3 id="promise-的含义">Promise 的含义</h3>
+
+
+    <h3 id="基本用法-4">基本用法</h3>
+
+
+    <h3 id="promiseprototypethen">Promise.prototype.then()</h3>
+
+
+    <h3 id="promiseprototypecatch">Promise.prototype.catch()</h3>
+
+
+    <h3 id="promiseall">Promise.all()</h3>
+
+
+    <h3 id="promiserace">Promise.race()</h3>
+
+
+    <h3 id="promiseresolve">Promise.resolve()</h3>
+
+
+    <h3 id="promisereject">Promise.reject()</h3>
+
+
+    <h3 id="两个有用的附加方法">两个有用的附加方法</h3>
+
+
+    <h4 id="done">done()</h4>
+
+
+    <h4 id="dinally">dinally()</h4>
+
+
+    <h3 id="应用-1">应用</h3>
+
+
+    <h4 id="加载图片">加载图片</h4>
+
+
+    <h4 id="generator函数与promise结合">Generator函数与Promise结合</h4>
+
+
+    <h3 id="async函数">async函数</h3></div>
+</body>
+</html>
