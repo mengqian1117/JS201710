@@ -29,6 +29,22 @@
 		</div>
 		<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
+			var box=document.getElementById("box");
+			document.body.onkeydown=function (e) {
+                e=e||window.event;
+                console.log(e.keyCode);
+				if(e.keyCode==37){
+				    box.style.left=parseFloat(window.getComputedStyle(box).left)-5+"px";
+				}else if(e.keyCode==38){
+                    box.style.top=parseFloat(window.getComputedStyle(box).top)-5+"px";
+				}else if(e.keyCode==39){
+                    box.style.left=parseFloat(window.getComputedStyle(box).left)+5+"px";
+				}else if(e.keyCode==40){
+                    box.style.top=parseFloat(window.getComputedStyle(box).top)+5+"px";
+				}else {
+				    box.style.backgroundColor="red";
+				}
+            }
 
 
 		</script>

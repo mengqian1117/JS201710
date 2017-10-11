@@ -98,6 +98,12 @@
 	<script src="js/menu.js" type="text/javascript" charset="utf-8"></script>
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 	<script>
+		//可以展开的span,前面是个em,后面是个ul
+		//点击的是em
+		//展开和隐藏都是后面的ul的显示隐藏
 
+		//+:""
+		//-:open
+		$("em").click(function () {$(this).toggleClass("open").next().next().toggleClass("open").stop().slideToggle().find("ul").css({display:"none"}).prevAll("em").removeClass("open")});
 	</script>
 </html>

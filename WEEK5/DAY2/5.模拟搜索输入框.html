@@ -107,7 +107,35 @@
 </body>
 </html>
 <script>
-
+var searchBox=document.getElementById("searchBox");
+var input=searchBox.getElementsByTagName("input")[0];
+var searchList=searchBox.getElementsByClassName("searchList")[0];
+var lis=searchList.getElementsByTagName("li");
+var index=0;//用来记录当前是第几个被选中的li
+input.onfocus=function () {
+    searchList.style.display="block";
+    lis[0].style.backgroundColor="skyblue";
+    this.value=lis[0].innerText;
+};
+window.onkeyup=function (e) {
+    e=e||window.event;
+    if(e.keyCode==40){
+        index+1==lis.length?index=0:index++;
+        change(index);
+    }else if(e.keyCode==38){
+        index-1==-1?index=lis.length-1:index--;
+        change(index);
+    }else if(e.keyCode==13){
+        window.location.href="http://www.zhufengpeixun.cn/";
+    }
+};
+function change(index) {
+    for(var i=0;i<lis.length;i++){
+        lis[i].style.backgroundColor="#fff"
+    }
+    lis[index].style.backgroundColor="skyblue";
+    input.value=lis[index].innerText;
+}
 </script>
 
 

@@ -119,5 +119,28 @@
 </html>
 <script src="js/public.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-
+//给每一个盒子tabBox绑定点击事件,通过判断事件源是不是li来做相应的处理
+	var tabBox=document.getElementsByClassName("tabBox");
+	for (var i=0;i<tabBox.length;i++){
+	    tabBox[i].onclick=function (e) {
+	        //this==当前的这个tabBox
+	        //事件对象的兼容处理
+			e=e||window.event;
+            //事件源的兼容处理
+			e.target=e.target||e.srcElement;
+			//判断事件源是不是li,只有是li的时候才做相应的操作
+            if(e.target.tagName=="LI"){
+                //根据this将里面的li和div获取出来
+				var oLis=this.getElementsByTagName("li");
+				var oDivs=this.getElementsByTagName("div");
+				var index=public.index(e.target);
+				for(var i=0;i<oLis.length;i++){
+				    oLis[i].className="";
+				    oDivs[i].className=""
+				}
+				e.target.className="bg";
+				oDivs[index].className="bg";
+            }
+        }
+	}
 </script>
