@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    //在JQ中有两个each
+    //1.$.each():可以用来遍历非JQ对象
+    //2.JQ对象.each()
+
+    //$.each(需要遍历的对象,function (index,item) {})
+    var ary=["珠峰","培训","JS"];
+    $.each(ary,function (index,item) {
+        console.log(index, item);
+    });
+
+    var lis=document.getElementsByTagName("li");
+
+    $.each(lis,function (index,item) {
+        //item:原生的元素
+        //this:item     this==item
+        this.onclick=function () {
+            alert(index)
+        };
+        //$(this).on("click",function () {})
+    })
+
+
+
+
+
+//    function $() {};
+//    $.each=function () {};
+//    var f=new $();
+//    $.prototype.each=function () {};
+//    f.each();
+//    $.each();
+</script>

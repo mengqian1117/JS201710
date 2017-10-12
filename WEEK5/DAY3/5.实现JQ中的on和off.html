@@ -40,12 +40,13 @@
             if(str){
                 if(e.target.tagName==str.toUpperCase()){
                     callback.call(e.target,e);
-                    return;
                 }
+                return this;
             }
             //在把绑定的那个函数中的this变成当前元素
             callback.call(this,e)
-        })
+        });
+        return this;
     };
     box.on("click",{a:"紧箍咒"},function (e) {
         console.log(e.data.a);
