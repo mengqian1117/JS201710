@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var ary1=[1,2];
+    var obj1={name:"珠峰"};
+
+    var map1=new Map([[1,1],["str","str"],[ary1,[1,2]],[obj1,{name:"珠峰"}]]);
+    //1.get(key)获取值
+    console.log(map1.get(ary1));
+    console.log(map1.get(obj1));
+
+    //2.set(key,value)增加
+    map1.set(2,2);
+    console.log(map1);
+
+    //3.delete(key) 删除
+    map1.delete(obj1);
+    console.log(map1);
+
+    //4.clear()清空
+
+    //5.has() 判断有没有
+
+
+    var ary=[1,2,3,4,5,6];
+    //将数组变成Map实例
+    var map2=new Map();
+    ary.forEach((item,index,ary)=>{
+        //map2.set(index,item)
+        map2.set(index+1,ary.slice(0,index+1));
+
+    });
+    console.log(map2);
+
+//    1,[1]
+//    2,[1,2]
+//    3,[1,2,3]
+//    4,[1,2,3,4]
+//        ....
+
+
+</script>

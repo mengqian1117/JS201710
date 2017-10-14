@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //箭头函数是匿名函数
+    //(形参)=>{函数体}
+    let fn=function (a) {
+        console.log(a);
+    };
+
+    let fn1=(a)=>{
+        console.log(a);
+    };
+    fn1(10);
+
+    //如果函数体只有一行代码是return的,可以简写成
+    let fn2=(a)=>a;
+    //相当于下面的
+//    function fn2(a) {
+//        return a;
+//    }
+
+    //箭头函数常用在参数是函数的时候
+    var ary=[1,2,3];
+    ary.forEach(function (item,indx) {
+        console.log(this == window);
+    });
+    ary.forEach((item,index)=>{})
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var s1 = new Set(["a", "b", "c", "d"]);
+    console.log(s1);
+    s1.forEach((item) => {
+        //当前项
+        console.log(item);
+    });
+
+    for (var key of s1.keys()) {
+        console.log(key);
+    }
+    for (var val of s1.values()) {
+        console.log(val);
+    }
+    for (var en of s1.entries()) {
+        console.log(en);
+    }
+
+</script>

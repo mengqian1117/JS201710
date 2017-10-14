@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var obj={};
+    function fn() {};
+    console.log(fn.name);
+    console.log(fn.bind(obj).name);//bound fn
+    console.log((function () {}).name);
+    var f1=new Function("a", "return a");
+    console.log(f1.name);//anonymous
+</script>
