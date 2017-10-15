@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Bootstrap 实例 - 提示工具（Tooltip）插件事件</title>
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+
+		<h4>提示工具（Tooltip）插件 - 锚</h4> 这是一个
+		<a href="#" class="tooltip-show" data-toggle="tooltip" title="默认的 Tooltip">默认的 Tooltip
+		</a>.
+
+		<script>
+			$(function() {
+				$('.tooltip-show').tooltip('show');
+			});
+			$(function() {
+				$('.tooltip-show').on('show.bs.tooltip', function() {
+					alert("Alert message on show");
+				})
+			});
+		</script>
+
+	</body>
+
+</html>

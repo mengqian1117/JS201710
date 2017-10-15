@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Bootstrap 实例 - 警告框（Alert）插件事件</title>
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+		<script src="../../js/jquery.min.js"></script>
+		<script src="../../js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+
+		<div id="myAlert" class="alert alert-success">
+			<a href="#" class="close" data-dismiss="alert">&times;</a>
+			<strong>成功！</strong>结果是成功的。
+		</div>
+
+		<script type="text/javascript">
+			$(function() {
+				$("#myAlert").bind('closed.bs.alert', function() {
+					alert("警告消息框被关闭。");
+				});
+			});
+		</script>
+
+	</body>
+
+</html>
