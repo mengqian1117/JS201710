@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1.基本用法
+    let ary = [1, 2, 3];
+    //    let a=ary[0];
+    //    let b=ary[1];
+    //    let c=ary[2];
+    let [a,b,c]=ary;
+    console.log(a, b, c);
+    let [x,y,z]=[1,2];
+    console.log(z);//undefined
+
+    //2.嵌套赋值
+    let ary1=[[[[1]]],[[[[3]]]],[[[[[5]]]]]];
+    console.log(ary1.toString());
+    let [[[[n]]],[[[[m]]]],[[[[[l]]]]]]=ary1;
+    console.log(n, m, l);
+
+    //3.省略赋值
+    let [,,,a3]=[10,20,30,40];
+
+    //4.不定参数赋值
+    let [,,,...n2]=[1,2,3,4,5,6];
+    console.log(n2);//[4,5,6]
+
+    //注意省略的时候最后一个逗号后面没有位置了
+    let [,,ary0,,]=[1,2,3,4];
+    console.log(ary0);
+
+    //...赋值只能放在最后面
+    let [,,,,...ary2]=[1,2,3,4,5,6,7];
+    console.log(ary2);
+
+</script>

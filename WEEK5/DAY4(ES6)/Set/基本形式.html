@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //1.使用构造函数创建Set的实例
+    //2.传进来一个数组,得到一个去重后的类数组
+    var set=new Set([1,2,3,1,2,3,"哈哈","哈哈",true,true,NaN,NaN,0]);
+    console.log(set);
+
+    //变成数组
+    console.log([...set]);
+    console.log(Array.from(set));
+
+    //数组去重
+    function fn(ary) {
+        //return [...new Set(ary)];
+        return Array.from(new Set(ary))
+    }
+</script>

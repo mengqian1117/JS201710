@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body{
+            width: 100px;
+            height: 100%;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: #dc6aff;
+            cursor: move;
+            position: absolute;
+            top:50px;
+            left: 100px;
+        }
+        #box img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!--
+拖拽的三个过程:
+1.鼠标按住盒子, box.onmousedown
+2.按住盒子在整个页面中移动,按住盒子在整个document中拖动,所以说是给document绑定onmousemove事件
+3.鼠标抬起,就放下盒子box, 也是给document绑定onmouseup事件
+
+
+如果盒子中有图片,浏览器是默认是不可以拖拽的,这就是一种默认事件,要是想要拖拽图片就需要在onmouseMove阻止一下事件的默认行为,e.preventDefault();
+-->
+<div id="box">
+    <img src="img/1.jpg" alt="">
+</div>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    box.onmousedown=function (e) {
+        //鼠标按下去的一瞬间,记录当前鼠标距离盒子的距离,将当前距离存在box的自定属性上
+        this.startX=e.clientX-this.offsetLeft;
+        this.startY=e.clientY-this.offsetTop;
+        //在拖动的时候任然是按住盒子的
+        document.onmousemove=function (e) {
+            //鼠标拖动的时候,不断给box的left和top赋值
+            box.style.left=e.clientX-box.startX+"px";
+            box.style.top=e.clientY-box.startY+"px";
+            e.preventDefault();
+            //return false
+        };
+        document.onmouseup=function (e) {
+            //鼠标抬起,放开box,就是不让box跟着鼠标移动,也就是说将onmousemove事件移除即可
+            document.onmousemove=null;
+        }
+    }
+
+</script>

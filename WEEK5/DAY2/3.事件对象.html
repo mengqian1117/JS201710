@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box"></div>
+<input id="text1" type="text">
+<!--
+事件对象:当触发这事件行为的时候,就会执行我们给他绑定的那个函数,当这个函数执行的时候浏览器会默认给他传一个参数,这个参数就是事件对象,这里买存储了当前触发这个事件行为的一些信息
+
+注意:当你一次触发同一个事件行为的多个函数,事件对象是同一个,比如点击事件onclick,当你点击的一下的时候,鼠标只有一个,点击的次数也只有一次,浏览器只是把同一个事件对象分别传给了多个函数而已
+
+事件对象的兼容性
+在低版本IE下浏览器不会默认传一个事件对象
+1.事件对象:window.event
+2.事件源:srcElement
+3.没有pageX和pageY
+
+
+键盘事件对象
+KeyboardEvent
+-->
+</body>
+</html>
+<script>
+var  box=document.getElementById("box");
+var  text1=document.getElementById("text1");
+box.onclick=function (e) {
+    //e:浏览器默认传的参数,事件对象
+    console.log(e);
+    //e==MouseEvent:鼠标事件对象
+    e.clientX;//点击的那一下,鼠标距离浏览器左边的距离;
+    e.clientY;//点击的那一下,鼠标距离浏览器上边的距离;
+    e.pageX;//点击的那一下,鼠标距离整个网页左边的距离;
+    e.pageY;//点击的那一下,鼠标距离整个网页上边的距离;
+    e.type;//事件类型 addEventListener第一个参数
+    e.target;//事件源,谁执行的事件,事件源就是谁
+};
+document.body.onclick=function (e) {
+    console.log(e);
+};
+
+
+text1.onkeyup=function (e) {
+    console.log(e.keyCode);
+    //KeyboardEvent
+    e.key;
+    e.keyCode;//键的键值
+    //空格:32
+    //左:37,上:38,右:39,下:40
+    //enter/return:13
+    //shift:16
+    //alt:18
+    //ctrl:17
+    //Del:46
+    //delete/Backspace:8
+}
+</script>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+    html,body{
+    width: 100px;
+    height: 100%;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    }
+
+    #box{
+    width: 200px;
+    height: 200px;
+    background-color: #dc6aff;
+    cursor: move;
+    position: absolute;
+    top:50px;
+    left: 100px;
+    }
+    #box img{
+    width: 100%;
+    height: 100%;
+    }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="img/1.jpg" alt="">
+</div>
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    box.addEventListener("mousedown",function (e) {
+        var _this=this;
+        this.startX=e.clientX-this.offsetLeft;
+        this.startY=e.clientY-this.offsetTop;
+        this.move=function (e) {
+            move.call(_this,e);
+        };
+        this.up=function (e) {
+            up.call(_this,e);
+        };
+        //一定要注意:1.在给元素绑定事件的时候,函数不管写成什么样,触发事件执行函数的时候,里面的this永远都是当前绑定事件的元素
+        //2.绑定事件的时候绑定的函数一定是函数定义(要么是function(){}要么是个函数名),千万不能写成函数执行
+        document.addEventListener("mousemove",this.move,false);
+        document.addEventListener("mouseup",this.up,false)
+    },false);
+    function move(e) {
+        //this->box
+        this.style.left=e.clientX-this.startX+"px";
+        this.style.top=e.clientY-this.startY+"px";
+        e.preventDefault();
+    }
+    function up(e) {
+        //this->box
+        document.removeEventListener("mousemove",this.move,false);
+    }
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fn([x,y,z=10]) {}
+    fn([1,2]);
+
+
+    //函数中的参数可以传默认值,只有不给他传实参的时候才会走默认值
+    function fn1(x,y=8) {
+        //y=y||8;
+    };
+    fn1(1);
+
+
+    //函数的length表示没有默认值的形参的长度
+    function fn2(x=1,y=5) {
+        console.log(arguments);
+    }
+    fn2(1,2,3);
+    fn2(1);
+    console.log(fn2.length);
+
+    //函数形参的括号可以看成是一个独立的作用域,给形参负的值中遇到变量先看形参中有没有,没有的话去上一级作用域中找
+    //只有不传参数才会走默认值
+    let m=100;
+    let x=100;
+    function fn3(x=m,y=z) {//z is not defined
+        let m=10;
+        let z=20;
+        console.log(x,y);
+    }
+    fn3(10,20);
+    fn3()
+
+    //arguments.length:是实参的长度
+</script>

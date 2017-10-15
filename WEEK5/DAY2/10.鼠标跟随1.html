@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标跟随</title>
+		<style type="text/css">
+			html,
+			body,
+			div {
+				margin: 0;
+				padding: 0;
+				-webkit-user-select: none;
+			}
+			
+			#box {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				background-color: yellowgreen;
+				margin: 50px auto;
+			}
+			
+			#mark {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 50px;
+				height: 50px;
+				background-color: #ADD8E6;
+				opacity: 0.6;
+				filter: alpha(opacity=60);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="boxCon">
+			<div id="box"></div>
+		</div>
+	</body>
+	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var box=document.getElementById("box");
+		var l=public.offset(box).left;
+		var t=public.offset(box).top;
+		box.onmouseover=function (e) {
+			e=e||window.event;
+			//鼠标一进来立马创建的小盒子mark;
+			var mark=document.createElement("div");
+			//将创建好的mark放到box中
+			box.appendChild(mark);
+			//给mark加一个id
+			mark.id="mark";
+			//mark一直在创建:从box的左上角进入,首先立马创建一个mark,只要是移动一下就会进入到mark,此时就会触发mark的onmouseover事件,虽然mark的onmouseover没有绑定任何函数,但是他仍然会进行冒泡传播,传播到父级元素box中,这时就会触发box的onmouseover事件,就又一次创建了一个mark,依次循环,不断创建;解决方法:阻止mark的onmouseover事件的冒泡传播
+			mark.onmouseover=function (e) {
+				//e.stopPropagation():阻止事件冒泡
+				//兼容性,低版本IE下,e.cancelBubble()
+				e.stopPropagation();
+            };
+            mark.onmouseout=function (e) {
+                //e.stopPropagation():阻止事件冒泡
+                //兼容性,低版本IE下,e.cancelBubble()
+                e.stopPropagation();
+            };
+
+            box.onmousemove=function (e) {
+				e=e||window.event;
+				public.css(mark,{left:e.clientX-l+5,top:e.clientY-t+5});
+            };
+
+        };
+		box.onmouseout=function () {
+            //鼠标移除box,移除mark;
+			var mark=document.getElementById("mark");
+            box.removeChild(mark);
+        }
+
+	</script>
+<!--
+onmouseenter
+onmouseleave
+这俩没有事件冒泡
+以后需要冒泡传播就使用onmouseover/onmouseout
+-->
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    let obj1={name:"QQ",age:12};
+    //let {name(变量),age(变量)}=obj1;
+    //1.变量名和属性名一样的话可以简写成这样的形式
+    let {name,age}=obj1;
+    //name="QQ"
+    //age=12;
+    console.log(name, age);
+
+    //2.属性名不等于变量名的时候
+    //a1="QQ",a2=12
+    let {name:a1,age:a2}=obj1;
+
+    //3.嵌套赋值
+    let {a:aa,b:[,x,y]}={a:1,b:[1,2,3]};
+    //变量:aa=1,x=2,y=3
+
+
+    //4.不是一个对象,此时会默认调用Object这个方法处理为一个对象
+    let {n,m,__proto__:Q}=1;//{__proto__:Number}
+    console.log(n, m,Q);
+    //console.log(Object(1));
+    let {length:l}="111";
+    console.log(l);
+
+    //console.log(Object("111"));
+
+
+    //    console.log(Array(3));
+//    console.log(Number(3));
+//    console.log(String(3));
+
+
+</script>

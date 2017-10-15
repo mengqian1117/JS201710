@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //find,findIndex,includes
+    //fill
+    //得到7个1 的数组
+    console.log(Array(7).fill(1));
+    //copyWithin()
+    //Array.prototype.copyWithin(target,start,end)
+    //target(必需)：从该位置开始替换数据。
+    //start(可选)：从该位置开始读取数据，默认为 0 。如果为负值，表示倒数。
+    //end(可选)：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
+    //这三个参数都应该是数值，如果不是，会自动转为数值。
+    var ary=[1,2,3,4,5,6];
+    console.log(ary.copyWithin(5,4));
+    console.log(Array.prototype);
+    //entries(),keys()
+    //for (var key in obj){}
+
+    var ary=["哈哈","嘿嘿","嘻嘻"];
+    for (var key of ary.keys()){
+        //key:索引
+    }
+
+    for(var [index,item] of ary.entries()){
+        console.log(index,item);
+    }
+    for (var item of ary){
+        //item:当前项
+        console.log(item);
+    }
+
+
+</script>

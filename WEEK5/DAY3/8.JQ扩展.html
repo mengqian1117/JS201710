@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div></div>
+</body>
+</html>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    //1.向JQ原型上扩展,this是JQ实例
+    jQuery.fn.extend({
+        fn1:function () {console.log(this,"向JQ原型上扩展")},
+        myEach:function (callback) {
+            if(callback&&typeof callback=="function"){
+                for(var i=0;i<this.length;i++){
+                    //默认给callback传两个参数,索引i,当前项this[i](原生对象),还要通过call方法将callback的this变成当前项this[i]
+                    callback.call(this[i],i,this[i]);
+                }
+            }
+            return this;
+        }
+    });
+
+    $("div").fn1();
+    //2.向JQ本身上扩展
+    jQuery.extend({
+        fn2:function () {console.log("向JQ本身上扩展")},
+        myEach:function (obj,callback) {
+            if(obj&&callback&&typeof callback=="function"){
+                for(var key in obj){
+                    callback.call(obj[key],key,obj[key]);
+                }
+            }
+        }
+    });
+    $.fn2();
+</script>

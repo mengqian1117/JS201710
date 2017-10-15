@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    window.onload=function () {
+        //页面上所有的静态资源加载完成后执行;
+        //因为这个是DOM0级事件绑定所以只能写一次
+    };
+    window.addEventListener("load",function () {
+        //使用DOM2级事件绑定可以实现多次绑定;
+    })
+</script>
+
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //只需要页面的解构加载完成即可
+    });
+    jQuery.ready(function () {});
+    $.ready(function () {});
+    $(function () {});
+
+
+
+
+
+    if(document.addEventListener){
+        document.addEventListener("DOMContentLoaded",function () {
+            //只需要页面的解构加载完成即可
+            //但是这个有兼容性
+        });
+    }else {
+        document.onreadystatechange=function () {
+            if(document.readyState=="completed"){
+                //只需要页面的解构加载完成即可
+            }
+        }
+    }
+</script>

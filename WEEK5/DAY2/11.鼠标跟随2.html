@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标跟随</title>
+		<style type="text/css">
+			html,
+			body,
+			div {
+				margin: 0;
+				padding: 0;
+				-webkit-user-select: none;
+			}
+			
+			#box {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				background-color: yellowgreen;
+				margin: 50px auto;
+			}
+			
+			#mark {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 50px;
+				height: 50px;
+				background-color: #ADD8E6;
+				opacity: 0.6;
+				filter: alpha(opacity=60);
+				cursor: move;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box"></div>
+	</body>
+	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+        var box=document.getElementById("box");
+        var L=public.offset(box).left;
+        var T=public.offset(box).top;
+        var W=box.offsetWidth;
+        var H=box.offsetHeight;
+        var minL=0,minT=0;
+        var maxL=null,maxT=null;
+        box.onmouseenter=function (e) {
+            var mark=document.createElement("div");
+            mark.id="mark";
+            this.appendChild(mark);
+            maxL=W-mark.offsetWidth;
+            maxT=H-mark.offsetHeight;
+            box.onmousemove=function (e) {
+                var l=e.clientX-L-mark.offsetWidth/2;
+                var t=e.clientY-T-mark.offsetHeight/2;
+                l=l<minL?0:l>maxL?maxL:l;
+                t=t<minT?0:t>maxT?maxT:t;
+                public.css(mark,{left:l,top:t});
+            }
+        };
+        box.onmouseleave=function (e) {
+            var mark=document.getElementById("mark");
+			this.removeChild(mark)
+        }
+	</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">box</div>
+</body>
+</html>
+<script>
+    //箭头函数本身没有this指向,他的this是上一级作用域中的this
+
+    var obj={
+        fn:function () {
+            let f=()=>{
+                console.log(this);
+            };
+            f();
+        },
+        fn1:()=>{
+            console.log(this);
+        }
+    };
+    obj.fn1();
+    //当前obj.fn1所在的作用域是window,window下的this就是window
+    obj.fn();
+    //obj.fn(),fn是个普通函数,fn中的this就是obj,而箭头函数f中的this就是fn中的this
+
+
+    box.onclick=()=>{
+        //this==window
+        console.log(this);
+    };
+
+   // a=>a=>a=>a
+</script>

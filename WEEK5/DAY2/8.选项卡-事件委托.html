@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>事件委托-选项卡</title>
+		<style type="text/css">
+			html,
+			body,
+			div,
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				-webkit-user-select: none;
+				font-family: "微软雅黑";
+				font-size: 14px;
+			}
+			
+			ul,
+			li {
+				list-style: none;
+			}
+			
+			.tabBox {
+				margin: 10px auto;
+				width: 600px;
+				overflow: hidden;
+			}
+			
+			.tabBox ul {
+				position: relative;
+				top: 1px;
+				overflow: hidden;
+			}
+			
+			.tabBox ul li {
+				display: inline-block;
+				margin-right: 10px;
+				width: 80px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				border: 1px solid green;
+				cursor: pointer;
+			}
+			
+			.tabBox ul li.bg {
+				background-color: lightgreen;
+				border-bottom-color: lightgreen;
+			}
+			
+			.tabBox div {
+				display: none;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				background-color: lightgreen;
+				border: 1px solid green;
+			}
+			
+			.tabBox div.bg {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="tabBox">
+			<ul>
+				<li class="bg">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<div class="bg">1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>
+		<div class="tabBox">
+			<ul>
+				<li class="bg">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<div class="bg">1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>
+		<div class="tabBox">
+			<ul>
+				<li class="bg">1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+			<div class="bg">1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>
+	</body>
+
+</html>
+<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//给每一个盒子tabBox绑定点击事件,通过判断事件源是不是li来做相应的处理
+	var tabBox=document.getElementsByClassName("tabBox");
+	for (var i=0;i<tabBox.length;i++){
+	    tabBox[i].onclick=function (e) {
+	        //this==当前的这个tabBox
+	        //事件对象的兼容处理
+			e=e||window.event;
+            //事件源的兼容处理
+			e.target=e.target||e.srcElement;
+			//判断事件源是不是li,只有是li的时候才做相应的操作
+            if(e.target.tagName=="LI"){
+                //根据this将里面的li和div获取出来
+				var oLis=this.getElementsByTagName("li");
+				var oDivs=this.getElementsByTagName("div");
+				var index=public.index(e.target);
+				for(var i=0;i<oLis.length;i++){
+				    oLis[i].className="";
+				    oDivs[i].className=""
+				}
+				e.target.className="bg";
+				oDivs[index].className="bg";
+            }
+        }
+	}
+</script>

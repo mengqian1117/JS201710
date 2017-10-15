@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1.交换值
+    let a=12,b=13;
+//    a=a+b;
+//    b=a-b;
+//    a=a-b;
+    [a,b]=[b,a];//[13,12]
+
+    //2.函数返回多个值,接收的时候
+    function fn() {
+        return{
+            x:1,
+            y:2
+        }
+    }
+    let {x,y}=fn();
+    //3.函数的参数问题
+    function f1([x,y,z=3]) {
+        //[x,y,x]=[1,2]
+    }
+    f1([1,2])
+</script>

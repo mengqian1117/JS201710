@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //1.只有解构赋值的数组对应的那一项的值为undefined的时候才会走默认值
+    let [a,b=(function () {
+        console.log(1);
+        return 20;
+    })(),c]=[1,undefined,3];
+
+    console.log(b);
+</script>

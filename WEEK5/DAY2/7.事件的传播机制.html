@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>事件传播机制</title>
+		<style type="text/css">
+			html,body{
+				height: 100%;
+			}
+
+			#outer {
+				width: 300px;
+				height: 300px;
+				border: 1px solid red;
+			}
+			
+			#inter {
+				width: 200px;
+				height: 200px;
+				border: 1px solid blue;
+			}
+			
+			#center {
+				width: 100px;
+				height: 100px;
+				border: 1px solid green;
+			}
+			
+			div {
+				cursor: pointer;
+				font-size: 20px;
+				margin-left: 50px;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<div id="outer">
+			outer
+			<div id="inter">
+				inter
+				<div id="center">
+					center
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>
+<!--
+捕获阶段->目标阶段->冒泡阶段
+捕获阶段:从外层到目标
+冒泡阶段:从目标到外层
+DOM0:默认都是冒泡阶段发生的
+
+如果事件行为没有绑定函数,触发事件的时候任然会传播
+先捕获再冒泡
+-->
+<script type="text/javascript">
+var outer=document.getElementById("outer");
+var inter=document.getElementById("inter");
+var center=document.getElementById("center");
+
+//document.body.onclick=function () {
+//    console.log(this.id);
+//};
+//outer.onclick=function () {
+//    console.log(this.id);
+//};
+//inter.onclick=function () {
+//    console.log(this.id);
+//};
+//center.onclick=function () {
+//    console.log(this.id);
+//};
+
+//body->outer->inter->center->inter->outer->body
+	document.body.addEventListener("click",function (e) {
+
+        //console.log(this.id);
+//        console.log(e.target);
+//        if(e.target.id=="center"){
+//            document.body.style.backgroundColor="green"
+//		}else if(e.target.id=="inter"){
+//            document.body.style.backgroundColor="blue"
+//		}else if(e.target.id=="outer"){
+//            document.body.style.backgroundColor="red"
+//		}
+		if(e.target.id!="center"){
+		    center.style.backgroundColor="green"
+		}
+    },true);
+//	outer.addEventListener("click",function () {
+//        console.log(this.id);
+//    });
+//	inter.addEventListener("click",function () {
+//        console.log(this.id);
+//    });
+//	center.addEventListener("click",function () {
+//        console.log(this.id);
+//    },true)
+</script>
+<!--
+我们通过将事件绑定给最高级,通过判断事件源是谁来进行不同的操作,这种方式叫做事件委托;
+原理:利用的事件的冒泡传播
+-->

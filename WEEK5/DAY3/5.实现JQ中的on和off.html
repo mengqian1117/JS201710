@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">紧箍咒</div>
+<ul id="list" style="font-size: 30px">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
+<script>
+    var box = document.getElementById("box");
+    var list = document.getElementById("list");
+    // box.addEventListener()
+    // box.__proto__..........EventTarget.prototype
+    EventTarget.prototype.on = function (type) {
+        if(!type){
+            throw new Error("type is not defined");
+        };
+        //处理参数
+        for(var i=1;i<arguments.length;i++){
+            if(typeof arguments[i]=="string"){
+                var str=arguments[i];
+            }else if(arguments[i].toString()=="[object Object]"){
+                var data=arguments[i];
+            }else if(typeof arguments[i]=="function"){
+                var callback=arguments[i];
+            }
+        }
+        this.addEventListener(type,function (e) {
+            if(data){
+                e.data=data;
+            }
+            if(str){
+                if(e.target.tagName==str.toUpperCase()){
+                    callback.call(e.target,e);
+                }
+                return this;
+            }
+            //在把绑定的那个函数中的this变成当前元素
+            callback.call(this,e)
+        });
+        return this;
+    };
+    box.on("click",{a:"紧箍咒"},function (e) {
+        console.log(e.data.a);
+    });
+    list.on("click","li",function (e) {
+        console.log(this);
+    });
+    var li=document.createElement("li");
+    li.innerHTML=5;
+    list.appendChild(li);
+</script>

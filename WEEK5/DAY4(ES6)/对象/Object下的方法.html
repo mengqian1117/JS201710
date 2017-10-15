@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //Object.is()判断俩值是否相等
+    //===
+    //解决了关于NaN不相等的问题
+    console.log(Object.is(NaN, NaN));//true相等的
+    let ary=[1,1,2,3,3,2,1,NaN,NaN,NaN,1,2];
+    var a=[1,2];
+    var f=true;
+    for(var i=0;i<ary.length;i++){
+        f=true;
+        for(var j=0;j<a.length;j++){
+            if(Object.is(a[j],ary[i])){
+                f=false;
+                break;
+            }
+        }
+        if(f){
+            a.push(ary[i])
+        }
+    }
+    console.log(a);
+
+    var obj1={a:"a"},obj2={b:"b"};
+    Object.assign(obj1,obj2);
+
+    var str="str";
+    //Object.getOwnPropertyDescriptor(),查看某些属性的描述
+    console.log(Object.getOwnPropertyDescriptor(str, "length"));
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box1">box1</div>
+<div id="box2">box2</div>
+<ul class="list" style="font-size: 30px">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    //JQ中的事件也有事件对象,跟原生的事件对象一样的
+    //函数中的this,给谁绑定的事件this就是谁
+    //1.JQ对象.事件(function(){})
+    //事件类型前面不带on
+    $("#box1").click(function(e){});
+
+    //2.JQ对象.on("事件类型",函数)
+    //可以在事件类型后面加一个命名空间(.名字),可以根据需求将某些名字的事件类型移除
+    $("#box1").on("click.QQ",fn1).on("click",fn2).on("click.QQ",fn3);
+    //3.off移除事件
+    $("#box1").off("click");//将所有的click事件全部移除
+    $("#box1").off("click.QQ");//将带QQ的click事件移除
+    function fn1() {
+        console.log(1)
+    }
+    function fn2() {
+        console.log(2)
+    }
+    function fn3() {
+        console.log(3)
+    }
+
+    //3.给事件对象增加数据,存在e.data
+    $("#box2").on("click",{a:"哈哈",b:"你好"},function (e) {
+        console.log(e.data.a);
+        console.log(e.data.b);
+    });
+
+    //JQ预留事件(实现原理就是事件委托);
+    $(".list").on("click","li",function (e) {
+        alert(e.target.innerText);
+        //this:当前点击的li元素
+        console.log(this);
+    });
+    $(".list").append("<li>5</li>");
+    $(".list").append("<li>6</li>");
+
+    //delegate:处理预留事件的,注意参数顺序
+    $(".list").delegate("li","click",function (e) {})
+
+
+</script>

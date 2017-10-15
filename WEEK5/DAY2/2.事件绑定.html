@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">box</div>
+
+<!--
+注意:事件行为都是私有属性
+事件绑定:
+1.DOM0级事件绑定:元素.事件行为=function(){}
+给一个元素的同一个事件行为只能绑定一次,多次绑定,后面的就会覆盖前面的内容只会执行最后一个(原因:是直接给事件属性赋了一个值[地址值]而已);
+DOM0级事件不存在兼容性,任何浏览器都可以
+DOM0级事件的移除:元素.事件行为=null;
+
+2.DOM2级事件绑定
+addEventListener:EventYTarget类原型上的公有属性
+元素.addEventListener("事件类型",function fn(){},true/false);
+事件类型:事件行为(事件属性)前面的on去掉,例如onclick->click
+true/false:可选的,规定事件发生的阶段(true:捕获阶段发生,false:冒泡阶段发生,不填默认就是false)
+
+DOM2级事件的移除:
+注意:为了移除事件的时候方便绑定事件的时候最好使用函数名代替
+元素.removeEventListener("事件类型",函数名,true/false)
+
+给一个元素的同一个事件行为绑定多个函数(在标准浏览器下按照绑定的先后顺序执行,但是在万恶的低版本IE下执行顺序是乱的)
+DOM2级事件存在兼容性
+
+在IE下使用:绑定attachEvent和移除detachEvent
+-->
+</body>
+</html>
+<script>
+    var box=document.getElementById("box");
+    console.dir(box);
+    function fn1() {
+        alert("第一次")
+    }
+    function fn2() {
+        alert("第二次")
+    }
+    function fn3() {
+        alert("第三次")
+    }
+    box.addEventListener("click",fn1);
+    box.addEventListener("click",fn2);
+    box.addEventListener("click",fn3);
+
+    box.removeEventListener("click",fn2);
+</script>
