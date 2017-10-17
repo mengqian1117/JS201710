@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+        }
+        #box1,#box2,#box3{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            top:100px;
+            cursor: move;
+        }
+        #box2{
+            left:300px;
+        }
+        #box3{
+            left: 500px;
+        }
+       img{
+            width: 100%;
+            height: 100%;
+            opacity: .8;
+        }
+        .ab{
+            border: 2px dashed red;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">
+    <img src="Callbacks.png" alt="">
+</div>
+<div id="box2">
+    <img src="Callbacks.png" alt="">
+</div>
+<div id="box3">
+    <img src="Callbacks.png" alt="">
+</div>
+</body>
+</html>
+<script src="js/drag.js"></script>
+<script>
+    var box1=document.getElementById("box1");
+    var box2=document.getElementById("box2");
+    var box3=document.getElementById("box3");
+    var drag1=new Drag(box1);
+    var drag2=new Drag(box2);
+    var drag3=new Drag(box3);
+
+    drag2.addBorder();
+    drag3.jump();
+
+
+</script>

@@ -52,3 +52,6 @@ Callbacks.prototype.fire = function (type) {
     };
     return this;
 };
+
+//add:订阅
+//fire:发布

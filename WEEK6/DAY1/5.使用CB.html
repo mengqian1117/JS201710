@@ -34,6 +34,9 @@
     <li style="left:700px;top: 20px;"></li>
     <li style="left:870px;top: 20px;"></li>
 </ul>
+<button class="up">up</button>
+<button class="down">down</button>
+<button class="opacity">opacity</button>
 </body>
 </html>
 <script src="js/CB.js"></script>
@@ -61,8 +64,16 @@
     var cb1=new Callbacks();
     cb1.add("up",fn0,fn1).add("down",fn2,fn3).add("opacity",fn4,fn5);
 
-    cb1.fire("up");
-    cb1.fire("down");
-    cb1.fire("opacity");
-    console.log(cb1);
+
+    $(".up").click(function () {
+        cb1.fire("up");
+    });
+    $(".down").click(function () {
+        cb1.fire("down");
+    });
+    $(".opacity").click(function () {
+        cb1.fire("opacity");
+    });
+
+
 </script>
