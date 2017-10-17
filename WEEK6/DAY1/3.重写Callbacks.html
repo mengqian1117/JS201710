@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Callbacks() {
+        //给每一个实例创建一个数组(就当做是回调函数集合)
+        this.CB=[];
+    }
+    //所有的方法都要写在原型上,这样所有的实例都可以拿到这些方法
+    Callbacks.prototype.add=function () {
+        //this:实例
+        //1.传进来必须是函数,才往数组中加
+        //2.添加之前先判断数组中有没有一样的没有的话才添加
+        //3.forEach中参数函数中的this是window,我们通过forEach的第二个参数将this变成add方法下的this,因为add方法中的this是当前实例
+        [...arguments].forEach(function (item) {
+            if(typeof item=="function"){
+                if(!this.CB.includes(item)){
+                    this.CB.push(item);
+                }
+            }
+        },this);
+        return this;
+    };
+
+    Callbacks.prototype.has=function (fn) {
+        //判断this.CB这个数组中有没有当前fn
+        return this.CB.includes(fn);
+    };
+
+    Callbacks.prototype.remove=function () {
+        //遍历arguments的每一项,利用has这个方法判断之前有没有这一项,有的话,从数组中删除这一项
+        [...arguments].forEach(function (item,index) {
+            if(this.has(item)){
+                //先找到item在this.CB中的索引,再使用splice删除当前项
+                this.CB.splice(this.CB.indexOf(item),1);
+            }
+        },this);
+        return this;
+    };
+
+    Callbacks.prototype.fire=function () {
+        //this:实例
+        //找到当前this下的CB这个数组,让里面的函数依次执行
+        //注意:让每一个函数执行的时候里面的this也是当前实例
+        //将fire的参数存起来,以便下面的函数中使用
+        var arg=arguments;
+        this.CB.forEach(function (item) {
+            //this:实例
+            item.apply(this,arg)
+        },this)
+    };
+
+    var cb1=new Callbacks();
+
+
+
+    function fn1(n) {
+        console.log(n);
+    }
+    function fn2(n,m) {
+        console.log(n,m);
+    }
+    function fn3(n,m) {
+        console.log(n,m,x);
+    }
+    cb1.add(fn1,fn2).add(fn2,fn3);
+    //cb1.remove(fn1,fn3);
+    cb1.fire(1,2,3)
+</script>

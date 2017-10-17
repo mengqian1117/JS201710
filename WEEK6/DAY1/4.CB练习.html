@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/CB.js"></script>
+<script>
+    function person1(money) {
+        console.log("谢绍峰",money);
+    }
+    function person2(money) {
+        console.log("张增进",money);
+    }
+    function person3(money) {
+        console.log("王启振",money);
+    }
+    function person4(money) {
+        console.log("李唐菲",money);
+    }
+    function person5(money) {
+        console.log("吴甜甜",money);
+    }
+    function person6() {
+        console.log("孟倩");
+    }
+    var JYS=new Callbacks();
+    JYS.add("marry",person1,person2);
+    JYS.add("boy",person3,person4);
+    JYS.add("death",person1,person2,person3,person4);
+    console.log(JYS);
+
+
+</script>

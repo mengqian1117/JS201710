@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">box</div>
+<div id="box1">box1</div>
+</body>
+</html>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    var box=document.getElementById("box");
+    var box1=document.getElementById("box1");
+    //JQ本身的方法
+    $.each();
+    $.ajax();
+    //JQ原型上的方法
+    $("#box").outerWidth(true);
+
+
+
+    $.Callbacks();//回调函数集合
+    var $cb=$.Callbacks();
+    var $cb1=$.Callbacks();
+    //add,remove,fire,返回this($cb这个回调函数集合)
+    //add(),向集合中增加函数
+    //add可以执行多次,每次可以增加多个函数,用逗号隔开
+    $cb.add(fn2);
+    $cb.add(fn3,fn1);
+
+    //remove();移除回调函数集合中的某个函数,参数可以是多个
+    $cb.remove(fn3);
+
+    //has():判断回调函数中有没有某个函数  true/false
+    console.log($cb.has(fn3));
+    console.log($cb.has(fn1));
+
+    //fire();让集合中所有的函数依次执行(按照顺序)
+    //fire(参数),函数执行的时候会自动的选取所需要的参数
+    //函数执行的时候this是当前回调函数集合
+    box1.onclick=function () {
+        $cb.fire(1,2,3);
+    };
+
+
+    function fn1(n) {
+        console.log(this==$cb);
+        console.log(1);
+    }
+    function fn2(n,m) {
+        console.log(2);
+    }
+    function fn3() {
+        console.log(3);
+    }
+
+
+    box.addEventListener("click",fn1);
+    box.addEventListener("click",fn2);
+    box.addEventListener("click",fn3);
+    box.removeEventListener("click",fn3)
+</script>

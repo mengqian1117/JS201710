@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body,ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style: none;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        ul>li{
+            position: absolute;
+            width: 150px;
+            margin: 20px;
+            height: 400px;
+            background:linear-gradient(to top,red,orange,yellow,green,blue,skyblue,purple);
+            filter: blur(2px);
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li style="left: 20px;top: 20px;"></li>
+    <li style="left: 190px;top: 20px;"></li>
+    <li style="display: none;left: 360px;top: 20px;"></li>
+    <li style="display: none;left: 530px;top: 20px;"></li>
+    <li style="left:700px;top: 20px;"></li>
+    <li style="left:870px;top: 20px;"></li>
+</ul>
+</body>
+</html>
+<script src="js/CB.js"></script>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    function fn0() {
+        $("#list li").eq(0).stop().slideUp(4000);
+    }
+    function fn1() {
+        $("#list li").eq(1).stop().slideUp(2000);
+    }
+    function fn2() {
+        $("#list li").eq(2).stop().slideDown(4000);
+    }
+    function fn3() {
+        $("#list li").eq(3).stop().slideDown(2000);
+    }
+    function fn4() {
+        $("#list li").eq(4).animate({opacity:0.1},4000);
+    }
+    function fn5() {
+        $("#list li").eq(5).animate({opacity:0.1},3000);
+    }
+
+    var cb1=new Callbacks();
+    cb1.add("up",fn0,fn1).add("down",fn2,fn3).add("opacity",fn4,fn5);
+
+    cb1.fire("up");
+    cb1.fire("down");
+    cb1.fire("opacity");
+    console.log(cb1);
+</script>
