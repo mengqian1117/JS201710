@@ -1,0 +1,48 @@
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.box:after {
+  content: "word";
+  color: green;
+}
+.box:before {
+  content: "珠峰培训";
+  color: yellow;
+}
+.class1 {
+  font-size: 30px;
+  width: 200px;
+  height: 200px;
+}
+.box1 {
+  font-size: 30px;
+  width: 200px;
+  height: 200px;
+  background-color: green;
+}
+.box1 {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  border: 3px dashed plum;
+}
+.text1 {
+  font-size: 20px;
+}
+.text1 {
+  border: 3px solid red;
+}
+.box1 {
+  background-color: #999900;
+  border-width: 10px;
+}
+.text1 {
+  font-size: 30px;
+  font-weight: normal;
+  color: #00aaee;
+}
+/**/

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<!--
+src:播放文件的地址
+controls:显示控件
+autoplay:视频就绪后打开页面直接播放
+preload:页面加载完成之后播放
+loop:循环播放
+muted:静音
+poster:视频播放之前先使用一张其他的图片展示
+
+currentSrc:返回当前音频视频的url
+currentTime:获取/设置当前播放的时间
+-->
+<audio id="audio" src="img/music.mp3"></audio>
+<video id="video" src="img/1.mp4" width="300" height="250" controls></video>
+<button id="btn1">播放音乐</button>
+<button id="btn2">暂停音乐</button>
+<button id="btn3">获取视频的播放时间</button>
+<div onclick="fn(event)"></div>
+</body>
+</html>
+<script>
+    var audio=document.getElementById("audio");
+    var video=document.getElementById("video");
+    var btn1=document.getElementById("btn1");
+    var btn2=document.getElementById("btn2");
+
+    btn1.onclick=function () {
+        audio.play();
+    };
+    btn2.onclick=function () {
+        audio.pause();
+    };
+    //获取音频/视频的总时间
+    console.log(audio.duration);
+    console.log(video.duration);
+
+    btn3.onclick=function () {
+        //获取当前播放的时间
+        video.pause();
+        console.log(video.currentTime);
+    };
+
+    //ended 返回值音频视频是否播放完成
+    //paused 返回值音频视频是否暂停
+    //video.playbackRate 设置播放的速度
+    video.playbackRate=4;
+
+    //设置获取音量
+    video.volume=0.3;
+    function fn(e) {}
+    fn(1)
+</script>

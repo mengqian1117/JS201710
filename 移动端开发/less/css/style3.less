@@ -1,0 +1,60 @@
+//嵌套规则
+//1.直接嵌套就是表示后代关系
+//2.想表示当前选择器,使用&
+/*
+<div class="box">
+   <p class="text"></p>
+   <span></span>
+</div>
+*/
+@w:200px;
+.box{
+  width: @w;
+  height: @w;
+  .text{};
+  span{};
+  &:after{};//.box:after{}
+  &:hover{}
+}
+//.box:after{}
+span{
+  color: #0BB20C;
+  &#span1{};//span#span1
+  &.bg{};//span.bg
+}
+
+//计算功能,任何颜色,变量都可以参与运算
+@n1:5%;
+@n2:@n1*2;//10%
+@n3:@n1*4+@n2;//30%
+
+.box{
+  width: 100%/2+@n2;
+}
+@var:10px+5;
+.box{
+  width: (@var+20)*2;
+  border: @var - 10 solid #ff3a63;
+}
+
+//less也支持部分Math函数
+//round(1.87)->2
+//ceil(2.1)->3
+//floor(2.9)->2
+//percentage(0.5)->50%
+.box{
+  width: percentage(0.5);
+}
+
+#box1{
+  .p1{
+    width: 100px;
+    &:hover{
+      color: red;
+    }
+  }
+}
+.p2{
+  color: grey;
+  #box1>.p1;
+}

@@ -1,0 +1,40 @@
+//判断,when
+//比较 > < >= <=
+.minx(@w) when(@w>=500){
+  width: @w;
+  height: @w;
+}
+.minx(@w) when(@w<500){
+  width: @w;
+  height: @w;
+}
+
+.box{
+  .minx(200px);
+}
+
+.wh(@w,@h) when(@w>=@h){
+  width: @w;
+  height: @h;
+}
+.wh(@w,@h) when(@w<@h){
+  width: @h;
+  height: @w;
+}
+.box{
+  .wh(200px,50px)
+}
+//注意判断相等 =
+.m(@w) when (@w=500px){}
+//如果没有满足条件的不会报错,只是不执行而已
+
+//可以使用一些简单的JS方法,判断值类型
+//isnumber();是不是一个数字
+//iscolor();是不是一个颜色值
+//isstring();是不是一个字符串
+//isurl(); 是不是一个url地址
+//ispixel();是不是单位px
+//ispercentage();是不是单位pt
+//isem();是不是单位em
+.c(@c) when(iscolor(@c)){  };
+.n(@n) when(isnumber(@n)){  };

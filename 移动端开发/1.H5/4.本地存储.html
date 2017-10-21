@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //localStorage,只要使用浏览器打开,存在里面的内容会被永久存储,关闭页面再打开任然存在,在其他的网页也可以获取
+    localStorage.zf="珠峰培训";
+    //alert(localStorage.zf);
+    localStorage.setItem("QQ","2295676706");
+    localStorage.removeItem("QQ");
+
+    //sessionStorage:存储在浏览器上,只要浏览器不关闭,就会有,关闭浏览器就是消失,但是在其他的页面中获取不到
+    if(!sessionStorage.getItem("code")){
+        sessionStorage.setItem("code",1)
+    }else {
+        sessionStorage.setItem("code",parseInt(sessionStorage.getItem("code"))+1)
+    }
+    //alert(localStorage.getItem("n"));
+    if(!localStorage.getItem("n")){
+        localStorage.setItem("n",1)
+    }else {
+        localStorage.setItem("n",parseInt(localStorage.getItem("n"))+1)
+    }
+    alert("这是第"+localStorage.getItem("n")+"次")
+</script>

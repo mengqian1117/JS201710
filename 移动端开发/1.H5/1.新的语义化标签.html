@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<!--新增加语义化标签：header、footer、nav、section、main、article、aside、figure、figcaption、hgroup、progress、time、mark(高亮选中)、datalist、details、summary…-->
+<!--对传统标签的语义修改：small(附属细则)、strong(重点朗读)、hr(区域分割线)-->
+<header>
+    <nav>导航部分</nav>
+    <main>
+        主体
+        <progress max="100" value="50">进度条</progress>
+        <section>区域1</section>
+        <section>区域2</section>
+        <article>文章</article>
+        <aside>侧边栏,广告</aside>
+        <figure>
+            <!--<img src="img/图片1.png" alt="">-->
+            <figcaption>配图的说明文字</figcaption>
+        </figure>
+        <hgroup>
+            一组标题
+            <h2>h2</h2>
+            <h3>h3</h3>
+        </hgroup>
+        <time>12:00</time>
+        <mark>你被选中</mark>
+        <input type="text" list="i">
+        <datalist id="i">
+            <option value="1">珠峰</option>
+            <option value="2">培训</option>
+            <option value="3">前端</option>
+        </datalist>
+        <details>
+            <summary>今天</summary>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </details>
+    </main>
+
+</header>
+<footer></footer>
+</body>
+</html>
+<script>
+    alert(localStorage.getItem("QQ"));
+</script>
