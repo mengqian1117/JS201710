@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <script src="js/ejs.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div id="box"></div>
+<!--script加一个type='text/template' ,加一个id方便后面获取模板-->
+<script type="text/template" id="boxTemplate">
+    <ul>
+        <%$.each(boxData,function(index,item){%>
+            <li>
+                <span><%=item.a%></span>
+                <span><%=item.b%></span>
+                <span><%=12345%></span>
+            </li>
+        <%})%>
+    </ul>
+</script>
+</body>
+</html>
+
+<script>
+    //EJS模板引擎四部曲
+    //1.在HTML解构中定义容器
+    //例如:<div id="box"></div>
+
+    //2.获取数据,一般都是通过AJAX获取的数据
+    data=[{"a":"你好",b:"大家好"},{"a":"你好",b:"大家好"},{"a":"你好",b:"大家好"}];
+
+    //3.造模板搭建一个HTML解构导入数据
+
+    //4.通过ejs.render(),用数据渲染模板
+    //ejs.render(模板,数据)
+    //4-1 获取HTML模板
+    var HTMLTemplate=$("#boxTemplate").html();
+    //4-2 ejs.render(模板,{模板中的数据:真实数据})
+    var HT=ejs.render(HTMLTemplate,{boxData:data});
+    //4-3 将渲染好的模板放到页面上
+    $("#box").html(HT);
+</script>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训2017-10JS</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html{
+            /*默认的字体大小是16px*/
+            font-size: 100px;
+        }
+        #box1{
+            width: 2rem;
+            height: 3rem;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<!--
+一个css单位px是个固定单位:比如我们写一个300px*400px的盒子,不管浏览器怎么变,他一直是固定的,都是按照300px*400px来渲染的
+rem相对单位:他是相对于页面根元素html的fontSize来设置的
+1rem=html的font-size设置的大小
+例如:html{font-size:20px};
+div{width:5rem;}
+div{width:5*20px=100px}
+-->
+<!--
+REM响应式布局:
+rem是根据HTML的fontSize,只需要根据浏览器的大小的改变去改变HTML的fontSize大小,其他元素的大小会自动计算
+1.首先拿到设计稿按照设计稿的标注的尺寸来写,需要将单位变成REM(比如设计稿是640的尺寸)
+2.当我们的页面在320的屏幕上渲染额时候,内容就比之前的大了一倍,没有必要一个一个修改,只需要修改HTML的fontsize的大小即可
+3.一般为了好计算会将HTML的fontSize设置成100px(因为浏览器最小的字体一般是12px)
+
+             宽      HTML.fontSize     box,CSS样式      实际
+  设计稿     640      100px            1rem*1.5rem      100px*150px
+  设备      320       50px             1rem*1.5rem      50px*75px
+  设备      414       414*100/640      1rem*1.5rem
+
+
+-->
+<div id="box1"></div>
+</body>
+</html>
+<script>
+    //document.documentElement.style.fontSize=当前浏览器的宽*100/设计稿的宽
+    window.onresize=function () {
+        //获取当前浏览器的宽
+        var win=document.documentElement.clientWidth||document.body.clientWidth;
+        //设计稿的宽
+        var dW=640;
+        document.documentElement.style.fontSize=win*100/dW+"px";
+    }
+
+</script>

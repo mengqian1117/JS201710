@@ -1,0 +1,17 @@
+1.H5,新标签,新属性,表单元素type,本地存储,音频视频的播放
+2.CSS3,选择器,border,background,渐变,过滤器filter,文本,字体图标,transform变形2D,3D,过渡transtion,动画animation
+3.less的使用
+4.Ejs模板引擎
+5.移动端适配
+viewport,加载一些兼容文件处理IE问题
+布局:百分比+@media,rem布局,如何设计图,DPR,bootstrap栅格布局
+6.移动端事件处理
+使用touch模拟单击事件
+click事件在移动端有300ms的延迟
+7.框架,swiper,iscroll,zepto,MUI
+8.案例:rem+bootstrap单页布局应用
+QQ音乐播放器：H5音频播放处理+歌词解析+zepto
+H5交互简历:H5+css3+animate.css+swiper+zepto
+新浪首页:iscroll+zepto
+酒店预订:MUI
+作业:

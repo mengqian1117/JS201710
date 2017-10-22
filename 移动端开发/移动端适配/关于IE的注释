@@ -1,0 +1,34 @@
+1.只有IE才可以识别
+<!--[if IE]>
+<script src="js/html5.min.js"></script >
+<![endif]-->
+
+2.只有特定版本的IE才可以识别
+<!--[if IE 8]>
+<script src="js/html5.min.js"></script >
+<![endif]-->
+
+3.只有不是特定版本的IE才可以识别
+<!--[if !IE 8]>
+<script src="js/html5.min.js"></script >
+<![endif]-->
+
+4.只有高于特定版本的IE才可以识别
+<!--[if gt IE 8]>
+<script src="js/html5.min.js"></script >
+<![endif]-->
+
+5.只有低于特定版本的IE才可以识别
+<!--[if lt IE 8]>
+<script src="js/html5.min.js"></script >
+<![endif]-->
+
+6.只有高于等于特定版本的IE才可以识别
+<!--[if gte IE 8]>
+<script src="js/html5.min.js"></script >
+<![endif]-->
+
+7.只有低于等于特定版本的IE才可以识别
+<!--[if lte IE 8]>
+<script src="js/html5.min.js"></script >
+<![endif]-->

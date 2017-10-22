@@ -1,0 +1,242 @@
+html{
+    font-size: 100px;
+}
+body{
+    font-size: 20px;
+    font-weight: 300;
+}
+a,a:hover{
+    color:#a1c7f1 ;
+    text-decoration: none;
+}
+/*大图部分*/
+.my-section1{
+    background: url("../img/ocean-bg.jpg") no-repeat;
+    background-attachment:fixed ;
+    background-size: 100%;
+    color: #fff;
+    text-align: center;
+    height: 650px;
+}
+.my-section1-h1{
+    font-size: .7rem;
+    margin-top: .8rem;
+}
+.my-section1-p{
+    font-size: .4rem;
+    margin: .5rem 0 .4rem 0;
+}
+.my-section1-btn{
+    font-size: .3rem;
+    background: #fff;
+    padding: .07rem .3rem;
+    border-radius: 0.06rem;
+}
+.my-section1-btn:hover{
+    color: #fff;
+    background: #a1c7f1;
+}
+
+/*轮播区域*/
+.carousel{
+    text-align: center;
+    max-width: 900px;
+    margin: .5rem auto;
+    padding-bottom: .3rem;
+}
+.carousel h2{
+    font-size: .3rem;
+    color: #8187ff;
+    font-weight: bold;
+}
+.carousel p{
+    font-size:.2rem;
+    line-height: .3rem;
+    margin-bottom: .1rem;
+}
+.carousel ol{
+    bottom: 0;
+    margin-bottom: 0;
+}
+.carousel ol li{
+    background-color: #d5e7ec;
+    width: .15rem;
+    height: .15rem;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+.carousel ol li.active{
+    background-color: #8187ff;
+    width: .15rem;
+    height: .15rem;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+/*展示部分*/
+.sections{
+    overflow: hidden;
+}
+.section-right>div{
+    float: right;
+}
+.sections>div{
+    padding-left: .25rem;
+    padding-right:.25rem ;
+}
+.sections div:nth-child(2){
+    padding-left: 3%;
+    padding-right: 3%;
+}
+.sections h2{
+    font-size:.3rem;
+    margin-top: 5%;
+    font-weight: bold;
+    margin-bottom: 5%;
+    color: #81b4eb;
+    padding-left: 3%;
+}
+.sections p{
+    color:  #81b4eb;
+    font-size: .18rem;
+    font-weight: 300;
+    margin-bottom: 6%;
+    width: 100%;
+}
+.my-a-btn{
+    color: #81b4eb;
+    font-size: .22rem;
+    font-weight: 400;
+    background-color: #fff;
+    border: 2px solid #81b4eb;
+    display:inline-block ;
+    border-radius:.2rem ;
+    margin-bottom: 2%;
+    margin-left: .15rem;
+    padding: .06rem .3rem;
+}
+/*about*/
+.my-section2{
+    background-color: #B9D6F4;
+    padding-top: .6rem;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+.section-h2{
+    font-size: .35rem;
+    margin-bottom: .2rem;
+}
+.section-text{
+    font-size: .22rem;
+    line-height: .3rem;
+    max-width: 700px;
+    margin: 0 auto .5rem;
+}
+.my-icon>div{
+    padding-left: 0.01rem;
+    padding-right: 0.1rem;
+}
+.my-icon-box{
+    background-color: #d3e6f8;
+    border: 1px solid #fff;
+    max-width: 400px;
+    padding: .25rem;
+}
+.my-icon-box h3{
+    font-size: .28rem;
+    margin-bottom: .2rem;
+}
+.my-icon-box fa{
+    color: #81b4eb;
+    margin-bottom:.25rem ;
+    text-align: center;
+    width: 100%;
+}
+.my-icon-box p{
+    line-height: .28rem;
+    margin-bottom: 0;
+}
+.my-icon{
+    margin-left: auto;
+    max-width: 1760px;
+    margin-right: auto;
+    overflow: auto;
+}
+
+/*keep*/
+.my-section-contact{
+    margin: 0 auto;
+    max-width: 1500px;
+    margin-top: .8rem;
+    text-align: center;
+}
+.form-group{
+    padding-right: .1rem;
+    padding-left: .1rem;
+}
+.form-control{
+    padding: 0.08rem .2rem;
+    font-size: .18rem;
+    border-radius:.25rem ;
+    border-color: #68A8E8;
+}
+.form-control:focus{
+    border-color: #1768A9;
+}
+textarea.form-control{
+    padding-top: .15rem;
+    padding-bottom: .15rem;
+}
+.my-form-group-left{
+    padding-left: 0;
+}
+.my-form-group-right{
+    padding-right: 0;
+}
+.form-group{
+    margin-bottom: .1rem;
+}
+/*Our Address*/
+.my-contact-text{
+    margin-bottom:.1rem ;
+}
+.my-contact-title{
+    font-size: .28rem;
+}
+.my-contact-info{
+    line-height: .2rem;
+    margin-bottom:.1rem ;
+}
+.my-link-icons{
+    margin-top: .2rem;
+}
+.my-link-icon{
+    background-color: white;
+    color:#81B4EB;
+    border: 1px solid #68A8E8;
+    padding: 5px;
+    margin-right: 2%;
+    border-radius:50% ;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+}
+.my-link-icon:hover,.my-link-icon:focus{
+    color: white;
+    background-color: #81B4EB;
+}
+/*底部线条*/
+hr{
+    width: 65%;
+}
+/*最底部的注脚*/
+.foot-p{
+    color: #999;
+    font-size: 1.3px;
+    padding-top:.1rem ;
+    padding-bottom: .1rem;
+    text-align: center;
+    width: 100%;
+    /*background-color: #424242;*/
+    margin-bottom: 0;
+}

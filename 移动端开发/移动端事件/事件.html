@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        #box{
+            width: 2rem;
+            height: 2rem;
+            background-color: #dc6aff;
+            opacity: 0.3;
+            margin: 1rem auto;
+        }
+    </style>
+    <link rel="stylesheet" href="reset.min.css">
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<!--
+移动端事件: onclick (单击),onload,onscroll,onblur,onfocus,onchange,oninput(代替onkeyup,onkeydown...)
+touch事件模型(处理单手指操作):touchstart ,touchmove,touchend,touchcancel
+gesture(处理多手指操作):gesturestart gesturechange gestureend
+
+1.click:在移动端属于单击事件不是点击事件,有300ms的延迟
+在移动端处理事件的时候经常判断单击和双击的时候分别干什么所以说移动端在遇到点击click的时候,只有确定是单击的时候才会操作,怎么确定,留给用户一个时间差这个时间差内没有再点击就是单击,再点了就是双击,所以说就出现了这个延迟问题
+
+2.点击,双击,单击,长按,滑动,左滑,右滑,上滑,下滑....
+单击和双击(300ms)
+点击和长按(750ms)
+点击和滑动(x/y轴方向的偏移>=30px)
+左右滑动/上下滑动(X轴方向的偏移>Y轴方向的偏移就是左右滑动)
+左滑/右滑(X抽方向偏移的距离>0右滑)
+
+3.移动端事件库
+fastClick.js:解决了300ms延迟问题
+touch.js:百度出的一款事件库
+hammer.js:
+-->
+<script>
+
+    document.documentElement.style.fontSize=document.documentElement.clientWidth*100/640+"px";
+
+    //使用touch事件模型处理单击操作
+    var box=document.getElementById("box");
+    box.addEventListener("touchstart",function (e) {
+        //事件对象e TouchEvent:type,target,returnValue(阻止事件默认行为),cancelBubble(阻止冒泡),touches,changedTouches
+        //注意在e.touches[0]存储了单手指信息
+        //changedTouches跟touches一样都是记录当前单手指信息,但是touchend不能获取手指记录的信息因为,touches必须要求满足手指还在屏幕上,所以在touchend中想要获取手指信息必须使用changedTouches获取信息
+        //获取单手指信息
+        var point=e.touches[0];
+        //将x,y抽位移存在当前元素this中
+        this.startX=point.clientX;
+        this.startY=point.clientY;
+        this.isMove=false;
+    });
+    box.addEventListener("touchmove",function (e) {
+        var point=e.touches[0];
+        //获取现在的位置
+        var nowX=point.clientX;
+        var nowY=point.clientY;
+        //判断移动的距离是否大于30px
+        if(Math.abs(nowX-this.startX)>30||Math.abs(nowY-this.startY)>30){
+            //一旦大于30px,给当前元素加一个自定义属性isMove记录是否移动
+            this.isMove=true;
+        };
+    });
+    box.addEventListener("touchend",function (e) {
+        console.log(1);
+        if(this.isMove){
+          //滑动
+            this.style.webkitTransitionDuration="2s";
+            this.style.opacity=1;
+        }else {
+            //单击
+            this.style.webkitTransitionDuration="1s";
+            this.style.webkitTransform="rotate(360deg)";
+            //回去
+            setTimeout( ()=> {
+                this.style.webkitTransitionDuration="0s";
+                this.style.webkitTransform="rotate(0deg)";
+            },1000)
+        }
+    })
+
+</script>

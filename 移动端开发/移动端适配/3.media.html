@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <link rel="stylesheet" href="css/reset.min.css">
+    <style>
+        html,body{
+            width: 100%;
+        }
+        .con{
+            width: 100%;
+            font-size: 0px;
+        }
+        .box1{
+            width:25% ;
+            height: 300px;
+            display: inline-block;
+            background-color: yellow;
+        }
+        .box1:nth-child(2){
+            background-color: orange;
+        }
+        .box1:nth-child(3){
+            background-color: #3cafcf;
+        }
+        .box1:nth-child(4){
+            background-color: fuchsia;
+        }
+        /*屏幕的宽小于等于760大于等于380px的时候,一行俩个box1*/
+        @media (max-width: 760px)and (min-width: 380px){
+            .box1{
+                width: 50%;
+            }
+        }
+        /*小于等于380px*/
+        @media (max-width: 380px) {
+            .box1{
+                width: 100%;
+                display: block;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="con">
+    <div class="box1"></div>
+    <div class="box1"></div>
+    <div class="box1"></div>
+    <div class="box1"></div>
+</div>
+</body>
+</html>
+<!--
+width:浏览器的宽
+height:浏览器的高
+device-width/height:设备的宽/高
+orientation:检测横屏还是竖屏
+
+-->
+<script></script>

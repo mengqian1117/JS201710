@@ -1,0 +1,38 @@
+
+<!–[if !IE]><!–><!–<![endif]–><!–除IE外都可识别（IE10版本以上也可以识别）–>
+<!–[if IE]><![endif]–><!–IE9以及以下版本可识别–>
+<!–[if IE 5]><![endif]–><!–仅IE5可识别–>
+<!–[if IE 5.0]><![endif]–><!–仅IE5.0可识别–>
+<!–[if IE 5.5]><![endif]–><!–仅IE5.5可识别–>
+<!–[if IE 6]><![endif]–><!–仅IE6可识别–>
+<!–[if IE 7]><![endif]–><!–仅IE7可识别–>
+<!–[if IE 8]><![endif]–><!–仅IE8可识别–>
+<!–[if IE 9]><![endif]–><!–仅IE9可识别–>
+<!–[if lt IE 5]><![endif]–><!–IE5以下版本可识别–>
+<!–[if lt IE 5.0]><![endif]–><!–IE5.0以下版本可识别–>
+<!–[if lt IE 5.5]><![endif]–><!–IE5.5以下版本可识别–>
+<!–[if lt IE 6]><![endif]–><!–IE6以下版本可识别–>
+<!–[if lt IE 7]><![endif]–><!–IE7以下版本可识别–>
+<!–[if lt IE 8]><![endif]–><!–IE8以下版本可识别–>
+<!–[if lt IE 9]><![endif]–><!–IE9以下版本可识别–>
+<!–[if lte IE 5]><![endif]–><!–IE5以及IE5以下版本可识别–>
+<!–[if lte IE 5.0]><![endif]–><!–IE5.0以及IE5.0以下版本可识别–>
+<!–[if lte IE 5.5]><![endif]–><!–IE5.5以及IE5.5以下版本可识别–>
+<!–[if lte IE 6]><![endif]–><!–IE6以及IE6以下版本可识别–>
+<!–[if lte IE 7]><![endif]–><!–IE7以及IE7以下版本可识别–>
+<!–[if lte IE 8]><![endif]–><!–IE8以及IE8以下版本可识别–>
+<!–[if lte IE 9]><![endif]–><!–IE9以及IE9以下版本可识别–>
+<!–[if gt IE 5]><![endif]–><!–IE5以上版本可识别–>
+<!–[if gt IE 5.0]><![endif]–><!–IE5.0以上版本可识别–>
+<!–[if gt IE 5.5]><![endif]–><!–IE5.5以上版本可识别–>
+<!–[if gt IE 6]><![endif]–><!–IE6以上版本可识别–>
+<!–[if gt IE 7]><![endif]–><!–IE7以上版本可识别–>
+<!–[if gt IE 8]><![endif]–><!–IE8以上版本可识别–>
+<!–[if gt IE 9]><![endif]–><!–IE9以上版本可识别–>
+<!–[if gte IE 5]><![endif]–><!–IE5以及IE5以上版本可识别–>
+<!–[if gte IE 5.0]><![endif]–><!–IE5.0以及IE5.0以上版本可识别–>
+<!–[if gte IE 5.5]><![endif]–><!–IE5.5以及IE5.5以上版本可识别–>
+<!–[if gte IE 6]><![endif]–><!–IE6以及IE6以上版本可识别–>
+<!–[if gte IE 7]><![endif]–><!–IE7以及IE7以上版本可识别–>
+<!–[if gte IE 8]><![endif]–><!–IE8以及IE8以上版本可识别–>
+<!–[if gte IE 9]><![endif]–><!–IE9以及IE9以上版本可识别–>

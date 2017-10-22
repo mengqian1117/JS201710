@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <script src="js/ejs.js"></script>
+</head>
+<body>
+<div id="list"></div>
+</body>
+</html>
+<script type="text/template" id="dataTemplate">
+    <ul>
+        <%listData.forEach(function(item,index){%>
+            <li>
+                <i><%=index+1%></i>
+                <span>名称:<%=item.name%></span>
+                <span>历史:<%=item.age%></span>
+                <span>培训:<%=item.do%></span>
+            </li>
+        <%})%>
+    </ul>
+</script>
+<script>
+//1.容器list
+var list=document.getElementById("list");
+//2.获取数据
+var data=null;
+var xhr=new XMLHttpRequest();
+xhr.open("GET","js/data.json",false);
+xhr.onreadystatechange=function () {
+    if(xhr.status==200&&xhr.readyState==4){
+        data=JSON.parse(xhr.responseText);
+    }
+};
+xhr.send(null);
+//3.创造模板
+//4.渲染模板
+var htmlT=document.getElementById("dataTemplate").innerHTML  ;
+var HT=ejs.render(htmlT,{listData:data});
+list.innerHTML=HT;
+</script>

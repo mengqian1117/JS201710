@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        .box1{
+            width: 200px;
+            height: 200px;
+            border: 27px solid orange;
+            border-image: url("img/border.png") stretch 10;
+            border-image: url("img/border.png") repeat 10;
+            /*border-image: url("img/border.png") round 27;*/
+
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+        .btn{
+            display: inline-block;
+            border: 18px solid green;
+            border-width:0 18px ;
+            text-align: center;
+            padding: 13px 10px 17px;
+            line-height: 15px;
+            font-size: 16px;
+            margin: 30px;
+            border-image: url("img/button_sprite.png") 0 18 50 18;
+            -webkit-border-image: url("img/button_sprite.png") 0 18 50 18;
+        }
+        .btn:hover{
+            border-image: url("img/button_sprite.png") 50 18 0 18;
+            -webkit-border-image: url("img/button_sprite.png") 50 18 0 18;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<a href="javascript:;" class="btn">CLICK ME!!</a>
+</body>
+</html>
+<script>
+</script>
