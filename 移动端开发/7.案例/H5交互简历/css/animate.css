@@ -1,0 +1,166 @@
+@-webkit-keyframes loadingMove {
+	0% {
+		background-position: 0 0.3rem;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+@keyframes loadingMove {
+	0% {
+		background-position: 0 0.3rem;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}
+@-webkit-keyframes phoneMove {
+	0% {
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+	100% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+}
+@keyframes phoneMove {
+	0% {
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+	100% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+}
+@keyframes page2Move1{
+	100%{
+		opacity: 1;
+		margin-top: -2.9rem;
+	}
+}
+@keyframes page2Move2{
+	100%{
+		opacity: 1;
+		margin-top: -1.7rem;
+		margin-left: 1.5rem;
+	}
+}
+@keyframes page2Move3{
+	100%{
+		opacity: 1;
+		margin-top: .7rem;
+		margin-left: 1.5rem;
+	}
+}
+@keyframes page2Move4{
+	100%{
+		opacity: 1;
+		margin-top: 1.9rem;
+	}
+}
+@keyframes page2Move5{
+	100%{
+		opacity: 1;
+		margin-top: .7rem;
+		margin-left:-2.5rem;
+	}
+}
+@keyframes page2Move6{
+	100%{
+		opacity: 1;
+		margin-top: -1.7rem;
+		margin-left: -2.5rem;
+	}
+}
+@-webkit-keyframes page2Move1{
+	100%{
+		opacity: 1;
+		margin-top: -2.9rem;
+	}
+}
+@keyframes page2Shake{
+	0%,100%{
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	10%,20%{
+		-webkit-transform: scale(.9) rotate(5deg);
+		transform: scale(.9) rotate(5deg);
+	}
+	30%,50%,70%,90%{
+		-webkit-transform: scale(1.1) rotate(5deg);
+		transform: scale(1.1) rotate(5deg);
+	}
+	40%,60%,80%{
+		-webkit-transform: scale(1.1) rotate(-5deg);
+		transform: scale(1.1) rotate(-5deg);
+	}
+}
+@-webkit-keyframes page2Shake{
+	0%,100%{
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	10%,20%{
+		-webkit-transform: scale(.9) rotate(5deg);
+		transform: scale(.9) rotate(5deg);
+	}
+	30%,50%,70%,90%{
+		-webkit-transform: scale(1.1) rotate(5deg);
+		transform: scale(1.1) rotate(5deg);
+	}
+	40%,60%,80%{
+		-webkit-transform: scale(1.1) rotate(-5deg);
+		transform: scale(1.1) rotate(-5deg);
+	}
+}
+
+/*来自animate.css*/
+
+@keyframes bounceInLeft {
+	from,
+	60%,
+	75%,
+	90%,
+	to {
+		animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+	}
+	0% {
+		opacity: 0;
+		transform: translate3d(-3000px, 0, 0);
+	}
+	60% {
+		opacity: 1;
+		transform: translate3d(25px, 0, 0);
+	}
+	75% {
+		transform: translate3d(-10px, 0, 0);
+	}
+	90% {
+		transform: translate3d(5px, 0, 0);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes shake {
+	from,to {
+		transform: translate3d(0, 0, 0);
+	}
+	0% {
+		opacity: 0;
+	}
+	10%,30%,50%,70%,90% {
+		transform: translate3d(-10px, 0, 0);
+	}
+	20%,40%,60%,80% {
+		transform: translate3d(10px, 0, 0);
+	}
+	100% {
+		opacity: 1;
+	}
+}
