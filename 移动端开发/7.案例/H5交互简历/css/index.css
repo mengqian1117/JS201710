@@ -11,3 +11,142 @@ body{
 	position: relative;
 	z-index: -3;
 }
+.loading,.phone,.message,.cube,.swiper{
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.loading{
+	/*display: block;*/
+	background: #000;
+}
+.loading .title{
+	position: absolute;
+	width: 100%;
+	height: 1.4rem;
+	left: 0;
+	top: 50%;
+	margin-top: -2.2rem;
+	color: #fff;
+	text-align: center;
+	letter-spacing: .04rem;
+}
+.loading .title h1{
+	font-size: .5rem;
+	line-height: .75rem;
+	height: .75rem;
+	margin-bottom: .2rem;
+}
+.loading .title h2{
+	font-size: .26rem;
+	height: .45rem;
+	line-height: .45rem;
+}
+.loading .progress{
+	position: absolute;
+	width: 4.6rem;
+	height: .3rem;
+	left: 50%;
+	top: 50%;
+	margin-left: -2.3rem;
+	margin-top: .85rem;
+	background: #fff;
+	border-radius: .06rem;
+}
+.loading .progressBox{
+	width: 0%;
+	height: 100%;
+	border-radius: .06rem;
+	background: linear-gradient(45deg,#5cb85c 25%,#74c274 25%,#74c274 50%,#5cb85c 50%,#5cb85c 75%,#74c274 75%);
+	-webkit-background: linear-gradient(45deg,#5cb85c 25%,#74c274 25%,#74c274 50%,#5cb85c 50%,#5cb85c 75%,#74c274 75%);
+	background-size: 0.3rem 0.3rem;
+	background-position: 0 0.3rem;
+	transition: all 1s linear;
+	/*animation: loadingMove 1s linear infinite both;*/
+}
+
+/*phone*/
+.phone{
+	/*display: block;*/
+	background: url("../img/zf_phoneBg.jpg") no-repeat;
+	background-size: cover;
+	z-index: -2;
+	transition: all 1s linear;
+	-webkit-transition: all 1s linear;
+}
+.phone audio{
+	display: none;
+}
+.phone h2{
+	position: absolute;
+	width: 2.62rem;
+	height: 1.25rem;
+	top:.5rem;
+	left: 50%;
+	margin-left: -1.31rem;
+}
+.phone h2 img{
+	width: 100%;
+	height: 100%;
+}
+.phone .time{
+	display: none;
+	position: absolute;
+	height: .3rem;
+	font-size: .3rem;
+	letter-spacing: .05rem;
+	top: 1.85rem;
+	width: 100%;
+	text-align: center;
+	line-height: .3rem;
+	color: #fff;
+}
+.phone .listen{
+	position: absolute;
+	width: 5.2rem;
+	height: 3.6rem;
+	left: 50%;
+	margin-left: -2.6rem;
+	bottom: .3rem;
+	background: url("../img/zf_phoneListen.png") no-repeat;
+	background-size: 100% 100%;
+}
+.phone .listen div{
+	position: absolute;
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 50%;
+	bottom: .47rem;
+	right: -.07rem;
+}
+.phone .listen .move{
+	z-index: -1;
+	border: .03rem solid #4CD864;
+	animation: phoneMove 1s linear infinite both;
+	-webkit-animation: phoneMove 1s linear infinite both;
+}
+.phone .details{
+	position: absolute;
+	width: 5.2rem;
+	height: 6.59rem;
+	background: url("../img/zf_phoneDetail.png") no-repeat;
+	background-size: 100% 100%;
+	bottom: .3rem;
+	left: 50%;
+	margin-left: -2.6rem;
+	transform: translateY(7rem);
+	-webkit-transform: translateY(7rem);
+	transition: all .8s ;
+	-webkit-transition: all .8s ;
+}
+.phone .details .touch{
+	position: absolute;
+	width: 1.6rem;
+	height: 1.6rem;
+	bottom: .28rem;
+	left: 50%;
+	margin-left: -.8rem;
+	z-index: 5;
+}
