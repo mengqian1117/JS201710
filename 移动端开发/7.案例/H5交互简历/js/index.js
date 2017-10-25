@@ -84,17 +84,19 @@ var PhoneRender = (function () {
             }
         }, 1000)
     }
+
     function closePhone() {
         //让Phone消失之前先关掉音频
         detailMusic.pause();
         //Phone平移到最下面,有个动画效果消失
-        $phone.css("transform","translateY("+document.documentElement.clientHeight+"px)").on("webkitTransitionEnd",function () {
+        $phone.css("transform", "translateY(" + document.documentElement.clientHeight + "px)").on("webkitTransitionEnd", function () {
             //当过度效果完成之后才会执行的函数
             //此时让Phone消失
-            $phone.css("display","none");
+            $phone.css("display", "none");
         });
         MessageRender.init();
     }
+
     return {
         init: function () {
             //让当前区域phone显示
@@ -121,17 +123,105 @@ var PhoneRender = (function () {
     }
 })();
 /*message显示  单利模式*/
-var MessageRender=(function () {
+var MessageRender = (function () {
+    var $message=$("#message"),
+        $messageList=$message.children(".messageList"),
+        $messageLis=$messageList.children("li"),
+        $keyBoard=$message.children(".keyBoard"),
+        $textTip=$keyBoard.children(".textTip"),
+        $submit=$keyBoard.children(".submit");
+    var messageMusic=$("#messageMusic")[0];
+    var autoTimer=null,step=-1,total=$messageLis.length,bounceTop=0;
+    //消息列表的推送
+    function messageMove(){
+        messageMusic.play();
+        //设置定时器,每隔一段时间(1.5s)推送一条消息
+        autoTimer=window.setInterval(function () {
+            step++;
+            //获取当前要推送的消息
+            var $curLi=$messageLis.eq(step);
+            $curLi.css({transform:"translateY(0)",opacity:1});
+            //当消息推送到第三条就停止,显示键盘keyboard
+            if(step==2){
+                //清掉定时器就是停止推送
+                window.clearInterval(autoTimer);
+                //显示键盘keyboard
+                $keyBoard.css({
+                    transform:"translateY(0)"
+                });
+                //显示textTip
+                $textTip.css("display","block");
+                //模拟输入文字
+                textMove()
+            }
+            //当推送到第四条的时候开始,每推送一条整体往上移
+            if(step>=3){
+                bounceTop-=$curLi[0].offsetHeight+10;
+                $messageList.css("transform","translateY("+bounceTop+"px)");
+            }
+            //当消息完全推送完成
+            if(step==total-1){
+                //清除定时器
+                window.clearInterval(autoTimer);
+                //为了开发方便当page=2的时候停在当前区域不动
+                if(page==2)return;
+                //当前区域消失,下一个区域显示
+                //关掉音乐
+                messageMusic.pause();
+                $message.css("display","none");
+                CubeRender.init()
+            }
+        },1500)
+    };
+    //模拟键盘输入文字
+    function textMove() {
+        var text="都学会了!可还是找不到工作呀!",
+            n=-1,
+            result="",
+            timer=null;
+        //设定定时器每隔300ms显示一个文字
+        timer=window.setInterval(function () {
+            n++;
+            //显示的内容拼接到result上
+            result+=text[n];
+            //将显示的内容放到页面上的$textTip上
+            $textTip.html(result);
+            if(n==text.length-1){
+                //此时已经输入完成,清除定时器
+                window.clearInterval(timer);
+                //显示发送按钮$submit
+                $submit.css("display","block");
+                //给发送按钮绑定单击事件
+                $submit.singleTap(function () {
+                    //先让输入的文字消失
+                    $textTip.css("display","none");
+                    //让当前键盘keyBoard以动画效果平移下去
+                    $keyBoard.css("transform","translateY(3.7rem)");
+                    //消息继续推送,继续执行messageMove
+                    messageMove();
+                })
+            }
+        },300)
+
+    }
     return {
-        init:function () {
-            
+        init: function () {
+            $message.css("display", "block");
+            //消息推送
+            messageMove()
         }
     }
 })();
 /*cube显示     单利模式*/
+var CubeRender=(function () {
+    return {
+        init:function () {
+
+        }
+    }
+})();
 /*swiper显示  单利模式*/
-
-
 var page = window.location.href.queryUrl().page;
 page == 0 || isNaN(page) ? LoadRender.init() : null;
 page == 1 ? PhoneRender.init() : null;
+page == 2 ? MessageRender.init() : null;
