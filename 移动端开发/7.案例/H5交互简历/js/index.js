@@ -285,12 +285,34 @@ var CubeRender=(function () {
 var SwiperRender=(function () {
     var $swiper=$("#swiper"),
         $return=$swiper.children(".return"),
-        $slides=$(".swiper-slide");
+        $slides=$(".swiper-slide"),
+        $makisu=$("#makisu");
     function change(example) {
         //example:每一次执行这个函数默认传的参数,当前这个swiper的实例
         //example.slide:当前实例中所有的滑块
         //example.activeIndex:当前展示出现的滑块的索引
         //显示那一块就给他加一个ID="page"+(index+1)
+
+        //example.activeIndex是0的时候显示的是折叠菜单
+        if(example.activeIndex==0){
+            $makisu.makisu({
+                selector:"dd",
+                overlap:0.6,
+                speed:0.8
+            });
+            //展开
+            $makisu.makisu("open");
+        }else {
+            //显示其他块的时候,再收起来
+            $makisu.makisu({
+                selector:"dd",
+                overlap:0.6,
+                speed:0
+            });
+            //展开
+            $makisu.makisu("close");
+        }
+
         $slides.each(function (index,item) {
             if(index==example.activeIndex){
                 item.id="page"+(index+1);

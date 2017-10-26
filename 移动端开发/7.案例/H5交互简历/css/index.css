@@ -338,25 +338,63 @@ body{
 	width: 100%;
 	height: 100%;
 }
+
+
+
+/*page1*/
 .page1{
-	background-color: #5cb85c;
+	/*background-color: #fff;*/
 }
-.page2{
-	background-color: #da532c;
+.page1 dl{
+	position: absolute;
+	width: 5.4rem;
+	height: 7.2rem;
+	top: 50%;
+	left: 50%;
+	margin: -3.6rem 0 0 -2.7rem;
+	z-index: 100;
+	-webkit-transform-style:preserve-3d ;
+	transform-style:preserve-3d ;
 }
-.page3{
-	background-color: #ff6700;
-}
-.page4{
-	background-color: darkcyan;
-}
-.page5{
-	background-color: gold;
-}
-.page6{
-	background-color: #b0e1ef;
+.page1 dl dt,.page1 dl dd{
+	height: .6rem;
+	line-height: .6rem;
+	background-color: #8fBB4c;
 }
 
+.page1 dl dt{
+	text-align: center;
+	color: yellow;
+	font-size: .4rem;
+}
+.page1 dl dd{
+	position: relative;
+	padding-left: .64rem;
+	border-top: .02rem dashed rgba(255,255,255,.3);
+}
+.page1 dl dd a,.page1 dl dd em{
+	position: relative;
+	z-index: 1000;
+}
+.page1 dl dd a{
+	color: #000;
+	font-size: .28rem;
+}
+.page1 dl dd em{
+	position: absolute;
+	width: .36rem;
+	height: .42rem;
+	left: .15rem;
+	color: #fff;
+	font-size: .2rem;
+	background: url("../img/zf_outline.png") no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	line-height: .42rem;
+	font-style: normal;
+	margin-top: -.21rem;
+	top:50%;
+}
 /*page2*/
 .page2{
 	background-color: #FFF9c1;
