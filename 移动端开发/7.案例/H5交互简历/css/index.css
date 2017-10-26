@@ -249,3 +249,177 @@ body{
 	background-size: 100% 100%;
 	z-index: 10;
 }
+
+/*cube*/
+.cube{
+	background: url("../img/zf_cubeBg.jpg") no-repeat center center;
+	background-size: cover;
+	-webkit-perspective: 1200px;
+	perspective: 1200px;
+}
+.cube .tip{
+	width: 3.94rem;
+	height: .44rem;
+	position: absolute;
+	bottom: .5rem;
+	left: 50%;
+	margin-left: -1.97rem;
+	background: url("../img/zf_cubeTip.png") no-repeat;
+	background-size: 100%;
+}
+.cube .cubeBox{
+	position: absolute;
+	width: 5.1rem;
+	height: 5.1rem;
+	top: 50%;
+	left: 50%;
+	margin: -2.55rem 0 0 -2.55rem;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
+	transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
+	-webkit-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+}
+.cubeBox li{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.cubeBox li:nth-child(1){
+	background: url("../img/zf_cube1.png") no-repeat;
+	background-size: 100% 100%;
+	-webkit-transform: translateZ(2.55rem);
+	transform: translateZ(2.55rem);
+}
+.cubeBox li:nth-child(2){
+	background:url("../img/zf_cube2.png") no-repeat ;
+	background-size: 100% 100%;
+	-webkit-transform: rotateY(180deg) translateZ(2.55rem);
+	transform: rotateY(180deg) translateZ(2.55rem);
+}
+.cubeBox li:nth-child(3){
+	background: url("../img/zf_cube3.png") no-repeat;
+	background-size: 100% 100%;
+	-webkit-transform:rotateY(90deg) translateZ(2.55rem);
+	transform:rotateY(90deg) translateZ(2.55rem);
+}
+.cubeBox li:nth-child(4){
+	background: url("../img/zf_cube4.png") no-repeat;
+	background-size: 100% 100%;
+	-webkit-transform:rotateY(-90deg) translateZ(2.55rem);
+	transform:rotateY(-90deg) translateZ(2.55rem);
+}
+.cubeBox li:nth-child(5){
+	background: url("../img/zf_cube5.png") no-repeat;
+	background-size: 100% 100%;
+	-webkit-transform:rotateX(90deg) translateZ(2.55rem);
+	transform:rotateX(90deg) translateZ(2.55rem);
+}
+.cubeBox li:nth-child(6){
+	background: url("../img/zf_cube6.png") no-repeat;
+	background-size: 100% 100%;
+	-webkit-transform:rotateX(-90deg) translateZ(2.55rem);
+	transform:rotateX(-90deg) translateZ(2.55rem);
+}
+/*swiper*/
+.swiper .return{
+	background: url("../img/zf_return.png") no-repeat;
+	background-size: 100% 100%;
+	width: .64rem;
+	height: .75rem;
+	position: absolute;
+	z-index: 999;
+	top: .2rem;
+	right: .2rem;
+}
+.swiper-container,.swiper-silde{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.page1{
+	background-color: #5cb85c;
+}
+.page2{
+	background-color: #da532c;
+}
+.page3{
+	background-color: #ff6700;
+}
+.page4{
+	background-color: darkcyan;
+}
+.page5{
+	background-color: gold;
+}
+.page6{
+	background-color: #b0e1ef;
+}
+
+/*page2*/
+.page2{
+	background-color: #FFF9c1;
+}
+.page2 h2{
+	width: 100%;
+	height: .9rem;
+	position: absolute;
+	top:.8rem;
+	text-align: center;
+	line-height: .9rem;
+	font-size: .6rem;
+	font-weight: normal;
+	color: #665c50;
+	opacity: 0;
+}
+.page2 .box{
+	position: absolute;
+	width: 5.12rem;
+	height: 5.8rem;
+	left: 50%;
+	top: 50%;
+	margin-left: -2.56rem;
+	margin-top: -2.4rem;
+}
+.page2 .box img{
+	position: absolute;
+	width: 1rem;
+	height: 1rem;
+	top:50%;
+	left: 50%;
+	margin: -.5rem 0 0 -.5rem;
+	opacity: 0;
+}
+.page2 .box img:nth-child(1){
+	width: 1.32rem;
+	height: 1.7rem;
+	margin: -.85rem 0 0 -.66rem;
+}
+/*把动画加载#page2下*/
+#page2 h2{
+	-webkit-animation: bounceInLeft 1s both;
+	animation: bounceInLeft 1s both;
+}
+#page2 .box img:nth-child(1){
+	-webkit-animation: shake .5s 1s both;
+	animation: shake .5s 1s both;
+}
+#page2 .box img:nth-child(2){
+	animation: page2Move1 .5s 1.5s both,page2Shake 1s 2s infinite both;
+}
+#page2 .box img:nth-child(3){
+	animation: page2Move2 .5s 1.5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(4){
+	animation: page2Move3 .5s 1.5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(5){
+	animation: page2Move4 .5s 1.5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(6){
+	animation: page2Move5 .5s 1.5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(7){
+	animation: page2Move6 .5s 1.5s both, page2Shake 1s 1s infinite;
+}

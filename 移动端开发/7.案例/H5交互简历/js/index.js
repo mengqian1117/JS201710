@@ -214,14 +214,116 @@ var MessageRender = (function () {
 })();
 /*cube显示     单利模式*/
 var CubeRender=(function () {
-    return {
-        init:function () {
+    var $cube=$("#cube"),
+        $cubeBox=$cube.children(".cubeBox"),
+        $cubeBoxLis=$cubeBox.children("li");
+    function start(e) {
+        var point=e.touches[0];
+        //手指一放上就记录一下当前指头的偏移
+        //再加上改变的x,y方向的值changeX和changeY,初始是0
+        $(this).attr({
+            startX:point.clientX,
+            startY:point.clientY,
+            changeX:0,
+            changeY:0
+        })
+    }
+    function move(e) {
+        //在屏幕上滑动的时候,记录当前changeX和changeY
+        var point=e.touches[0];
+        //求出移动的时候changeX和changeY,现在的位置-之前记录的初始位置
+        var changeX=point.clientX-$(this).attr("startX"),
+            changeY=point.clientY-$(this).attr("startY");
+        //将求出的changeX和changeY存到自定义属性上
+        $(this).attr({
+            changeX:changeX,
+            changeY:changeY,
 
+        })
+    }
+    function end(e) {
+        //手指离开屏幕的时候,根据你滑动的距离,让魔方cubeBox旋转一定的角度
+        //将之前move中存起来的changeX和changY取出来
+        //注意通过attr方法获取出来的都是字符串,我们将其变成数字
+        var changeX=parseFloat($(this).attr("changeX")),
+            changeY=parseFloat($(this).attr("changeY"));
+        //获取之前的角度
+        var rotateX=parseFloat($(this).attr("rotateX")),
+            rotateY=parseFloat($(this).attr("rotateY"));
+        //判断是否滑动,如果不是滑动就不需要动了
+        if(!isSwiper(changeX,changeY))return;
+        //是滑动了,先计算需要旋转的角度
+        rotateX=rotateX-changeY/3;
+        rotateY=rotateY+changeX/3;
+        //旋转魔方
+        $(this).attr({
+            rotateX:rotateX,
+            rotateY:rotateY,
+        }).css({transform:"scale(0.6) rotateX("+rotateX+"deg) rotateY("+rotateY+"deg)"});
+
+    }
+    function isSwiper(changeX,changeY) {
+        return Math.abs(changeX)>30||Math.abs(changeY)>30;
+    }
+   return{
+       init:function () {
+           $cube.css("display","block");
+           //存储一下初始位置魔方的角度
+           $cubeBox.attr({
+               rotateX:-30,
+               rotateY:45,
+           }).on("touchstart",start).on('touchmove',move).on("touchend",end);
+           //给每一个面绑定点击的事件,跳转到对应的swiper的滑块中
+           $cubeBoxLis.tap(function () {
+               $cube.css("display","none");
+               SwiperRender.init($(this).index())
+           })
+       }
+   }
+})();
+/*swiper显示  单利模式*/
+var SwiperRender=(function () {
+    var $swiper=$("#swiper"),
+        $return=$swiper.children(".return"),
+        $slides=$(".swiper-slide");
+    function change(example) {
+        //example:每一次执行这个函数默认传的参数,当前这个swiper的实例
+        //example.slide:当前实例中所有的滑块
+        //example.activeIndex:当前展示出现的滑块的索引
+        //显示那一块就给他加一个ID="page"+(index+1)
+        $slides.each(function (index,item) {
+            if(index==example.activeIndex){
+                item.id="page"+(index+1);
+            }else {
+                item.id=null;
+            }
+        })
+
+    }
+    return{
+        init:function (index=0) {
+            $swiper.css("display","block");
+            //初始化swiper
+            //onTransitionEnd:每一个滑块出现显示的时候就会触发他的transition,所以说每个滑块内的动画效果只需要写在这个函数中即可
+            var mySwiper=new Swiper(".swiper-container",{
+                effect:"coverflow",
+                onTransitionEnd:change
+            });
+            //根据传进来的参数index,显示对应的滑块
+            //mySwiper.slideTo(滑块的索引,速度);
+            mySwiper.slideTo(index,0);
+            //给return绑定点击事件,点击跳出到cube区域
+            $return.singleTap(function () {
+                $swiper.css("display","none");
+                $("#cube").css("display","block")
+            })
         }
     }
 })();
-/*swiper显示  单利模式*/
+
 var page = window.location.href.queryUrl().page;
 page == 0 || isNaN(page) ? LoadRender.init() : null;
 page == 1 ? PhoneRender.init() : null;
 page == 2 ? MessageRender.init() : null;
+page == 3 ? CubeRender.init() : null;
+page == 4 ? SwiperRender.init() : null;
