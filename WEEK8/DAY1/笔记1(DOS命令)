@@ -1,0 +1,19 @@
+DOS命令
+ipconfig (MAC:ifconfig)
+记录一下你的电脑的ip地址   192.168.1.149
+ipconfig -all 信息信息
+ping www.baidu.com -t 查看网速
+Ctrl+C:终止运行
+cls:清屏,mac:clear
+exit:退出命令窗口
+E: 直接进入E盘
+mkdir WW:创建文件夹WW
+rmdir WW:删除文件夹
+cd WW:进入到WW文件夹
+copy con t.txt->按enter键,然后开始输入内容->输入完成按Ctrl+Z,然后再按enter键;完成文件的创建
+cd ../返回到当前目录的上一级目录
+cd ./当前目录
+cd /返回当前目录的根目录
+dir 查看当前目录下的文件 mac:ls
+dir /A 查看当前目录下的所有文件,包括隐藏文件,系统文件
+课下自己查一下常用的命令
