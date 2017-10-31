@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<button id="btn" style="font-size: 50px">游戏</button>
+<div id="box" style="font-size: 100px ;margin: 0 auto;width: 400px"></div>
+</body>
+</html>
+<script>
+    var ary=["String","Number","null","undefined","Object","Array","RegExp","Date","true","NaN","slice","replace","fill","filter","includes","find","sort","Array.from","for in", "for of","forEach","排序","去重","事件对象","事件传播","事件类型","事件源","addEventListener","preventDefault","cancelBubble","stopPropagation","事件委托","冒泡传播","mouseenter","拖拽","this","延迟加载","瀑布流","offsetParent","scrollTop","clientLeft","$","call","apply","DOM映射","选择器","bind","Set","Map","new","构造函数","JSON","toString","typeof","变量提声","ajax","XMLHTTPRequest","match","search","test","exec","join","split","submit","transition","transform","translate","return this","定时器","作用域","私有变量","let","原型","prototype","constructor","javascript","innerHTML","EJS","模板引擎","fire"];
+    console.log(ary.length);
+
+    btn.onclick=function () {
+        var code=Math.round(Math.random()*(ary.length));
+       box.innerHTML=ary[code];
+    };
+</script>
