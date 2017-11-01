@@ -1,0 +1,15 @@
+{
+  "name": "DAY2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "less":"node lessRender.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "less": "^2.7.3"
+  }
+}

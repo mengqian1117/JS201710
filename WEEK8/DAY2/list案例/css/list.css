@@ -1,0 +1,19 @@
+button{
+    width: 100px;
+    height: 60px;
+    font-size: 50px;
+    display: inline-block;
+    margin: 30px;
+    border-radius: 5px;
+}
+#box{
+    width: 600px;
+    height: 400px;
+    background: #b0e1ef;
+    margin: 30px auto;
+}
+#box p{
+    height: 80px;
+    line-height: 80px;
+    font-size: 40px;
+}
