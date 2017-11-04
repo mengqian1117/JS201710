@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+    <style>
+        .box {
+            text-align: center;
+            width: 800px;
+            background-color: aliceblue;
+            border: 2px solid green;
+            margin: 0px auto;
+            padding: 60px 0;
+        }
+
+        #f input {
+            line-height: 30px;
+            margin: 15px;
+            width: 250px;
+            padding: 0 20px;
+            font-size: 20px;
+        }
+
+        #f label {
+            font-size: 20px;
+        }
+
+        #f #submit {
+            width: 360px;
+            background-color: chocolate;
+            color: bisque;
+            font-size: 23px;
+        }
+
+        h1 {
+            margin: 0px auto 10px;
+            background-color: aliceblue;
+            width: 75%;
+            padding: 5px 30px;
+            border-radius: 3px;
+            color: #555215;
+        }
+
+    </style>
+</head>
+<body>
+<h1>用户信息展示</h1>
+<div class="box">
+    <form id="f">
+        <label for="id">编号:</label>
+        <input type="text" id="id" name="id" disabled>
+        <br>
+        <label for="name">姓名:</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="sex">性别:</label>
+        <input type="text" id="sex" name="sex">
+        <br>
+        <label for="age">年龄:</label>
+        <input type="text" id="age" name="age">
+        <br>
+        <label for="time">出生:</label>
+        <input type="text" id="time" name="time">
+        <br>
+        <label for="tel">手机:</label>
+        <input type="text" id="tel" name="tel">
+        <br>
+        <label for="address">住址:</label>
+        <input type="text" id="address" name="address">
+        <br>
+        <input type="button" value="修改用户" id="submit">
+    </form>
+</div>
+</body>
+</html>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+    //获取一下从userList.html跳转过来的时候传过来的id参数的值
+    //http://localhost:246/page/userInfo.html?id=4
+    var id = window.location.href.split("?")[1];
+    //id=  "id=4"
+    //"/userInfo?"+id
+    $.ajax({
+        url:"/userInfo?"+id,
+        type:"get",
+        data:null,
+        dataType:"json",
+        success:function (result) {
+            for(var key in result.data){
+                //因为数据的每一个字段(属性)正好等于每一个表单元素的id,通过$(`#${key}`)获取出元素
+                $(`#${key}`).val(result.data[key]);
+                if(key=="sex"){
+                    //val(这里面可以写简单的表达式)
+                    $("#sex").val(result.data[key]==0?"男":"女");
+                }
+            }
+        }
+    });
+
+    $("#submit").click(function () {
+        //表单元素的序列化"name=aa&age=12&.."
+        //注意序列化也是根据name属性来的,所有说你在对应字段的时候不光加上id也将name属性加上跟字段一样的即可
+        //form.serialize()
+        //name=齐成欣&sex=女&age=42&time=2010-2-1&tel=18646367625&address=回龙观东大街站珠峰培训二楼
+        eval("var data={"+decodeURIComponent($("#f").serialize()).replace(/=/g,":'").replace(/&/g,"',")+"'}");
+        //将sex字段的值变成0/1
+        if(data.sex=="女"){
+            data.sex=1;
+        }else {
+            data.sex=0;
+        };
+        //将id字段加上
+        data.id=id.split("=")[1];
+        //去发送ajax请求,将数据发送到服务器上
+        $.ajax({
+            url:"/changeUserInfo",
+            type:"post",
+            data:JSON.stringify(data),
+            dataType:"json",
+            success:function (result) {
+                alert(result.msg);
+                //返回到首页
+                window.open("../userList.html");
+            }
+        })
+    });
+</script>

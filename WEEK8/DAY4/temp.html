@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+//    $.ajax({
+//        url:"data/temp.xml",
+//        type:"get",
+//        dataType:"xml",
+//        success:function (res) {
+//            console.log(res);
+//        }
+//    });
+
+    var xhr=new XMLHttpRequest();
+    xhr.open("get","data/temp.xml",false);
+    xhr.onreadystatechange=function () {
+        if(xhr.status==200&&xhr.readyState==4){
+            console.log(xhr.responseXML);
+            console.log(xhr.getResponseHeader("Content-Type"));
+            console.log(xhr.getAllResponseHeaders());
+        }
+    };
+    xhr.send(null);
+</script>

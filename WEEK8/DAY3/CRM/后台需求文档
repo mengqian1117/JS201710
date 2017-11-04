@@ -1,0 +1,73 @@
+1.造数据包括:姓名、性别、出生日期、住址、手机号码字段
+2.请求路径为"/"或者"/userList.html"返回userList.html页面
+
+
+ajax请求API:
+  1).请求所有用户列表
+  URL:/getUserList
+  method:GET
+  参数:page=1
+  返回值:'{
+    code:0, 0:成功,1:失败
+    msg:'success',
+    total:n:一共有几页
+    data:[{
+       id:1,
+       name:"XXX"
+    },{},{},.....]
+  }'
+
+  2).增加客户信息
+  URL:/addUserInfo
+  method:POST
+  参数:"name=XXX"
+  返回:'{
+     code:0,
+     msg:""
+  }'
+
+  3).删除用户
+  URL:/removeUser
+  method:GET,
+  参数:?id=1
+  返回值:'{
+      code:0,
+      msg:""
+  }'
+  4).查看用户信息
+  URL:/userInfo
+  method:GET,
+  参数:?id=1
+  返回值:{
+      code:0,
+      msg:"success",
+      data:''
+   };
+  5).修改用户信息
+  URL:/changeUserInfo
+  method:post
+  参数:''
+  返回:'{
+     code:0,
+     msg:""
+   }'
+
+
+
+//468条数据
+
+   赵钱孙李周吴郑王冯陈楮卫蒋沈韩杨朱秦尤许何吕施张孔曹严 华金魏陶姜戚谢邹喻柏水窦章云苏潘葛奚范彭郎鲁韦昌马苗凤花 方俞任袁柳酆鲍史唐费廉岑薛雷贺倪汤滕殷罗毕郝邬安常乐于时 傅皮卞齐康伍余元卜顾孟
+
+   丽莉康成晨敏民美春雨玉华金锦江建健冬慧汇辉元媛燕艳菲甜丹妮振峰丰凤枫锋龙泉磊倩茜鑫欣博波柏
+
+
+   API:"/checkUser"
+   type:"GET"
+   参数:?check=name&key=丽
+   返回值`{
+   code:0,
+   msg:"success"
+   data:[{},{},{},{}]
+   }``
+   注意:请求是字段sex 女->1,男->0
+

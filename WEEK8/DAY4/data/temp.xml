@@ -1,0 +1,12 @@
+<box>
+    <student>
+        <name>金雨生</name>
+        <age>18</age>
+        <score>81</score>
+    </student>
+    <student>
+        <name>张增进</name>
+        <age>20</age>
+        <score>99</score>
+    </student>
+</box>
