@@ -58,7 +58,6 @@ function delayLoad() {
 
 //4.自动轮播
 function move() {
-    //临界值判断
     if(step==data.length){
         step=0;
         //此时让bannerInner回到最初的位置,让其left=0即可
@@ -71,7 +70,7 @@ function move() {
         isClick=true;
     });
     focusAlign();
-}
+};
 
 //5.焦点对齐
 function focusAlign() {
@@ -81,7 +80,7 @@ function focusAlign() {
         }
         list[i].className=i===step?"selected":'';
     }
-}
+};
 
 //6.鼠标滑过事件
 function mouseEvent() {
@@ -91,13 +90,13 @@ function mouseEvent() {
         $.css(leftBtn,"display","block");
         $.css(rightBtn,"display","block");
     };
-//鼠标移开继续轮播,隐藏左右箭头按钮
+    //鼠标移开继续轮播,隐藏左右箭头按钮
     banner.onmouseout=function () {
         timer=window.setInterval(move,2000);
         $.css(leftBtn,"display","none");
         $.css(rightBtn,"display","none");
     };
-}
+};
 
 //7.左右切换事件
 function arrowChange() {
@@ -121,7 +120,7 @@ function arrowChange() {
            focusAlign();
        }
     };
-}
+};
 
 //8.焦点点击事件
 function focusChange() {
@@ -138,7 +137,7 @@ function focusChange() {
             }
         }
     }
-}
+};
 getData();
 bindData();
 delayLoad();

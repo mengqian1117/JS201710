@@ -7,23 +7,21 @@ window.Banner=(function () {
         duration=duration||1000;
         interval=interval||2000;
         if(duration>interval){
-            duration=duration+interval;
-            interval=duration-interval;
-            duration=duration-interval;
+            [duration,interval]=[interval,duration];
         }
         //1.根据id获取相应的元素
-        var banner=document.getElementById(id);
-        var bannerInner=banner.getElementsByClassName("bannerInner")[0];
-        var focusList=banner.getElementsByClassName("focusList")[0];
-        var imgList=bannerInner.getElementsByTagName("img");
-        var list=focusList.getElementsByTagName("li");
-        var leftBtn=banner.getElementsByTagName("a")[0];
-        var rightBtn=banner.getElementsByTagName("a")[1];
-        var w=banner.offsetWidth;
-        var data=null,step=0,timer=null,isClick=true;
+        let banner=document.getElementById(id);
+        let bannerInner=banner.getElementsByClassName("bannerInner")[0];
+        let focusList=banner.getElementsByClassName("focusList")[0];
+        let imgList=bannerInner.getElementsByTagName("img");
+        let list=focusList.getElementsByTagName("li");
+        let leftBtn=banner.getElementsByTagName("a")[0];
+        let rightBtn=banner.getElementsByTagName("a")[1];
+        let w=banner.offsetWidth;
+        let data=null,step=0,timer=null,isClick=true;
         //2.根据url获取数据
         ;(function (url) {
-            var xhr=new XMLHttpRequest();
+            let xhr=new XMLHttpRequest();
             xhr.open("GET",url,false);
             xhr.onreadystatechange=function () {
                 if(xhr.readyState===4&&xhr.status==200){
@@ -35,8 +33,8 @@ window.Banner=(function () {
         //3.绑定数据
         ;(function (data) {
             if(data){
-                var str1=``,str2=``;
-                for(var i=0;i<data.length;i++){
+                let str1=``,str2=``;
+                for(let i=0;i<data.length;i++){
                     str1+=`<div><img src="" photo="${data[i].src}"></div>`;
                     str2+=i==0?`<li class="selected"></li>`:`<li></li>`;
                 }
@@ -48,17 +46,15 @@ window.Banner=(function () {
         })(data);
         //4.延迟加载
         ;(function () {
-            for (var i=0;i<imgList.length;i++){
-                var img=document.createElement("img");
+            for (let i=0;i<imgList.length;i++){
+                let img=document.createElement("img");
                 img.src=imgList[i].getAttribute("photo");
-                img.i=i;
                 img.onload=function () {
-                    imgList[this.i].src=this.src;
-                    imgList[this.i].animation({opacity:1},1000);
+                    imgList[i].src=this.src;
+                    imgList[i].animation({opacity:1},1000);
                 }
             }
         })();
-
         function move() {
             if(isClick){
                 isClick=false;
@@ -74,7 +70,7 @@ window.Banner=(function () {
             }
         }
         function focusAlign() {
-            for(var i=0;i<list.length;i++){
+            for(let i=0;i<list.length;i++){
                 step==data.length?list[0].className="selected":null;
                 list[i].className=i==step?"selected":"";
             }
@@ -100,12 +96,11 @@ window.Banner=(function () {
         }
         //6.焦点点击
         function focusClick() {
-            for(var i=0;i<list.length;i++){
-                list[i].i=i;
+            for(let i=0;i<list.length;i++){
                 list[i].onclick=function () {
                    if(isClick){
                        isClick=false;
-                       step=this.i;
+                       step=i;
                        bannerInner.animation({left:-step*w},duration,function () {
                            isClick=true;
                        });
@@ -115,7 +110,6 @@ window.Banner=(function () {
             }
             return this;
         }
-
         //7.左右切换
         function arrowClick() {
             rightBtn.onclick=move;

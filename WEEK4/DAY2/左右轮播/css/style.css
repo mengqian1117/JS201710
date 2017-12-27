@@ -72,4 +72,7 @@ ul{
 .banner a:hover{
     opacity: 1;
 }
+.banner:hover a.left,.banner:hover a.right{
+    display: block;
+}
 
