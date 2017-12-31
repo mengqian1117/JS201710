@@ -1,0 +1,1 @@
+[{"img":"img/room5.jpg","name":"七天连锁酒店","rate":"4.5分","price":"￥666","type":"经济型酒店","nearby":"天安门,西单,雍和宫","away":"2公里"},{"img":"img/room3.jpg","name":"七天连锁酒店","rate":"4.5分","price":"￥555","type":"经济型酒店","nearby":"天安门,西单,雍和宫","away":"1.8公里"}]

@@ -21,11 +21,11 @@ for(var i=0;i<list.length;i++){
 }
 /*
 
-function code(n) {
+function 2.CSS3(n) {
     return Math.round(Math.random()*n)
 }
 function change(callback) {
-    n=code(ary.length-1);
+    n=2.CSS3(ary.length-1);
     list[n].className="select";
     window.setTimeout(callback,200,n)
 }

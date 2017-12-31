@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff4f5;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            cursor: move;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        #box img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="img/1.png" alt="">
+</div>
+</body>
+</html>
+<script src="js/Drag.js"></script>
+<script>
+    var box=document.getElementById("box");
+    var drag=new Drag(box);
+    drag.add("Down",border).add("Move",bg).add("Up",bg1,imgDisplay);
+    drag.jump();
+    function border() {
+        box.children[0].style.display="none";
+        box.style.border="2px dashed orange"
+    }
+    function imgDisplay() {
+        box.children[0].style.display="block";
+        box.style.border="none";
+    }
+    function bg() {
+        document.body.style.backgroundColor="#c7c7c7";
+    }
+    function bg1() {
+        document.body.style.backgroundColor="#fff";
+    }
+</script>

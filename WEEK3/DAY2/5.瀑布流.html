@@ -92,7 +92,6 @@ function createLiToUl(num) {
     }
 }
 createLiToUl(30);
-
 function fadeIn(ele) {
     //设置一个定时器让透明度不断增加
     ele.timer=window.setInterval(function () {
@@ -108,8 +107,6 @@ function fadeIn(ele) {
         }
     },30)
 };
-
-
 //当页面滚动到最底部的时候就开始加载新的图片,换句话说就是去执行createLiToUl()这个方法即可;
 //获取一屏的高度
 var wH=$.win("clientHeight");

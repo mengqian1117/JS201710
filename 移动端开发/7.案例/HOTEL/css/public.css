@@ -1,0 +1,36 @@
+@charset "utf-8";
+body {
+	font: 16px arial, "lucida grande", verdana, "microsoft yahei" !important;
+}
+h1{
+	color: #099FDE !important;
+}
+h5 {
+	padding: 8px;
+}
+.hotel-color-blue {
+	color: #099FDE;
+}
+
+.hotel-color-gray {
+	color: #bbb;
+}
+
+.hotel-color-orange {
+	color: orange;
+}
+
+.hotel-text-right {
+	position: absolute;
+	font-size: 14px;
+	height: 16px;
+	line-height: 16px;
+	right: 40px;
+	top: 50%;
+	margin-top: -8px;
+}
+
+.mui-content {
+	padding-bottom: 44px;
+}
+

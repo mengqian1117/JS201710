@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<!--
+canvas是个标签,这个标签我们可以在上面画内容,使用JS操作
+-->
+<canvas id="draw" width="600" height="400" style="border: 2px dashed #ddd"></canvas>
+</body>
+</html>
+<script>
+    //1.获取canvas标签
+    var draw = document.getElementById("draw");
+    //2.设置绘制环境,为2d平面图
+    //cvs就是你的一个画板,接下来就可以在这个cvs上操作,进行绘制
+    var cvs = draw.getContext("2d");
+    console.dir(cvs);
+    cvs.fillStyle;//填充的样式
+    cvs.strokeStyle;//笔触的颜色(边框)
+    cvs.lineWidth;//边框的宽度
+
+    //绘制图形有两种样式
+    cvs.fill();//填充
+    cvs.stroke();//描边,画边框
+
+    //坐标:以画布为准,距离画布的上边的距离是y的坐标值,距离画布左边的距离是x的坐标值
+</script>
+<script>
+    var draw = document.getElementById("draw");
+    var cvs = draw.getContext("2d");
+    //绘制线条
+    //起始位置
+    //cvs.moveTo(x,y)
+    //结束位置
+    //cvs.lineTo(x,y)
+    //假如没有moveTo那么第一个lineTo就是起始点
+
+    //开启一个新的路径
+    //cvs.beginPath();
+    //关闭一个路径
+    //cvs.closePath();关闭路径的时候,会自动链接结束位置和起始位置
+
+    function draw1() {
+        cvs.beginPath();
+        cvs.lineCap="round";//端点的效果,关闭路径不起作用
+        cvs.moveTo(50, 50);
+        cvs.lineTo(250, 50);
+        //cvs.closePath();
+        cvs.strokeStyle = "red";
+        cvs.lineWidth = 30;
+
+        //stroke()或者fill()一定要写在最后面
+        cvs.stroke();
+    }
+
+    draw1();
+
+    //绘制三角形
+    function draw2() {
+        cvs.beginPath();
+        cvs.lineTo(100, 50);
+        cvs.lineTo(100, 250);
+        cvs.lineTo(300, 250);
+        cvs.closePath();
+        cvs.strokeStyle = "green";
+        cvs.lineWidth = 10;
+        cvs.lineJoin="round";
+        cvs.stroke();
+    }
+
+    draw2();
+
+    //设置线条端点的样式
+    cvs.lineCap;
+    //butt(默认值平角),round(圆角),square(方角)
+
+    //设置端点交汇处的样式
+    cvs.lineJoin;
+    //尖角(默认值):miter 斜角:bevel 圆角round
+</script>

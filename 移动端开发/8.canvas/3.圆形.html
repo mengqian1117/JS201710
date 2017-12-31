@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<canvas id="draw" width="600" height="400" style="border: 2px solid #ccc"></canvas>
+</body>
+</html>
+<script>
+    var draw = document.getElementById("draw");
+    var cvs=draw.getContext("2d");
+    //cvs.arc(x,y,r,start,end,n)
+    //x,y:圆心的坐标
+    //r:半径
+    //start:起始角 三点钟方向是0度(弧度)
+    //end:结束角
+    //n:是否逆时针 (默认值:false顺时针)
+    function draw1() {
+        cvs.strokeStyle="blue";
+        cvs.beginPath();
+        cvs.arc(150,150,100,0,Math.PI/2,false);
+        cvs.closePath();
+        cvs.stroke();
+    }
+    //draw1();
+
+
+    function draw2() {
+        cvs.fillStyle="orangered";
+        cvs.beginPath();
+        cvs.arc(200,200,150,0,2*Math.PI);
+        cvs.closePath();
+        cvs.fill();
+    }
+    draw2();
+</script>

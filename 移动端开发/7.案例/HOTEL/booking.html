@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/public.css"/>
+    <link rel="stylesheet" type="text/css" href="css/booking.css"/>
+    <script src="js/rem.js" type="text/javascript"></script>
+    <script src="js/mui.min.js" type="text/javascript"></script>
+    <script src="js/mui.picker.min.js" type="text/javascript"></script>
+    <title>酒店预订</title>
+</head>
+
+<body>
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">酒店预订</h1>
+</header>
+<div class="mui-content">
+    <h5>北京速八精品酒店</h5>
+    <ul id="form" class="mui-table-view mui-input-group">
+        <li id="getTime" class="mui-table-view-cell mui-input-row">
+            <a class="mui-navigate-right">
+                <span id="comeTime" style="margin-right: 25px;">今天入住</span>
+                <span id="leaveTime">明天离店</span>
+                <span class="hotel-color-blue hotel-text-right">修改</span>
+            </a>
+        </li>
+        <li class="mui-input-row">
+            <label class="hotel-type" for="num">高级间</label>
+            <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='10'>
+                <button class="num-btn mui-btn mui-numbox-btn-minus" type="button">-</button>
+                <input id="num" class="mui-numbox-input" type="number"/>
+                <button class="num-btn mui-btn mui-numbox-btn-plus" type="button">+</button>
+            </div>
+        </li>
+        <li class="mui-input-row">
+            <label for="user">入住人</label>
+            <input class="mui-input mui-input-clear" type="text" name="user" id="user" value=""
+                   placeholder="姓名，每间只需填一个人"/>
+        </li>
+        <li class="mui-input-row">
+            <label for="tel">境内手机</label>
+            <input class="mui-input mui-input-clear" type="text" name="tel" id="tel" value="" placeholder="用于接收通知"/>
+        </li>
+        <li id="timeCome" class="mui-table-view-cell mui-input-row">
+            <a class="mui-navigate-right">
+                到店时间
+                <span class="hotel-text-right times">23点之前</span>
+            </a>
+        </li>
+    </ul>
+    <ul id="ul1" class="mui-table-view">
+        <li id="need" class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+                特殊要求
+                <span class="hotel-text-right needs">无特殊要求</span>
+            </a>
+        </li>
+        <li class="mui-table-view-cell">
+            <a class="mui-navigate-right">
+                发票
+                <span class="hotel-text-right invoice">不需要</span>
+            </a>
+        </li>
+    </ul>
+    <p class="hotel-tips">
+        订单提交后我们将先进行预授权操作，订单确认后再操作扣款。该订单确认后不可被取消修改，若未入住或取消修改，我们将收取您首日房费RMB 365。
+    </p>
+    <p class="hotel-tips">
+        目前北京全城禁烟，酒店均为无烟房。
+    </p>
+    <p class="hotel-tips">
+        订单提交后我们将先进行预授权操作，订单确认后再操作扣款。该订单确认后不可被取消修改，若未入住或取消修改，我们将收取您首日房费RMB 365。
+    </p>
+    <p class="hotel-tips">
+        目前北京全城禁烟，酒店均为无烟房。
+    </p>
+    <p class="hotel-tips">
+        订单提交后我们将先进行预授权操作，订单确认后再操作扣款。该订单确认后不可被取消修改，若未入住或取消修改，我们将收取您首日房费RMB 365。
+    </p>
+    <p class="hotel-tips">
+        目前北京全城禁烟，酒店均为无烟房。
+    </p>
+</div>
+<footer class="mui-bar mui-bar-footer">
+    <span>总金额</span>
+    <strong>￥999</strong>
+    <span id="pay-detail">
+        		明细
+        		<i class="mui-icon mui-icon-arrowright"></i>
+        	</span>
+    <span id="booking">预订</span>
+</footer>
+
+<!--修改时间弹出层-->
+<div id="sheet1" class="mui-popover mui-popover-bottom mui-popover-action booking-data">
+    <ul class="mui-table-view">
+        <li id="count" class="mui-table-view-cell mui-input-row">
+            <a id="date1" class="mui-navigate-right">
+                今天
+                <span class="description">
+							<span id="week" class="hotel-color-gray"></span> 入住
+						</span>
+            </a>
+        </li>
+        <li class="mui-table-view-cell mui-input-row">
+            <label id="count2">
+                住晚
+                <span class="description">
+			    		<span id="week1" class="hotel-color-gray">明天</span>
+			    		离店
+			    		</span>
+            </label>
+            <div class="num2 mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='100'>
+                <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                <input class="mui-numbox-input" type="number"/>
+                <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+            </div>
+        </li>
+    </ul>
+    <ul id="sure" class="mui-table-view" style="background-color: orange;">
+        <li class="mui-table-view-cell">
+            <a href="#sheet1">
+                <b style="color: #fff;font-size: 18px;">确定</b>
+            </a>
+        </li>
+    </ul>
+</div>
+</body>
+
+<script type="text/javascript">
+    mui("#form").on("tap", "#getTime", function () {
+        mui("#sheet1").popover("toggle");
+    });
+
+    mui("#form").on("tap", "#timeCome", function () {
+        console.log(1);
+        var PK = new mui.DtPicker({
+            type: "datetime",
+            beginDate: new Date("2017 10 29"),//设置开始日期
+            endDate: new Date("2017 11 29"),//设置结束日期
+            labels: ['Y', 'M', 'D', 'H', 'min'],
+            customData: {
+                h: [
+                    {value: '8', text: '8'},
+                    {value: '9', text: '9'},
+                    {value: '10', text: '10'},
+                    {value: '11', text: '11'},
+                    {value: '12', text: '12'},
+                ],
+                y: [
+                    {value: "2017", text: "2017"}
+                ],
+                m: [
+                    {value: "10", text: "10"},
+                    {value: "11", text: "11"},
+                ]
+            }//时间/日期别名
+        });
+        PK.show(function (e) {
+            var str = e.y.text + "年" + e.m.text + "月" + e.d.text + "日" + e.h.text + "点";
+            mui(".times")[0].innerHTML = str;
+        });
+    });
+
+    mui("#ul1").on("tap", "#need", function () {
+        var picker = new mui.PopPicker();
+        picker.setData([
+            {value: '1', text: '不需要,谢谢!'},
+            {value: '2', text: '到店再说'},
+            {value: '3', text: '带窗户的'}
+            ]);
+        picker.show(function (selectItems) {
+            mui(".needs")[0].innerHTML=selectItems[0].text;
+        });
+    })
+</script>
+
+</html>

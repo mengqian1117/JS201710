@@ -10,25 +10,24 @@ this是个对象
 </html>
 <script>
     //1.
-    var a=0;//window.a=0
+    var a=0;
     function fn1() {
         var a=10;
-        this.a++;//window.a++  window.a=1
-        console.log(a);//10
-        console.log(this.a);//window.a  1
+        this.a++;
+        console.log(a);
+        console.log(this.a);
         console.log(typeof this);
     }
     fn1();
-    console.log(a);//1
+    console.log(a);
 
 
     //2.
     function fn2() {
-        //this==window  ;this==obj
-        console.log(this.n)  ;//undefined ;  obj.n=1
+        console.log(this.n);
         var n="n";
-        this.n=10;//window.n=10;   obj.n=10
-        console.log(n);//"n"
+        this.n=10;
+        console.log(n);
     }
     var obj={
         fn2:fn2,

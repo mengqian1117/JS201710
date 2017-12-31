@@ -87,12 +87,9 @@
         }else {
             if(attr=="opacity"){
                 val=curEle.currentStyle["filter"];
-                //"alpha(opacity=20.5)"
                 var reg=/^alpha\(opacity=(\d+(?:\.\d+)?)\)$/g;
                 val=reg.test(val)?RegExp.$1/100:1;
-            }else {
-                val=curEle.currentStyle[attr];
-            }
+            }else {val=curEle.currentStyle[attr];}
         }
         var reg=/^-?\d+(\.\d+)?(?:px|pt|pp|rem|em|deg)?$/g;
         val=reg.test(val)?parseFloat(val):val;

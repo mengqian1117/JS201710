@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    $.ajax({
+        url:"请求地址",
+        type:"请求方式",
+//        method:"请求方式"
+        dataType:"返回数据的类型",
+        data:"发送的数据",
+        //如果是get请求,我们把参数放到data中,这个方法也会帮我们将数据拼接到url中
+        async:"是否异步",
+        cache:"是否走缓存",
+        success:"成功之后执行的函数",
+        error:"失败之后执行的函数"
+    })
+</script>

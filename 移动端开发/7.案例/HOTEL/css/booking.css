@@ -1,0 +1,50 @@
+.mui-input-row input{
+	font-size: 14px;
+}
+h5{
+	font-size: 20px !important;
+}
+.mui-table-view{
+	margin-bottom: 28px;
+}
+.mui-input-row label{
+	padding: 0 15px;
+	line-height: 40px;
+}
+.hotel-tips{
+	margin: 10px;
+	background-color: #fff;
+	font-size:12px;
+	padding: 8px;
+	border-radius: 3px;
+}
+footer{
+	background-color: #ff9913 !important;
+}
+footer span,footer strong{
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	height: 44px;
+	color: #fff;
+	line-height: 44px;
+	font-size: 18px;
+}
+#booking{
+	width: 27%;
+	right: 0;
+	text-align: center;
+	background-color: #ff7d13;
+}
+#pay-detail{
+	right:27% ;
+}
+footer span:first-child{
+	left: 14px;
+}
+footer strong{
+	left: 22%;
+	font-weight: bold;
+}
+
+

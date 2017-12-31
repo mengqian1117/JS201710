@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<div id="box">
+    <h1 id="h1">哈哈</h1>
+</div>
+</body>
+<script>
+    /*
+    h1.onclick=function (e) {
+        console.log(e.target,e.currentTarget);
+    };
+    box.onclick=function (e) {
+        console.log(e.target,e.currentTarget);
+    }
+
+    function deepCopy(obj, copyObj) {
+        copyObj=copyObj||{};
+        for (var key in obj){
+            if(typeof obj[key]=="object"){
+                copyObj[key]=(obj[key].constructor.name==="Array")?[]:{};
+                deepCopy(obj[key],copyObj[key])
+            }else {
+                copyObj[key]=obj[key]
+            }
+
+        }
+        return copyObj;
+    }
+    */
+</script>
+</html>
+<script>
+/*
+    var a = function () {
+        return false;
+    };
+    var b = function () {
+        return true;
+    };
+    ~function () {
+        if ([] == ![] && b()) {
+            var a = function () {
+                return true;
+            };
+            b = function () {
+                return false;
+            };
+        }
+    }();
+    console.log(a());
+    console.log(b());
+*/
+</script>
+<script>
+/*
+    var a = 12, b = 13, c = 14;//w.a=12,w.b=13,w.c=14
+    ~function (a, b) {
+        b = b || 0;//b=0
+        arguments[0] = 100;
+        var b = c = 200;//w.c=200  b=200
+
+        console.log(a);//100
+        console.log(arguments[1]);//undefined
+    }(a);//12
+    console.log(a);
+    console.log(b);
+    console.log(c);//200
+    function fn(a,b){};
+    fn(1,2)
+*/
+</script>
+<script>
+/*
+    var i=10;//w.i=10
+    function fn(){
+            i+=2;//w.i=12 ;w.i=13;w.i=14
+            return function(n){//XXXFFF000
+                //n:5 ;n:5;n:6;n:6
+                    console.log(n+ --i);
+                    // w.i=11 w.i=12 w.i=13 w.i=12
+                }
+        }
+    var f=fn(10);//XXXFFF000
+    f(5);//16
+    fn(10)(5);//17
+    fn(10)(6);//19
+    f(6);//18
+*/
+</script>
+<script>
+/*
+    var num=10;//w.num=10;
+    var obj={num:20};
+    obj.fn=(function(num){//num=10
+            this.num+=num;//obj.num=30
+            num++;//num=11
+            return function(n){//n=10;n=20
+                    this.num+=n;//w.num=20;obj.num=50
+                    num-=n;//num=1 num=-19
+                    console.log(num);//1 -19
+                }
+        }).call(obj,num);
+    //obj.fn=xxxfff000
+    var fn=obj.fn;//fn=xxxfff000
+    fn(10);//this->window
+    obj.fn(20);//this->obj
+    console.log(window.num);
+    console.log(obj.num);
+*/
+</script>
+<script>
+/*
+    var num = 10;
+    function Foo() {
+        var num = 20;
+        this.num = 30;//w.num=30
+        return this;
+    }
+
+    Foo.getName = function () {
+        //Foo.num
+        console.log(this.num);
+    };
+    Foo.prototype.getName = function () {
+        this.num = 40;
+        console.log(this.num);
+    };
+    function getName() {
+        console.log(this.num);
+    }
+    Foo.getName();
+    getName();
+    Foo().getName();//Foo()->window.getName()
+    getName();
+    new Foo.getName();//Foo.getName的实例
+    (new Foo()).getName();//{num:40} 40
+    new new Foo().getName();//Foo的实例的getName的实例
+*/
+</script>
+<script>
+    /*
+    console.log(num);
+    if (!("num" in window)) {
+        var num = 100;
+    }
+    console.log(num);
+    */
+</script>
+<script>
+    /*
+    var name = "中国";
+    var age = 5000;
+    age = (function (name, age) {
+        name = "珠峰";
+        age = age || this.age;
+        this.name = arguments[0];//w.name="珠峰"
+        console.log(name, age);
+    })(name, age);
+    console.log(name, age);
+*/
+</script>
+<script>
+    /*
+    var obj = {name: "珠峰", age: 7};//obj=AAA
+    ~function (obj) {//obj=AAA
+        obj.name = "中国";//AAA{name: "中国", age: 7}
+        obj = {};//obj=BBB
+        obj.age = 5000;
+        console.log(obj);//{age:5000}
+    }(obj);
+    console.log(obj);
+*/
+</script>
+<script>
+/*
+    var i = 2;
+    function fn() {
+        i *= 2;//w.i=4  i=10 i=24
+        return function (n) {
+            //n:3 n:3 n:4
+            console.log(n * (++i));
+            //3*5  i=5
+            //3*11 i=11
+            //4*12 i=12
+            //4*25 i=25
+        }
+    }
+    var f = fn();
+    f(3);
+    fn()(3);
+    f(4);
+    fn()(4);
+*/
+</script>
+<script>
+    /*
+    var num = 1;
+    var obj = {num: 2};
+    obj.fn = (function (num) {
+        //num=2
+           this.num = num * 2;
+           //w.num=4
+           num++;//num=3
+           return function (n) {
+               //n=10;n=20
+                   this.num += n;//w.num=14;obj.num=22
+                   num++;//num=4 num=5
+                   console.log(num);//4 5
+               }
+        })(obj.num);
+    var fn = obj.fn;
+    fn(10);
+    obj.fn(20);
+    console.log(num, obj.num);
+    */
+</script>
+<script>
+/*
+    function Fn(num) {
+        this.x = this.y = num;
+    }
+    Fn.prototype={
+        x: 20,
+        sum: function () {
+            console.log(this.x + this.y);
+        }
+    };
+    var f = new Fn(10);//{x:10,y:10}
+    console.log(f.sum === Fn.prototype.sum);
+    //f.__proto__->Fn.prototype
+    f.sum();//20
+    Fn.prototype.sum();//20+undefined=NaN
+    console.log(f.constructor);
+    //f.__proto__->Fn.prototype->Fn.prototype.__proto__->Object.prototype.constructor->Object
+*/
+</script>
+<input type="button"/>
+<input type="button"/>
+<input type="button"/>
+<script>
+/*
+
+    var inpList = document.getElementsByTagName("input");
+    var ary = ["red", "green", "orange"];
+    for (var i = 0; i < inpList.length; i++) {
+        var cur = inpList[i];
+        cur.i=i;
+        cur.onmouseover = function () {
+            document.body.style.backgroundColor = ary[this.i];
+        }
+    }
+*/
+</script>
+<script>
+    /*
+    function FF() {
+        console.log(this);
+        this.a="a";
+
+    }
+
+    //new FF();//{a:"a"}
+    var f=new FF();//f={a:"a"}
+    console.log(f);
+
+    var a=1;
+    console.log(a);
+    console.log(1);
+    function F() {
+        return 1
+    }
+    var a=F();
+    console.log(F());
+*/
+</script>
+<script>
+
+</script>

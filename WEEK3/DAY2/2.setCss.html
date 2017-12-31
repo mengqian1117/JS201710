@@ -26,17 +26,13 @@ curEle.style.cssFloat=val;
         if(attr=="opacity"){
             curEle.style.opacity=val;
             curEle.style.filter="alpha(opacity="+val*100+")";
-            return;
-        }
+            return;}
         if(attr=="float"){
             curEle.style.cssFloat=val;
             curEle.style.styleFloat=val;
-            return;
-        }
+            return;}
         var reg=/^(width|height|top|left|right|bottom|(margin|padding)(Top|Left|Right|Bottom))$/g;
-        if(reg.test(attr)&&!isNaN(val)){
-            val+="px";
-        }
+        if(reg.test(attr)&&!isNaN(val)){val+="px";}
         curEle.style[attr]=val;
     }
 

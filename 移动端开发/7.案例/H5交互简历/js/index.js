@@ -329,7 +329,8 @@ var SwiperRender=(function () {
             //onTransitionEnd:每一个滑块出现显示的时候就会触发他的transition,所以说每个滑块内的动画效果只需要写在这个函数中即可
             var mySwiper=new Swiper(".swiper-container",{
                 effect:"coverflow",
-                onTransitionEnd:change
+                onTransitionEnd:change,
+                onInit:change
             });
             //根据传进来的参数index,显示对应的滑块
             //mySwiper.slideTo(滑块的索引,速度);

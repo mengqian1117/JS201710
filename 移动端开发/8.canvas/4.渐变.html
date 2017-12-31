@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<canvas id="draw" width="600" height="400" style="border: 2px solid #ccc"></canvas>
+</body>
+</html>
+<script>
+    var draw = document.getElementById("draw");
+    var cvs=draw.getContext("2d");
+    //线性渐变
+    //var CLG=cvs.createLinearGradient(x0,y0,x1,y1)
+    //x0:渐变开始的x坐标值
+    //y0:渐变开始的y坐标值
+    //x1:渐变结束的x坐标值
+    //y1:渐变结束的y坐标值
+    // CLG.addColorStop(n,m)
+    //n:设置颜色的偏移量
+    //m:yanse
+    function draw1() {
+        var CLG=cvs.createLinearGradient(0,0,200,200);
+        CLG.addColorStop(0,"red");
+        CLG.addColorStop(0.25,"yellow");
+        CLG.addColorStop(0.5,"green");
+        CLG.addColorStop(0.75,"blue");
+        CLG.addColorStop(1,"red");
+        cvs.fillStyle=CLG;
+        cvs.fillRect(0,0,200,200);
+    }
+    //draw1();
+
+    //径向渐变
+    //cvs.createRadialGradient(x0,y0,r0,x1,y1,r1)
+    //x0,y0:渐变开始饿中心坐标
+    //r0,渐变开始的半径
+    //x1,y1,r1:结束的中心和半径
+
+    function draw2 () {
+        var CRG=cvs.createRadialGradient(200,200,10,200,200,100);
+        CRG.addColorStop(0,"#000");
+        CRG.addColorStop(0.5,"orange");
+        CRG.addColorStop(1,"red");
+        cvs.fillStyle=CRG;
+//        cvs.fillRect(100,100,200,200);
+        cvs.arc(200,200,100,0,2*Math.PI);
+        cvs.fill();
+    }
+    draw2();
+
+    function draw3() {
+        var CLG=cvs.createLinearGradient(0,0,200,200);
+        CLG.addColorStop(0,"red");
+        CLG.addColorStop(0.25,"yellow");
+        CLG.addColorStop(0.5,"green");
+        CLG.addColorStop(0.75,"blue");
+        CLG.addColorStop(1,"red");
+        cvs.lineWidth=30;
+        cvs.strokeStyle=CLG;
+        cvs.strokeRect(10,10,200,200)
+    }
+    draw3()
+
+</script>

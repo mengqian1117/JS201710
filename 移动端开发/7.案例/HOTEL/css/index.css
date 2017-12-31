@@ -1,0 +1,36 @@
+.mui-media .hotel-img{
+	max-width: 75px;
+	width: 75px;
+	height: 75px;
+}
+.mui-media-body p{
+	font-size: 12px;
+	padding: 1px 50px 1px 0px;
+	position: relative;
+}
+.mui-media-body .hotel-price{
+	position: absolute;
+	right: 0;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.mui-media-body .fa-gift{
+	position: absolute;
+	right: 0;
+	top:4px;
+	text-align: right;
+}
+.mui-media-body .hotel-away{
+	position: absolute;
+	right: 0;
+	text-align: right;
+}
+.mui-media-body i,.mui-media-body span{
+	padding-right:8px ;
+}
+.mui-scroll-wrapper{
+	overflow: auto !important;
+}
+

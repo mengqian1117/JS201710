@@ -28,7 +28,7 @@ function display($ele) {
     $ele.children("a").stop().animate({marginRight:20},500,function () {
        $(this).stop().animate({opacity:1},700);
        //图片的切换
-        //根据step就可以通过data[step].image拿到对应的图片,将地址赋值给rot1的孩子img标签的src属性上即可,先将透明度opacity变成0,然后再慢慢变成1就实现了渐变的过程
+        //根据step就可以通过data[step].image拿到对应的图片,将地址赋值给rot1的孩子img标签的src属性上即可,先将透明度opacity变成0,然后再慢慢变成1就实现了渐变的过
         $("#rot1").children("img").prop("src",data[step].image).css({opacity:0}).stop().animate({opacity:1},2000);
         //heading显示
         $("#rot1 .heading").stop().animate({left:-450},700,"easeOutCirc",function () {

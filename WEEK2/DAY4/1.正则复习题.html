@@ -60,10 +60,6 @@
 
     //方法三
     function fn3(url) {
-        //"{course1:'js',course2:'css',course3:'jQ'}"
-        //" course1= js &course2=css  &course3=jQ   "
-        //=  ->  :'
-        //&  ->  ',
         url=url.split("?")[1];
         var str=url.replace(/=/g,":'").replace(/&/g,"',");
         str="({"+str+"'})";

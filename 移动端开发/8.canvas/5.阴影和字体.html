@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<canvas id="draw" width="600" height="400" style="border: 2px solid #ccc"></canvas>
+</body>
+</html>
+<script>
+    var draw = document.getElementById("draw");
+    var cvs=draw.getContext("2d");
+    //阴影
+    cvs.shadowOffsetX;//阴影的横向偏移(默认值是0)
+    cvs.shadowOffsetY;//阴影的纵向偏移(默认值是0)
+    cvs.shadowColor;//阴影的颜色
+    cvs.shadowBlur;//阴影的模糊范围
+    function draw1() {
+        cvs.shadowColor="#0000ff";
+        cvs.shadowOffsetX=30;
+        cvs.shadowOffsetY=20;
+        cvs.shadowBlur=20;
+        cvs.fillStyle="#449FDB";
+        cvs.fillRect(50,50,100,100);
+    }
+    //draw1();
+
+    //绘制文本
+    //设置字体的样式
+    //cvs.font="";
+    //水平对齐方式
+    //cvs.textAlign=""  start end center right
+    //垂直对齐方式
+    cvs.textBaseline="";//top,bottom ,middle,hanging
+
+    //计算文本的宽度
+    cvs.measureText("123445");
+
+    //填充文字
+    //cvs.fillText(text,x,y)
+    //绘制文字的轮廓
+    //cvs.strokeText(text,x,y)
+    //text:文本内容
+    //x,y,文本其实位置的坐标
+    var text="zhu feng pei xun 珠峰培训";
+    function draw2() {
+        cvs.font="40px verdana";
+        cvs.textAlign="start";
+        cvs.textBaseline="top";
+        //cvs.fillStyle="red";
+        cvs.strokeStyle="red";
+        cvs.shadowOffsetX=5;
+        cvs.shadowOffsety=4;
+        cvs.shadowBlur=5;
+        cvs.shadowColor="orange";
+        //cvs.fillText(text,10,10);
+        cvs.strokeText(text,10,10);
+    }
+    draw2();
+</script>

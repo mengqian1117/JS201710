@@ -5,7 +5,7 @@
     <title>珠峰培训2017-10JS</title>
 </head>
 <body>
-<div id="box1">box1</div>
+<div id="box1" onclick="fn(event)">box1</div>
 <div id="box2">box2</div>
 <ul class="list" style="font-size: 30px">
     <li>1</li>
@@ -57,5 +57,6 @@
     //delegate:处理预留事件的,注意参数顺序
     $(".list").delegate("li","click",function (e) {})
 
+    box.onclick=fn
 
 </script>

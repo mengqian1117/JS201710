@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    $.ajax({
+        url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?",
+        type:"get",//jsonp请求也是get
+        dataType:"jsonp",//返回数据的类型变jsonp
+        data:{
+            wd:"双11",
+        },
+        jsonp:"cb",//jsonp属性:人家服务器规定的,比如腾讯一般是callback,百度是cb
+        success:function (res) {
+            //成功之后数据也是在这个参数里面
+            console.log(res);
+        }
+    })
+</script>

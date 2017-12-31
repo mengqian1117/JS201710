@@ -137,17 +137,13 @@ var $=(function () {
     //         第二个参数不是个对象 --> 获取 有返回值
     function css() {
         if(arguments.length===3){
-            //apply不仅可以传数组还可以传类数组,比如:arguments
             this.setCss.apply(this,arguments);
-            return;
-        }
+            return;}
         if(arguments.length==2){
             if(arguments[1].toString()=="[object Object]"){
                 this.setGroupCss.apply(this,arguments);
                 return;
-            }else {
-                return this.getCss.apply(this,arguments);
-            }
+            }else {return this.getCss.apply(this,arguments);}
         }
     };
     return{

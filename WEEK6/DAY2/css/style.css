@@ -1,0 +1,34 @@
+html,body,ul,li{
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+}
+ul,li{
+    list-style: none;
+}
+img{
+    border-right: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #fff6fb;
+}
+ul{
+    width: 480px;
+    height: 640px;
+    margin: 20px auto;
+    background-color: #ccc;
+    padding: 5px;
+}
+ul li{
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+    float: left;
+    background-color: #9bdae6;
+}
+ul li img{
+    width: 100%;
+    height: 100%;
+}

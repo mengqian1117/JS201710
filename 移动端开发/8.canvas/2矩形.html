@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训2017-10JS</title>
+</head>
+<body>
+<canvas id="draw" width="600" height="400" style="border: 2px solid #ccc"></canvas>
+</body>
+</html>
+<script>
+    var draw = document.getElementById("draw");
+    var cvs=draw.getContext("2d");
+    //填充的矩形
+    //cvs.fillRect(x,y,w,h)
+    //x,y  矩形左上角的坐标
+    //w,h  宽,高
+    function draw1() {
+        cvs.fillStyle="#ff5700";
+        cvs.fillRect(50,50,200,100);
+        cvs.clearRect(125,75,50,50)
+    }
+    draw1();
+
+    //边框的矩形
+    //cvs.strokeRect(x,y,w,h);
+    //注意边框一半在里面一半在外面
+    function draw2() {
+        cvs.strokeStyle="green";
+        cvs.lineWidth=30;
+        cvs.strokeRect(200,200,100,100);
+    }
+    draw2();
+
+    //清除矩形中的一个矩形
+    //cvs.clearRect(x,y,w,h)
+</script>

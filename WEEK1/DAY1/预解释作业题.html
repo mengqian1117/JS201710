@@ -76,6 +76,7 @@
     //8.
     var a = 10, b = 11, c = 12;
     function test(a) {
+        //私有:a,b
         a = 1;
         var b = 2;
         c = 3;
@@ -87,7 +88,6 @@
     //9.
     if (!("aa" in window)) {
         var aa = 1;
-
         function aa() {
             console.log(aa)
         }
@@ -113,19 +113,19 @@
     //12.
     var a = 9;
     function ss() {
-        a = 0;
+        a = 0;//w.a=0
         return function (b) {
-            return b + (a++)
+            return b + (a++);//w.a=1 w.a=2
         }
     }
     var f = ss();
     var m = f(5);
-    console.log(m);
+    console.log(m);//5
     var n = ss()(5);
-    console.log(n);
+    console.log(n);//5
     var x = f(5);
-    console.log(x);
-    console.log(a);
+    console.log(x);//6
+    console.log(a);//2
 
 </script>
 </body>
